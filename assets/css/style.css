@@ -146,12 +146,12 @@ footer {
     background-color: rgba(216, 115, 20, 0.623);
     display: flex;
     flex-direction: column;
-    width: 35%;
+    width: 238px; 
     justify-content: center;
-    /* gap: 25px; */
     margin-left: 10px;
     height: 80%;
-    justify-content: space-between;
+    justify-content: flex-end;
+    gap: 10px; 
 }
 
 #computer-score {
@@ -160,7 +160,6 @@ footer {
 }
 
 #roll-wrapper {
-    width: 90%;
     background-color: aqua;
     height: 50%; 
     display: flex;
@@ -212,6 +211,16 @@ footer {
         display: block;
     }
 
+}
+
+@media screen and (min-width: 768px) {
+    #score-area-left {
+        padding-right: 10px; 
+    }
+
+    #score-area-right {
+        padding-left: 10px; 
+    }
 }
 
 
