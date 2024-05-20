@@ -115,8 +115,76 @@ h1 {
 footer {
     height: 15vh;
     background-color: blue;
+    width: 100%; 
 
 }
+
+#score-area {
+    display: flex;
+    justify-content: space-between; 
+}
+
+#score-area-left {
+    background-color: greenyellow;
+}
+
+#score-area-left, #score-area-right {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#user-score, #computer-score {
+    background-color: rgba(216, 115, 20, 0.623);
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    justify-content: center;
+    /* gap: 25px; */
+    margin-left: 10px;
+    height: 80%;
+    justify-content: space-between;
+}
+
+#computer-score {
+    margin-left: 0;
+    margin-right: 10px; 
+}
+
+#roll-wrapper {
+    width: 90%;
+    background-color: aqua;
+    height: 50%; 
+    display: flex;
+    justify-content: space-between; 
+}
+
+.score-die {
+    width: 25%;
+    background-color: orange; 
+    flex-shrink: 1;  
+}
+
+
+#bank-roll-user, #bank-roll-computer {
+    width: 20%;
+    height: 20%;
+    background-color: yellow;
+    height: 80%;
+    width: 40%;
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.dollars {
+    width: 20%;
+    height: 80%;
+    color: black; 
+}
+
+
 
 @media screen and (max-width: 425px) {
     #piggy-bank-container {
