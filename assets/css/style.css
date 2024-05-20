@@ -65,10 +65,12 @@ header {
 
 hr {
     position: absolute;
-    top: 50%;
-    top: 50%;
+    top: 52%;
     z-index: 1;
     width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: black; 
 }
 
 #main-section-circle {
