@@ -85,9 +85,14 @@ hr {
     background-color: yellow;
     width: 28%;
     height: 10%;
+    display: flex;
+    justify-content: space-between; 
 }
 
-
+.dice {
+    background-color: green; 
+    flex-basis: 30%;
+}
 
 h1 {
     text-align: center;
@@ -129,8 +134,13 @@ footer {
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: yellow;
-        width: 45%;
-        height: 15%;
+        width: 40%; 
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #main-section-dice {
+        width: 30%; 
     }
 }
 
@@ -143,5 +153,6 @@ footer {
 
         #main-section-dice {
             width: 25%;
+            height: 12%;
         }
     }
