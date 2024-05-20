@@ -70,7 +70,7 @@ hr {
     width: 100%;
     border: 0;
     height: 1px;
-    background-color: black; 
+    background-color: black;
 }
 
 #main-section-circle {
@@ -79,7 +79,7 @@ hr {
     padding-top: 25%;
     width: 512px;
     height: 512px;
-    position: absolute; 
+    position: absolute;
     z-index: 3;
 }
 
@@ -115,26 +115,27 @@ h1 {
 footer {
     height: 15vh;
     background-color: blue;
-    width: 100%; 
+    width: 100%;
 
 }
 
 #score-area {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 #score-area-left {
     background-color: greenyellow;
-    padding-right: 40px; 
+    padding-right: 40px;
 
 }
 
 #score-area-right {
-    padding-left: 40px; 
+    padding-left: 40px;
 }
 
-#score-area-left, #score-area-right {
+#score-area-left,
+#score-area-right {
     display: flex;
     width: 50%;
     height: 100%;
@@ -142,38 +143,40 @@ footer {
     align-items: center;
 }
 
-#user-score, #computer-score {
+#user-score,
+#computer-score {
     background-color: rgba(216, 115, 20, 0.623);
     display: flex;
     flex-direction: column;
-    width: 238px; 
+    width: 238px;
     justify-content: center;
     margin-left: 10px;
     height: 80%;
     justify-content: flex-end;
-    gap: 10px; 
+    gap: 10px;
 }
 
 #computer-score {
     margin-left: 0;
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
 #roll-wrapper {
     background-color: aqua;
-    height: 50%; 
+    height: 50%;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .score-die {
     width: 25%;
-    background-color: orange; 
-    flex-shrink: 1;  
+    background-color: orange;
+    flex-shrink: 1;
 }
 
 
-#bank-roll-user, #bank-roll-computer {
+#bank-roll-user,
+#bank-roll-computer {
     width: 20%;
     height: 20%;
     background-color: yellow;
@@ -181,15 +184,15 @@ footer {
     width: 40%;
     display: flex;
     justify-content: flex-end;
-    gap: 10px; 
+    gap: 10px;
 }
 
 #bank-roll-computer {
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 .dollars {
-    width: 15%; 
+    width: 15%;
     height: 80%;
     color: black;
     height: 100%;
@@ -215,12 +218,10 @@ footer {
 
 @media screen and (min-width: 768px) {
     #score-area-left {
-        padding-right: 10px; 
+        padding-right: 10px;
     }
 
     #score-area-right {
-        padding-left: 10px; 
+        padding-left: 10px;
     }
 }
-
-
