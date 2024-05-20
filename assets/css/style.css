@@ -64,27 +64,31 @@ header {
 
 
 hr {
-    position: relative;
+    position: absolute;
     top: 50%;
+    top: 50%;
+    z-index: 1;
+    width: 100%;
 }
 
 #main-section-circle {
-    width: 50%;
-    padding-top: 50%;
     background-color: orange;
     border-radius: 50%;
-    max-width: 720px;
-    max-height: 720px;
+    padding-top: 25%;
+    width: 512px;
+    height: 512px;
+    position: absolute; 
+    z-index: 3;
 }
 
-#main-section-dice {
+#main-section-dice-wrapper {
     position: absolute;
     top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: yellow;
-    width: 28%;
-    height: 10%;
+    width: 360px;
+    height: 98.75px;
     display: flex;
     justify-content: space-between;
 }
@@ -127,32 +131,4 @@ footer {
 
 }
 
-@media screen and (min-width: 768px) {
-    #main-section-dice {
-        position: absolute;
-        top: 48%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: yellow;
-        width: 40%;
-    }
-}
 
-@media screen and (min-width: 1024px) {
-    #main-section-dice {
-        width: 30%;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    #main-section-circle {
-        width: 30%;
-        padding-top: 30%;
-        /* Adjust this value to change the size of the circle */
-    }
-
-    #main-section-dice {
-        width: 25%;
-        height: 12%;
-    }
-}
