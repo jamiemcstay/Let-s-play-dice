@@ -86,11 +86,11 @@ hr {
     width: 28%;
     height: 10%;
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .dice {
-    background-color: green; 
+    background-color: green;
     flex-basis: 30%;
 }
 
@@ -127,32 +127,32 @@ footer {
 
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
     #main-section-dice {
         position: absolute;
         top: 48%;
         left: 50%;
         transform: translate(-50%, -50%);
         background-color: yellow;
-        width: 40%; 
+        width: 40%;
     }
 }
 
 @media screen and (min-width: 1024px) {
     #main-section-dice {
-        width: 30%; 
+        width: 30%;
     }
 }
 
-    @media screen and (min-width: 1440px) {
-        #main-section-circle {
-            width: 30%;
-            padding-top: 30%;
-            /* Adjust this value to change the size of the circle */
-        }
-
-        #main-section-dice {
-            width: 25%;
-            height: 12%;
-        }
+@media screen and (min-width: 1440px) {
+    #main-section-circle {
+        width: 30%;
+        padding-top: 30%;
+        /* Adjust this value to change the size of the circle */
     }
+
+    #main-section-dice {
+        width: 25%;
+        height: 12%;
+    }
+}
