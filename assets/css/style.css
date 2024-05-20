@@ -1,0 +1,59 @@
+/*override default browser styles*/ 
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: JetBrains Mono; 
+    height: 100vh;
+}
+
+/*styles for header of page*/
+
+header {
+    display: flex; 
+    justify-content: space-between;
+    height: 10%; 
+    background-color: blue; 
+}
+
+#rules-logo-container {
+    background-color: yellow; 
+    display: flex; 
+    align-items: center; 
+}
+
+#rules-logo {
+    height: 70%;
+    width: 70%;
+    background-color: green; 
+    margin: 0 auto; 
+}
+
+#piggy-bank-container {
+    background-color: yellow; 
+    position: relative; 
+    height: 15%; 
+    z-index: 2; 
+    background-color: yellow;
+    height: 150%;
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+#piggy-bank {
+    background-color: green; 
+    background-color: green;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+}
+
+
+
+
