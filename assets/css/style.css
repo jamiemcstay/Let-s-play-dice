@@ -1,4 +1,4 @@
-/*override default browser styles*/ 
+/*override default browser styles*/
 
 * {
     padding: 0;
@@ -8,37 +8,37 @@
 }
 
 body {
-    font-family: JetBrains Mono; 
+    font-family: JetBrains Mono;
     height: 100vh;
 }
 
 /*styles for header of page*/
 
 header {
-    display: flex; 
+    display: flex;
     justify-content: space-between;
-    height: 10vh; 
-    background-color: blue; 
+    height: 10vh;
+    background-color: blue;
 }
 
 #rules-logo-container {
-    background-color: yellow; 
-    display: flex; 
-    align-items: center; 
+    background-color: yellow;
+    display: flex;
+    align-items: center;
 }
 
 #rules-logo {
     height: 70%;
     width: 70%;
-    background-color: green; 
-    margin: 0 auto; 
+    background-color: green;
+    margin: 0 auto;
 }
 
 #piggy-bank-container {
-    background-color: yellow; 
-    position: relative; 
-    height: 15%; 
-    z-index: 2; 
+    background-color: yellow;
+    position: relative;
+    height: 15%;
+    z-index: 2;
     background-color: yellow;
     height: 150%;
     width: 10%;
@@ -47,7 +47,7 @@ header {
 }
 
 #piggy-bank {
-    background-color: green; 
+    background-color: green;
     background-color: green;
     width: 80%;
     height: 80%;
@@ -56,7 +56,7 @@ header {
 
 #main-section {
     background-color: pink;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
     height: 75vh;
@@ -65,20 +65,32 @@ header {
 
 hr {
     position: relative;
-    top: 50%; 
+    top: 50%;
 }
 
 #main-section-circle {
-    width: 50%; 
-    padding-top: 50%; 
-    background-color: orange; 
-    border-radius: 50%; 
-    max-width: 720px; 
-    max-height: 720px; 
+    width: 50%;
+    padding-top: 50%;
+    background-color: orange;
+    border-radius: 50%;
+    max-width: 720px;
+    max-height: 720px;
 }
 
+#main-section-dice {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: yellow;
+    width: 28%;
+    height: 10%;
+}
+
+
+
 h1 {
-    text-align: center; 
+    text-align: center;
     position: absolute;
     top: 48%;
     left: 50%;
@@ -86,7 +98,7 @@ h1 {
     margin: 0;
     font-size: 500%;
     width: 30%;
-    display: none; 
+    display: none;
 }
 
 footer {
@@ -100,18 +112,36 @@ footer {
         width: auto;
     }
 
-    #main-section-circle { 
-        display: none; 
+    #main-section-circle {
+        display: none;
+    }
+
+    #main-section-dice {
+        display: block;
+    }
+
+}
+
+@media screen and (min-width: 768px){
+    #main-section-dice {
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: yellow;
+        width: 45%;
+        height: 15%;
     }
 }
 
-@media screen {
     @media screen and (min-width: 1440px) {
         #main-section-circle {
             width: 30%;
-            padding-top: 30%; /* Adjust this value to change the size of the circle */
+            padding-top: 30%;
+            /* Adjust this value to change the size of the circle */
+        }
+
+        #main-section-dice {
+            width: 25%;
         }
     }
-    
-}
-
