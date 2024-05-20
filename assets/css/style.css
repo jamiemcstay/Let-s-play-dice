@@ -126,6 +126,12 @@ footer {
 
 #score-area-left {
     background-color: greenyellow;
+    padding-right: 40px; 
+
+}
+
+#score-area-right {
+    padding-left: 40px; 
 }
 
 #score-area-left, #score-area-right {
@@ -174,14 +180,21 @@ footer {
     background-color: yellow;
     height: 80%;
     width: 40%;
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; 
+}
+
+#bank-roll-computer {
+    justify-content: flex-start; 
 }
 
 .dollars {
-    width: 20%;
+    width: 15%; 
     height: 80%;
-    color: black; 
+    color: black;
+    height: 100%;
+    background-color: black;
 }
 
 
