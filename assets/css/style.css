@@ -59,7 +59,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: 72vh;
 }
 
 
@@ -112,51 +112,48 @@ h1 {
     display: none;
 }
 
-footer {
-    height: 15vh;
-    background-color: blue;
-    width: 100%;
-
-}
 
 #score-area {
     display: flex;
     justify-content: space-between;
+    height: 18vh;
+    background-color: blue;
+    width: 100%;
 }
 
 #score-area-left {
     background-color: greenyellow;
-    padding-right: 40px;
 
 }
 
-#score-area-right {
-    padding-left: 40px;
-}
 
 #score-area-left,
 #score-area-right {
-    display: flex;
     width: 50%;
-    height: 100%;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    gap: 10px;
+    padding-bottom: 10px; 
+    padding-left: 10px; 
+}
+
+#score-area-right {
+    padding-left: 0; 
+    display: flex; 
+    padding-right: 10px; 
 }
 
 #user-score,
 #computer-score {
     background-color: rgba(216, 115, 20, 0.623);
-    margin-left: 10px;
+    width: 192.77px;
 }
 
-user-score {
-    margin-bottom: 10px; 
+#computer-score, #bank-roll-computer {
+    align-self: self-end; 
 }
 
-#computer-score {
-    margin-left: 0;
-    margin-right: 10px;
-}
 
 #roll-wrapper {
     background-color: aqua;
@@ -176,24 +173,9 @@ user-score {
 #bank-roll-user,
 #bank-roll-computer {
     width: 20%;
-    height: 20%;
     background-color: yellow;
-    height: 60.98px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-#bank-roll-computer {
-    justify-content: flex-start;
-}
-
-.dollars {
-    width: 15%;
-    height: 80%;
-    color: black;
-    height: 100%;
-    background-color: black;
+    height: 39.98px;
+    width: 80px; 
 }
 
 
@@ -216,18 +198,24 @@ user-score {
         flex-direction: column; 
     }
 
-    #score-area-left {
-        flex-direction: column; 
+    #score-area-left, #score-area-right {
+        width: 100%; 
+        flex-direction: row; 
+        justify-content: center; 
     }
 
-}
-
-@media screen and (min-width: 768px) {
     #score-area-left {
-        padding-right: 10px;
+        padding-left: 0; 
     }
 
     #score-area-right {
-        padding-left: 10px;
+        padding: 0;
+        padding-bottom: 10px;  
     }
+
+    #bank-roll-computer {
+        align-self: normal; 
+    }
+
+
 }
