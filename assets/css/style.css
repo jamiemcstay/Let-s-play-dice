@@ -93,6 +93,7 @@ hr {
     height: 98.75px;
     display: flex;
     justify-content: space-between;
+    z-index: 5;
 }
 
 .dice {
@@ -132,16 +133,16 @@ h1 {
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     gap: 10px;
-    padding-bottom: 10px; 
-    padding-left: 10px; 
+    padding-bottom: 10px;
+    padding-left: 10px;
 }
 
 #score-area-right {
-    padding-left: 0; 
-    display: flex; 
-    padding-right: 10px; 
+    padding-left: 0;
+    display: flex;
+    padding-right: 10px;
 }
 
 #user-score,
@@ -150,8 +151,9 @@ h1 {
     width: 192.77px;
 }
 
-#computer-score, #bank-roll-computer {
-    align-self: self-end; 
+#computer-score,
+#bank-roll-computer {
+    align-self: self-end;
 }
 
 
@@ -175,7 +177,7 @@ h1 {
     width: 20%;
     background-color: yellow;
     height: 39.98px;
-    width: 80px; 
+    width: 80px;
 }
 
 
@@ -187,34 +189,39 @@ h1 {
     }
 
     #main-section-circle {
-        display: none;
+        border-radius: 0;
+        padding-top: 25%;
+        width: 100%; 
+        height: 100%; 
+        padding-top: 0; 
+        width: auto;
+        height: auto; 
+        transform: rotate(90deg);
     }
 
-    #main-section-dice {
-        display: block;
-    }
 
     #score-area {
-        flex-direction: column; 
+        flex-direction: column;
     }
 
-    #score-area-left, #score-area-right {
-        width: 100%; 
-        flex-direction: row; 
-        justify-content: center; 
+    #score-area-left,
+    #score-area-right {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
     }
 
     #score-area-left {
-        padding-left: 0; 
+        padding-left: 0;
     }
 
     #score-area-right {
         padding: 0;
-        padding-bottom: 10px;  
+        padding-bottom: 10px;
     }
 
     #bank-roll-computer {
-        align-self: normal; 
+        align-self: normal;
     }
 
 
