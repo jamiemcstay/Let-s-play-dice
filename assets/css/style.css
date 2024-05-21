@@ -22,16 +22,19 @@ header {
 }
 
 #rules-logo-container {
-    background-color: yellow;
+    background-color: white;
     display: flex;
     align-items: center;
+    width: auto;
+    height: auto; 
 }
 
-#rules-logo {
-    height: 70%;
-    width: 70%;
-    background-color: green;
+#rules-logo > img {
+
+    color: black;
     margin: 0 auto;
+    width: 60px;
+    height: 60px; 
 }
 
 #piggy-bank-container {
@@ -41,17 +44,34 @@ header {
     z-index: 2;
     background-color: yellow;
     height: 150%;
-    width: 10%;
+    width: auto;
     display: flex;
     align-items: center;
+    padding-left: 10px;
+    padding-right: 10px; 
 }
 
 #piggy-bank {
     background-color: green;
     background-color: green;
-    width: 80%;
-    height: 80%;
+    width: auto;
+    height: auto;
     margin: 0 auto;
+    display: flex; 
+}
+
+#piggy-bank > span {
+    width: auto;
+    height: auto; 
+}
+
+#piggy-bank > span > img {
+    width: 50px;
+    height: 50px; 
+}
+
+#piggy-bank-input {
+    width: 70px; 
 }
 
 #main-section {
@@ -184,9 +204,6 @@ h1 {
 
 
 @media screen and (max-width: 425px) {
-    #piggy-bank-container {
-        width: auto;
-    }
 
     #main-section-circle {
         border-radius: 0;
