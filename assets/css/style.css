@@ -83,16 +83,6 @@ header {
 }
 
 
-hr {
-    position: absolute;
-    top: 52%;
-    z-index: 1;
-    width: 100%;
-    border: 0;
-    height: 1px;
-    background-color: black;
-}
-
 #main-section-circle {
     background-color: orange;
     border-radius: 50%;
@@ -109,16 +99,40 @@ hr {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: yellow;
-    width: 360px;
-    height: 98.75px;
+    width: auto;
+    height: auto;
     display: flex;
     justify-content: space-between;
     z-index: 5;
+    gap: 10px; 
 }
 
 .dice {
     background-color: green;
-    flex-basis: 30%;
+    width: auto;
+    height: auto;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+#die3 {
+    transform: rotate(45deg); 
+}
+
+.dice > img {
+    width: 98.75px;
+    height: 108px;
+}
+
+hr {
+    position: absolute;
+    top: 52%;
+    z-index: 1;
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-color: black;
 }
 
 h1 {
