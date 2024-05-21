@@ -146,14 +146,11 @@ footer {
 #user-score,
 #computer-score {
     background-color: rgba(216, 115, 20, 0.623);
-    display: flex;
-    flex-direction: column;
-    width: 238px;
-    justify-content: center;
     margin-left: 10px;
-    height: 80%;
-    justify-content: flex-end;
-    gap: 10px;
+}
+
+user-score {
+    margin-bottom: 10px; 
 }
 
 #computer-score {
@@ -163,7 +160,8 @@ footer {
 
 #roll-wrapper {
     background-color: aqua;
-    height: 50%;
+    height: 39.998px;
+    width: 192.78px;
     display: flex;
     justify-content: space-between;
 }
@@ -180,8 +178,7 @@ footer {
     width: 20%;
     height: 20%;
     background-color: yellow;
-    height: 80%;
-    width: 40%;
+    height: 60.98px;
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -201,6 +198,7 @@ footer {
 
 
 
+
 @media screen and (max-width: 425px) {
     #piggy-bank-container {
         width: auto;
@@ -212,6 +210,14 @@ footer {
 
     #main-section-dice {
         display: block;
+    }
+
+    #score-area {
+        flex-direction: column; 
+    }
+
+    #score-area-left {
+        flex-direction: column; 
     }
 
 }
