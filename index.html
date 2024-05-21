@@ -9,19 +9,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/1292c16ab0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <header>
         <div id="rules-logo-container">
-            <div id="rules-logo"><img src="assets/images/icons/dice-solid.svg" alt="Rules for game"></div>
+            <div id="rules-logo">
+                <i class="fa-solid fa-dice"></i>
+            </div>
         </div>
         <div id="piggy-bank-container">
             <div id="piggy-bank">
-                <span><img src="assets/images/icons/dollar-sign-solid.svg" alt="Current stakes for round"></span>
+                <span>
+                    <i class="fa-solid fa-dollar-sign" alt="Stakes for current round"></i>
+                </span>
                 <input id="piggy-bank-input" type="number" placeholder="500">
             </div>
         </div>
@@ -34,13 +37,13 @@
             <h1>Click to roll</h1>
             <div id="main-section-dice-wrapper">
                 <div class="dice" id="die1">
-                    <img src="assets/images/icons/dice-four-solid.svg" alt="Die face of 4">
+                    <i class="fa-solid fa-dice-four die"></i>
                 </div>
                 <div class="dice" id="die2">
-                    <img src="assets/images/icons/dice-five-solid.svg" alt="Die face of 5">
+                    <i class="fa-solid fa-dice-five die"></i>
                 </div>
                 <div class="dice" id="die3">
-                    <img src="assets/images/icons/dice-six-solid.svg" alt="Die face of 6">  
+                    <i class="fa-solid fa-dice-six die"></i>
                 </div>
             </div>
         </div>
