@@ -1,8 +1,10 @@
 //Function for screen on loading
 
-document.addEventListener('DomContentLoaded', function () {
-    
-})
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('score-area').style.display = 'none';
+    document.getElementById('piggy-bank-container').display = 'none';
+    document.getElementById('')
+});
 
 //Function for running the game and the rounds
 
