@@ -49,7 +49,14 @@ function runGame() {
 
 //function for checking high roll
 
-function highRoll 
+function highRoll() {
+    console.log('Youre in the high roll');
+    let num1 = rollDice();
+    let num2 = rollDice();
+
+    let highRollResult = [num1, num2]
+    console.log(highRollResult); 
+}
 
 //Function for rolling three dice
 
