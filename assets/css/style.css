@@ -14,10 +14,10 @@ body {
 
 main {
     width: 100vw;
-    height: 100vh; 
+    height: 100vh;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 #game-area {
@@ -32,7 +32,7 @@ main {
     justify-content: space-between;
     height: 10%;
     background-color: blue;
-    position: relative; 
+    position: relative;
 }
 
 #rules-logo-container {
@@ -48,7 +48,7 @@ main {
     height: auto;
 }
 
-#rules-logo > i {
+#rules-logo>i {
     color: black;
     margin: 0 auto;
     font-size: 60px;
@@ -77,7 +77,7 @@ main {
     display: flex;
 }
 
-#piggy-bank > span > i {
+#piggy-bank>span>i {
     font-size: 50px;
 }
 
@@ -171,7 +171,7 @@ hr {
 }
 
 #h1-small-screens {
-    display: none; 
+    display: none;
 
 }
 
@@ -239,11 +239,11 @@ hr {
     border: solid black 1px;
 }
 
-.score-die > i {
+.score-die>i {
     width: auto;
     height: auto;
     font-size: 1.5rem;
-    color: grey; 
+    color: grey;
 }
 
 #bank-roll-user,
@@ -256,11 +256,11 @@ hr {
 
 @media screen and (min-width: 1440px) {
     #main-section-circle {
-        top: 170px; 
+        top: 170px;
     }
 
     #game-area {
-        width: 60%; 
+        width: 60%;
     }
 }
 
@@ -273,7 +273,7 @@ hr {
     }
 
     #main-section-circle {
-        top: 120px; 
+        top: 120px;
     }
 
 }
@@ -285,7 +285,7 @@ hr {
     }
 
     #h1-large-screens {
-        display: none; 
+        display: none;
     }
 
     #h1-small-screens {

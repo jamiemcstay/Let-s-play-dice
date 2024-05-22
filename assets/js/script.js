@@ -11,10 +11,10 @@ document.addEventListener('DOMContentLoaded', function () {
     //increase size of main section to take up surplace space 
     let mainSection = document.getElementById('main-section');
     mainSection.style.height = '90%';
-    
+
     let circle = document.getElementById('main-section-circle');
 
-    
+
     function clickToStart() {
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
@@ -22,22 +22,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let heading = document.getElementById('h1-large-screens');
         heading.textContent = "Click for high roll";
-        
+
         circle.removeEventListener('click', clickToStart);
-        
+
         circle.addEventListener('click', highRoll);
 
     }
 
 
-        circle.addEventListener('click', clickToStart); 
+    circle.addEventListener('click', clickToStart);
 
 });
 
 //function for rolling dice
 
 function rollDice() {
-    return Math.floor(Math.random() * 6) +1;
+    return Math.floor(Math.random() * 6) + 1;
 };
 
 function highRoll() {
@@ -47,22 +47,22 @@ function highRoll() {
     let num2 = rollDice();
 
     let highRollResult = [num1, num2]
-    if(num1 > num2) {
-        console.log('yup'); 
+    if (num1 > num2) {
+        console.log('yup');
     }
     checkRoll(highRollResult);
-    
+
     let circle = document.getElementById('main-section-circle');
-    circle.removeEventListener('click', highRoll); 
-    
+    circle.removeEventListener('click', highRoll);
+
 };
 
 
 
 //Function for running the game
 
-function runGame() { 
-    
+function runGame() {
+
 }
 
 //function for checking high roll
@@ -72,11 +72,11 @@ function runGame() {
 //Function for checking the roll of dice
 
 function checkRoll(highRollResult) {
-    if(highRollResult[0] > highRollResult[1]) {
+    if (highRollResult[0] > highRollResult[1]) {
         console.log('Your number is higher');
-    } else{
-        console.log('shit one'); 
-    } 
+    } else {
+        console.log('shit one');
+    }
 };
 
 //Function for finding winnner of round/game
