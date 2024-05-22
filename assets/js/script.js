@@ -73,8 +73,10 @@ function runGame() {
 
 function checkRoll(highRollResult) {
     if(highRollResult[0] > highRollResult[1]) {
-    } else { 
-    }
+        console.log('Your number is higher');
+    } else{
+        console.log('shit one'); 
+    } 
 };
 
 //Function for finding winnner of round/game
