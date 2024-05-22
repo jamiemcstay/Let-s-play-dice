@@ -19,11 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         piggyBank.style.display = 'block';
         let heading = document.getElementById('h1-large-screens');
         heading.textContent = "Click for high roll";
-        
-    circle.addEventListener('click', highRoll) {
-
-    }
-
+        circle.removeEventListener('click', arguments.callee); 
     });
 
     //function for high roll
@@ -31,8 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-//function for high roll
 
+//function for high roll
+function highRoll() {
+    return Math.floor(Math.random() * 6) +1;
+};
 
 
 //Function for running the game and the rounds
