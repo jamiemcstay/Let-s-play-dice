@@ -1,47 +1,55 @@
 //Function for screen on loading
 
 document.addEventListener('DOMContentLoaded', function () {
-    //hide piggy-bank and score on screen onload
+    //hide piggy-bank and score area on screen onload
     let scoreArea = document.getElementById('score-area');
-    scoreArea.style.display = 'none';
 
     let piggyBank = document.getElementById('piggy-bank-container');
-    piggyBank.style.display = 'none';
 
+    //increase size of main section to take up surplace space 
     let mainSection = document.getElementById('main-section');
-    mainSection.style.height = '90%';
-
+    
     let circle = document.getElementById('main-section-circle');
 
-    circle.addEventListener('click', function () {
-        mainSection.style.height = '72%';
+    scoreArea.style.display = 'none';
+    piggyBank.style.display = 'none';
+    mainSection.style.height = '90%';
+    
+    function clickToStart() {
         scoreArea.style.display = 'flex';
-        piggyBank.style.display = 'block';
-        let heading = document.getElementById('h1-large-screens');
-        heading.textContent = "Click for high roll";
-        circle.removeEventListener('click', arguments.callee); 
-    });
+        piggyBank.style.display = 'flex';
+        mainSection.style.height = '72%';
+        
+        runGame(); 
 
-    //function for high roll
+    }
 
+    circle.addEventListener('click', clickToStart);
 
 });
 
 
-//function for high roll
-function highRoll() {
+//function for rolling dice
+function rollDice() {
     return Math.floor(Math.random() * 6) +1;
 };
 
 
-//Function for running the game and the rounds
+//Function for running the game
 
 function runGame() {
+    console.log("You're running the game");
+    let heading = document.getElementById('h1-large-screens');
+    heading.textContent = "Click for high roll";
 
+    let circle = document.getElementById('main-section-circle');
+    circle.addEventListener('click', highRoll); 
 
 }
 
 //function for checking high roll
+
+function highRoll 
 
 //Function for rolling three dice
 
