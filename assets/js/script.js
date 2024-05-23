@@ -23,15 +23,15 @@ document.addEventListener('DOMContentLoaded', function () {
         heading.textContent = "Click for high roll";
 
         let diceOne = document.getElementById('die1');
-        diceOne.style.display = 'none'; 
+        diceOne.style.display = 'none';
 
         let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.die');
         if (diceTwoChange) {
-        diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');
+            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');
         }
-        
-        let diceThree = document.getElementById('die3'); 
-        diceThree.style.display = 'none';      
+
+        let diceThree = document.getElementById('die3');
+        diceThree.style.display = 'none';
 
         circle.removeEventListener('click', clickToStart);
 
@@ -53,33 +53,32 @@ document.addEventListener('DOMContentLoaded', function () {
         let circle = document.getElementById('main-section-circle');
         circle.removeEventListener('click', highRoll);
 
-        let num1 = rollDice();
-        let num2 = rollDice();
-
-        let highRollResult = [num1, num2];
-        // changeDice(); 
-        checkHighRoll(highRollResult);
-
-        setTimeout (function() {
+        setTimeout(function () {
             let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.fa-beat.die');
             if (diceTwoChange) {
                 diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five die');
             }
         }, 200);
 
+        let num1;
+        let num2;
+
+        do{
+            num1 = rollDice();
+            num2 = rollDice();
+        } while(num1 === num2);
+
+
+        let highRollResult = [num1, num2]; 
+
+        checkHighRoll(highRollResult); 
 
         return highRollResult;
 
     }
 
-
-    // function changeDice() {
-    //     let diceOne = document.getElementById('die1');
-    //     diceOne.style.display = 'none'; 
-    // }
-
     function checkHighRoll(highRollResult) {
-
+        console.log('Your in check high roll'); 
         let heading = document.getElementById('h1-large-screens');
         heading.style.fontSize = '300%';
 
@@ -97,21 +96,43 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 4000);
 
         } else {
-            heading.textContent = `You rolled a ${highRollResult[0]}`; 
+            heading.textContent = `You rolled a ${highRollResult[0]}`;
 
             setTimeout(function () {
-                heading.textContent = `Computer rolled a ${highRollResult[1]}`; 
-            }, 2000); 
+                heading.textContent = `Computer rolled a ${highRollResult[1]}`;
+            }, 2000);
 
             setTimeout(function () {
                 heading.textContent = `The stakes are stakes `;
-                computerRoll();
+                setComputerStakes();
             }, 4000);
 
+
+                
+                //set computer stakes
+                function setComputerStakes() {
+                    console.log("You're in computer stakes");
+                }
+        
+                //set player stakes
+        
+        
+            
+
         }
+
+    
     }
 
-    function computerStakes() {
+    function setStakes() {
+        console.log('Computer stakes are');
+        
+        //set computer stakes
+        function setComputerStakes() {
+            console.log("You're in computer stakes");
+        }
+
+        //set player stakes
 
 
     }
