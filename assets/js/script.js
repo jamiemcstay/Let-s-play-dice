@@ -1,5 +1,4 @@
 //Function for screen on loading
-
 document.addEventListener('DOMContentLoaded', function () {
     //hide piggy-bank and score area on screen onload
     let scoreArea = document.getElementById('score-area');
@@ -29,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    circle.addEventListener('click', clickToStart);
+
 
     function rollDice() {
         return Math.floor(Math.random() * 6) + 1;
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function highRoll() {
     
         console.log('Youre in the high roll');
-        let heading = document.getElementById('')
+        // let heading = document.getElementById('h1-large-screens'); 
         let circle = document.getElementById('main-section-circle');
         circle.removeEventListener('click', highRoll);
     
@@ -50,68 +51,66 @@ document.addEventListener('DOMContentLoaded', function () {
     
         return highRollResult;
 
-            function checkHighRoll(highRollResult) {
-
-                let heading = document.getElementById('h1-large-screens');
-                
-        
-                if (highRollResult[0] > highRollResult[1]) {
-                    console.log('Your number is higher, leaving checkHighRoll');
-    
-                    heading.textContent = `You rolled a ${highRollResult[0]} Computer rolled a ${highRollResult[1]}, set the stakes`;
-
-                    playerRoll(); 
-                
-                } else {
-                    heading.textContent  = `Computer rolled a ${highRollResult[1]}, the stakes are stakes, leaving checkHighRoll`;
-                    computerRoll();
-                }   
-        }
-    
     }
-    
-    
-    
+
+    function checkHighRoll(highRollResult) {
+
+        let heading = document.getElementById('h1-large-screens');
+        heading.style.fontSize = '300%'; 
+
+        if (highRollResult[0] > highRollResult[1]) {
+
+            heading.textContent = `You rolled a ${highRollResult[0]} Computer rolled a ${highRollResult[1]}`;              
+
+            setTimeout(function() {
+                heading.textContent = "Set the stakes";
+                setTheStakes();
+            }, 2000); 
+
+        } else {
+            heading.textContent  = `Computer rolled a ${highRollResult[1]}`;
+
+            setTimeout(function() {
+                heading.textContent = `The stakes are stakes `;
+                computerRoll(); 
+            }, 2000);
+
+        }   
+    }
+
+    function computerStakes() {
+        
+
+    }
+
+        //function for setting the stakes 
+    function setTheStakes() {
+        console.log("Set the stakes");
+    }
+
+
     //Function for running the game
-    
     function runGame() {
     
         console.log("You're in the game"); 
     
         let circle = document.getElementById('main-section-circle');
     
-        let heading = document.getElementById('h1-large-screens');
-    
-        
-        
+        let heading = document.getElementById('h1-large-screens');       
     
     }
     
-    //function for checking high roll
-    
-    //Function for rolling three dice
-    
-    //Function for checking the roll of dice
-    
-    
-    function playerRoll() {
-    
-        console.log("You're in playerRoll"); 
-    
-    };
 
-    
-    function computerRoll() {
-        console.log("You're in computer roll");
-    }
+}); 
 
 
-    //Function for finding winnner of round/game
+
+
     
-    //Function for increasing stakes and updating piggy bank
+    
+
+    
+    
 
 
-    circle.addEventListener('click', clickToStart);
-
-});
 

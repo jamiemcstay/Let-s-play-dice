@@ -5,6 +5,7 @@ https://www.w3schools.com/jsref/met_win_removeeventlistener.asp
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
 
 Welcome,
 
