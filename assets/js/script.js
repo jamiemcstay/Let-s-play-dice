@@ -63,22 +63,22 @@ document.addEventListener('DOMContentLoaded', function () {
         let num1;
         let num2;
 
-        do{
+        do {
             num1 = rollDice();
             num2 = rollDice();
-        } while(num1 === num2);
+        } while (num1 === num2);
 
 
-        let highRollResult = [num1, num2]; 
+        let highRollResult = [num1, num2];
 
-        checkHighRoll(highRollResult); 
+        checkHighRoll(highRollResult);
 
         return highRollResult;
 
     }
 
     function checkHighRoll(highRollResult) {
-        console.log('Your in check high roll'); 
+        console.log('Your in check high roll');
         let heading = document.getElementById('h1-large-screens');
         heading.style.fontSize = '300%';
 
@@ -108,25 +108,31 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 4000);
 
 
-                
-                //set computer stakes
-                function setComputerStakes() {
-                    console.log("You're in computer stakes");
-                }
-        
-                //set player stakes
-        
-        
-            
+
+            //set computer stakes
+            function setComputerStakes(computerStake) {
+                console.log("You're in computer stakes");
+            }
+
+            //set player stakes
+
+
+
 
         }
 
-    
+
     }
 
     function setStakes() {
         console.log('Computer stakes are');
-        
+
+        setTimeout(function () {
+            let heading = document.getElementById('h1-main-section'); 
+            heading.textContent = `The stakes are stakes `;
+            setComputerStakes();
+        }, 6000);
+
         //set computer stakes
         function setComputerStakes() {
             console.log("You're in computer stakes");
