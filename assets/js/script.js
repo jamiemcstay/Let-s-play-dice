@@ -60,9 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (highRollResult[0] > highRollResult[1]) {
 
-            heading.textContent = `You rolled a ${highRollResult[0]} Computer rolled a ${highRollResult[1]}`;              
+            heading.textContent = `You rolled a ${highRollResult[0]}`;
+            
+            setTimeOut(function() {
+                heading.textContent = `Computer rolled a ${highRollResult[1]}`;
 
-            setTimeout(function() {
+            }, 2000);
+
+            setTimeOut(function() {
                 heading.textContent = "Set the stakes";
                 setTheStakes();
             }, 2000); 
@@ -79,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function computerStakes() {
-        
+
 
     }
 
