@@ -194,9 +194,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 bankRollUser.value = bankRollUserValue; 
 
             }
-            
 
-        }
+            if(!isNaN(bankRollComputerValue) && bankRollUserValue >= 100) {
+                bankRollComputerValue -= stakes;
+                bankRollComputer.value = bankRollComputerValue; 
+
+                }
+}           
+
+        
 
 
         updateBankRolls(computerStakes);
