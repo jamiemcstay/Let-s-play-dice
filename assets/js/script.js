@@ -110,8 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
-
     function setComputerStakes() {
 
         console.log("You're in computer stakes");
@@ -127,15 +125,61 @@ document.addEventListener('DOMContentLoaded', function () {
         
         return computerStakes;`` 
 
+        //the stakes set by the computer must be less than or equal to bankroll of the user
+        //get user bank roll and create if statment(if (userBankRoll.Currentvalue computerStakes <= ))
+
+
     }
 
-
+    
 
     //function for setting the stakes 
     function setPlayerStakes() {
+
         console.log("You're in player stakes"); 
 
-        let playerStakes = 
+        let bankRollUser = document.getElementById('bank-roll-user');
+        // let bankRollComputer = document.getElementById('bank-roll-computer')
+        let increaseStakesButton = document.getElementById('inrease-stakes');
+        let decreaseStakesButton = document.getElementById('decrease-stakes');
+
+        //Increase stakes event listener that passes increases bankroll
+
+        increaseStakesButton.addEventListener('click', function() {
+            bankRollUser.value(updateBankRoll(100));
+        })
+
+        //decrease stakes button that decreases bankroll
+
+            decreaseStakesButton.addEventListener('click', function() {
+            bankRollUser.value(updateBankRoll(-100)); 
+        })
+
+        //update bankroll function
+
+        function updateBankRoll(stakes) {
+
+            let currentValue = parseInt(bankRollUser.value);
+
+            if(!isNaN(currentValue))  {
+
+                if(currentValue + stakes >= 0) {
+                    bankRollUser.value = currentValue + stakes; 
+                } 
+
+            }
+        }
+        
+        function updatePiggyBank {
+            //get piggy bank
+
+            //get bankroll value from user and computer bankrolls
+
+            //add user value + computer value and add to input value of piggy bank
+
+
+        }
+
     }
 
 
