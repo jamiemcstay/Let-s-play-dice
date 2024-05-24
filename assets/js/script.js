@@ -199,18 +199,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 bankRollComputerValue -= stakes;
                 bankRollComputer.value = bankRollComputerValue; 
 
-                }
-}           
+            }
 
-        
+            if(!isNaN(piggyBankValue)) {
+                piggyBankValue += stakes * 2; 
+                piggyBankInput.value = piggyBankValue; 
+            }
+
+        }           
 
 
         updateBankRolls(computerStakes);
         return computerStakes;
 
     }
-
-
 
 
 }); 
