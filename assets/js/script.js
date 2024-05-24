@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setPlayerStakes() {
         console.log("You're in player stakes"); 
 
-        let 
+        let playerStakes = 
     }
 
 

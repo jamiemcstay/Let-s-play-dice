@@ -239,11 +239,37 @@ hr {
     border: solid black 1px;
 }
 
-.score-die>i {
+.score-die > i {
     width: auto;
     height: auto;
     font-size: 1.5rem;
     color: grey;
+}
+
+#bank-roll-wrapper {
+    display: flex;
+    gap: 5px; 
+}
+
+#increase-stakes, #decrease-stakes {
+    width: 30px;
+    height: 30px; 
+    border-radius: 50%; 
+    align-self: center; 
+    displaY: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 18px; 
+    
+}
+
+
+
+#increase-stakes > p, #decrease-stakes > p {
+    font-size: 30px;
+    font-weight: bold; 
+    text-align: center;  
+
 }
 
 #bank-roll-user,
