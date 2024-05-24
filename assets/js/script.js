@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let heading = document.getElementById('h1-large-screens');
         heading.style.fontSize = '300%';
 
-        piggyBank.value = 0; 
+        piggyBank.value = 0;
 
         if (highRollResult[0] > highRollResult[1]) {
 
@@ -117,46 +117,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setTheStakes() {
         console.log("You're in player stakes");
-    
+
         let bankRollUser = document.getElementById('bank-roll-user');
         let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputer = document.getElementById('bank-roll-computer'); 
+        let bankRollComputer = document.getElementById('bank-roll-computer');
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         let piggyBankInput = document.getElementById('piggy-bank-input');
         let piggyBankValue = parseInt(piggyBankInput.value);
         let increaseStakesButton = document.getElementById('increase-stakes');
 
-    
-        increaseStakesButton.addEventListener('click', function() {
+
+        increaseStakesButton.addEventListener('click', function () {
             // Get the current bank roll value
-    
+
             // Check if the bank roll value is valid and greater than or equal to 100
             if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
                 // Decrease the bank roll by 100
                 bankRollUserValue -= 100;
-    
+
                 // Update the bank roll input value
                 bankRollUser.value = bankRollUserValue;
-    
+
                 // Get the current piggy bank value
-    
+
                 // Update the piggy bank value by adding 100
                 piggyBankValue += 100;
-    
+
                 // Update the piggy bank input value
                 piggyBankInput.value = piggyBankValue;
 
 
             }
 
-            if(!isNaN(bankRollComputerValue) && bankRollComputerValue >= 100) {
+            if (!isNaN(bankRollComputerValue) && bankRollComputerValue >= 100) {
                 bankRollComputerValue -= 100;
 
-                bankRollComputer.value = bankRollComputerValue; 
+                bankRollComputer.value = bankRollComputerValue;
 
-                piggyBankValue += 100; 
+                piggyBankValue += 100;
 
-                piggyBankInput.value  = piggyBankValue;
+                piggyBankInput.value = piggyBankValue;
 
 
             }
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let bankRollUser = document.getElementById('bank-roll-user');
         let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputer = document.getElementById('bank-roll-computer'); 
+        let bankRollComputer = document.getElementById('bank-roll-computer');
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         let piggyBankInput = document.getElementById('piggy-bank-input');
         let piggyBankValue = parseInt(piggyBankInput.value);
@@ -189,25 +189,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function updateBankRolls(stakes) {
 
-            if(!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
+            if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
                 bankRollUserValue -= stakes;
-                bankRollUser.value = bankRollUserValue; 
+                bankRollUser.value = bankRollUserValue;
 
             }
 
-            if(!isNaN(bankRollComputerValue) && bankRollUserValue >= 100) {
+            if (!isNaN(bankRollComputerValue) && bankRollUserValue >= 100) {
                 bankRollComputerValue -= stakes;
-                bankRollComputer.value = bankRollComputerValue; 
+                bankRollComputer.value = bankRollComputerValue;
 
             }
 
-            if(!isNaN(piggyBankValue)) {
-                piggyBankValue += stakes * 2; 
-                piggyBankInput.value = piggyBankValue; 
+            if (!isNaN(piggyBankValue)) {
+                piggyBankValue += stakes * 2;
+                piggyBankInput.value = piggyBankValue;
             }
 
-        }           
+        }
 
+        
 
         updateBankRolls(computerStakes);
         return computerStakes;
@@ -215,5 +216,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-}); 
-
+});
