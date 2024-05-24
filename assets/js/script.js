@@ -82,6 +82,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let heading = document.getElementById('h1-large-screens');
         heading.style.fontSize = '300%';
 
+        piggyBank.value = 0; 
+
         if (highRollResult[0] > highRollResult[1]) {
 
             //If user roll is higher than computer
@@ -93,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(function () {
                 heading.textContent = "Set the stakes";
-                setPlayerStakes();
+                setTheStakes();
             }, 4000);
 
 
@@ -110,8 +112,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-
     }
+
+
+    function setTheStakes() {
+        console.log("You're in player stakes");
+
+        
+    
+    }
+
+
 
     function setComputerStakes() {
 
@@ -126,17 +137,10 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.innerText = `The stakes are ${computerStakes}`;
         }, 1000);
 
-        
-
-        return computerStakes;
-
-        //the stakes set by the computer must be less than or equal to bankroll of the user
-
-        //get user bank roll and create if statment(if (userBankRoll.Currentvalue computerStakes <= ))
 
     }
 
-    
 
 
-});
+}); 
+
