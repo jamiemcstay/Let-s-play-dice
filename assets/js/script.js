@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (highRollResult[0] > highRollResult[1]) {
 
+            //If user roll is higher than computer
             heading.textContent = `You rolled a ${highRollResult[0]}`;
 
             setTimeout(function () {
@@ -92,60 +93,49 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(function () {
                 heading.textContent = "Set the stakes";
-                setTheStakes();
+                setPlayerStakes();
             }, 4000);
-
+        
+            //If computer roll is higher than user
         } else {
             heading.textContent = `You rolled a ${highRollResult[0]}`;
 
             setTimeout(function () {
                 heading.textContent = `Computer rolled a ${highRollResult[1]}`;
+                setComputerStakes(); 
             }, 2000);
 
-            setTimeout(function () {
-                heading.textContent = `The stakes are stakes `;
-                setComputerStakes();
-            }, 4000);
-
-
-
-            //set computer stakes
-            function setComputerStakes(computerStake) {
-                console.log("You're in computer stakes");
-            }
-
-            //set player stakes
-
-
-
-
         }
 
 
     }
 
-    function setStakes() {
-        console.log('Computer stakes are');
+
+
+    function setComputerStakes() {
+
+        console.log("You're in computer stakes");
+
+        let multiplier = Math.floor(Math.random() * 5) +1;
+        
+        let computerStakes = multiplier * 100;
 
         setTimeout(function () {
-            let heading = document.getElementById('h1-main-section'); 
-            heading.textContent = `The stakes are stakes `;
-            setComputerStakes();
-        }, 6000);
-
-        //set computer stakes
-        function setComputerStakes() {
-            console.log("You're in computer stakes");
-        }
-
-        //set player stakes
-
+            let heading = document.getElementById('h1-large-screens'); 
+            heading.innerText = `The stakes are ${computerStakes}`; 
+        }, 1000);
+        
+        return computerStakes;`` 
 
     }
 
+
+
     //function for setting the stakes 
-    function setTheStakes() {
-        console.log("Set the stakes");
+    function setPlayerStakes() {
+        console.log("You're in player stakes"); 
+
+        let 
     }
 
 
