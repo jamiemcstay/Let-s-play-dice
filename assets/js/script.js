@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
             console.log('yup');
 
-        } 
+        }
 
 
     }
