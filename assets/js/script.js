@@ -112,10 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-        circle.addEventListener('click', function() {
-            userRoll(); 
-        })
-
     }
 
 
@@ -132,7 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         increaseStakesButton.addEventListener('click', function () {
-            // Get the current bank roll value
 
             // Check if the bank roll value is valid and greater than or equal to 100
             if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
@@ -163,12 +158,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 piggyBankInput.value = piggyBankValue;
 
 
+
             }
 
-            // let circle = document.getElementById('main-section-circle');
-            
+
+            setTimeout(function () {
+                let heading = document.getElementById('h1-large-screens');
+                heading.textContent = "Click to roll";
+            }, 2000);
+
         });
+
+        let circle = document.getElementById('main-section-circle');
+        circle.addEventListener('click', function () {
+            userRoll();
+        });
+
     }
+
+    // increaseStakesButton.removeEventListener('click'){
+
+    // };
 
 
 
@@ -236,6 +246,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function userRoll() {
 
+        circle.addEventListener('click', function () {
+            checkUserRoll();
+        })
+
         console.log('Players rolling dice');
         let dieOne = rollDice();
         let dieTwo = rollDice();
@@ -251,40 +265,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function checkComputerRoll(roll) {
 
-        if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-            console.log('yup');
-        } else if((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] ===  2 || roll[1] === 2 || roll[2] === 2)) {
-            return 2; 
+        if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {} else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
+            return 2;
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
-            return 4; 
+            return 4;
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
-            return 5; 
+            return 5;
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-            return 6; 
+            return 6;
         } else {
-            userRoll(); 
-        } 
-        
+            userRoll();
+        }
+
     }
 
     function checkUserRoll(roll) {
 
+        // let bankRollComputer = document.getElementById('bank-roll-computer');
+        // let bankRollComputerValue = parseInt(bankRollComputer.value); 
+
+        // if(bankRollComputerValue === 0) {
+        //     console.log("Computer Lost"); 
+
         if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
             console.log('yup');
-        } else if((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] ===  2 || roll[1] === 2 || roll[2] === 2)) {
-            return 2; 
+        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
+            return 2;
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
-            return 4; 
+            return 4;
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
-            return 5; 
+            return 5;
         } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-            return 6; 
+            return 6;
         } else {
-            computerRoll(); 
-        }       
+            computerRoll();
+        }
 
     }
-
-
 
 });
