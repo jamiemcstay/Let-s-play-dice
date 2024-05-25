@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }
 
-        
+
 
         updateBankRolls(computerStakes);
         computerRoll();
@@ -223,32 +223,30 @@ document.addEventListener('DOMContentLoaded', function () {
         let dieTwo = rollDice();
         let dieThree = rollDice();
 
-        let computersRoll = [dieOne, dieTwo, dieThree]; 
+        let computersRoll = [dieOne, dieTwo, dieThree];
         console.log(computersRoll);
         checkRoll(computersRoll);
-        return computersRoll; 
+        return computersRoll;
     }
 
-// Function to check the numbers on the roll and find out what their score is
+    // Function to check the numbers on the roll and find out what their score is
 
     function checkRoll(roll) {
 
         let instantWin = [4, 5, 6];
-        let instantLoss = [1, 2, 3]; 
+        let instantLoss = [1, 2, 3];
 
-        if(roll == instantLoss) {
-            console.log('Instant Loss');             
-        } else if(roll == instantWin) {
-            console.log('Instant win'); 
-        } else if(!isNaN(roll[1])) {
-            console.log(roll[1]); 
-        }
-        
-    }    
+        if (roll == instantLoss) {
+            console.log('Instant Loss');
+        } else if (roll == instantWin) {
+            console.log('Instant win');
+        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
+            console.log('yup');
 
-    // function checkWinner() {
+        } 
 
-    // }
+
+    }
 
 
 });
