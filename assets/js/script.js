@@ -211,9 +211,44 @@ document.addEventListener('DOMContentLoaded', function () {
         
 
         updateBankRolls(computerStakes);
+        computerRoll();
         return computerStakes;
 
     }
+
+    function computerRoll() {
+
+        console.log('Computers rolling dice');
+        let dieOne = rollDice();
+        let dieTwo = rollDice();
+        let dieThree = rollDice();
+
+        let computersRoll = [dieOne, dieTwo, dieThree]; 
+        console.log(computersRoll);
+        checkRoll(computersRoll);
+        return computersRoll; 
+    }
+
+// Function to check the numbers on the roll and find out what their score is
+
+    function checkRoll(roll) {
+
+        let instantWin = [4, 5, 6];
+        let instantLoss = [1, 2, 3]; 
+
+        if(roll == instantLoss) {
+            console.log('Instant Loss');             
+        } else if(roll == instantWin) {
+            console.log('Instant win'); 
+        } else if(!isNaN(roll[1])) {
+            console.log(roll[1]); 
+        }
+        
+    }    
+
+    // function checkWinner() {
+
+    // }
 
 
 });
