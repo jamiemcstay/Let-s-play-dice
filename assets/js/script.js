@@ -225,28 +225,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let computersRoll = [dieOne, dieTwo, dieThree];
         console.log(computersRoll);
-        checkRoll(computersRoll);
+        checkComputerRoll(computersRoll);
         return computersRoll;
     }
 
     // Function to check the numbers on the roll and find out what their score is
 
-    function checkRoll(roll) {
+    function checkComputerRoll(roll) {
 
-        let instantWin = [4, 5, 6];
-        let instantLoss = [1, 2, 3];
-
-        if (roll == instantLoss) {
-            console.log('Instant Loss');
-        } else if (roll == instantWin) {
-            console.log('Instant win');
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
+        if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
             console.log('yup');
-
+        } else if((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] ===  2 || roll[1] === 2 || roll[2] === 2)) {
+            return 2; 
+        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
+            return 4; 
+        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
+            return 5; 
+        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
+            return 6; 
+        } else {
+            computerRoll(); 
         }
-
-
+        
     }
+
 
 
 });
