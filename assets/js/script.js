@@ -13,13 +13,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let circle = document.getElementById('main-section-circle');
 
+    let heading = document.getElementById('h1-large-screens');
+    let bankRollUser = document.getElementById('bank-roll-user');
+    let bankRollUserValue = parseInt(bankRollUser.value);
+    let bankRollComputer = document.getElementById('bank-roll-computer');
+    let bankRollComputerValue = parseInt(bankRollComputer.value);
+    let piggyBankInput = document.getElementById('piggy-bank-input');
+    let piggyBankValue = parseInt(piggyBankInput.value);
+    piggyBankValue = 0; 
+
 
     function clickToStart() {
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
         mainSection.style.height = '72%';
 
-        let heading = document.getElementById('h1-large-screens');
+ 
         heading.textContent = "Click for high roll";
 
         let diceOne = document.getElementById('die1');
@@ -103,8 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 4000);
 
 
-
-
             //If computer roll is higher than user
         } else {
             heading.textContent = `You rolled a ${highRollResult[0]}`;
@@ -124,10 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let bankRollUser = document.getElementById('bank-roll-user');
         let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputer = document.getElementById('bank-roll-computer');
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-        let piggyBankInput = document.getElementById('piggy-bank-input');
-        let piggyBankValue = parseInt(piggyBankInput.value);
         let increaseStakesButton = document.getElementById('increase-stakes');
 
 
@@ -178,6 +181,10 @@ document.addEventListener('DOMContentLoaded', function () {
             userRoll();
         });
 
+        circle.removeEventListener('click', function() {
+            computerRoll(); 
+        })
+
     }
 
     // increaseStakesButton.removeEventListener('click'){
@@ -189,9 +196,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function setComputerStakes() {
 
         console.log("You're in computer stakes");
-
-        let bankRollUser = document.getElementById('bank-roll-user');
-        let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputer = document.getElementById('bank-roll-computer');
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         let piggyBankInput = document.getElementById('piggy-bank-input');
@@ -207,31 +211,30 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.innerText = `The stakes are ${computerStakes}`;
         }, 1000);
 
-
-        function updateBankRolls(stakes) {
-
-            if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
-                bankRollUserValue -= stakes;
-                bankRollUser.value = bankRollUserValue;
-
-            }
-
-            if (!isNaN(bankRollComputerValue) && bankRollUserValue >= 100) {
-                bankRollComputerValue -= stakes;
-                bankRollComputer.value = bankRollComputerValue;
-
-            }
-
-            if (!isNaN(piggyBankValue)) {
-                piggyBankValue += stakes * 2;
-                piggyBankInput.value = piggyBankValue;
-            }
-
-        }
-
         updateBankRolls(computerStakes);
         computerRoll();
         return computerStakes;
+
+    }
+
+    function updateBankRolls(stakes) {
+
+        if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
+            bankRollUserValue -= stakes;
+            bankRollUser.value = bankRollUserValue;
+
+        }
+
+        if (!isNaN(bankRollComputerValue) && bankRollUserValue >= 100) {
+            bankRollComputerValue -= stakes;
+            bankRollComputer.value = bankRollComputerValue;
+
+        }
+
+        if (!isNaN(piggyBankValue)) {
+            piggyBankValue += stakes * 2;
+            piggyBankInput.value = piggyBankValue;
+        }
 
     }
 
