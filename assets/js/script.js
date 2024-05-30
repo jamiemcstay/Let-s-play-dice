@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             setTimeout(function () {
                 heading.textContent = "Set the stakes";
-                setTheStakes();
+                setTheStakes('user');
             }, 4000);
 
 
