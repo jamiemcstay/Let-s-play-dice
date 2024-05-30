@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let bankRollComputerValue = parseInt(bankRollComputer.value);
     let piggyBankInput = document.getElementById('piggy-bank-input');
     let piggyBankValue = parseInt(piggyBankInput.value);
-    piggyBankValue = 0; 
+    piggyBankValue = 0;
 
 
     function clickToStart() {
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         piggyBank.style.display = 'flex';
         mainSection.style.height = '72%';
 
- 
+
         heading.textContent = "Click for high roll";
 
         let diceOne = document.getElementById('die1');
@@ -56,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function rollThreeDice() {
-        return [rollDice(), rollDice(), rollDice()]; 
-    } 
+        return [rollDice(), rollDice(), rollDice()];
+    }
 
     function highRoll() {
 
@@ -133,24 +133,25 @@ document.addEventListener('DOMContentLoaded', function () {
         let increaseStakesButton = document.getElementById('increase-stakes');
 
         function updateStakes() {
-            
+
             if (player === 'user') {
                 bankRollUserValue -= 100;
-                bankRollUser.value = bankRollUserValue; 
+                bankRollUser.value = bankRollUserValue;
             } else {
-                bankRollComputerValue -= 100; 
-                bankRollComputer.value = bankRollComputerValue; 
+                bankRollComputerValue -= 100;
+                bankRollComputer.value = bankRollComputerValue;
             }
 
             heading.textContent = "Set the stakes! Click to toll."
-            circle.addEventListener('click', player === 'user' ? userRoll : computerRoll); 
+            circle.addEventListener('click', player === 'user' ? userRoll : computerRoll);
 
-        } if (player === 'user') {
-            increaseStakesButton.addEventListener('click', updateStakes);                        
-        } else {
-            updateStakes(); 
         }
-        
+        if (player === 'user') {
+            increaseStakesButton.addEventListener('click', updateStakes);
+        } else {
+            updateStakes();
+        }
+
 
     }
 
@@ -186,10 +187,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateBankRolls(player, result) {
 
-        if(result === 'instant-win' || result === 'pair-6') {
-            if(player === 'computer') {
-                bankRollComputerValue += piggyBankValue; 
-                bankRollComputer.value =  bankRollComputerValue; 
+        if (result === 'instant-win' || result === 'pair-6') {
+            if (player === 'computer') {
+                bankRollComputerValue += piggyBankValue;
+                bankRollComputer.value = bankRollComputerValue;
             }
         }
     }
@@ -207,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function userRoll() {
 
-        let roll = rollThreeDice(); 
+        let roll = rollThreeDice();
         let result = checkRoll(roll);
         heading.textContent = `You rolled a ${roll}`;
 
@@ -215,17 +216,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function checkRoll(roll) {
         let rolls = {};
-        
-        for(i = 0; i < roll.length; i++) {
+
+        for (i = 0; i < roll.length; i++) {
             let die = roll[i];
-            rolls[die] = (rolls[die] || 0) + 1; 
+            rolls[die] = (rolls[die] || 0) + 1;
         }
 
         if (rolls[4] && rolls[5] && rolls[6]) return 'instant-win';
         if (rolls[1] && rolls[2] && rolls[3]) return 'instant-loss';
 
         for (let die in rolls) {
-            if(rolls[die] === 3) return 'three-of-a-kind';           
+            if (rolls[die] === 3) return 'three-of-a-kind';
         }
 
         for (let die in rolls) {
@@ -234,6 +235,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 return `pair ${point}`;
             }
         }
-    } 
+    }
 
 });
