@@ -129,61 +129,28 @@ document.addEventListener('DOMContentLoaded', function () {
     function setTheStakes(player) {
         console.log("You're in player stakes");
 
-        let bankRollUser = document.getElementById('bank-roll-user');
-        let bankRollUserValue = parseInt(bankRollUser.value);
+
         let increaseStakesButton = document.getElementById('increase-stakes');
 
-
-        increaseStakesButton.addEventListener('click', function () {
-
-            // Check if the bank roll value is valid and greater than or equal to 100
-            if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
-                // Decrease the bank roll by 100
+        function updateStakes() {
+            
+            if (player === 'user') {
                 bankRollUserValue -= 100;
-
-                // Update the bank roll input value
-                bankRollUser.value = bankRollUserValue;
-
-                // Get the current piggy bank value
-
-                // Update the piggy bank value by adding 100
-                piggyBankValue += 100;
-
-                // Update the piggy bank input value
-                piggyBankInput.value = piggyBankValue;
-
-
+                bankRollUser.value = bankRollUserValue; 
+            } else {
+                bankRollComputerValue -= 100; 
+                bankRollComputer.value = bankRollComputerValue; 
             }
 
-            if (!isNaN(bankRollComputerValue) && bankRollComputerValue >= 100) {
-                bankRollComputerValue -= 100;
+            heading.textContent = "Set the stakes! Click to toll."
+            circle.addEventListener('click', player === 'user' ? userRoll : computerRoll); 
 
-                bankRollComputer.value = bankRollComputerValue;
-
-                piggyBankValue += 100;
-
-                piggyBankInput.value = piggyBankValue;
-
-
-
-            }
-
-
-            setTimeout(function () {
-                let heading = document.getElementById('h1-large-screens');
-                heading.textContent = "Click to roll";
-            }, 2000);
-
-        });
-
-        let circle = document.getElementById('main-section-circle');
-        circle.addEventListener('click', function () {
-            userRoll();
-        });
-
-        circle.removeEventListener('click', function() {
-            computerRoll(); 
-        })
+        } if (player === 'user') {
+            increaseStakesButton.addEventListener('click', updateStakes);                        
+        } else {
+            updateStakes(); 
+        }
+        
 
     }
 
@@ -217,25 +184,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function updateBankRolls(stakes) {
+    function updateBankRolls(player, result) {
 
-        if (!isNaN(bankRollUserValue) && bankRollUserValue >= 100) {
-            bankRollUserValue -= stakes;
-            bankRollUser.value = bankRollUserValue;
-
+        if(result === 'instant-win' || result === 'pair-6') {
+            if(player === 'computer') {
+                bankRollComputerValue += piggyBankValue; 
+                bankRollComputer.value =  bankRollComputerValue; 
+            }
         }
-
-        if (!isNaN(bankRollComputerValue) && bankRollUserValue >= 100) {
-            bankRollComputerValue -= stakes;
-            bankRollComputer.value = bankRollComputerValue;
-
-        }
-
-        if (!isNaN(piggyBankValue)) {
-            piggyBankValue += stakes * 2;
-            piggyBankInput.value = piggyBankValue;
-        }
-
     }
 
     function computerRoll() {
@@ -279,40 +235,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     } 
-
-
-    // function checkComputerRoll(roll) {
-
-    //     if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {} else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
-    //         return 2;
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
-    //         return 4;
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
-    //         return 5;
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-    //         return 6;
-    //     } else {
-    //         userRoll();
-    //     }
-
-    // }
-
-    // function checkUserRoll(roll) {
-
-    //     if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-    //         console.log('yup');
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
-    //         return 2;
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
-    //         return 4;
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
-    //         return 5;
-    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-    //         return 6;
-    //     } else {
-    //         computerRoll();
-    //     }
-
-    // }
 
 });
