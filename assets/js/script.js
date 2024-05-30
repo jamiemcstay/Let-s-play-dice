@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function setTheStakes() {
+    function setTheStakes(player) {
         console.log("You're in player stakes");
 
         let bankRollUser = document.getElementById('bank-roll-user');
@@ -240,14 +240,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let computersRoll = [dieOne, dieTwo, dieThree];
         console.log(computersRoll);
-        checkComputerRoll(computersRoll);
+        checkRoll(computerRoll);
         return computerRoll;
     }
+
 
     function userRoll() {
 
         circle.addEventListener('click', function () {
-            checkUserRoll();
+            checkRoll(userRoll);
         })
 
         console.log('Players rolling dice');
@@ -257,50 +258,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let playerRoll = [dieOne, dieTwo, dieThree];
         console.log(playerRoll);
-        checkUserRoll(userRoll);
+        checkRoll(userRoll);
         return userRoll;
     }
 
-    // Function to check the numbers on the roll and find out what their score is
-
-    function checkComputerRoll(roll) {
-
-        if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {} else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
-            return 2;
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
-            return 4;
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
-            return 5;
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-            return 6;
-        } else {
-            userRoll();
+    function checkRoll(roll) {
+        let rolls = {};
+        
+        for(i = 0; i < roll.length; i++) {
+            let die = roll[i];
+            rolls[die] = (rolls[die] || 0) + 1; 
         }
 
-    }
+        if (rolls[4] && rolls[5] && rolls[6]) return 'instant-win';
+        if (rolls[1] && rolls[2] && rolls[3]) return 'instant-loss';
 
-    function checkUserRoll(roll) {
-
-        // let bankRollComputer = document.getElementById('bank-roll-computer');
-        // let bankRollComputerValue = parseInt(bankRollComputer.value); 
-
-        // if(bankRollComputerValue === 0) {
-        //     console.log("Computer Lost"); 
-
-        if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-            console.log('yup');
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
-            return 2;
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
-            return 4;
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
-            return 5;
-        } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
-            return 6;
-        } else {
-            computerRoll();
+        for (let die in rolls) {
+            if(rolls[die] === 3) return 'three-of-a-kind';           
         }
 
-    }
+        for (let die in rolls) {
+            if (rolls[die] === 2) {
+                let point = roll.find(die => rolls[die] !== 2);
+                return `pair ${point}`;
+            }
+        }
+    } 
+
+
+    // function checkComputerRoll(roll) {
+
+    //     if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {} else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
+    //         return 2;
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
+    //         return 4;
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
+    //         return 5;
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
+    //         return 6;
+    //     } else {
+    //         userRoll();
+    //     }
+
+    // }
+
+    // function checkUserRoll(roll) {
+
+    //     if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
+    //         console.log('yup');
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 2 || roll[1] === 2 || roll[2] === 2)) {
+    //         return 2;
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 3 || roll[1] === 3 || roll[2] === 3)) {
+    //         return 4;
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 4 || roll[1] === 4 || roll[2] === 4)) {
+    //         return 5;
+    //     } else if ((roll[0] === roll[1] || roll[0] === roll[2] || roll[1] === roll[2]) && (roll[0] === 1 || roll[1] === 1 || roll[2] === 1)) {
+    //         return 6;
+    //     } else {
+    //         computerRoll();
+    //     }
+
+    // }
 
 });
