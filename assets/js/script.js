@@ -46,6 +46,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return Math.floor(Math.random() * 6) + 1;
     }
 
+    function rollThreeDice() {
+        return [rollDice(), rollDice(), rollDice()]; 
+    } 
+
     function highRoll() {
 
         console.log('Youre in the high roll');
@@ -233,33 +237,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function computerRoll() {
 
-        console.log('Computers rolling dice');
-        let dieOne = rollDice();
-        let dieTwo = rollDice();
-        let dieThree = rollDice();
+        let roll = rollThreeDice();
+        let result = checkRoll(roll);
+        heading.textContent = `Computer rolled a ${roll}`;
 
-        let computersRoll = [dieOne, dieTwo, dieThree];
-        console.log(computersRoll);
-        checkRoll(computerRoll);
-        return computerRoll;
+        //check for wether roll wins against user roll or bank roll balance
+
     }
 
 
     function userRoll() {
 
-        circle.addEventListener('click', function () {
-            checkRoll(userRoll);
-        })
 
-        console.log('Players rolling dice');
-        let dieOne = rollDice();
-        let dieTwo = rollDice();
-        let dieThree = rollDice();
-
-        let playerRoll = [dieOne, dieTwo, dieThree];
-        console.log(playerRoll);
-        checkRoll(userRoll);
-        return userRoll;
     }
 
     function checkRoll(roll) {
