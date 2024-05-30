@@ -248,6 +248,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function userRoll() {
 
+        let roll = rollThreeDice(); 
+        let result = checkRoll(roll);
+        heading.textContent = `You rolled a ${roll}`;
 
     }
 
