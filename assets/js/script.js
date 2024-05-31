@@ -172,8 +172,7 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.innerText = `The stakes are ${computerStakes}`;
         }, 1000);
 
-        updateBankRolls(computerStakes);
-        computerRoll();
+        computerRollDice();
         return computerStakes;
 
     }
@@ -188,13 +187,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function computerRoll() {
+    function computerRollDice(userRollOutcome) {
 
-        let roll = rollThreeDice();
-        let result = checkRoll(roll);
-        heading.textContent = `Computer rolled a ${roll}`;
+        heading.textContent = "Computer rolling..."; 
 
-        //check for wether roll wins against user roll or bank roll balance
+        setTimeout(function () {
+            let computerRoll = rollThreeDice();
+            let computerRollOutcome = checkRoll(computerRoll);
+
+            heading.textContent = `Computer rolled ${computerRoll}`; 
+        }, 2000)
 
     }
 
@@ -211,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         heading.textContent = `You rolled a ${userRoll}`;
 
         setTimeout(function () {
-            computerRoll(userRollOutcome); 
+            computerRollDice(userRollOutcome); 
         }, 2000); 
 
     }
