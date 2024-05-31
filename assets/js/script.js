@@ -229,19 +229,33 @@ document.addEventListener('DOMContentLoaded', function () {
             rolls[die] = (rolls[die] || 0) + 1;
         }
 
+        //check for instant wins and instant losses
         if (rolls[4] && rolls[5] && rolls[6]) return 'instant-win';
         if (rolls[1] && rolls[2] && rolls[3]) return 'instant-loss';
 
+        //Check for three of a kind
         for (let die in rolls) {
             if (rolls[die] === 3) return 'three-of-a-kind';
         }
 
+        //Check if two of the three die are a match
+        let pairDie = null; 
         for (let die in rolls) {
             if (rolls[die] === 2) {
-                let point = roll.find(die => rolls[die] !== 2);
-                return `pair ${point}`;
+                pairDie = parseInt(die); 
+                break; 
             }
         }
+
+        //Check for the point with the pair of matching dice
+
+        if (pairDie !== null) {
+            let points = roll.find(die => die !== pairDie);
+            // return `${playe} points are ${points}`; 
+        }
+
     }
+
+    //create function for checking winner of rounds
 
 });
