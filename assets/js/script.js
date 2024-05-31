@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
 
             heading.textContent = "Click to roll."
-            circle.addEventListener('click', userRoll);
+            circle.addEventListener('click', userRollDice);
             
 
         }
@@ -199,15 +199,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function userRoll() {
+    function userRollDice() {
 
-        circle.removeEventListener('click', userRoll); 
+        circle.removeEventListener('click', userRollDice); 
 
         console.log("You're in userRoll")
-        setTimeout
-        let roll = rollThreeDice();
-        let result = checkRoll(userRoll);
-        heading.textContent = `You rolled a ${roll}`;
+        
+        let userRoll = rollThreeDice();
+        let userRollOutcome = checkRoll(userRoll);
+
+        heading.textContent = `You rolled a ${userRoll}`;
+
+        setTimeout(function () {
+            computerRoll(userRollOutcome); 
+        }, 2000); 
 
     }
 
