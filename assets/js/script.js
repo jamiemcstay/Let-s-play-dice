@@ -136,28 +136,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (player === 'user') {
                 bankRollUserValue -= 100;
+                bankRollComputerValue -= 100; 
                 bankRollUser.value = bankRollUserValue;
-            } else {
-                bankRollComputerValue -= 100;
-                bankRollComputer.value = bankRollComputerValue;
-            }
+                bankRollComputer.value = bankRollComputerValue; 
+            }   
+            
 
-            heading.textContent = "Set the stakes! Click to toll."
-            circle.addEventListener('click', player === 'user' ? userRoll : computerRoll);
+            heading.textContent = "Click to roll."
+            circle.addEventListener('click', userRoll);
+            
 
         }
-        if (player === 'user') {
-            increaseStakesButton.addEventListener('click', updateStakes);
-        } else {
-            updateStakes();
-        }
 
+        increaseStakesButton.addEventListener('click', updateStakes); 
 
     }
-
-    // increaseStakesButton.removeEventListener('click'){
-
-    // };
 
 
 
@@ -185,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function updateBankRolls(player, result) {
+    function updateBankRolls() {
 
         if (result === 'instant-win' || result === 'pair-6') {
             if (player === 'computer') {
@@ -208,13 +201,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function userRoll() {
 
+        circle.removeEventListener('click', userRoll); 
+
+        console.log("You're in userRoll")
+        setTimeout
         let roll = rollThreeDice();
-        let result = checkRoll(roll);
+        let result = checkRoll(userRoll);
         heading.textContent = `You rolled a ${roll}`;
 
     }
 
     function checkRoll(roll) {
+
+        console.log("You're in checkRoll");
+
         let rolls = {};
 
         for (i = 0; i < roll.length; i++) {
