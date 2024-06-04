@@ -200,7 +200,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } while (computerRollOutcome === '');
 
-        if (userRollOutcome !== null) {
+        if (userRollOutcome == null) {
+            userRollDice();
+        } else if (userRollOutcome !== null) {
             determineWinner(userRollOutcome, computerRollOutcome);
         }
     }
@@ -234,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("You're in checkRoll");
 
         let rolls = {};
-        let outcome = ''; 
+        let outcome = '';
 
         for (let i = 0; i < roll.length; i++) {
             let die = roll[i];
@@ -242,11 +244,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         //check for instant wins and instant losses
-        if (rolls[4] && rolls[5] && rolls[6]) { 
+        if (rolls[4] && rolls[5] && rolls[6]) {
             outcome = 'instant-win';
-        } else if (rolls[1] && rolls[2] && rolls[3]) { 
+        } else if (rolls[1] && rolls[2] && rolls[3]) {
             outcome = 'instant-loss';
-        }   
+        }
 
         //Check for three of a kind
         for (let die in rolls) {
