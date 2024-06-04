@@ -142,16 +142,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }   
             
 
-            heading.textContent = "Click to roll."
+            heading.textContent = "Click to roll"
             circle.addEventListener('click', userRollDice);
             
-
         }
 
         increaseStakesButton.addEventListener('click', updateStakes); 
 
     }
-
 
 
     function setComputerStakes() {
@@ -177,17 +175,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function updateBankRolls() {
+    function updateBankRolls(result, player) {
 
         if (result === 'instant-win' || result === 'pair-6') {
             if (player === 'computer') {
                 bankRollComputerValue += piggyBankValue;
                 bankRollComputer.value = bankRollComputerValue;
+            }  else {
+                bankRollUserValue += piggyBankValue;
+                bankRollUser.value = bankRollUserValue; 
             }
-        }
+        }  
     }
 
-    function computerRollDice(userRollOutcome) {
+    function computerRollDice() {
 
         heading.textContent = "Computer rolling..."; 
 
@@ -195,9 +196,18 @@ document.addEventListener('DOMContentLoaded', function () {
             let computerRoll = rollThreeDice();
             let computerRollOutcome = checkRoll(computerRoll);
 
+            console.log(computerRoll); 
+            console.log(computerRollOutcome);      
+
+
             heading.textContent = `Computer rolled ${computerRoll}`; 
         }, 2000)
 
+        //check if userOutcome has been defined and check against computerRoll 
+        if(userRollOutcome)
+        setTimeout(function () {
+            checkWinner(userRollOutcome, computerRollOutcome); 
+        })
     }
 
 
@@ -205,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         circle.removeEventListener('click', userRollDice); 
 
-        console.log("You're in userRoll")
+        console.log("You're in userRoll");
         
         let userRoll = rollThreeDice();
         let userRollOutcome = checkRoll(userRoll);
@@ -251,11 +261,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (pairDie !== null) {
             let points = roll.find(die => die !== pairDie);
-            // return `${playe} points are ${points}`; 
+            return `${playe} points are ${points}`; 
         }
 
     }
 
     //create function for checking winner of rounds
+
 
 });
