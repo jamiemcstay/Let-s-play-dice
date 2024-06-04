@@ -261,8 +261,8 @@ document.addEventListener('DOMContentLoaded', function () {
         //Check for the point with the pair of matching dice
 
         if (pairDie !== null) {
-            let points = roll.find(die => die !== pairDie);
-            return `${player} points are ${points}`; 
+            let point = roll.find(die => die !== pairDie);
+            return pairDie + `${point}`; 
         }
 
     }
@@ -274,7 +274,14 @@ document.addEventListener('DOMContentLoaded', function () {
             updateBankRolls('user', piggyBankInput.value);
             heading.textContent = "You win this round!"; 
         } else if (computerOutcome === 'instant-win' || userOutcome === 'instant-loss') {
-            updateBankRoll('computer', piggyBankInput.value); 
-        }        
-    }
+            updateBankRolls('computer', piggyBankInput.value); 
+            heading.textContent = "Computer wins this round!";
+        } else if (userOutcome === 'three of a kind' || userOutcome === pairDie + 6) {
+            updateBankRolls('user', piggyBankInput.value);
+            heading.textContent = "You win this round!";
+        } else if(computerOutcome === 'three-of-a-kind' || computerOutcome === pairDie + 6); {
+            updateBankRolls('computer', piggyBankInput.value);
+            heading.textContent = "Computer wins this round!"; 
+        }              
+    }   
 });
