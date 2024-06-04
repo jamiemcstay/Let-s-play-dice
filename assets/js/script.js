@@ -191,69 +191,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function computerRollDice(userRollOutcome) {
         console.log("You're in computerRollDice");
+        let computerRollOutcome;
+        do {
+            let computerRoll = rollThreeDice();
+            computerRollOutcome = checkRoll(computerRoll, 'computer');
+            if (computerRollOutcome !== '') {
+                heading.textContent = `Computer rolled ${computerRoll}`;
+            }
+        } while (computerRollOutcome === '');
 
-        let computerRoll = rollThreeDice();
-        let computerRollOutcome = checkRoll(computerRoll);
-
-
-        setTimeout(function () {
-            heading.textContent = "Computer rolling...";
-
-            console.log(computerRoll);
-            console.log(computerRollOutcome);
-
-        }, 2000); 
-
-        setTimeout(function () {
-        heading.textContent = `Computer rolled ${computerRoll}`;
-        }, 6000);
-
-        //check if userRollOutcome is true, and if it is, check determine winner, or else userRollDice
-
-        // setTimeout(function () {
-        //     determineWinner(userRollOutcome, computerRollOutcome);
-        // }, 2000);
-
+        if (userRollOutcome !== null) {
+            determineWinner(userRollOutcome, computerRollOutcome);
+        }
     }
 
 
-
     function userRollDice() {
-        console.log("You're in userRollDice");
 
+        console.log("You're in userRollDice");
         circle.removeEventListener('click', userRollDice);
 
-        let userRoll = rollThreeDice();
-        let userRollOutcome = checkRoll(userRoll);
+        //Keep rolling three dice until specified outcomes are met in checkRoll function
 
-        heading.textContent = `You rolled a ${userRoll}`;
+        let userRollOutcome;
+        do {
+            let userRoll = rollThreeDice();
+            userRollOutcome = checkRoll(userRoll, 'user');
+            if (userRollOutcome !== '') {
+                heading.textContent = `You rolled a ${userRoll}`;
+            }
+        } while (userRollOutcome === '');
 
         setTimeout(function () {
             computerRollDice(userRollOutcome);
         }, 2000);
 
         return userRollOutcome;
-
     }
 
-    function checkRoll(roll) {
+    function checkRoll(roll, player) {
 
         console.log("You're in checkRoll");
 
         let rolls = {};
+        let outcome = ''; 
 
-        for (i = 0; i < roll.length; i++) {
+        for (let i = 0; i < roll.length; i++) {
             let die = roll[i];
             rolls[die] = (rolls[die] || 0) + 1;
         }
 
         //check for instant wins and instant losses
-        if (rolls[4] && rolls[5] && rolls[6]) return 'instant-win';
-        if (rolls[1] && rolls[2] && rolls[3]) return 'instant-loss';
+        if (rolls[4] && rolls[5] && rolls[6]) { 
+            outcome = 'instant-win';
+        } else if (rolls[1] && rolls[2] && rolls[3]) { 
+            outcome = 'instant-loss';
+        }   
 
         //Check for three of a kind
         for (let die in rolls) {
-            if (rolls[die] === 3) return 'three-of-a-kind';
+            if (rolls[die] === 3) {
+                outcome = 'three-of-a-kind';
+            }
         }
 
         //Check if two of the three die are a match
@@ -266,32 +265,32 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         //Check for the point with the pair of matching dice
-
         if (pairDie !== null) {
             let point = roll.find(die => die !== pairDie);
-            return pairDie + `${point}`;
+            outcome = `${pairDie} ${pairDie} ${point}`;
         }
 
-
-
+        return outcome;
 
     }
 
+
     //create function for checking winner of rounds
 
-    function determineWinner(userOutcome, computerOutcome) {
+    function determineWinner(userOutcome, computerOutcome, pairDie) {
         if (userOutcome === 'instant-win' || computerOutcome === 'instant-loss') {
             updateBankRolls('user', piggyBankInput.value);
             heading.textContent = "You win this round!";
         } else if (computerOutcome === 'instant-win' || userOutcome === 'instant-loss') {
             updateBankRolls('computer', piggyBankInput.value);
             heading.textContent = "Computer wins this round!";
-        } else if (userOutcome === 'three of a kind' || userOutcome === pairDie + 6) {
+        } else if (userOutcome === 'three of a kind' || userOutcome === `${pairDie} + 6`) {
             updateBankRolls('user', piggyBankInput.value);
             heading.textContent = "You win this round!";
-        } else if (computerOutcome === 'three-of-a-kind' || computerOutcome === pairDie + 6); {
+        } else if (computerOutcome === 'three-of-a-kind' || computerOutcome === pairDie + 6) {
             updateBankRolls('computer', piggyBankInput.value);
             heading.textContent = "Computer wins this round!";
         }
     }
+
 });
