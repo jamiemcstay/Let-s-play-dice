@@ -175,20 +175,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function updateBankRolls(result, player) {
+    function updateBankRolls(winner, piggyBankValue) {
 
-        if (result === 'instant-win' || result === 'pair-6') {
-            if (player === 'computer') {
-                bankRollComputerValue += piggyBankValue;
-                bankRollComputer.value = bankRollComputerValue;
-            }  else {
-                bankRollUserValue += piggyBankValue;
-                bankRollUser.value = bankRollUserValue; 
-            }
-        }  
+        if(winner === 'user') {
+            bankRollUserValue +=parseInt(piggyBankValue);
+            bankRollUser.value = bankRollUserValue; 
+        } else {
+            bankRollComputerValue += parseInt(piggyBankValue);
+            bankRollComputer.value = bankRollComputerValue; 
+        }
+
+        piggyBankInput.value = 0; 
+
     }
 
     function computerRollDice() {
+        console.log("You're in computerRollDice"); 
 
         heading.textContent = "Computer rolling..."; 
 
@@ -201,21 +203,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             heading.textContent = `Computer rolled ${computerRoll}`; 
-        }, 2000)
+        }, 2000); 
 
-        //check if userOutcome has been defined and check against computerRoll 
-        if(userRollOutcome)
         setTimeout(function () {
-            checkWinner(userRollOutcome, computerRollOutcome); 
-        })
+            determineWinner(userOutcome, computerOutcome);
+        }, 2000); 
+
+
     }
 
 
     function userRollDice() {
+        console.log("You're in userRollDice"); 
 
         circle.removeEventListener('click', userRollDice); 
-
-        console.log("You're in userRoll");
         
         let userRoll = rollThreeDice();
         let userRollOutcome = checkRoll(userRoll);
@@ -261,12 +262,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (pairDie !== null) {
             let points = roll.find(die => die !== pairDie);
-            return `${playe} points are ${points}`; 
+            return `${player} points are ${points}`; 
         }
 
     }
 
     //create function for checking winner of rounds
 
-
+    function determineWinner(userOutcome, computerOutcome) {
+        if(userOutcome === 'instant-win' || computerOutcome === 'instant-loss') {
+            updateBankRolls('user', piggyBankInput.value);
+            heading.textContent = "You win this round!"; 
+        } else if (computerOutcome === 'instant-win' || userOutcome === 'instant-loss') {
+            updateBankRoll('computer', piggyBankInput.value); 
+        }        
+    }
 });
