@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
             computerRollDice(userRollOutcome);
         }, 2000);
 
-        return userRollOutcome;
+        return [userRollOutcome, userRoll];
     }
 
     function checkRoll(roll, player) {
