@@ -192,9 +192,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function computerRollDice(userRollOutcome, userRoll) {
         console.log("You're in computerRollDice");
         let computerRollOutcome;
-        let computerRoll = rollThreeDice();
+        let computerRoll; 
         do {
-            computerRoll; 
+            computerRoll = rollThreeDice(); 
             computerRollOutcome = checkRoll(computerRoll, 'computer');
             if (computerRollOutcome !== '') {
                 heading.textContent = `Computer rolled ${computerRoll}`;
@@ -206,6 +206,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (userRollOutcome !== null) {
             determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
         }
+
+        console.log(userRoll, userRollOutcome); 
+
+        return [computerRoll, computerRollOutcome]; 
     }
 
 
@@ -215,10 +219,10 @@ document.addEventListener('DOMContentLoaded', function () {
         circle.removeEventListener('click', userRollDice);
 
         //Keep rolling three dice until specified outcomes are met in checkRoll function
-
+        let userRoll; 
         let userRollOutcome;
         do {
-            let userRoll = rollThreeDice();
+            userRoll = rollThreeDice();
             userRollOutcome = checkRoll(userRoll, 'user');
             if (userRollOutcome !== '') {
                 heading.textContent = `You rolled a ${userRoll}`;
@@ -226,10 +230,12 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (userRollOutcome === '');
 
         setTimeout(function () {
-            computerRollDice(userRollOutcome);
+            computerRollDice(userRollOutcome, userRoll);
         }, 2000);
 
-        return [userRollOutcome, userRoll];
+        console.log(userRoll, userRollOutcome); 
+
+        return userRollOutcome;
     }
 
     function checkRoll(roll, player) {
@@ -273,6 +279,8 @@ document.addEventListener('DOMContentLoaded', function () {
             outcome = `${pairDie} ${pairDie} ${point}`;
         }
 
+
+
         return outcome;
 
     }
@@ -295,8 +303,8 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.textContent = "Computer wins this round!";
         } else {
             //Check pairs and numbers against each other
-            let userPairValue = parseInt(userOutcome.split(' ')[1]);
-            let computerPairValue = parseInt(computerOutcome.split(' ')[1]);
+            let userPairValue = parseInt(userOutcome.split(' ')[0]);
+            let computerPairValue = parseInt(computerOutcome.split(' ')[0]);
     
             if (userPairValue > computerPairValue) {
                 updateBankRolls('user', piggyBankInput.value);
