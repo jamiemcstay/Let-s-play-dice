@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function highRoll() {
 
         console.log('Youre in the high roll');
-        // let heading = document.getElementById('h1-large-screens'); 
         let circle = document.getElementById('main-section-circle');
         circle.removeEventListener('click', highRoll);
 
@@ -168,7 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             let heading = document.getElementById('h1-large-screens');
             heading.innerText = `The stakes are ${computerStakes}`;
-            computerRollDice();
+            setTimeout(function() {
+                computerRollDice();
+            }, 3000);
         }, 3000);
 
         return computerStakes;
