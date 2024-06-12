@@ -191,9 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function computerRollDice(userRollOutcome, userRoll) {
-
-        console.log("You're in computerRollDice");
         
+        console.log("You're in computerRollDice");
         let computerRollOutcome;
         let computerRoll;
         do {
@@ -206,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (userRollOutcome == null) {
             setTimeout(function () {
-                userRollDice();
+                userRollDice(computerRoll, computerRollOutcome);
             }, 2000);
 
         } else {
@@ -241,17 +240,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } while (userRollOutcome === '');
 
-        if (computerRollOutcome == null) {
-            setTimeout(function () {
-                computerRollDice();
-            }, 2000);
-
-        } else {
-            setTimeout(function () {
-                determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
-            }, 2000);
-
-        }
+        setTimeout(function () {
+            computerRollDice(userRollOutcome, userRoll);
+        }, 2000);
 
         console.log(userRoll, userRollOutcome);
 
