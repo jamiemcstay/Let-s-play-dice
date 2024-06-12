@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function userRollDice(computerRoll, computerRollOutcome) {
+    function userRollDice() {
 
         console.log("You're in userRollDice");
         circle.removeEventListener('click', userRollDice);
@@ -290,8 +290,6 @@ document.addEventListener('DOMContentLoaded', function () {
             outcome = `${pairDie} ${pairDie} ${point}`;
         }
 
-
-
         return outcome;
 
     }
@@ -300,44 +298,47 @@ document.addEventListener('DOMContentLoaded', function () {
     //create function for checking winner of rounds
 
     function determineWinner(userOutcome, computerOutcome, userRoll, computerRoll) {
-        if (userOutcome === 'instant-win' || computerOutcome === 'instant-loss') {
-            updateBankRolls('user', piggyBankInput.value);
-            heading.textContent = "You win this round!";
-        } else if (computerOutcome === 'instant-win' || userOutcome === 'instant-loss') {
-            updateBankRolls('computer', piggyBankInput.value);
-            heading.textContent = "Computer wins this round!";
-        } else if (userOutcome === 'three of a kind') {
-            updateBankRolls('user', piggyBankInput.value);
-            heading.textContent = "You win this round!";
-        } else if (computerOutcome === 'three-of-a-kind') {
-            updateBankRolls('computer', piggyBankInput.value);
-            heading.textContent = "Computer wins this round!";
-        } else {
-            //Check pairs and numbers against each other
-            let userPairValue = parseInt(userOutcome.split(' ')[0]);
-            let computerPairValue = parseInt(computerOutcome.split(' ')[0]);
-
-            if (userPairValue > computerPairValue) {
+        setTimeout(function () {
+            if (userOutcome === 'instant-win' || computerOutcome === 'instant-loss') {
                 updateBankRolls('user', piggyBankInput.value);
-                heading.textContent = "You win this round";
-            } else if (userPairValue < computerPairValue) {
+                heading.textContent = "You win this round!";
+            } else if (computerOutcome === 'instant-win' || userOutcome === 'instant-loss') {
+                updateBankRolls('computer', piggyBankInput.value);
+                heading.textContent = "Computer wins this round!";
+            } else if (userOutcome === 'three of a kind') {
+                updateBankRolls('user', piggyBankInput.value);
+                heading.textContent = "You win this round!";
+            } else if (computerOutcome === 'three-of-a-kind') {
                 updateBankRolls('computer', piggyBankInput.value);
                 heading.textContent = "Computer wins this round!";
             } else {
-                let userSingleDie = userRoll.find(die => die !== userPairValue);
-                let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
-
-                if (userSingleDie > computerSingleDie) {
+                //Check pairs and numbers against each other
+                let userPairValue = parseInt(userOutcome.split(' ')[0]);
+                let computerPairValue = parseInt(computerOutcome.split(' ')[0]);
+    
+                if (userPairValue > computerPairValue) {
                     updateBankRolls('user', piggyBankInput.value);
-                    heading.textContent = "You win this round!";
-                } else if (userSingleDie < computerSingleDie) {
+                    heading.textContent = "You win this round";
+                } else if (userPairValue < computerPairValue) {
                     updateBankRolls('computer', piggyBankInput.value);
-                    heading.textContent = "Computer wins this round";
+                    heading.textContent = "Computer wins this round!";
                 } else {
-                    heading.textContent = "It's a tie!";
+                    let userSingleDie = userRoll.find(die => die !== userPairValue);
+                    let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
+    
+                    if (userSingleDie > computerSingleDie) {
+                        updateBankRolls('user', piggyBankInput.value);
+                        heading.textContent = "You win this round!";
+                    } else if (userSingleDie < computerSingleDie) {
+                        updateBankRolls('computer', piggyBankInput.value);
+                        heading.textContent = "Computer wins this round";
+                    } else {
+                        heading.textContent = "It's a tie!";
+                    }
                 }
             }
-        }
+        }, 2000); 
+
     }
 
 
