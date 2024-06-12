@@ -335,8 +335,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     let computerPairValue = parseInt(computerOutcome.split(' ')[0]);
 
                     if (userPairValue === computerPairValue) {
-                        let userSingleDie = userRoll.find(die => die !== userPairValue); 
-                        let computerSingleDie = computerRoll.find(die => die !== computerPairValue); 
+                        let userSingleDie = userRoll.find(die => die !== userPairValue);
+                        let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
                         if (userSingleDie > computerSingleDie) {
                             updateBankRolls('user', piggyBankInput.value);
                             heading.textContent = "You win this round!";
@@ -344,17 +344,17 @@ document.addEventListener('DOMContentLoaded', function () {
                             updateBankRolls('computer', piggyBankInput.value);
                             heading.textContent = "Computer wins this round!";
                         } else {
-                            heading.textContent = "It's a tie!"; 
+                            heading.textContent = "It's a tie!";
                         }
 
                     } else {
-                        let userSingleDie = userRoll.find(die => die !== userPairValue);
-                        let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
+                        let userPoint = userRoll.find(die => die !== userPairValue);
+                        let computerPoint = computerRoll.find(die => die !== computerPairValue);
 
-                        if (userSingleDie > computerSingleDie) {
+                        if (userPoint > computerPoint) {
                             updateBankRolls('user', piggyBankInput.value);
                             heading.textContent = "You win this round!";
-                        } else if (userSingleDie < computerSingleDie) {
+                        } else if (userPoint < computerPoint) {
                             updateBankRolls('computer', piggyBankInput.value);
                             heading.textContent = "Computer wins this round";
                         } else {
