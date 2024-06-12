@@ -301,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //create function for checking winner of rounds
 
     function determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll) {
+
         setTimeout(function () {
             if (userRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
                 updateBankRolls('user', piggyBankInput.value);
@@ -334,8 +335,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     heading.textContent = "Computer wins this round!";
                     //Check pairs and numbers against each other
                 } else {
-                    let userPairValue = parseInt(userRollOutcome.split(' ')[0]);
-                    let computerPairValue = parseInt(computerRollOutcome.split(' ')[0]);
+                    //Check if outcomes are null 
+                    let userPairValue = userRollOutcome ? parseInt(userRollOutcome.split(' ')[0]) : null;
+                    let computerPairValue = computerRollOutcome ? parseInt(computerRollOutcome.split(' ')[0]) : null;
 
                     if (userPairValue === computerPairValue) {
                         let userSingleDie = userRoll.find(die => die !== userPairValue);
