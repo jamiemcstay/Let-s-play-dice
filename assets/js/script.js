@@ -334,12 +334,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     let userPairValue = parseInt(userOutcome.split(' ')[0]);
                     let computerPairValue = parseInt(computerOutcome.split(' ')[0]);
 
-                    if (userPairValue > computerPairValue) {
-                        updateBankRolls('user', piggyBankInput.value);
-                        heading.textContent = "You win this round";
-                    } else if (userPairValue < computerPairValue) {
-                        updateBankRolls('computer', piggyBankInput.value);
-                        heading.textContent = "Computer wins this round!";
+                    if (userPairValue === computerPairValue) {
+                        let userSingleDie = userRoll.find(die => die !== userPairValue); 
+                        let computerSingleDie = computerRoll.find(die => die !== computerPairValue); 
+                        if (userSingleDie > computerSingleDie) {
+                            updateBankRolls('user', piggyBankInput.value);
+                            heading.textContent = "You win this round!";
+                        } else if (userSingleDie < computerSingleDie) {
+                            updateBankRolls('computer', piggyBankInput.value);
+                            heading.textContent = "Computer wins this round!";
+                        } else {
+                            heading.textContent = "It's a tie!"; 
+                        }
+
                     } else {
                         let userSingleDie = userRoll.find(die => die !== userPairValue);
                         let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
@@ -360,7 +367,5 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
 
     }
-
-
 
 });
