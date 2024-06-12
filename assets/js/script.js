@@ -203,14 +203,22 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (computerRollOutcome === '');
 
         if (userRollOutcome == null) {
-            userRollDice();
-        } else if (userRollOutcome !== null) {
-            determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
+            setTimeout(function() {
+                userRollDice();
+            }, 2000); 
+
+        } else {
+            setTimeout(function() {
+                determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
+            }, 2000); 
+
         }
 
-        console.log(userRoll, userRollOutcome); 
-
+        console.log(computerRoll); 
+        console.log(computerRollOutcome); 
+        
         return [computerRoll, computerRollOutcome]; 
+
     }
 
 
