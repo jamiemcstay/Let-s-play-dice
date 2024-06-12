@@ -140,8 +140,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
 
-            heading.textContent = "Click to roll"
-            circle.addEventListener('click', userRollDice);
+            heading.textContent = "Click to roll";
+            setTimeout(function () {
+                circle.addEventListener('click', userRollDice);
+            }, 500);
+
 
         }
 
@@ -175,10 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 piggyBankInput.value = computerStakes * 2;
 
                 heading.textContent = "Click to roll";
-                circle.addEventListener('click', userRollDice);
-
-                // After setting the stakes, initiate the computer's roll
-                computerRollDice();
+                circle.addEventListener('click', computerRollDice);
             }, 3000);
         }, 3000);
 
@@ -218,18 +218,19 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 determineWinner(null, computerRollOutcome, null, computerRoll);
             }, 2000);
-        } else if (userRollOutcome === null) {
+        } if (userRollOutcome === null){
             setTimeout(function () {
                 userRollDice(computerRollOutcome, computerRoll);
-            }, 4000);
-        } else {
+            }, 5000);
+        } else if (userRollOutcome !== null) {
             determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
         }
+
 
         console.log(computerRoll);
         console.log(computerRollOutcome);
 
-        // return computerRoll, computerRollOutcome; 
+        return computerRollOutcome;
 
     }
 
@@ -255,13 +256,19 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 determineWinner(userRollOutcome, null, userRoll, null);
             }, 2000);
-        } else if (computerRollOutcome === null) {
+        } if (computerRollOutcome !== null) {
             setTimeout(function () {
-                computerRollDice(userRollOutcome, userRoll);
+                determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);                
             }, 2000);
         } else {
-            determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
+            setTimeout(function () {
+                computerRollDice(userRollOutcome); 
+            }, 2000); 
+            
         }
+
+
+
 
         console.log(userRoll, userRollOutcome);
 
@@ -353,8 +360,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     //Check pairs and numbers against each other
                 } else {
                     //Check if outcomes are null and use .split to on arrays if not 
-                    let userPairValue = userRollOutcome ? parseInt(userRollOutcome.split(' ')[0]) : null;
-                    let computerPairValue = computerRollOutcome ? parseInt(computerRollOutcome.split(' ')[0]) : null;
+                    let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
+                    let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
 
                     if (userPairValue === computerPairValue) {
                         //Check if rolls are null and isolate single die if not
