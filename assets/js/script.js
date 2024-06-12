@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             let heading = document.getElementById('h1-large-screens');
             heading.innerText = `The stakes are ${computerStakes}`;
-            setTimeout(function() {
+            setTimeout(function () {
                 computerRollDice();
             }, 3000);
         }, 3000);
@@ -191,11 +191,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function computerRollDice(userRollOutcome, userRoll) {
+
         console.log("You're in computerRollDice");
+        
         let computerRollOutcome;
-        let computerRoll; 
+        let computerRoll;
         do {
-            computerRoll = rollThreeDice(); 
+            computerRoll = rollThreeDice();
             computerRollOutcome = checkRoll(computerRoll, 'computer');
             if (computerRollOutcome !== '') {
                 heading.textContent = `Computer rolled ${computerRoll}`;
@@ -203,33 +205,34 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (computerRollOutcome === '');
 
         if (userRollOutcome == null) {
-            setTimeout(function() {
+            setTimeout(function () {
                 userRollDice();
-            }, 2000); 
+            }, 2000);
 
         } else {
-            setTimeout(function() {
+            setTimeout(function () {
                 determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
-            }, 2000); 
+            }, 2000);
 
         }
 
-        console.log(computerRoll); 
-        console.log(computerRollOutcome); 
-        
-        return [computerRoll, computerRollOutcome]; 
+        console.log(computerRoll);
+        console.log(computerRollOutcome);
+
+        return [computerRoll, computerRollOutcome];
 
     }
 
 
-    function userRollDice() {
+    function userRollDice(computerRoll, computerRollOutcome) {
 
         console.log("You're in userRollDice");
         circle.removeEventListener('click', userRollDice);
 
-        //Keep rolling three dice until specified outcomes are met in checkRoll function
-        let userRoll; 
+        
+        let userRoll;
         let userRollOutcome;
+        //Keep rolling three dice until specified outcomes are met in checkRoll function
         do {
             userRoll = rollThreeDice();
             userRollOutcome = checkRoll(userRoll, 'user');
@@ -238,13 +241,21 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } while (userRollOutcome === '');
 
-        setTimeout(function () {
-            computerRollDice(userRollOutcome, userRoll);
-        }, 2000);
+        if (computerRollOutcome == null) {
+            setTimeout(function () {
+                computerRollDice();
+            }, 2000);
 
-        console.log(userRoll, userRollOutcome); 
+        } else {
+            setTimeout(function () {
+                determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
+            }, 2000);
 
-        return userRollOutcome;
+        }
+
+        console.log(userRoll, userRollOutcome);
+
+        return userRollOutcome, userRoll;
     }
 
     function checkRoll(roll, player) {
@@ -314,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
             //Check pairs and numbers against each other
             let userPairValue = parseInt(userOutcome.split(' ')[0]);
             let computerPairValue = parseInt(computerOutcome.split(' ')[0]);
-    
+
             if (userPairValue > computerPairValue) {
                 updateBankRolls('user', piggyBankInput.value);
                 heading.textContent = "You win this round";
@@ -324,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 let userSingleDie = userRoll.find(die => die !== userPairValue);
                 let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
-    
+
                 if (userSingleDie > computerSingleDie) {
                     updateBankRolls('user', piggyBankInput.value);
                     heading.textContent = "You win this round!";
