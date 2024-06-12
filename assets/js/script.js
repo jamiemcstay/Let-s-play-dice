@@ -203,7 +203,11 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } while (computerRollOutcome === '');
 
-        if (userRollOutcome == null) {
+        if (computerRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
+            setTimeout(function () {
+                determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll)
+            }, 2000); 
+        } else if (userRollOutcome == null) {
             setTimeout(function () {
                 userRollDice(computerRoll, computerRollOutcome);
             }, 2000);
@@ -217,8 +221,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log(computerRoll);
         console.log(computerRollOutcome);
-
-        return [computerRoll, computerRollOutcome];
 
     }
 
@@ -240,13 +242,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } while (userRollOutcome === '');
 
-        setTimeout(function () {
+        if (userRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
+            setTimeout(function () {
+                determineWinner(userRollOutcome, null, userRoll, null); 
+            }, 2000); 
+        } else {
+            setTimeout(function () {
             computerRollDice(userRollOutcome, userRoll);
-        }, 2000);
+            }, 2000);
+        }
 
         console.log(userRoll, userRollOutcome);
 
-        return userRollOutcome, userRoll;
     }
 
     function checkRoll(roll, player) {
@@ -297,18 +304,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //create function for checking winner of rounds
 
-    function determineWinner(userOutcome, computerOutcome, userRoll, computerRoll) {
+    function determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll) {
         setTimeout(function () {
-            if (userOutcome === 'instant-win' || computerOutcome === 'instant-loss') {
+            if (userRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
                 updateBankRolls('user', piggyBankInput.value);
                 heading.textContent = "You win this round!";
-            } else if (computerOutcome === 'instant-win' || userOutcome === 'instant-loss') {
+            } else if (computerRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
                 updateBankRolls('computer', piggyBankInput.value);
                 heading.textContent = "Computer wins this round!";
                 //Check if user has three of a kind computer does not
             } else {
                 if (userOutcome === 'three-of-a-kind') {
-                    if (computerOutcome !== 'three-of-a-kind') {
+                    if (computerRollOutcome !== 'three-of-a-kind') {
                         updateBankRolls('user', piggyBankInput.value);
                         heading.textContent = "You win this round!";
                         //Check for the values of users and computers roll if both have three-of-a-kind    
@@ -326,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     }
                     //Check if computer has three of a kind and user does not
-                } else if (computerOutcome === 'three-of-a-kind') {
+                } else if (computerRollOutcome === 'three-of-a-kind') {
                     updateBankRolls('computer', piggyBankInput.value);
                     heading.textContent = "Computer wins this round!";
                     //Check pairs and numbers against each other
