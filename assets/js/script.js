@@ -335,13 +335,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     heading.textContent = "Computer wins this round!";
                     //Check pairs and numbers against each other
                 } else {
-                    //Check if outcomes are null 
+                    //Check if outcomes are null and use .split to on arrays if not 
                     let userPairValue = userRollOutcome ? parseInt(userRollOutcome.split(' ')[0]) : null;
                     let computerPairValue = computerRollOutcome ? parseInt(computerRollOutcome.split(' ')[0]) : null;
 
                     if (userPairValue === computerPairValue) {
-                        let userSingleDie = userRoll.find(die => die !== userPairValue);
-                        let computerSingleDie = computerRoll.find(die => die !== computerPairValue);
+                    //Check if rolls are null and isolate single die if not
+                        let userSingleDie = userRoll ? userRoll.find(die => die !== userPairValue): null;
+                        let computerSingleDie = computerRoll ? computerRoll.find(die => die !== computerPairValue): null;
                         if (userSingleDie > computerSingleDie) {
                             updateBankRolls('user', piggyBankInput.value);
                             heading.textContent = "You win this round!";
@@ -353,8 +354,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
 
                     } else {
-                        let userPoint = userRoll.find(die => die !== userPairValue);
-                        let computerPoint = computerRoll.find(die => die !== computerPairValue);
+                        //Check if rolls are null and compare points if not
+                        let userPoint = userRoll ? userRoll.find(die => die !== userPairValue): null;
+                        let computerPoint = computerRoll ? computerRoll.find(die => die !== computerPairValue): null;
 
                         if (userPoint > computerPoint) {
                             updateBankRolls('user', piggyBankInput.value);
