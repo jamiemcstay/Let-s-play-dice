@@ -2,9 +2,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     //hide piggy-bank and score area on screen onload
 
-    let userDiceRolls = null;
-    let computerDiceRolls = null;
-    let currentPlayer = 'user'; 
+    let userDiceRolls = [];
+    let computerDiceRolls = [];
+    let currentPlayer = null; 
     let roundWinner = 'user'; 
 
     let scoreArea = document.getElementById('score-area');
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function highRoll() {
 
         console.log('Youre in the high roll');
-        let circle = document.getElementById('main-section-circle');
+
         circle.removeEventListener('click', highRoll);
 
         setTimeout(function () {
@@ -87,75 +87,60 @@ document.addEventListener('DOMContentLoaded', function () {
             num2 = rollDice();
         } while (num1 === num2);
 
+        if (num1 > num2) {
+            currentPlayer = 'user'; 
+            heading.textContent = `You rolled a ${num1}`;
+            setTimeout(function () {
+                heading.textContent = `Computer rolled a ${num2}`;
+            }, 2000); 
+            setTimeout(function () {
+                heading.textContent = `Set the stakes`; 
+                setTheStakes(); 
+            }, 4000); 
+        } else {
+            currentPlayer = 'computer'; 
+            heading.textContent = `You rolled a ${num1}`; 
+            setTimeout(function () {
+                heading.textContent = `Computer rolled a ${num2}`;  
+            }, 2000); 
+            setTimeout(function () {
+                setComputerStakes();
+            }, 2000); 
+
+        }
+
 
         let highRollResult = [num1, num2];
-
-        checkHighRoll(highRollResult);
 
         return highRollResult;
 
     }
 
-    function checkHighRoll(highRollResult) {
-
-        console.log('Your in check high roll');
-
-        let heading = document.getElementById('h1-large-screens');
-        heading.style.fontSize = '300%';
-
-        piggyBank.value = 0;
-
-        if (highRollResult[0] > highRollResult[1]) {
-
-            //If user roll is higher than computer
-            heading.textContent = `You rolled a ${highRollResult[0]}`;
-
-            setTimeout(function () {
-                heading.textContent = `Computer rolled a ${highRollResult[1]}`;
-            }, 2000);
-
-            setTimeout(function () {
-                heading.textContent = "Set the stakes";
-                setTheStakes('user');
-            }, 4000);
-            //If computer roll is higher than user
-        } else {
-            heading.textContent = `You rolled a ${highRollResult[0]}`;
-
-            setTimeout(function () {
-                heading.textContent = `Computer rolled a ${highRollResult[1]}`;
-                setComputerStakes();
-            }, 2000);
-
-        }
-
-    }
 
 
-    function setTheStakes(player) {
+    function setTheStakes() {
         console.log("You're in player stakes");
 
         let increaseStakesButton = document.getElementById('increase-stakes');
 
         function updateStakes() {
 
-            if (player === 'user') {
                 bankRollUserValue -= 100;
                 bankRollComputerValue -= 100;
                 bankRollUser.value = bankRollUserValue;
                 bankRollComputer.value = bankRollComputerValue;
-            }
 
 
-            heading.textContent = "Click to roll";
-            currentPlayer = 'user'; 
+            
             setTimeout(function () {
-                circle.addEventListener('click', playTurn);
-            }, 500);
+                heading.textContent = "Click to roll";
+                currentPlayer = 'user'; 
+            }, 2000);
 
         }
 
         increaseStakesButton.addEventListener('click', updateStakes);
+        circle.addEventListener('click', playTurn);
 
     }
 
@@ -179,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 heading.textContent = "Click to roll";
                 currentPlayer = 'computer'; 
-                circle.addEventListener('click', playTurn);
+                playTurn(); 
             }, 3000);
         }, 3000);
 
@@ -202,33 +187,45 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function userRollDice() {
-        return rollThreeDice();
+
+        console.log('Your in userRollDice'); 
+
+        return rollThreeDice(); 
+
 
     }
 
     function computerRollDice() {
+        console.log('Your in computerRollDice'); 
         return rollThreeDice(); 
         
     }
 
 
     function playTurn() {
-        //Handle the flow turns
+
+        console.log(`It's ${currentPlayer}'s turn`); 
 
         circle.removeEventListener('click', playTurn);
 
         if (currentPlayer === 'user') {
             userDiceRolls = userRollDice();
-            currentPlayer = 'computer';
-            circle.addEventListener('click', playTurn);
             heading.textContent = `You rolled a ${userDiceRolls}`;
-            return;
+            console.log(userDiceRolls); 
+            currentPlayer = 'computer';
+            setTimeout(function () {
+                playTurn();
+            }, 2000); 
         } else if (currentPlayer === 'computer') {
             computerDiceRolls = computerRollDice(); 
-            currentPlayer = 'user'; 
             heading.textContent = `Computer rolled a ${computerDiceRolls}`; 
-            determineWinner(); 
+            console.log(computerDiceRolls); 
+            currentPlayer = 'user'; 
+            setTimeout(function () {
+                determineWinner(); 
+            }, 2000); 
         }
+            
     }
 
     function checkRoll(roll, player) {
@@ -304,8 +301,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTheStakes(); 
                         //Check for the values of users and computers roll if both have three-of-a-kind    
                     } else {
-                        let userThreeValue = parseInt(userRoll[0]);
-                        let computerThreeValue = parseInt(computerRoll[0]);
+                        let userThreeValue = parseInt(userDiceRolls[0]);
+                        let computerThreeValue = parseInt(computerDiceRolls[0]);
                         if (userThreeValue > computerThreeValue) {
                             updateBankRolls('user', piggyBankInput.value);
                             heading.textContent = "You win this round!";
