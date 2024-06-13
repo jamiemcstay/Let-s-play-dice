@@ -1,6 +1,12 @@
 //Function for screen on loading
 document.addEventListener('DOMContentLoaded', function () {
     //hide piggy-bank and score area on screen onload
+
+    let userDiceRolls = null;
+    let computerDiceRolls = null;
+    let currentPlayer = 'user'; 
+    let roundWinner = 'user'; 
+
     let scoreArea = document.getElementById('score-area');
     scoreArea.style.display = 'none';
 
@@ -8,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     piggyBank.style.display = 'none';
 
     //increase size of main section to take up surplace space 
+
     let mainSection = document.getElementById('main-section');
     mainSection.style.height = '90%';
 
@@ -90,7 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function checkHighRoll(highRollResult) {
+
         console.log('Your in check high roll');
+
         let heading = document.getElementById('h1-large-screens');
         heading.style.fontSize = '300%';
 
@@ -109,8 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.textContent = "Set the stakes";
                 setTheStakes('user');
             }, 4000);
-
-
             //If computer roll is higher than user
         } else {
             heading.textContent = `You rolled a ${highRollResult[0]}`;
@@ -141,10 +148,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             heading.textContent = "Click to roll";
+            currentPlayer = 'user'; 
             setTimeout(function () {
-                circle.addEventListener('click', userRollDice);
+                circle.addEventListener('click', playTurn);
             }, 500);
-
 
         }
 
@@ -156,14 +163,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function setComputerStakes() {
 
         console.log("You're in computer stakes");
-        let bankRollComputer = document.getElementById('bank-roll-computer');
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-        let piggyBankInput = document.getElementById('piggy-bank-input');
-        let piggyBankValue = parseInt(piggyBankInput.value);
-        let increaseStakesButton = document.getElementById('increase-stakes');
 
         let multiplier = Math.floor(Math.random() * 5) + 1;
-
         let computerStakes = multiplier * 100;
 
         setTimeout(function () {
@@ -178,9 +179,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 piggyBankInput.value = computerStakes * 2;
 
                 heading.textContent = "Click to roll";
-                circle.addEventListener('click', computerRollDice);
+                currentPlayer = 'computer'; 
+                circle.addEventListener('click', playTurn);
             }, 3000);
         }, 3000);
+
+            circle.addEventListener('click', computerRollDice); 
+    
+        
 
         return computerStakes;
 
@@ -199,8 +205,13 @@ document.addEventListener('DOMContentLoaded', function () {
         piggyBankInput.value = 0;
 
     }
+    function playTurn() {
+        //Handle the flow turns
+    }
 
     function computerRollDice(userRollOutcome, userRoll) {
+
+        circle.removeEventListener('click', computerRollDice); 
 
         console.log("You're in computerRollDice");
         let computerRollOutcome;
@@ -214,18 +225,32 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (computerRollOutcome === '');
 
         //check for instant wins or losses
-        if (computerRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
+        if (computerRollOutcome === 'instant-win') {
             setTimeout(function () {
-                determineWinner(null, computerRollOutcome, null, computerRoll);
+                console.log("instant win");
             }, 2000);
-        } if (userRollOutcome === null){
+        } else if (computerRollOutcome === 'instant-loss') {
             setTimeout(function () {
-                userRollDice(computerRollOutcome, computerRoll);
-            }, 5000);
-        } else if (userRollOutcome !== null) {
-            determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);
+                console.log("instant loss");
+            }, 2000);
         }
 
+        setTimeout(function () {
+            do {
+                userRollDice(computerRollOutcome, computerRoll);
+                if(userRollOutcome) {
+                    break; 
+                }
+            } while(!userRollOutcome); 
+    
+        }, 2000); 
+        
+        setTimeout(function () {
+            determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll); 
+        }, 2000); 
+
+        
+                
 
         console.log(computerRoll);
         console.log(computerRollOutcome);
@@ -241,8 +266,8 @@ document.addEventListener('DOMContentLoaded', function () {
         circle.removeEventListener('click', userRollDice);
 
 
-        let userRoll;
-        let userRollOutcome;
+        // let userRoll;
+        // let userRollOutcome;
         //Keep rolling three dice until specified outcomes are met in checkRoll function
         do {
             userRoll = rollThreeDice();
@@ -251,21 +276,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.textContent = `You rolled a ${userRoll}`;
             }
         } while (userRollOutcome === '');
+
         //Check for instant wins or losses
-        if (userRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
+        if (userRollOutcome === 'instant-win') {
             setTimeout(function () {
-                determineWinner(userRollOutcome, null, userRoll, null);
+                console.log("You won!");
             }, 2000);
-        } if (computerRollOutcome !== null) {
-            setTimeout(function () {
-                determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll);                
-            }, 2000);
-        } else {
-            setTimeout(function () {
-                computerRollDice(userRollOutcome); 
-            }, 2000); 
-            
-        }
+        } if (userRollOutcome === 'instant-loss') {
+                setTimeout(function () {
+                    console.log("You lost");
+                }, 2000);
+        }        
+        setTimeout(function () {
+            do {
+                computerRollDice(computerRollOutcome, computerRoll);
+            } while(!computerRollOutcome); 
+    
+        }, 2000); 
+        
+        setTimeout(function () {
+            determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll); 
+        }, 2000); 
 
 
 
@@ -299,7 +330,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let die in rolls) {
             if (rolls[die] === 3) {
                 outcome = 'three-of-a-kind';
-            }
+            } 
         }
 
         //Check if two of the three die are a match
@@ -317,6 +348,12 @@ document.addEventListener('DOMContentLoaded', function () {
             outcome = `${pairDie} ${pairDie} ${point}`;
         }
 
+        // if(player === 'user') {
+        //     computerRollDice(); 
+        // } else {
+        //     userRollDice(); 
+        // }
+
         return outcome;
 
     }
@@ -326,19 +363,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function determineWinner(userRollOutcome, computerRollOutcome, userRoll, computerRoll) {
 
+        console.log("You're in determine winner"); 
+
         setTimeout(function () {
             if (userRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
                 updateBankRolls('user', piggyBankInput.value);
                 heading.textContent = "You win this round!";
+                setTheStakes(); 
             } else if (computerRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
                 updateBankRolls('computer', piggyBankInput.value);
                 heading.textContent = "Computer wins this round!";
                 //Check if user has three of a kind computer does not
+                setComputerStakes(); 
             } else {
                 if (userRollOutcome === 'three-of-a-kind') {
                     if (computerRollOutcome !== 'three-of-a-kind') {
                         updateBankRolls('user', piggyBankInput.value);
                         heading.textContent = "You win this round!";
+                        setTheStakes(); 
                         //Check for the values of users and computers roll if both have three-of-a-kind    
                     } else {
                         let userThreeValue = parseInt(userRoll[0]);
@@ -346,9 +388,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userThreeValue > computerThreeValue) {
                             updateBankRolls('user', piggyBankInput.value);
                             heading.textContent = "You win this round!";
+                            setTheStakes(); 
                         } else if (userThreeValue < computerThreeValue) {
                             updateBankRolls('computer', piggyBankInput.value);
                             heading.textContent = "Computer wins this round!";
+                            setComputerStakes(); 
                         } else {
                             heading.textContent = "It's a tie!";
                         }
@@ -357,6 +401,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else if (computerRollOutcome === 'three-of-a-kind') {
                     updateBankRolls('computer', piggyBankInput.value);
                     heading.textContent = "Computer wins this round!";
+                    setComputerStakes(); 
                     //Check pairs and numbers against each other
                 } else {
                     //Check if outcomes are null and use .split to on arrays if not 
@@ -370,9 +415,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userSingleDie > computerSingleDie) {
                             updateBankRolls('user', piggyBankInput.value);
                             heading.textContent = "You win this round!";
+                            setTheStakes(); 
                         } else if (userSingleDie < computerSingleDie) {
                             updateBankRolls('computer', piggyBankInput.value);
                             heading.textContent = "Computer wins this round!";
+                            setComputerStakes(); 
                         } else {
                             heading.textContent = "It's a tie!";
                         }
@@ -388,6 +435,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         } else if (userPoint < computerPoint) {
                             updateBankRolls('computer', piggyBankInput.value);
                             heading.textContent = "Computer wins this round";
+                            setComputerStakes(); 
                         } else {
                             heading.textContent = "It's a tie!";
                         }
