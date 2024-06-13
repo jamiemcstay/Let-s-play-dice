@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let userDiceRolls = [];
     let computerDiceRolls = [];
+    let userRollOutcome;
+    let computerRollOutcome;
     let currentPlayer = 'user';
     let roundWinner = null;
 
@@ -136,14 +138,14 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.textContent = "Click to roll";
                 currentPlayer = 'user';
-                circle.addEventListener('click', playTurn);
+                circle.addEventListener('click', runGame);
             }, 2000);
 
 
         }
 
         roundWinner = null;
-        increaseStakesButton.addEventListener('click', updateStakes); 
+        increaseStakesButton.addEventListener('click', updateStakes);
 
     }
 
@@ -168,12 +170,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     heading.textContent = "Computer Rolling";
                     currentPlayer = 'computer';
-                    setTimeout(function (){
-                    playTurn();
-                    }, 4000); 
+                    setTimeout(function () {
+                        runGame();
+                    }, 4000);
                 }, 1000);
             }, 3000);
-        }    
+        }
 
         roundWinner = null;
 
@@ -195,6 +197,109 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    // function playTurn() {
+
+    //     console.log(`It's ${currentPlayer}'s turn`);
+
+    //     circle.removeEventListener('click', playTurn);
+
+    //     let userRollOutcome;
+    //     let computerRollOutcome;
+
+    //     if (roundWinner !== null) {
+    //         return;
+    //     }
+
+    //     if (currentPlayer === 'user') {
+    //         userDiceRolls = userRollDice();
+    //         heading.textContent = `You rolled a ${userDiceRolls}`;           
+    //         console.log(userDiceRolls);
+    //         userRollOutcome = checkRoll(userDiceRolls, 'user');
+    //         currentPlayer = 'computer';
+    //         setTimeout(function () {               
+    //             playTurn();
+    //         }, 2000);
+
+    //     } else if (currentPlayer === 'computer') {
+    //         computerDiceRolls = computerRollDice();
+    //         heading.textContent = `Computer rolled a ${computerDiceRolls}`;
+    //         console.log(computerDiceRolls);
+    //         computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
+    //         currentPlayer = 'user';
+    //     }
+
+    //     if (userRollOutcome !==undefined && computerRollOutcome !== undefined) {
+    //         determineWinner(userRollOutcome, computerRollOutcome); 
+    //     }   
+    // }
+
+
+    function userTurn() {
+
+        console.log("Its users turn");
+
+
+        userDiceRolls = userRollDice();
+        heading.textContent = `You rolled a ${userDiceRolls}`;
+        console.log(userDiceRolls);
+        userRollOutcome = checkRoll(userDiceRolls, 'user');
+        currentPlayer = 'computer';
+        setTimeout(runGame, 3000);
+
+        // return userRollOutcome; 
+
+    }
+
+    function computerTurn() {
+
+        console.log("Its computers turn");
+
+        computerDiceRolls = computerRollDice();
+        heading.textContent = `Computer rolled a ${computerDiceRolls}`;
+        console.log(computerDiceRolls);
+        computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
+        currentPlayer = 'user';
+        setTimeout(runGame, 3000);
+        // return computerRollOutcome; 
+    }
+
+    function runGame() {
+        console.log(currentPlayer);
+
+        if (roundWinner !== null) {
+            return;
+        }
+
+        //checks who current player is
+        //calls that players turn function
+
+
+        if (currentPlayer === 'user') {
+            setTimeout(function () {
+                userTurn();
+            }, 2000);
+        }
+
+
+        if (currentPlayer === 'computer') {
+            setTimeout(function () {
+                computerTurn();
+            }, 2000);
+
+        }
+
+
+        if (userRollOutcome !== undefined && computerRollOutcome !== undefined) {
+            setTimeout(function () {
+                determineWinner(userRollOutcome, computerRollOutcome);
+            }, 4000);
+            userRollOutcome = undefined;
+            computerRollOutcome = undefined;
+        }
+
+
+    }
+
     function userRollDice() {
 
         console.log('Your in userRollDice');
@@ -211,48 +316,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function playTurn() {
-
-        console.log(`It's ${currentPlayer}'s turn`);
-
-        circle.removeEventListener('click', playTurn);
-
-        let userRollOutcome;
-        let computerRollOutcome;
-
-        if (roundWinner !== null) {
-            return;
-        }
-
-        if (currentPlayer === 'user') {
-            userDiceRolls = userRollDice();
-            heading.textContent = `You rolled a ${userDiceRolls}`;           
-            console.log(userDiceRolls);
-            userRollOutcome = checkRoll(userDiceRolls, 'user');
-            currentPlayer = 'computer';
-            setTimeout(function () {               
-                playTurn();
-            }, 2000);
-            
-        } else if (currentPlayer === 'computer') {
-            computerDiceRolls = computerRollDice();
-            heading.textContent = `Computer rolled a ${computerDiceRolls}`;
-            console.log(computerDiceRolls);
-            computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
-            currentPlayer = 'user';
-        }
-
-        if (userRollOutcome !==undefined && computerRollOutcome !== undefined) {
-            determineWinner(userRollOutcome, computerRollOutcome); 
-        }   
-    }
 
 
     function checkRoll(roll, player) {
 
         console.log("You're in checkRoll");
-
-
 
         let rolls = {};
         let outcome = '';
@@ -291,7 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
             outcome = `${pairDie} ${pairDie} ${point}`;
         }
 
-        console.log(`${player} outcome is: ${outcome}`); 
+        console.log(`${player} outcome is: ${outcome}`);
 
         return outcome;
 
