@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let computerRollOutcome;
     let currentPlayer = 'user';
     let roundWinner = null;
+    let banker;
 
     let scoreArea = document.getElementById('score-area');
     scoreArea.style.display = 'none';
@@ -229,9 +230,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         heading.textContent = `Computer rolled a ${computerDiceRolls}`;
         console.log(computerDiceRolls);
-        
+
         currentPlayer = 'user';
-        runGame(); 
+        runGame();
     }
 
     function runGame() {
@@ -245,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (currentPlayer === 'user') {
-            if(userRollOutcome === undefined) {
+            if (userRollOutcome === undefined) {
                 setTimeout(function () {
                     userTurn();
                 }, 2000);
@@ -253,11 +254,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (currentPlayer === 'computer') {
-            if(computerRollOutcome === undefined) {    
+            if (computerRollOutcome === undefined) {
                 setTimeout(function () {
                     computerTurn();
                 }, 2000);
-            }    
+            }
         }
 
 
@@ -314,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //Check for three of a kind
         for (let die in rolls) {
             if (rolls[die] === 3) {
-                outcome = 'three-of-a-kind';
+                outcome = 'instant-win';
             }
         }
 
@@ -330,14 +331,14 @@ document.addEventListener('DOMContentLoaded', function () {
         //Check for the point with the pair of matching dice
         if (pairDie !== null) {
             let point = roll.find(die => die !== pairDie);
-            if(point === 6){
-                outcome = 'instant-win'; 
+            if (point === 6) {
+                outcome = 'instant-win';
             } else if (point === 1) {
                 outcome = 'instant-loss';
             } else if (point >= 2 && point <= 5) {
                 outcome = `${pairDie} ${pairDie} ${point}`;
             }
-            
+
         }
 
         console.log(`${player} outcome is: ${outcome}`);
@@ -351,13 +352,13 @@ document.addEventListener('DOMContentLoaded', function () {
         //if either players bankroll is at 0, other player wins
 
         circle.removeEventListener('click', )
-        
-        if(roundWinner === 'user'){
-            setTheStakes(); 
+
+        if (roundWinner === 'user') {
+            setTheStakes();
         }
 
-        if(roundWinner === 'computer') {
-            setComputerStakes();             
+        if (roundWinner === 'computer') {
+            setComputerStakes();
         }
 
 
@@ -370,92 +371,56 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("You're in determineWinner");
 
         setTimeout(function () {
+            //Check for instant-wins and losses
             if (userRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
                 // updateBankRolls('user', piggyBankInput.value);
                 heading.textContent = "You win this round!";
                 roundWinner = 'user';
-                setTheStakes(); 
+                setTheStakes();
             } else if (computerRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
                 // updateBankRolls('computer', piggyBankInput.value);
                 heading.textContent = "Computer wins this round!";
                 roundWinner = 'computer';
-                setComputerStakes(); 
-                //Check if user has three of a kind computer does not
+                setComputerStakes();
             } else {
-                if (userRollOutcome === 'three-of-a-kind') {
-                    if (computerRollOutcome !== 'three-of-a-kind') {
-                        // updateBankRolls('user', piggyBankInput.value);
-                        heading.textContent = "You win this round!";
-                        roundWinner = 'user';
-                        setTheStakes(); 
-                        //Check for the values of users and computers roll if both have three-of-a-kind    
-                    } else {
-                        let userThreeValue = parseInt(userDiceRolls[0]);
-                        let computerThreeValue = parseInt(computerDiceRolls[0]);
-                        if (userThreeValue > computerThreeValue) {
-                            // updateBankRolls('user', piggyBankInput.value);
-                            heading.textContent = "You win this round!";
-                            roundWinner = 'user';
-                            setTheStakes(); 
-                        } else if (userThreeValue < computerThreeValue) {
-                            // updateBankRolls('computer', piggyBankInput.value);
-                            heading.textContent = "Computer wins this round!";
-                            roundWinner = 'computer';
-                            setComputerStakes(); 
-                        } else {
-                            heading.textContent = "It's a tie!";
-                        }
-                    }
-                    //Check if computer has three of a kind and user does not
-                } else if (computerRollOutcome === 'three-of-a-kind') {
-                    // updateBankRolls('computer', piggyBankInput.value);
-                    heading.textContent = "Computer wins this round!";
-                    roundWinner = 'computer';
-                    setComputerStakes(); 
-                    //Check pairs and numbers against each other
-                } else {
-                    //Check if outcomes are null and use .split to on arrays if not 
-                    let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
-                    let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
+                //Check if outcomes are null and use .split on strings if not 
+
+                let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
+                let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
+
+                if (userPairValue !== null && computerPairValue !== null) {
+                    //Isolate single point for user and computer roll 
+                    let userPoint = parseInt(userRollOutcome.split('')[2]);
+                    let computerPoint = parseInt(computerRollOutcome.split('')[2]);
 
                     if (userPairValue === computerPairValue) {
-                        //Check if rolls are null and isolate single die if not
-                        let userSingleDie = userDiceRolls ? userDiceRolls.find(die => die !== userPairValue) : null;
-                        let computerSingleDie = computerDiceRolls ? computerDiceRolls.find(die => die !== computerPairValue) : null;
-                        if (userSingleDie > computerSingleDie) {
-                            // updateBankRolls('user', piggyBankInput.value);
-                            heading.textContent = "You win this round!";
-                            roundWinner = 'user';
-                            setTheStakes(); 
-                        } else if (userSingleDie < computerSingleDie) {
-                            // updateBankRolls('computer', piggyBankInput.value);
-                            heading.textContent = "Computer wins this round!";
-                            roundWinner = 'computer';
-                            setComputerStakes(); 
-                        } else {
+                        if (userPoint === computerPoint) {
                             heading.textContent = "It's a tie!";
-                        }
-
-                    } else {
-                        //Check if rolls are null and compare points if not
-                        let userPoint = userDiceRolls ? userDiceRolls.find(die => die !== userPairValue) : null;
-                        let computerPoint = computerDiceRolls ? computerDiceRolls.find(die => die !== computerPairValue) : null;
-
-                        if (userPoint > computerPoint) {
-                            // updateBankRolls('user', piggyBankInput.value);
+                        } else if (userPoint > computerPoint) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
-                            setTheStakes(); 
-                        } else if (userPoint < computerPoint) {
-                            // updateBankRolls('computer', piggyBankInput.value);
+                            setTheStakes();
+                        } else if (computerPoint > userPoint) {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
-                            setComputerStakes(); 
-                        } else {
-                            heading.textContent = "It's a tie!";
+                            setComputerStakes();
                         }
+                        if (userPairValue !== computerPairValue) {
+                            if (userPoint > computerPoint) {
+                                heading.textContent = "You win this round!";
+                                roundWinner = 'user';
+                                setTheStakes();
+                            } else {
+                                heading.textContent = "Computer wins this round";
+                                roundWinner = 'computer';
+                                setComputerStakes();
+                            }
+                        }
+
                     }
-                }
+
+                } 
+
             }
 
         }, 2000);
