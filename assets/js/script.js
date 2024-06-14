@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 heading.textContent = "You win this round!";
                                 roundWinner = 'user';
                                 setTheStakes();
-                            } else {
+                            } else if (computerPoint > userPoint) {
                                 heading.textContent = "Computer wins this round";
                                 roundWinner = 'computer';
                                 setComputerStakes();
