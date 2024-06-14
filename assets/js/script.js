@@ -215,8 +215,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(userDiceRolls);
 
         currentPlayer = 'computer';
+        console.log(`UsersTurn is returning: ${userRollOutcome}`); 
         runGame();
-
+        return userRollOutcome; 
+    
     }
 
     function computerTurn() {
@@ -232,7 +234,15 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(computerDiceRolls);
 
         currentPlayer = 'user';
+
+        console.log(`computersTurn is returning: ${computerRollOutcome}`); 
+
         runGame();
+        return computerRollOutcome; 
+    }
+
+    function endGame() {
+        console.log("Your in end game");
     }
 
     function runGame() {
@@ -249,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (userRollOutcome === undefined) {
                 setTimeout(function () {
                     userTurn();
+                    // return userRollOutcome; 
                 }, 2000);
             }
         }
@@ -257,10 +268,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (computerRollOutcome === undefined) {
                 setTimeout(function () {
                     computerTurn();
+                    // return computerRollOutcome; 
                 }, 2000);
             }
         }
-
 
 
         if (userRollOutcome !== undefined && computerRollOutcome !== undefined) {
@@ -268,8 +279,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 determineWinner(userRollOutcome, computerRollOutcome);
             }, 1000);
 
-            userRollOutcome = undefined;
-            computerRollOutcome = undefined;
         }
 
 
@@ -324,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let die in rolls) {
             if (rolls[die] === 2) {
                 pairDie = parseInt(die);
+                console.log(`Rolls:`, rolls);
                 break;
             }
         }
@@ -337,11 +347,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 outcome = 'instant-loss';
             } else if (point >= 2 && point <= 5) {
                 outcome = `${pairDie} ${pairDie} ${point}`;
+                console.log(`${pairDie} ${pairDie} ${point}`);
             }
 
         }
 
         console.log(`${player} outcome is: ${outcome}`);
+
+        console.log(`Pair die:`, pairDie);
 
         return outcome;
 
@@ -368,6 +381,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function determineWinner(userRollOutcome, computerRollOutcome) {
 
+        console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`); 
+        console.log(`determineWinner userRollOutcome is ${userRollOutcome}`); 
+
         console.log("You're in determineWinner");
 
         setTimeout(function () {
@@ -376,43 +392,62 @@ document.addEventListener('DOMContentLoaded', function () {
                 // updateBankRolls('user', piggyBankInput.value);
                 heading.textContent = "You win this round!";
                 roundWinner = 'user';
+                endGame()
                 setTheStakes();
             } else if (computerRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
                 // updateBankRolls('computer', piggyBankInput.value);
                 heading.textContent = "Computer wins this round!";
                 roundWinner = 'computer';
+                endGame()
                 setComputerStakes();
             } else {
                 //Check if outcomes are null and use .split on strings if not 
 
+                console.log(`User roll outcome before split: ${userRollOutcome}`);
+                console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
+
                 let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
                 let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
+
+                console.log(`Users pair value is ${userPairValue}`);
+                console.log(`Computers pair value is ${computerPairValue}`); 
 
                 if (userPairValue !== null && computerPairValue !== null) {
                     //Isolate single point for user and computer roll 
                     let userPoint = parseInt(userRollOutcome.split('')[2]);
                     let computerPoint = parseInt(computerRollOutcome.split('')[2]);
 
+                    console.log(`Users point is ${userPoint}`); 
+                    console.log(`computers point is ${computerPoint}`); 
+
                     if (userPairValue === computerPairValue) {
                         if (userPoint === computerPoint) {
                             heading.textContent = "It's a tie!";
+                            console.log("Its a tie"); 
                         } else if (userPoint > computerPoint) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
+                            console.log("You win"); 
+                            endGame()
                             setTheStakes();
                         } else if (computerPoint > userPoint) {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
+                            console.log("Computer wins"); 
+                            endGame()
                             setComputerStakes();
                         }
                         if (userPairValue !== computerPairValue) {
                             if (userPoint > computerPoint) {
                                 heading.textContent = "You win this round!";
                                 roundWinner = 'user';
+                                endGame()
                                 setTheStakes();
                             } else if (computerPoint > userPoint) {
                                 heading.textContent = "Computer wins this round";
                                 roundWinner = 'computer';
+                                console.log("Computer wins");
+                                endGame() 
                                 setComputerStakes();
                             }
                         }
