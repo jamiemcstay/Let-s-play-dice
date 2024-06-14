@@ -154,7 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setComputerStakes() {
 
-        roundWinner = null;
 
         console.log("You're in computer stakes");
 
@@ -181,6 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 3000);
         }
 
+        roundWinner = null;
+
         return computerStakes;
 
     }
@@ -198,43 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
         piggyBankInput.value = 0;
 
     }
-
-    // function playTurn() {
-
-    //     console.log(`It's ${currentPlayer}'s turn`);
-
-    //     circle.removeEventListener('click', playTurn);
-
-    //     let userRollOutcome;
-    //     let computerRollOutcome;
-
-    //     if (roundWinner !== null) {
-    //         return;
-    //     }
-
-    //     if (currentPlayer === 'user') {
-    //         userDiceRolls = userRollDice();
-    //         heading.textContent = `You rolled a ${userDiceRolls}`;           
-    //         console.log(userDiceRolls);
-    //         userRollOutcome = checkRoll(userDiceRolls, 'user');
-    //         currentPlayer = 'computer';
-    //         setTimeout(function () {               
-    //             playTurn();
-    //         }, 2000);
-
-    //     } else if (currentPlayer === 'computer') {
-    //         computerDiceRolls = computerRollDice();
-    //         heading.textContent = `Computer rolled a ${computerDiceRolls}`;
-    //         console.log(computerDiceRolls);
-    //         computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
-    //         currentPlayer = 'user';
-    //     }
-
-    //     if (userRollOutcome !==undefined && computerRollOutcome !== undefined) {
-    //         determineWinner(userRollOutcome, computerRollOutcome); 
-    //     }   
-    // }
-
 
     function userTurn() {
 
@@ -288,7 +252,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-
         if (currentPlayer === 'computer') {
             if(computerRollOutcome === undefined) {    
                 setTimeout(function () {
@@ -296,6 +259,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 2000);
             }    
         }
+
+
 
         if (userRollOutcome !== undefined && computerRollOutcome !== undefined) {
             setTimeout(function () {
