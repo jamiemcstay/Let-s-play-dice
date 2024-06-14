@@ -330,7 +330,14 @@ document.addEventListener('DOMContentLoaded', function () {
         //Check for the point with the pair of matching dice
         if (pairDie !== null) {
             let point = roll.find(die => die !== pairDie);
-            outcome = `${pairDie} ${pairDie} ${point}`;
+            if(point === 6){
+                outcome = 'instant-win'; 
+            } else if (point === 1) {
+                outcome = 'instant-loss';
+            } else if (point >= 2 && point <= 5) {
+                outcome = `${pairDie} ${pairDie} ${point}`;
+            }
+            
         }
 
         console.log(`${player} outcome is: ${outcome}`);
