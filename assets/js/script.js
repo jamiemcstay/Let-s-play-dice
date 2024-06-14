@@ -215,10 +215,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(userDiceRolls);
 
         currentPlayer = 'computer';
-        console.log(`UsersTurn is returning: ${userRollOutcome}`); 
+        console.log(`UsersTurn is returning: ${userRollOutcome}`);
         runGame();
-        return userRollOutcome; 
-    
+        return userRollOutcome;
+
     }
 
     function computerTurn() {
@@ -235,10 +235,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         currentPlayer = 'user';
 
-        console.log(`computersTurn is returning: ${computerRollOutcome}`); 
+        console.log(`computersTurn is returning: ${computerRollOutcome}`);
 
         runGame();
-        return computerRollOutcome; 
+        return computerRollOutcome;
     }
 
     function endGame() {
@@ -381,8 +381,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function determineWinner(userRollOutcome, computerRollOutcome) {
 
-        console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`); 
-        console.log(`determineWinner userRollOutcome is ${userRollOutcome}`); 
+        console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`);
+        console.log(`determineWinner userRollOutcome is ${userRollOutcome}`);
 
         console.log("You're in determineWinner");
 
@@ -410,30 +410,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
 
                 console.log(`Users pair value is ${userPairValue}`);
-                console.log(`Computers pair value is ${computerPairValue}`); 
+                console.log(`Computers pair value is ${computerPairValue}`);
 
                 if (userPairValue !== null && computerPairValue !== null) {
                     //Isolate single point for user and computer roll 
                     let userPoint = parseInt(userRollOutcome.split('')[2]);
                     let computerPoint = parseInt(computerRollOutcome.split('')[2]);
 
-                    console.log(`Users point is ${userPoint}`); 
-                    console.log(`computers point is ${computerPoint}`); 
+                    console.log(`Users point is ${userPoint}`);
+                    console.log(`computers point is ${computerPoint}`);
 
                     if (userPairValue === computerPairValue) {
                         if (userPoint === computerPoint) {
                             heading.textContent = "It's a tie!";
-                            console.log("Its a tie"); 
+                            console.log("Its a tie");
                         } else if (userPoint > computerPoint) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
-                            console.log("You win"); 
+                            console.log("You win");
                             endGame()
                             setTheStakes();
                         } else if (computerPoint > userPoint) {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
-                            console.log("Computer wins"); 
+                            console.log("Computer wins");
                             endGame()
                             setComputerStakes();
                         }
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 heading.textContent = "Computer wins this round";
                                 roundWinner = 'computer';
                                 console.log("Computer wins");
-                                endGame() 
+                                endGame()
                                 setComputerStakes();
                             }
                         }
