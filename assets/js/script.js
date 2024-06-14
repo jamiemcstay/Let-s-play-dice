@@ -124,6 +124,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function setTheStakes() {
+
+        roundWinner = null;
+
         console.log("You're in user stakes");
 
         let increaseStakesButton = document.getElementById('increase-stakes');
@@ -141,16 +144,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 circle.addEventListener('click', runGame);
             }, 2000);
 
-
         }
 
-        roundWinner = null;
+
         increaseStakesButton.addEventListener('click', updateStakes);
 
     }
 
 
     function setComputerStakes() {
+
+        roundWinner = null;
 
         console.log("You're in computer stakes");
 
@@ -176,8 +180,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 1000);
             }, 3000);
         }
-
-        roundWinner = null;
 
         return computerStakes;
 
@@ -238,15 +240,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Its users turn");
 
+        do {
+            userDiceRolls = userRollDice();
+            userRollOutcome = checkRoll(userDiceRolls, 'user');
+        } while (userRollOutcome === '');
 
-        userDiceRolls = userRollDice();
         heading.textContent = `You rolled a ${userDiceRolls}`;
-        console.log(userDiceRolls);
-        userRollOutcome = checkRoll(userDiceRolls, 'user');
-        currentPlayer = 'computer';
-        setTimeout(runGame, 3000);
 
-        // return userRollOutcome; 
+        console.log(userDiceRolls);
+
+        currentPlayer = 'computer';
+        runGame();
 
     }
 
@@ -254,24 +258,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Its computers turn");
 
-        computerDiceRolls = computerRollDice();
+        do {
+            computerDiceRolls = computerRollDice();
+            computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
+        } while (computerRollOutcome === '');
+
         heading.textContent = `Computer rolled a ${computerDiceRolls}`;
         console.log(computerDiceRolls);
-        computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
+        
         currentPlayer = 'user';
-        setTimeout(runGame, 3000);
-        // return computerRollOutcome; 
+        runGame(); 
     }
 
     function runGame() {
+
         console.log(currentPlayer);
+
+        circle.removeEventListener('click', runGame)
 
         if (roundWinner !== null) {
             return;
         }
 
-        //checks who current player is
-        //calls that players turn function
+
 
 
         if (currentPlayer === 'user') {
@@ -292,7 +301,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (userRollOutcome !== undefined && computerRollOutcome !== undefined) {
             setTimeout(function () {
                 determineWinner(userRollOutcome, computerRollOutcome);
-            }, 4000);
+            }, 1000);
+
             userRollOutcome = undefined;
             computerRollOutcome = undefined;
         }
@@ -366,6 +376,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function newRound(winner) {
+        //if either players bankroll is at 0, other player wins
+
+        circle.removeEventListener('click', )
+        
+        if(roundWinner === 'user'){
+            setTheStakes(); 
+        }
+
+        if(roundWinner === 'computer') {
+            setComputerStakes();             
+        }
+
+
+    }
 
     //create function for checking winner of rounds
 
