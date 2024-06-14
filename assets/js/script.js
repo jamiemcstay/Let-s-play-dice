@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     }
 
-                } 
+                }
 
             }
 
