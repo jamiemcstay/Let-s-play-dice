@@ -328,9 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startUserTurn() {
         circle.removeEventListener('click', startUserTurn); 
-        setTimeout(function () {
-            userTurn();
-        }, 2000); 
+        userTurn();
     }
 
 
@@ -353,16 +351,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
             return;
         } else {
-            heading.textContent = `You rolled a ${userDiceRolls}`;
-
-            console.log(userDiceRolls);
-
-            currentPlayer = 'computer';
-            console.log(`UsersTurn is returning: ${userRollOutcome}`);
-            runGame();
+            setTimeout (function () {
+                heading.textContent =`You rolled a ${userDiceRolls}`;
+                currentPlayer = 'computer';
+                console.log(`UsersTurn is returning: ${userRollOutcome}`);
+                runGame();
+            }, 3000); 
+            
         }
-        return userRollOutcome;
 
+        return userRollOutcome;
 
     }
 
@@ -416,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () {
                     heading.textContent = "Click to roll";
                     circle.addEventListener('click', startUserTurn);
-                }, 2000);
+                }, 1000);
             }
 
         }
@@ -433,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (userRollOutcome !== undefined && computerRollOutcome !== undefined) {
             setTimeout(function () {
                 determineWinner(userRollOutcome, computerRollOutcome);
-            }, 1000);
+            }, 3000);
 
         }
 
