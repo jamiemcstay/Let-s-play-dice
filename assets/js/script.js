@@ -201,6 +201,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
+
+        console.log('You\'re in instantWinOrLoss');
+
+        if (player === 'user') {
+            if (userRollOutcome) {
+                if (userDiceRolls) {
+                    if (userRollOutcome === 'instant-win') {
+                        heading.textContent = `You rolled a ${userDiceRolls}`;
+                        setTimeout(function () {
+                            heading.textContent = 'Instant Win!'
+                        }, 2000);
+                        roundWinner = 'user';
+                        updateBankRolls();
+                        endGame();
+                        setTheStakes();
+                    } else if (playerRollOutcome === 'instant-loss') {
+                        heading.textContent = `You rolled a ${userDiceRolls}`;
+                        setTimeout(function () {
+                            heading.textContent = 'Instant Loss!'
+                        }, 2000);
+                        setTimeout(function () {
+                            heading.textContent = 'Computer Wins this round!';
+                        }, 2000);
+                        roundWinner = 'computer';
+                        updateBankRolls();
+                        endGame();
+                        setTheStakes();
+
+                    }
+                }
+            }
+        } else {
+            console.log('No instant win or loss for user');
+            runGame();
+        }
+    }
+
+
+
+
     function userTurn() {
 
         console.log("Its users turn");
@@ -209,6 +250,8 @@ document.addEventListener('DOMContentLoaded', function () {
             userDiceRolls = userRollDice();
             userRollOutcome = checkRoll(userDiceRolls, 'user');
         } while (userRollOutcome === '');
+
+        checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user');
 
         heading.textContent = `You rolled a ${userDiceRolls}`;
 
@@ -364,7 +407,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function newRound(winner) {
         //if either players bankroll is at 0, other player wins
 
-        circle.removeEventListener('click', )
+        // circle.removeEventListener('click', )
 
         if (roundWinner === 'user') {
             setTheStakes();
@@ -387,47 +430,63 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("You're in determineWinner");
 
         setTimeout(function () {
+
             //Check for instant-wins and losses
-            if (userRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
-                // updateBankRolls('user', piggyBankInput.value);
-                heading.textContent = "You win this round!";
-                roundWinner = 'user';
-                endGame()
-                setTheStakes();
-            } else if (computerRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
-                // updateBankRolls('computer', piggyBankInput.value);
-                heading.textContent = "Computer wins this round!";
-                roundWinner = 'computer';
-                endGame()
-                setComputerStakes();
-            } else {
-                //Check if outcomes are null and use .split on strings if not 
+            // if (userRollOutcome === 'instant-win' || computerRollOutcome === 'instant-loss') {
+            //     updateBankRolls('user', piggyBankInput.value);
+            //     heading.textContent = "You win this round!";
+            //     roundWinner = 'user';
+            //     endGame()
+            //     setTheStakes();
+            // } else if (computerRollOutcome === 'instant-win' || userRollOutcome === 'instant-loss') {
+            //     updateBankRolls('computer', piggyBankInput.value);
+            //     heading.textContent = "Computer wins this round!";
+            //     roundWinner = 'computer';
+            //     endGame()
+            //     setComputerStakes();
+            // } else {
 
-                console.log(`User roll outcome before split: ${userRollOutcome}`);
-                console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
 
-                let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
-                let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
+            //Check if outcomes are null and use .split on strings if not 
 
-                console.log(`Users pair value is ${userPairValue}`);
-                console.log(`Computers pair value is ${computerPairValue}`);
+            console.log(`User roll outcome before split: ${userRollOutcome}`);
+            console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
 
-                if (userPairValue !== null && computerPairValue !== null) {
-                    //Isolate single point for user and computer roll 
-                    let userPoint = parseInt(userRollOutcome.split('')[2]);
-                    let computerPoint = parseInt(computerRollOutcome.split('')[2]);
+            let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
+            let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
 
-                    console.log(`Users point is ${userPoint}`);
-                    console.log(`computers point is ${computerPoint}`);
+            console.log(`Users pair value is ${userPairValue}`);
+            console.log(`Computers pair value is ${computerPairValue}`);
 
-                    if (userPairValue === computerPairValue) {
-                        if (userPoint === computerPoint) {
-                            heading.textContent = "It's a tie!";
-                            console.log("Its a tie");
-                        } else if (userPoint > computerPoint) {
+            if (userPairValue !== null && computerPairValue !== null) {
+                //Isolate single point for user and computer roll 
+                let userPoint = parseInt(userRollOutcome.split('')[2]);
+                let computerPoint = parseInt(computerRollOutcome.split('')[2]);
+
+                console.log(`Users point is ${userPoint}`);
+                console.log(`computers point is ${computerPoint}`);
+
+                if (userPairValue === computerPairValue) {
+                    if (userPoint === computerPoint) {
+                        heading.textContent = "It's a tie!";
+                        console.log("Its a tie");
+                    } else if (userPoint > computerPoint) {
+                        heading.textContent = "You win this round!";
+                        roundWinner = 'user';
+                        console.log("You win");
+                        endGame()
+                        setTheStakes();
+                    } else if (computerPoint > userPoint) {
+                        heading.textContent = "Computer wins this round";
+                        roundWinner = 'computer';
+                        console.log("Computer wins");
+                        endGame()
+                        setComputerStakes();
+                    }
+                    if (userPairValue !== computerPairValue) {
+                        if (userPoint > computerPoint) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
-                            console.log("You win");
                             endGame()
                             setTheStakes();
                         } else if (computerPoint > userPoint) {
@@ -437,26 +496,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             endGame()
                             setComputerStakes();
                         }
-                        if (userPairValue !== computerPairValue) {
-                            if (userPoint > computerPoint) {
-                                heading.textContent = "You win this round!";
-                                roundWinner = 'user';
-                                endGame()
-                                setTheStakes();
-                            } else if (computerPoint > userPoint) {
-                                heading.textContent = "Computer wins this round";
-                                roundWinner = 'computer';
-                                console.log("Computer wins");
-                                endGame()
-                                setComputerStakes();
-                            }
-                        }
-
                     }
 
                 }
 
             }
+
+            // }
 
         }, 2000);
 
