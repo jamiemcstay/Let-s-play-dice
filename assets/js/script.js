@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setTheStakes() {
 
-        roundWinner = null;
 
         console.log("You're in user stakes");
 
@@ -155,11 +154,20 @@ document.addEventListener('DOMContentLoaded', function () {
         piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
 
 
-        setTimeout(function () {
-            heading.textContent = "Click to round";
+        if(!roundWinner) {
+            setTimeout(function () {
+            heading.textContent = "Click to begin";
             currentPlayer = 'user';
             circle.addEventListener('click', runGame);
         }, 2000);
+    } else {
+        setTimeout(function () {
+            heading.textContent = "Click to roll"; 
+            currentPlayer = 'user';
+            circle.addEventListener('click', userTurn);
+            roundWinner = null;
+        }, 2000); 
+    }
 
     }
 
@@ -320,7 +328,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startUserTurn() {
         circle.removeEventListener('click', startUserTurn); 
-        heading.textContent = "Rolling";
         setTimeout(function () {
             userTurn();
         }, 2000); 
@@ -333,6 +340,10 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Its users turn");
 
         circle.removeEventListener('click', userTurn); 
+
+        setTimeout(function () {
+            heading.textContent = "Rolling";
+        }, 2000); 
 
         do {
             userDiceRolls = userRollDice();
