@@ -173,31 +173,32 @@ document.addEventListener('DOMContentLoaded', function () {
         let multiplier = Math.floor(Math.random() * 5) + 1;
         let computerStakes = multiplier * 100;
 
+        let bankRollUserValue = parseInt(bankRollUser.value);
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
+
+        bankRollComputerValue -= computerStakes;
+        bankRollUserValue -= computerStakes;
+        bankRollComputer.value = bankRollComputerValue;
+        bankRollUser.value = bankRollUserValue;
+
+        piggyBankInput.value = computerStakes * 2;
+
+        setTimeout(function () {
+            heading.textContent = "Computer setting stakes"; 
+        }, 1000); 
+
         setTimeout(function () {
             heading.innerText = `The stakes are ${computerStakes}`;
-            setTimeout(function () {
-                let bankRollUserValue = parseInt(bankRollUser.value);
-                let bankRollComputerValue = parseInt(bankRollComputer.value);
-
-                bankRollComputerValue -= computerStakes;
-                bankRollUserValue -= computerStakes;
-                bankRollComputer.value = bankRollComputerValue;
-                bankRollUser.value = bankRollUserValue;
-
-                piggyBankInput.value = computerStakes * 2;
-
-                console.log(bankRollUserValue);
-                console.log(bankRollComputerValue);
-                console.log(piggyBankInput.value);
+        }, 2000); 
 
 
-                heading.textContent = "Computer Rolling";
-                currentPlayer = 'computer';
-                setTimeout(function () {
-                    runGame();
-                }, 4000);
-            }, 1000);
-        }, 3000);
+        console.log(bankRollUserValue);
+        console.log(bankRollComputerValue);
+        console.log(piggyBankInput.value);
+
+        currentPlayer = 'computer';
+        runGame();
+            
 
 
         return computerStakes;
@@ -506,6 +507,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function newRound(roundWinner) {
+
+        userRollOutcome = undefined;
+        computerRollOutcome = undefined; 
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
