@@ -380,11 +380,15 @@ document.addEventListener('DOMContentLoaded', function () {
         if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
             return;
         } else {
-            heading.textContent = `Computer rolled a ${computerDiceRolls}`;
-            console.log(computerDiceRolls);
-            currentPlayer = 'user';
-            console.log(`computersTurn is returning: ${computerRollOutcome}`);
-            runGame();
+
+            setTimeout(function () {
+                heading.textContent = `Computer rolled a ${computerDiceRolls}`;
+                console.log(computerDiceRolls);
+                currentPlayer = 'user';
+                console.log(`computersTurn is returning: ${computerRollOutcome}`);
+                runGame();
+            }, 3000); 
+
         }
 
         return computerRollOutcome;
@@ -423,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (computerRollOutcome === undefined) {
                 setTimeout(function () {
                     computerTurn();
-                }, 2000);
+                }, 1000);
             }
         }
 
