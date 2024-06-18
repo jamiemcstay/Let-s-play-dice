@@ -202,32 +202,38 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
-
-        console.log('You\'re in instantWinOrLoss');
-
+        console.log("You're in instantWinOrLoss");
+    
         if (player === 'user') {
             if (playerRollOutcome) {
                 if (playersRoll) {
                     if (playerRollOutcome === 'instant-win') {
-                        heading.textContent = `You rolled a ${playersRoll}`;
-                        console.log(`players roll is: ${playersRoll}`); 
                         setTimeout(function () {
-                            heading.textContent = 'Instant Win!'
-                        }, 2000);
-                        roundWinner = 'user';
-                        updateBankRolls('user', piggyBankValue);
-                        endGame();
-                        setTheStakes();
-                        return true;
-                    } else if (playerRollOutcome === 'instant-loss') {
-                        heading.textContent = `You rolled a ${playersRoll}`;
+                            heading.textContent = `IWOL user You rolled a ${playersRoll}`;
+                        }, 2000); 
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
-                            heading.textContent = 'Instant Loss!'
-                        }, 2000);
+                            heading.textContent = 'IWOL user Instant Win!'
+                        }, 4000);
                         setTimeout(function () {
-                            heading.textContent = 'Computer Wins this round!';
-                        }, 2000);
+                            heading.textContent = 'You win this round!'; 
+                        }, 6000); 
+                        roundWinner = 'user';
+                        updateBankRolls('user', piggyBankValue);
+                        endGame();
+                        setTheStakes();
+                        return true;
+                    } else if (playerRollOutcome === 'instant-loss') {
+                        setTimeout(function () {
+                            heading.textContent = `IWOL user You rolled a ${playersRoll}`;
+                        }, 2000); 
+                        console.log(`${playersRoll}`);
+                        setTimeout(function () {
+                            heading.textContent = 'IWOL user Instant Loss!'
+                        }, 4000);
+                        setTimeout(function () {
+                            heading.textContent = 'IWOL user Computer Wins this round!';
+                        }, 6000);
                         roundWinner = 'computer';
                         updateBankRolls('computer', piggyBankValue);
                         endGame();
@@ -236,39 +242,30 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             }
-
             return false;
-
         } else if (player === 'computer') {
-                if (playerRollOutcome) {
-                    if (playersRoll) {
-                        if (playerRollOutcome === 'instant-win') {
-                            setTimeout( function () {
-                                heading.textContent = `Computer rolled a ${playersRoll}`;
-                                console.log(`Computer rolled a ${playersRoll}`)                                
-                            }, 2000); 
-                        }
+            if (playerRollOutcome) {
+                if (playersRoll) {
+                    if (playerRollOutcome === 'instant-win') {
                         setTimeout(function () {
-                            heading.textContent = 'Instant Win!';
-                        }, 2000);
-                        setTimeout(function () {
-                            heading.textContent = 'Computers wins this round!';
+                            heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000); 
+                        setTimeout(function () {
+                            heading.textContent = 'IWOL comp Instant Win!';
+                        }, 4000);
                         roundWinner = 'computer';
                         updateBankRolls('computer', piggyBankValue);
                         endGame();
                         setComputerStakes();
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
+                        heading.textContent = `Computer rolled a ${playersRoll}`;
                         setTimeout(function () {
-                            heading.textContent = `Computer rolled a ${playersRoll}`;
-                        }, 2000);                        
-                        setTimeout(function () {
-                            heading.textContent = 'Instant Loss!';
+                            heading.textContent = 'IWOL comp Instant Loss!';
                         }, 2000);
                         setTimeout(function () {
-                            heading.textContent = 'You Win this round!';
-                        }, 2000);
+                            heading.textContent = 'IWOL comp You Win this round!';
+                        }, 4000);
                         roundWinner = 'user';
                         updateBankRolls('user', piggyBankValue);
                         endGame();
@@ -276,12 +273,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         return true;
                     }
                 }
-
             }
-
-                return false;
-
-
+            return false;
+        }
     }
 
 
@@ -525,26 +519,26 @@ document.addEventListener('DOMContentLoaded', function () {
                         heading.textContent = "You win this round!";
                         roundWinner = 'user';
                         console.log("You win");
-                        endGame()
+                        endGame();
                         setTheStakes();
                     } else if (computerPoint > userPoint) {
                         heading.textContent = "Computer wins this round";
                         roundWinner = 'computer';
                         console.log("Computer wins");
-                        endGame()
+                        endGame();
                         setComputerStakes();
                     }
                     if (userPairValue !== computerPairValue) {
                         if (userPoint > computerPoint) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
-                            endGame()
+                            endGame();
                             setTheStakes();
                         } else if (computerPoint > userPoint) {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
                             console.log("Computer wins");
-                            endGame()
+                            endGame();
                             setComputerStakes();
                         }
                     }
