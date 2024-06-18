@@ -131,8 +131,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         increaseStakesButton.addEventListener('click', updateStakes);
-
-        circle.addEventListener('click', runGame);
         
 
     }
@@ -156,11 +154,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
 
-        currentPlayer = 'user';
 
-        let increaseStakesButton = document.getElementById('increase-stakes');
+        setTimeout(function () {
+            heading.textContent = "Click to roll";
+            currentPlayer = 'user';
+            circle.addEventListener('click', runGame);
+        }, 2000);
 
-        increaseStakesButton.removeEventListener('click', updateStakes);
 
     }
 
@@ -308,10 +308,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-
-
-
     function userTurn() {
+
 
         console.log("Its users turn");
 
@@ -366,8 +364,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log(currentPlayer);
 
+        let increaseStakesButton = document.getElementById('increase-stakes');
+
+        increaseStakesButton.removeEventListener('click', updateStakes);
 
         circle.removeEventListener('click', runGame)
+
 
         if (roundWinner !== null) {
             return;
@@ -376,8 +378,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (currentPlayer === 'user') {
             if (userRollOutcome === undefined) {
                 setTimeout(function () {
-                    heading.textContent = "Click to roll";
-                    circle.addEventListener('click', userTurn); 
+                    heading.textContent = "Rolling..."; 
+                    userTurn(); 
                 }, 2000);
             }
         }
