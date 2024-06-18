@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             heading.textContent = `Set the stakes`;
-        }, 2000);
+        }, 4000);
 
 
         increaseStakesButton.addEventListener('click', updateStakes);
@@ -237,14 +237,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (playerRollOutcome === 'instant-win') {
                         setTimeout(function () {
                             heading.textContent = `You rolled a ${playersRoll}`;
-                        }, 2000);
+                        }, 1000);
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
                             heading.textContent = 'Instant Win!'
-                        }, 4000);
+                        }, 2000);
                         setTimeout(function () {
                             heading.textContent = 'You win this round!';
-                        }, 6000);
+                        }, 4000);
+                        setTimeout(function (){ 
+                        roundWinner = 'user';
+                        updateBankRolls('user', piggyBankValue);
+                        newRound('user');   
+                        }, 5000);  
                         roundWinner = 'user';
                         updateBankRolls('user', piggyBankValue);
                         newRound('user');
@@ -252,17 +257,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (playerRollOutcome === 'instant-loss') {
                         setTimeout(function () {
                             heading.textContent = `You rolled a ${playersRoll}`;
-                        }, 2000);
+                        }, 1000);
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
                             heading.textContent = 'Instant Loss!'
-                        }, 4000);
+                        }, 2000);
                         setTimeout(function () {
                             heading.textContent = 'Computer Wins this round!';
-                        }, 6000);
-                        roundWinner = 'computer';
-                        updateBankRolls('computer', piggyBankValue);
-                        newRound('computer');
+                        }, 4000);
+                        setTimeout(function (){
+                            roundWinner = 'computer';
+                            updateBankRolls('computer', piggyBankValue);
+                            newRound('computer');    
+                        }, 5000)               
                         return true;
                     }
                 }
@@ -274,30 +281,34 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (playerRollOutcome === 'instant-win') {
                         setTimeout(function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
-                        }, 2000);
+                        }, 1000);
                         setTimeout(function () {
                             heading.textContent = 'Instant Win!';
-                        }, 4000);
+                        }, 2000);
                         setTimeout(function () {
                             heading.textContent = "You lose this round";
-                        }, 6000);
-                        roundWinner = 'computer';
-                        updateBankRolls('computer', piggyBankValue);
-                        newRound('computer');
+                        }, 4000);
+                        setTimeout(function () {
+                            roundWinner = 'computer';
+                            updateBankRolls('computer', piggyBankValue);
+                            newRound('computer');
+                        }, 5000); 
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
                         setTimeout(function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
-                        }, 2000);
+                        }, 1000);
                         setTimeout(function () {
                             heading.textContent = 'Instant Loss!';
-                        }, 4000);
+                        }, 2000);
                         setTimeout(function () {
                             heading.textContent = 'You Win this round!';
-                        }, 6000);
-                        roundWinner = 'user';
-                        updateBankRolls('user', piggyBankValue);
-                        newRound('user');
+                        }, 4000);
+                        setTimeout(function () {
+                            roundWinner = 'user';
+                            updateBankRolls('user', piggyBankValue);
+                            newRound('user');
+                        }, 5000); 
                         return true;
                     }
                 }
