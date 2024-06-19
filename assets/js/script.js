@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         updateBankRolls('user', piggyBankValue);
                         newRound('user');
-                    } else if (computerPoint > userPoint) {
+                    } else {
                         heading.textContent = "Computer wins this round";
                         roundWinner = 'computer';
                         console.log("Computer wins");
@@ -591,18 +591,36 @@ document.addEventListener('DOMContentLoaded', function () {
                         newRound('computer');
                     }
                 } else {
-                    // If the pair values are not equal, compare the points
-                    if (userPoint > computerPoint) {
-                        heading.textContent = "You win this round!";
-                        roundWinner = 'user';
-                        updateBankRolls('user', piggyBankValue);
-                        newRound('user');
-                    } else if (computerPoint > userPoint) {
-                        heading.textContent = "Computer wins this round";
-                        roundWinner = 'computer';
-                        console.log("Computer wins");
-                        updateBankRolls('computer', piggyBankValue);
-                        newRound('computer');
+                    // If the pair values are not equal
+                    if (userPoint === computerPoint) {
+                        //If the points are equal, compare the pair values
+                        if (userPairValue > computerPairValue) {
+                            heading.textContent = "You win this round!";
+                            roundWinner = 'user';
+                            updateBankRolls('user', piggyBankValue);
+                            newRound('user');
+                        } else {
+                            heading.textContent = "Computer wins this round";
+                            roundWinner = 'computer';
+                            console.log("Computer wins");
+                            updateBankRolls('computer', piggyBankValue);
+                            newRound('computer');
+                        }
+                    } else {
+                        //If points are not equal, the higher point wins
+                        if (userPoint > computerPoint) {
+                            heading.textContent = "You win this round!";
+                            roundWinner = 'user';
+                            updateBankRolls('user', piggyBankValue);
+                            newRound('user');
+                        } else {
+                            heading.textContent = "Computer wins this round";
+                            roundWinner = 'computer';
+                            console.log("Computer wins");
+                            updateBankRolls('computer', piggyBankValue);
+                            newRound('computer');
+                        }
+
                     }
                 }
             }
