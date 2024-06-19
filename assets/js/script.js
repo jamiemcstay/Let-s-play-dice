@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
             piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
 
         } else {
-            heading.textContent = "Insuffient funds"; 
+            heading.textContent = "Insuffient funds";
         }
 
 
@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 circle.addEventListener('click', userTurn);
             }, 2000);
         }
-        
-        
+
+
 
     }
 
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let multiplier = Math.floor(Math.random() * 5) + 1;
         let computerStakes = multiplier * 100;
-        
+
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
 
@@ -193,6 +193,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
 
         setTimeout(function () {
+
+            if(computerStakes > bankRollUserValue) {
+                computerStakes = bankRollUserValue; 
+            }
             heading.innerText = `The stakes are ${computerStakes}`;
             bankRollComputerValue -= computerStakes;
             bankRollUserValue -= computerStakes;
@@ -202,11 +206,11 @@ document.addEventListener('DOMContentLoaded', function () {
             piggyBankInput.value = computerStakes * 2;
         }, 2000);
 
-        
+
         setTimeout(function () {
-            currentPlayer = 'computer';       
-            runGame(); 
-        }, 3000); 
+            currentPlayer = 'computer';
+            runGame();
+        }, 3000);
 
         console.log(`SetComputerStakes bankRollUserValue is ${bankRollUserValue}`);
         console.log(`SetComputerStakes bankRollComputerValue is ${bankRollComputerValue}`);
@@ -314,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startUserTurn() {
-        
+
         circle.removeEventListener('click', startUserTurn);
         userTurn();
     }
@@ -510,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function newRound(roundWinner) {
 
-        console.log('You\re in newRound'); 
+        console.log('You\re in newRound');
 
         console.log(`roundWinner is: ${roundWinner}`);
 
@@ -519,37 +523,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
-        let piggyBankValue = parseInt(piggyBankInput.value); 
+        let piggyBankValue = parseInt(piggyBankInput.value);
 
         setTimeout(function () {
-            heading.textContent = `${roundWinner} wins ${piggyBankValue}`; 
-            updateBankRolls(roundWinner, piggyBankValue); 
+            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+            updateBankRolls(roundWinner, piggyBankValue);
         }, 1000);
-        
+
         if (bankRollUserValue <= 0 || bankRollComputerValue <= 0) {
             if (bankRollUserValue <= 0) {
                 //Call end game function with computer as argument
                 setTimeout(function () {
                     endGame('computer');
-                }, 2000); 
-                
+                }, 2000);
+
 
             } else if (bankRollComputerValue <= 0) {
                 //Call endGame function with user as argument 
                 setTimeout(function () {
-                    endGame('user'); 
-                }, 2000); 
-            } 
+                    endGame('user');
+                }, 2000);
+            }
         } else {
             if (roundWinner === 'user') {
                 setTimeout(function () {
                     setTheStakes();
-                }, 3000); 
+                }, 3000);
             } else if (roundWinner === 'computer') {
                 setTimeout(function () {
                     setComputerStakes();
-                }, 3000); 
-                
+                }, 3000);
+
             }
         }
 
