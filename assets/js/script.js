@@ -194,8 +194,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
 
-            if(computerStakes > bankRollUserValue) {
-                computerStakes = bankRollUserValue; 
+            if (computerStakes > bankRollUserValue) {
+                computerStakes = bankRollUserValue;
             }
             heading.innerText = `The stakes are ${computerStakes}`;
             bankRollComputerValue -= computerStakes;
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
 
-        let piggyBankValue = parseInt(piggyBankInput.value); 
+        let piggyBankValue = parseInt(piggyBankInput.value);
 
         console.log("You're in instantWinOrLoss");
 
@@ -262,14 +262,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         setTimeout(function () {
                             heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
-                            updateBankRolls('user', piggyBankValue); 
+                            updateBankRolls('user', piggyBankValue);
                         }, 3000);
                         setTimeout(function () {
                             newRound('user');
-                        }, 4000); 
+                        }, 4000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
-                        roundWinner = 'computer'; 
+                        roundWinner = 'computer';
                         setTimeout(function () {
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 1000);
@@ -278,12 +278,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = 'Instant Loss!';
                         }, 2000);
                         setTimeout(function () {
-                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;  
-                            updateBankRolls('computer', piggyBankValue);       
+                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                            updateBankRolls('computer', piggyBankValue);
                         }, 3000);
                         setTimeout(function () {
                             newRound('computer');
-                        }, 4000); 
+                        }, 4000);
                         return true;
                     }
                 }
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (playerRollOutcome) {
                 if (playersRoll) {
                     if (playerRollOutcome === 'instant-win') {
-                        roundWinner = 'computer'; 
+                        roundWinner = 'computer';
                         setTimeout(function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 1000);
@@ -301,15 +301,15 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = 'Instant Win!';
                         }, 2000);
                         setTimeout(function () {
-                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;  
-                            updateBankRolls('computer', piggyBankValue);     
+                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                            updateBankRolls('computer', piggyBankValue);
                         }, 3000);
                         setTimeout(function () {
                             newRound('computer');
-                        }, 4000); 
+                        }, 4000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
-                        roundWinner = 'user'; 
+                        roundWinner = 'user';
                         setTimeout(function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 1000);
@@ -318,11 +318,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         setTimeout(function () {
                             heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
-                            updateBankRolls('user', piggyBankValue); 
+                            updateBankRolls('user', piggyBankValue);
                         }, 3000);
                         setTimeout(function () {
                             newRound('user');
-                        }, 4000); 
+                        }, 4000);
                         return true;
                     }
                 }
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let piggyBankValue = parseInt(piggyBankInput.value);
 
         // heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
-        
+
 
 
         if (bankRollUserValue <= 0 || bankRollComputerValue <= 0) {
@@ -560,12 +560,12 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             if (roundWinner === 'user') {
                 setTimeout(function () {
-                    heading.textContent = "New Round"; 
+                    heading.textContent = "New Round";
                     setTheStakes();
                 }, 2000);
             } else if (roundWinner === 'computer') {
                 setTimeout(function () {
-                    heading.textContent = "New Round"; 
+                    heading.textContent = "New Round";
                     setComputerStakes();
                 }, 2000);
 
@@ -581,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`);
         console.log(`determineWinner userRollOutcome is ${userRollOutcome}`);
 
-        let piggyBankValue = parseInt(piggyBankInput.value); 
+        let piggyBankValue = parseInt(piggyBankInput.value);
 
         console.log("You're in determineWinner");
 
@@ -613,9 +613,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         heading.textContent = "You win this round!";
                         roundWinner = 'user';
                         setTimeout(function () {
-                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;   
-                            updateBankRolls('user', piggyBankValue); 
-                        }, 1000); 
+                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                            updateBankRolls('user', piggyBankValue);
+                        }, 1000);
                         setTimeout(function () {
                             newRound('user');
                         }, 2000);
@@ -624,12 +624,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'computer';
                         console.log("Computer wins");
                         setTimeout(function () {
-                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`; 
-                            updateBankRolls('computer', piggyBankValue); 
-                        }, 1000); 
+                            heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                            updateBankRolls('computer', piggyBankValue);
+                        }, 1000);
                         setTimeout(function () {
                             newRound('computer');
-                        }, 2000); 
+                        }, 2000);
                     }
                 } else {
                     // If the pair values are not equal
@@ -639,21 +639,21 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
                             setTimeout(function () {
-                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;  
+                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
                                 updateBankRolls('user', piggyBankValue);
-                            }, 1000); 
+                            }, 1000);
                             newRound('user');
                         } else {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
                             console.log("Computer wins");
                             setTimeout(function () {
-                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;  
-                                updateBankRolls('computer', piggyBankValue); 
-                            }, 1000); 
+                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                                updateBankRolls('computer', piggyBankValue);
+                            }, 1000);
                             setTimeout(function () {
                                 newRound('computer');
-                            }, 2000); 
+                            }, 2000);
                         }
                     } else {
                         //If points are not equal, the higher point wins
@@ -661,9 +661,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
                             setTimeout(function () {
-                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;  
-                                updateBankRolls('user', piggyBankValue);   
-                            }, 1000); 
+                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                                updateBankRolls('user', piggyBankValue);
+                            }, 1000);
                             setTimeout(function () {
                                 newRound('user');
                             }, 2000);
@@ -672,12 +672,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             roundWinner = 'computer';
                             console.log("Computer wins");
                             setTimeout(function () {
-                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;  
-                                updateBankRolls('computer', piggyBankValue); 
-                            }, 1000); 
+                                heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
+                                updateBankRolls('computer', piggyBankValue);
+                            }, 1000);
                             setTimeout(function () {
                                 newRound('computer');
-                            }, 2000); 
+                            }, 2000);
                         }
 
                     }
