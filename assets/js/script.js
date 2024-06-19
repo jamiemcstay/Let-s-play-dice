@@ -147,11 +147,14 @@ document.addEventListener('DOMContentLoaded', function () {
             bankRollUser.value = bankRollUserValue;
             bankRollComputer.value = bankRollComputerValue;
 
+            let totalStakes = userStakes * 2;
+
+            piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
+
+        } else {
+            heading.textContent = "Insuffient funds"; 
         }
 
-        let totalStakes = userStakes * 2;
-
-        piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
 
 
         if (!roundWinner) {
@@ -165,9 +168,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.textContent = "Click to roll";
                 currentPlayer = 'user';
                 circle.addEventListener('click', userTurn);
-                roundWinner = null;
             }, 2000);
         }
+        
+        
 
     }
 
@@ -200,9 +204,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
 
 
-        console.log(bankRollUserValue);
-        console.log(bankRollComputerValue);
-        console.log(piggyBankInput.value);
+        console.log(`SetComputerStakes bankRollUserValue is ${bankRollUserValue}`);
+        console.log(`SetComputerStakes bankRollComputerValue is ${bankRollComputerValue}`);
+        console.log(`SetComputerStakes piggBankValueis ${piggyBankInput.value}`);
 
         currentPlayer = 'computer';
         runGame();
@@ -229,9 +233,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         piggyBankInput.value = 0;
 
-        console.log(bankRollUserValue);
-        console.log(bankRollComputerValue);
-        console.log(piggyBankInput.value);
+        console.log(`UpdateBankRolls bankRollUserValue is: ${bankRollUserValue}`);
+        console.log(`Update BankRolls bankRollComputerValue is ${bankRollComputerValue}`);
+        console.log(`Update BankRolls piggyBankValue is: ${piggyBankInput.value}`);
 
     }
 
@@ -256,11 +260,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             roundWinner = 'user';
-                            updateBankRolls('user', piggyBankValue);
                             newRound('user');
                         }, 5000);
                         roundWinner = 'user';
-                        updateBankRolls('user', piggyBankValue);
                         newRound('user');
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
@@ -276,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             roundWinner = 'computer';
-                            updateBankRolls('computer', piggyBankValue);
                             newRound('computer');
                         }, 5000)
                         return true;
@@ -299,7 +300,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             roundWinner = 'computer';
-                            updateBankRolls('computer', piggyBankValue);
                             newRound('computer');
                         }, 5000);
                         return true;
@@ -315,7 +315,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             roundWinner = 'user';
-                            updateBankRolls('user', piggyBankValue);
                             newRound('user');
                         }, 5000);
                         return true;
@@ -327,12 +326,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startUserTurn() {
+        
         circle.removeEventListener('click', startUserTurn);
         userTurn();
     }
 
 
     function userTurn() {
+
+        roundWinner = null;
 
         console.log("Its users turn");
 
@@ -525,6 +527,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
+        let piggyBankValue = parseInt(piggyBankInput.value); 
 
         if (bankRollUserValue <= 0 || bankRollComputerValue <= 0) {
             if (bankRollUserValue <= 0) {
@@ -533,12 +536,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
             } else if (bankRollComputerValue <= 0) {
                 //Call endGame function with user as argument 
-            }
+            } endGame('user'); 
         } else {
             if (roundWinner === 'user') {
-                setTheStakes();
+                setTimeout(function () {
+                    updateBankRolls('user', piggyBankValue)
+                }, 2000); 
+                setTimeout(function () {
+                    setTheStakes();
+                }, 4000); 
             } else if (roundWinner === 'computer') {
-                setComputerStakes();
+                setTimeout(function () {
+                    updateBankRolls('computer', piggyBankValue);
+                }, 2000);
+                setTimeout(function () {
+                    setComputerStakes();
+                }, 4000); 
+                
             }
         }
 
@@ -581,13 +595,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (userPoint > computerPoint) {
                         heading.textContent = "You win this round!";
                         roundWinner = 'user';
-                        updateBankRolls('user', piggyBankValue);
+                        // updateBankRolls('user', piggyBankValue);
                         newRound('user');
                     } else {
                         heading.textContent = "Computer wins this round";
                         roundWinner = 'computer';
                         console.log("Computer wins");
-                        updateBankRolls('computer', piggyBankValue);
+                        // updateBankRolls('computer', piggyBankValue);
                         newRound('computer');
                     }
                 } else {
@@ -597,13 +611,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userPairValue > computerPairValue) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
-                            updateBankRolls('user', piggyBankValue);
+                            // updateBankRolls('user', piggyBankValue);
                             newRound('user');
                         } else {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
                             console.log("Computer wins");
-                            updateBankRolls('computer', piggyBankValue);
+                            // updateBankRolls('computer', piggyBankValue);
                             newRound('computer');
                         }
                     } else {
@@ -611,13 +625,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userPoint > computerPoint) {
                             heading.textContent = "You win this round!";
                             roundWinner = 'user';
-                            updateBankRolls('user', piggyBankValue);
+                            // updateBankRolls('user', piggyBankValue);
                             newRound('user');
                         } else {
                             heading.textContent = "Computer wins this round";
                             roundWinner = 'computer';
                             console.log("Computer wins");
-                            updateBankRolls('computer', piggyBankValue);
+                            // updateBankRolls('computer', piggyBankValue);
                             newRound('computer');
                         }
 
