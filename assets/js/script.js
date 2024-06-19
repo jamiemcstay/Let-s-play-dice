@@ -178,11 +178,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function setComputerStakes() {
 
-
-
         roundWinner = null;
 
         console.log("You're in computer stakes");
+
+        let multiplier = Math.floor(Math.random() * 5) + 1;
+        let computerStakes = multiplier * 100;
+        
+        let bankRollUserValue = parseInt(bankRollUser.value);
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
 
         setTimeout(function () {
             heading.textContent = "Computer setting stakes";
@@ -190,34 +194,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             heading.innerText = `The stakes are ${computerStakes}`;
+            bankRollComputerValue -= computerStakes;
+            bankRollUserValue -= computerStakes;
+            bankRollComputer.value = bankRollComputerValue;
+            bankRollUser.value = bankRollUserValue;
+
+            piggyBankInput.value = computerStakes * 2;
         }, 2000);
 
-        let multiplier = Math.floor(Math.random() * 5) + 1;
-        let computerStakes = multiplier * 100;
-
-        let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-
-        bankRollComputerValue -= computerStakes;
-        bankRollUserValue -= computerStakes;
-        bankRollComputer.value = bankRollComputerValue;
-        bankRollUser.value = bankRollUserValue;
-
-        piggyBankInput.value = computerStakes * 2;
-
-
-
-
-
+        
+        setTimeout(function () {
+            currentPlayer = 'computer';       
+            runGame(); 
+        }, 3000); 
 
         console.log(`SetComputerStakes bankRollUserValue is ${bankRollUserValue}`);
         console.log(`SetComputerStakes bankRollComputerValue is ${bankRollComputerValue}`);
         console.log(`SetComputerStakes piggBankValueis ${piggyBankInput.value}`);
-
-        currentPlayer = 'computer';
-        runGame();
-
-
 
         return computerStakes;
 
@@ -519,6 +512,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log('You\re in newRound'); 
 
+        console.log(`roundWinner is: ${roundWinner}`);
+
         userRollOutcome = undefined;
         computerRollOutcome = undefined;
 
@@ -543,17 +538,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 //Call endGame function with user as argument 
                 setTimeout(function () {
                     endGame('user'); 
-                }, 3000); 
+                }, 2000); 
             } 
         } else {
             if (roundWinner === 'user') {
                 setTimeout(function () {
                     setTheStakes();
-                }, 2000); 
+                }, 3000); 
             } else if (roundWinner === 'computer') {
                 setTimeout(function () {
                     setComputerStakes();
-                }, 2000); 
+                }, 3000); 
                 
             }
         }
