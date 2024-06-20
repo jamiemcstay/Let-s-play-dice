@@ -355,8 +355,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             heading.textContent = "Rolling";
-        }, 2000);
-
+        }, 1000);
+        
         do {
             userDiceRolls = userRollDice();
             userRollOutcome = checkRoll(userDiceRolls, 'user');
@@ -400,9 +400,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(computerDiceRolls);
                 currentPlayer = 'user';
                 console.log(`computersTurn is returning: ${computerRollOutcome}`);
-                runGame();
             }, 3000);
-
+            setTimeout(function () {
+                runGame(); 
+            }, 4000); 
+            
         }
 
         return computerRollOutcome;
@@ -413,6 +415,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function runGame() {
+
+        console.log("Your in runGame"); 
 
         console.log(currentPlayer);
 
@@ -605,11 +609,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 4000); 
 
             } else {
-                currentPlayer = 'computer';
                 setTimeout(function () {
                     heading.textContent = "Computer Rolls first"; 
                 }, 3000); 
                 setTimeout(function () {
+                    currentPlayer = 'computer';
                     runGame(); 
                 }, 4000);  
             }
@@ -631,6 +635,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log(`User roll outcome before split: ${userRollOutcome}`);
             console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
+
 
             let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
             let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
