@@ -78,8 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollComputer.value = bankRollComputerValue;
         piggyBankInput.value = piggyBankValue;
 
-
-
         clickToStart();
 
     }
@@ -92,29 +90,18 @@ document.addEventListener('DOMContentLoaded', function () {
         return [rollDice(), rollDice(), rollDice()];
     }
 
-    function highRollDisplay() {
-
-        setTimeout(function () {
-            let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.fa-beat.die');
-            if (diceTwoChange) {
-                diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five die');
-            }
-        }, 2000);
-
-    }
 
     function highRoll() {
 
-        highRollDisplay(); 
 
         console.log('Youre in the high roll');
 
         circle.removeEventListener('click', highRoll);
 
-            let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.fa-beat.die');
-            if(diceTwoChange) {
-                diceTwoChange.classList.add('fa-spin'); 
-            }    
+        let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.fa-beat.die');
+        if (diceTwoChange) {
+            diceTwoChange.classList.add('fa-spin');
+        }
 
         let num1;
         let num2;
@@ -124,45 +111,45 @@ document.addEventListener('DOMContentLoaded', function () {
             num2 = rollDice();
         } while (num1 === num2);
 
-        heading.textContent = "Rolling"; 
+        heading.textContent = "Rolling";
 
         //Users high roll 
 
         setTimeout(function () {
             updateDieFace(diceTwoChange, num1);
-        }, 1000); 
+        }, 1000);
 
         setTimeout(function () {
             heading.textContent = `You rolled a ${num1}`;
-        }, 2000); 
+        }, 2000);
 
         //Computers high roll 
 
         setTimeout(function () {
-            if(diceTwoChange) {
-                diceTwoChange.classList.add('fa-spin'); 
-                heading.textContent = "Computer Rolling";  
-            }   
-        }, 3000); 
+            if (diceTwoChange) {
+                diceTwoChange.classList.add('fa-spin');
+                heading.textContent = "Computer Rolling";
+            }
+        }, 3000);
 
-            setTimeout(function () {
-                diceTwoChange.classList.remove('fa-spin'); 
-                updateDieFace(diceTwoChange, num2); 
-                heading.textContent = `Computer rolled a ${num2}`;
-            }, 4000);
-            
-                setTimeout(function () {
-                    if(num1 > num2) {
-                        heading.textContent = "You're the banker";
-                        currentPlayer = 'user'; 
-                        setTheStakes();
-                    } else {
-                        heading.textContent = "Computer is the banker"; 
-                        currentPlayer = 'computer'; 
-                        setComputerStakes(); 
-                        }
-                }, 5000); 
-    
+        setTimeout(function () {
+            diceTwoChange.classList.remove('fa-spin');
+            updateDieFace(diceTwoChange, num2);
+            heading.textContent = `Computer rolled a ${num2}`;
+        }, 4000);
+
+        setTimeout(function () {
+            if (num1 > num2) {
+                heading.textContent = "You're the banker";
+                currentPlayer = 'user';
+                setTheStakes();
+            } else {
+                heading.textContent = "Computer is the banker";
+                currentPlayer = 'computer';
+                setComputerStakes();
+            }
+        }, 5000);
+
 
         let highRollResult = [num1, num2];
 
@@ -172,13 +159,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateDieFace(dice, number) {
         //template literal to update dice face for high roll result
-        //[number - 1] to select correct 
+        //[number - 1] to select correct dice face
         dice.className = `fa-solid fa-dice-${['one', 'two', 'three', 'four', 'five', 'six'][number - 1]} die`;
     }
 
-
     function setTheStakes() {
-
 
         console.log("You're in user stakes");
 
@@ -190,9 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.textContent = `Set the stakes`;
         }, 4000);
 
-
         increaseStakesButton.addEventListener('click', updateStakes);
-
 
     }
 
@@ -228,13 +211,17 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             setTimeout(function () {
                 heading.textContent = "Click to roll";
+                threeDiceDisplay(); 
                 currentPlayer = 'user';
                 circle.addEventListener('click', userTurn);
             }, 2000);
         }
 
 
+    }
 
+    function threeDiceDisplay() {
+        
     }
 
 
@@ -452,22 +439,47 @@ document.addEventListener('DOMContentLoaded', function () {
             computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
         } while (computerRollOutcome === '');
 
-        if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
-            return;
 
-        } else {
+                setTimeout(function () {
 
-            setTimeout(function () {
-                heading.textContent = `Computer rolled a ${computerDiceRolls}`;
-                console.log(computerDiceRolls);
-                currentPlayer = 'user';
-                console.log(`computersTurn is returning: ${computerRollOutcome}`);
-            }, 3000);
-            setTimeout(function () {
-                runGame();
-            }, 4000);
+                    if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
+                        return;           
+                    } else {
+                        heading.textContent = `Computer rolled a ${computerDiceRolls}`;
+                        console.log(computerDiceRolls);
+                        currentPlayer = 'user';
+                        console.log(`computersTurn is returning: ${computerRollOutcome}`);
+                
+                    setTimeout(function () {
+                        runGame();
+                    }, 4000);   
+                }
+                }, 3000);
+                
+                
 
-        }
+            
+    
+
+
+
+
+        // if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
+        //     return;
+
+        // } else {
+
+        //     setTimeout(function () {
+        //         heading.textContent = `Computer rolled a ${computerDiceRolls}`;
+        //         console.log(computerDiceRolls);
+        //         currentPlayer = 'user';
+        //         console.log(`computersTurn is returning: ${computerRollOutcome}`);
+        //     }, 3000);
+        //     setTimeout(function () {
+        //         runGame();
+        //     }, 4000);
+
+        // }
 
         return computerRollOutcome;
     }
