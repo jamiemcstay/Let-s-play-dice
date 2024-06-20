@@ -101,7 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }, 2000);
 
-
     }
 
     function highRoll() {
@@ -126,25 +125,31 @@ document.addEventListener('DOMContentLoaded', function () {
             num2 = rollDice();
         } while (num1 === num2);
 
-        if (num1 > num2) {
-            currentPlayer = 'user';
-            heading.textContent = `You rolled a ${num1}`;
-            setTimeout(function () {
-                heading.textContent = `Computer rolled a ${num2}`;
-                setTheStakes();
-            }, 4000);
+        heading.textContent = "Rolling"; 
 
-        } else {
-            currentPlayer = 'computer';
-            heading.textContent = `You rolled a ${num1}`;
-            setTimeout(function () {
-                heading.textContent = `Computer rolled a ${num2}`;
-            }, 4000);
-            setTimeout(function () {
-                setComputerStakes();
-            }, 2000);
+        //Users high roll 
 
-        }
+        setTimeout(function () {
+            heading.textContent = `You rolled a ${num1}`;
+            updateDieFace(diceTwoChange, num1); 
+        }, 3000);
+
+        //Computers high roll 
+
+        setTimeout(function () {
+            if(diceTwoChange) {
+                diceTwoChange.classList.add('fa-spin');
+                heading.textContent = "Computer Rolling";  
+            }   
+        }, 4000); 
+
+            setTimeout(function () {
+                diceTwoChange.classList.remove('fa-spin'); 
+                heading.textContent = `Computer rolled a ${num2}`;
+                updateDieFace(diceTwoChange, num2); 
+            }, 5000);
+
+            
 
         let highRollResult = [num1, num2];
 
@@ -152,6 +157,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function updateDieFace(dice, number) {
+        //template literal to update dice face for high roll result
+        //[number - 1] to select correct 
+        dice.className = `fa-solid fa-dice-${['one', 'two', 'three', 'four', 'five', 'six'][number - 1]} die`;
+    }
 
 
     function setTheStakes() {
