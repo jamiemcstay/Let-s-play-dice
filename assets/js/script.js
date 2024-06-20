@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 diceTwoChange.classList.add('fa-spin'); 
             }    
 
-
         let num1;
         let num2;
 
@@ -130,26 +129,40 @@ document.addEventListener('DOMContentLoaded', function () {
         //Users high roll 
 
         setTimeout(function () {
+            updateDieFace(diceTwoChange, num1);
+        }, 1000); 
+
+        setTimeout(function () {
             heading.textContent = `You rolled a ${num1}`;
-            updateDieFace(diceTwoChange, num1); 
-        }, 3000);
+        }, 2000); 
 
         //Computers high roll 
 
         setTimeout(function () {
             if(diceTwoChange) {
-                diceTwoChange.classList.add('fa-spin');
+                diceTwoChange.classList.add('fa-spin'); 
                 heading.textContent = "Computer Rolling";  
             }   
-        }, 4000); 
+        }, 3000); 
 
             setTimeout(function () {
                 diceTwoChange.classList.remove('fa-spin'); 
-                heading.textContent = `Computer rolled a ${num2}`;
                 updateDieFace(diceTwoChange, num2); 
-            }, 5000);
-
+                heading.textContent = `Computer rolled a ${num2}`;
+            }, 4000);
             
+                setTimeout(function () {
+                    if(num1 > num2) {
+                        heading.textContent = "You're the banker";
+                        currentPlayer = 'user'; 
+                        setTheStakes();
+                    } else {
+                        heading.textContent = "Computer is the banker"; 
+                        currentPlayer = 'computer'; 
+                        setComputerStakes(); 
+                        }
+                }, 5000); 
+    
 
         let highRollResult = [num1, num2];
 
