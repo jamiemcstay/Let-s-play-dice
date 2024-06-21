@@ -49,8 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceThree = document.getElementById('die3');
         diceThree.style.display = 'none';
 
+        let diceTwo = document.getElementById('die2'); 
 
-        let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.die');
+        let diceTwoChange = diceTwo.querySelector('.die');
         if (diceTwoChange) {
             diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');
         }
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 4000);
 
         setTimeout(function () {
-            diceTwoChange.style.display = 'none'; 
+            // diceTwoChange.style.display = 'none'; 
 ;             if (num1 > num2) {
                 heading.textContent = "You're the banker";
                 currentPlayer = 'user';
@@ -223,30 +224,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function threeDiceDisplay() {
 
-        let diceTwoChange = document.querySelector('.fa-solid.fa-dice-five.fa-beat.die');
+
+        let diceTwoChange = document.querySelector('.fa-solid.fa-dice-two.die');
 
         if(diceTwoChange) {
-            diceTwoChange.style.display 
+            diceTwoChange.style.display = 'inline-flex';
+            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-two fa-beat die');  
         }
 
         let diceOne = document.getElementById('die1');
 
+        let diceOneChange = document.querySelector('.fa-solid.fa-dice-four.die'); 
+
+        //Unhide the parent div to see icon
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
-            diceOne.style.transform = 'rotate(0deg)'; 
-            diceOne.classList.add('beat'); 
+            diceOne.style.transform = 'rotate(0deg)';  
         } else {
             console.log('die1 element not found');
         }
 
-        let diceTwo = document.getElementById('die2');
-
-        if (diceTwo) {
-            diceTwo.style.display = 'inline-flex';
-            diceTwo.classList.add('beat');
+        //Change icon to beating icon
+        if(diceOneChange) {
+            diceOneChange.style.display = 'inline-flex';
+            diceOneChange.setAttribute('class', 'fa-solid fa-dice-four fa-beat die');
+        } else {
+            console.log('die1 i not found'); 
         }
 
-
+        
 
         let diceThree = document.getElementById('die3');
 
@@ -436,6 +442,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Its users turn");
 
+        threeDiceDisplay();
+
         circle.removeEventListener('click', userTurn);
 
         setTimeout(function () {
@@ -466,6 +474,8 @@ document.addEventListener('DOMContentLoaded', function () {
     function computerTurn() {
 
         console.log("Its computers turn");
+
+        threeDiceDisplay();
 
         setTimeout(function () {
             heading.textContent = "Computer Rolling";
