@@ -427,6 +427,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let piggyBankValue = parseInt(piggyBankInput.value);
 
+        console.log(`DW playerRoll is: ${playersRoll}`);
+        console.log("DW playerRoll is:", typeof playersRoll); 
+
         console.log("You're in instantWinOrLoss");
 
         if (player === 'user') {
@@ -436,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            updateDiceFace(playerRollOutcome);
+                            updateDiceFace(playersRoll);
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -455,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'computer';
                         banker = 'computer';
                         setTimeout(function () {
-                            updateDiceFace(playerRollOutcome);
+                            updateDiceFace(playersRoll);
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -481,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'computer';
                         banker = 'computer';
                         setTimeout(function () {
-                            updateDiceFace(playerRollOutcome);
+                            updateDiceFace(playersRoll);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -499,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            updateDiceFace(playerRollOutcome);
+                            updateDiceFace(playersRoll);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -537,9 +540,6 @@ document.addEventListener('DOMContentLoaded', function () {
         circle.removeEventListener('click', userTurn);
 
         setTimeout(function () {
-            // diceOneChange.classList.add('fa-spin');
-            // diceTwoChange.classList.add('fa-spin');
-            // diceThreeChange.classList.add('fa-spin');
             threeDiceSpinningDisplay();
             heading.textContent = "Rolling";
         }, 1000);
@@ -618,6 +618,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateDiceFace(roll) {
 
         console.log("playerRoll Received:", typeof roll);
+
+        //Check if roll is an array and if so convert to string 
+        if(Array.isArray(roll)) {
+            roll = roll.join(''); 
+        }
         console.log(roll);
 
         //Find the elements
