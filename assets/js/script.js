@@ -359,6 +359,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
+                            updateDiceFace(userRollOutcome); 
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -377,6 +378,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'computer';
                         banker = 'computer';
                         setTimeout(function () {
+                            updateDiceFace(userRollOutcome);
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -402,6 +404,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'computer';
                         banker = 'computer';
                         setTimeout(function () {
+                            updateDiceFace(computerRollOutcome); 
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -419,6 +422,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
+                            updateDiceFace(computerRollOutcome); 
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -462,8 +466,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Its users turn");
 
-        // threeDiceDisplay();
-
         circle.removeEventListener('click', userTurn);
 
         setTimeout(function () {
@@ -482,9 +484,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         } else {
             setTimeout(function () {
+                console.log(typeof userRollOutcome); 
+                console.log(typeof userDiceRolls);
                 heading.textContent = `You rolled a ${userDiceRolls}`;
                 currentPlayer = 'computer';
                 console.log(`UsersTurn is returning: ${userRollOutcome}`);
+                updateDiceFace(userRollOutcome); 
                 runGame();
             }, 3000);
 
@@ -530,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log(computerDiceRolls);
                         currentPlayer = 'user';
                         console.log(`computersTurn is returning: ${computerRollOutcome}`);
-                
+                        updateDiceFace(computerRollOutcome); 
                     setTimeout(function () {
                         runGame();
                     }, 4000);   
@@ -538,6 +543,32 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 3000);
                 
         return computerRollOutcome;
+    }
+
+    function updateDiceFace(roll) {
+        //Find the elements
+
+        let diceOne = document.getElementById('die1');
+        let diceTwo = document.getElementById('die2');
+        let diceThree = document.getElementById('die3')
+
+        //Find the i in the elements
+
+        let diceOneChange = diceOne.querySelector('.die');
+        let diceTwoChange = diceTwo.querySelector('.die');
+        let diceThreeChange = diceThree.querySelector('.die');
+
+        //Update dice faces in user roll using updateDieFace for user and for computer
+
+            if(typeof roll === 'string' && roll.length === 3) {
+                updateDieFace(diceOneChange, parseInt(roll[0])); 
+                updateDieFace(diceTwoChange, parseInt(roll[1]));
+                updateDieFace(diceThreeChange, parseInt(roll[2])); 
+            } else {
+                console.log("Roll not found"); 
+            }
+    
+
     }
 
     function endGame() {
