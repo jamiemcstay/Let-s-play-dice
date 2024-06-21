@@ -51,26 +51,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
-
-    function highRollDiceDisplay() {
-
-        let diceOne = document.getElementById('die1');
-        diceOne.style.display = 'none';
-        let diceThree = document.getElementById('die3');
-        diceThree.style.display = 'none';
-
-        let diceTwo = document.getElementById('die2');
-
-        let diceTwoChange = diceTwo.querySelector('.die');
-        if (diceTwoChange) {
-            diceTwoChange.classList.add('fa-beat');
-        }
-
-        return;
-
-    }
-
     function reStartGame() {
 
         circle.removeEventListener('click', reStartGame);
@@ -155,12 +135,14 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             ;
             if (num1 > num2) {
-                heading.textContent = "You're the banker";
+                threeDiceNoDisplay(); 
+                heading.textContent = "You're the banker"; 
                 currentPlayer = 'user';
                 diceTwoChange.classList.remove('fa-spin');
                 diceTwoChange.classList.remove('fa-beat');
                 setTheStakes();
             } else {
+                threeDiceNoDisplay(); 
                 heading.textContent = "Computer is the banker";
                 diceTwoChange.classList.remove('fa-spin');
                 diceTwoChange.classList.remove('fa-beat');
@@ -176,6 +158,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function highRollDiceDisplay() {
+
+        let diceOne = document.getElementById('die1');
+        diceOne.style.display = 'none';
+        let diceThree = document.getElementById('die3');
+        diceThree.style.display = 'none';
+
+        let diceTwo = document.getElementById('die2');
+
+        let diceTwoChange = diceTwo.querySelector('.die');
+        if (diceTwoChange) {
+            diceTwoChange.classList.add('fa-beat');
+        }
+
+        return;
+
+    }
+    
+
     function updateDieFace(dice, number) {
         //template literal to update dice face for high roll result
         //[number - 1] to select correct dice face
@@ -185,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log('Invalid dice number:', number);
         }
-
 
     }
 
@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let increaseStakesButton = document.getElementById('increase-stakes');
 
         setTimeout(function () {
+            threeDiceNoDisplay(); 
             heading.textContent = `Set the stakes`;
         }, 2000);
 
@@ -230,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!roundWinner) {
             setTimeout(function () {
+                threeDiceNoDisplay(); 
                 heading.textContent = "Click to begin";
                 currentPlayer = 'user';
                 circle.addEventListener('click', runGame);
@@ -241,6 +243,121 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentPlayer = 'user';
                 circle.addEventListener('click', userTurn);
             }, 2000);
+        }
+
+    }
+
+    function setComputerStakes() {
+
+        roundWinner = null;
+
+        banker = 'computer';
+
+        console.log("You're in computer stakes");
+
+        let multiplier = Math.floor(Math.random() * 5) + 1;
+        let computerStakes = multiplier * 100;
+
+        let bankRollUserValue = parseInt(bankRollUser.value);
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
+
+        setTimeout(function () {
+            threeDiceNoDisplay(); 
+            heading.textContent = "Computer setting stakes";
+        }, 1000);
+
+        setTimeout(function () {
+
+            if (computerStakes > bankRollUserValue) {
+                computerStakes = bankRollUserValue;
+            }
+            threeDiceNoDisplay(); 
+            heading.innerText = `The stakes are ${computerStakes}`;
+            bankRollComputerValue -= computerStakes;
+            bankRollUserValue -= computerStakes;
+            bankRollComputer.value = bankRollComputerValue;
+            bankRollUser.value = bankRollUserValue;
+
+            piggyBankInput.value = computerStakes * 2;
+        }, 2000);
+
+
+        setTimeout(function () {
+            currentPlayer = 'computer';
+            runGame();
+        }, 3000);
+
+        console.log(`SetComputerStakes bankRollUserValue is ${bankRollUserValue}`);
+        console.log(`SetComputerStakes bankRollComputerValue is ${bankRollComputerValue}`);
+        console.log(`SetComputerStakes piggBankValueis ${piggyBankInput.value}`);
+
+        return computerStakes;
+
+    }
+
+    function threeDiceNoDisplay() {
+
+        let diceOne = document.getElementById('die1');
+        let diceTwo = document.getElementById('die2');
+        let diceThree = document.getElementById('die3');
+
+        diceOne.style.display = 'none'; 
+        diceTwo.style.display = 'none';
+        diceThree.style.display = 'none'; 
+
+    }
+
+    function threeDiceBounceDisplay() {
+
+        let diceOne = document.getElementById('die1');
+        let diceTwo = document.getElementById('die2');
+        let diceThree = document.getElementById('die3');
+
+        //Unhide the parent div to see icon
+
+        if (diceOne) {
+            diceOne.style.display = 'inline-flex';
+            diceOne.style.transform = 'rotate(0deg)';
+        } else {
+            console.log('die1 element not found');
+        }
+
+        if (diceTwo) {
+            diceTwo.style.display = 'inline-flex';
+        }
+
+        if (diceThree) {
+            diceThree.style.display = 'inline-flex';
+            diceThree.style.transform = 'rotate(0deg)';
+        } else {
+            console.log('die element not found');
+        }
+
+        //Change to beating dice
+
+        let diceOneChange = diceOne.querySelector('.die');
+        let diceTwoChange = diceTwo.querySelector('.die');
+        let diceThreeChange = diceThree.querySelector('.die');
+
+        if (diceOneChange) {
+            diceOneChange.style.display = 'inline-flex';
+            diceOneChange.classList.add('fa-beat');
+        } else {
+            console.log('die1 i not found');
+        }
+
+        if (diceTwoChange) {
+            diceTwoChange.style.display = 'inline-flex';
+            diceTwoChange.classList.add('fa-beat');
+        } else {
+            console.log('die2 i not found');
+        }
+
+        if (diceThreeChange) {
+            diceThreeChange.style.display = 'inline-flex';
+            diceThreeChange.classList.add('fa-beat');
+        } else {
+            console.log('die3 not found');
         }
 
     }
@@ -299,109 +416,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function threeDiceBounceDisplay() {
-
-        let diceOne = document.getElementById('die1');
-        let diceTwo = document.getElementById('die2');
-        let diceThree = document.getElementById('die3')
-
-        //Unhide the parent div to see icon
-
-        if (diceOne) {
-            diceOne.style.display = 'inline-flex';
-            diceOne.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die1 element not found');
-        }
-
-        if (diceTwo) {
-            diceTwo.style.display = 'inline-flex';
-        }
-
-        if (diceThree) {
-            diceThree.style.display = 'inline-flex';
-            diceThree.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die element not found');
-        }
-
-        //Change to beating dice
-
-        let diceOneChange = diceOne.querySelector('.die');
-        let diceTwoChange = diceTwo.querySelector('.die');
-        let diceThreeChange = diceThree.querySelector('.die');
-
-        if (diceOneChange) {
-            diceOneChange.style.display = 'inline-flex';
-            diceOneChange.classList.add('fa-beat');
-        } else {
-            console.log('die1 i not found');
-        }
-
-        if (diceTwoChange) {
-            diceTwoChange.style.display = 'inline-flex';
-            diceTwoChange.classList.add('fa-beat');
-        } else {
-            console.log('die2 i not found');
-        }
-
-        if (diceThreeChange) {
-            diceThreeChange.style.display = 'inline-flex';
-            diceThreeChange.classList.add('fa-beat');
-        } else {
-            console.log('die3 not found');
-        }
-
-    }
-
-
-    function setComputerStakes() {
-
-        roundWinner = null;
-
-        banker = 'computer';
-
-        console.log("You're in computer stakes");
-
-        let multiplier = Math.floor(Math.random() * 5) + 1;
-        let computerStakes = multiplier * 100;
-
-        let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-
-        setTimeout(function () {
-            heading.textContent = "Computer setting stakes";
-        }, 1000);
-
-        setTimeout(function () {
-
-            if (computerStakes > bankRollUserValue) {
-                computerStakes = bankRollUserValue;
-            }
-            heading.innerText = `The stakes are ${computerStakes}`;
-            bankRollComputerValue -= computerStakes;
-            bankRollUserValue -= computerStakes;
-            bankRollComputer.value = bankRollComputerValue;
-            bankRollUser.value = bankRollUserValue;
-
-            piggyBankInput.value = computerStakes * 2;
-        }, 2000);
-
-
-        setTimeout(function () {
-            currentPlayer = 'computer';
-            runGame();
-        }, 3000);
-
-        console.log(`SetComputerStakes bankRollUserValue is ${bankRollUserValue}`);
-        console.log(`SetComputerStakes bankRollComputerValue is ${bankRollComputerValue}`);
-        console.log(`SetComputerStakes piggBankValueis ${piggyBankInput.value}`);
-
-        return computerStakes;
-
-    }
 
     function updateBankRolls(winner, piggyBankValue) {
+
+        threeDiceNoDisplay(); 
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
@@ -428,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let piggyBankValue = parseInt(piggyBankInput.value);
 
         console.log(`DW playerRoll is: ${playersRoll}`);
-        console.log("DW playerRoll is:", typeof playersRoll); 
+        console.log("DW playerRoll is:", typeof playersRoll);
 
         console.log("You're in instantWinOrLoss");
 
@@ -444,6 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
+                            threeDiceNoDisplay(); 
                             heading.textContent = 'Instant Win!';
                         }, 3000);
                         setTimeout(function () {
@@ -463,6 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
+                            threeDiceNoDisplay(); 
                             heading.textContent = 'Instant Loss!';
                         }, 3000);
                         setTimeout(function () {
@@ -488,6 +508,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
+                            threeDiceNoDisplay(); 
                             heading.textContent = 'Instant Win!';
                         }, 3000);
                         setTimeout(function () {
@@ -499,6 +520,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 5000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
+                        threeDiceNoDisplay(); 
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
@@ -506,6 +528,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
+                            threeDiceNoDisplay(); 
                             heading.textContent = 'Instant Loss!';
                         }, 3000);
                         setTimeout(function () {
@@ -620,8 +643,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("playerRoll Received:", typeof roll);
 
         //Check if roll is an array and if so convert to string 
-        if(Array.isArray(roll)) {
-            roll = roll.join(''); 
+        if (Array.isArray(roll)) {
+            roll = roll.join('');
         }
         console.log(roll);
 
