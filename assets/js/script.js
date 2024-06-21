@@ -633,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //remove spaces from string so die vars parse correctly
 
-        roll = roll.replace(/\s+/g, '');
+        // roll = roll.replace(/\s+/g, '');
 
         if (typeof roll === 'string' && roll.length) {
             console.log('updateDiceFace - Parsing dice faces:');
@@ -797,7 +797,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (point === 1) {
                 outcome = 'instant-loss';
             } else if (point >= 2 && point <= 5) {
-                outcome = `${pairDie} ${pairDie} ${point}`;
+                outcome = `${pairDie}${pairDie}${point}`;
                 console.log(`${pairDie} ${pairDie} ${point}`);
             }
 
