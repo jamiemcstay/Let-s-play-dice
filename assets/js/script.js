@@ -224,17 +224,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function threeDiceDisplay() {
 
-
-        let diceTwoChange = document.querySelector('.fa-solid.fa-dice-two.die');
-
-        if(diceTwoChange) {
-            diceTwoChange.style.display = 'inline-flex';
-            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-two fa-beat die');  
-        }
-
         let diceOne = document.getElementById('die1');
-
-        let diceOneChange = document.querySelector('.fa-solid.fa-dice-four.die'); 
+        let diceTwo = document.getElementById('die2');
+        let diceThree = document.getElementById('die3')
 
         //Unhide the parent div to see icon
         if (diceOne) {
@@ -244,17 +236,9 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('die1 element not found');
         }
 
-        //Change icon to beating icon
-        if(diceOneChange) {
-            diceOneChange.style.display = 'inline-flex';
-            diceOneChange.setAttribute('class', 'fa-solid fa-dice-four fa-beat die');
-        } else {
-            console.log('die1 i not found'); 
+        if(diceTwo) {
+            diceTwo.style.display = 'inline-flex';
         }
-
-        
-
-        let diceThree = document.getElementById('die3');
 
         if (diceThree) {
             diceThree.style.display = 'inline-flex';
@@ -264,6 +248,32 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('die element not found');
         }
 
+        //Change to beating dice
+
+        let diceOneChange = diceOne.querySelector('.die');
+        let diceTwoChange = diceTwo.querySelector('.die');
+        let diceThreeChange = diceThree.querySelector('.die');
+
+        if(diceOneChange) {
+            diceOneChange.style.display = 'inline-flex';
+            diceOneChange.setAttribute('class', 'fa-solid fa-dice-four fa-beat die');
+        } else {
+            console.log('die1 i not found'); 
+        }
+
+        if(diceTwoChange) {
+            diceTwoChange.style.display = 'inline-flex';
+            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');  
+        } else {
+            console.log('die2 i not found'); 
+        }
+
+        if (diceThreeChange) {
+            diceThreeChange.style.display = 'inline-flex'; 
+            diceThreeChange.setAttribute('class', 'fa-solid fa-dice-six fa-beat die')
+        } else {
+            console.log('die3 not found'); 
+        }
         
     }
 
