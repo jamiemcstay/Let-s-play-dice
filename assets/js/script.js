@@ -448,15 +448,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function userTurn() {
 
+
+        let diceOne = document.getElementById('die1');
+        let diceTwo = document.getElementById('die2');
+        let diceThree = document.getElementById('die3');
+
+        let diceOneChange = diceOne.querySelector('.die');
+        let diceTwoChange = diceTwo.querySelector('.die');
+        let diceThreeChange = diceThree.querySelector('.die');
+
+
         roundWinner = null;
 
         console.log("Its users turn");
 
-        threeDiceDisplay();
+        // threeDiceDisplay();
 
         circle.removeEventListener('click', userTurn);
 
         setTimeout(function () {
+            diceOneChange.classList.add('fa-spin');
+            diceTwoChange.classList.add('fa-spin');
+            diceThreeChange.classList.add('fa-spin');
             heading.textContent = "Rolling";
         }, 1000);
 
@@ -483,12 +496,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function computerTurn() {
 
+        let diceOne = document.getElementById('die1');
+        let diceTwo = document.getElementById('die2');
+        let diceThree = document.getElementById('die3');
+
+        let diceOneChange = diceOne.querySelector('.die');
+        let diceTwoChange = diceTwo.querySelector('.die');
+        let diceThreeChange = diceThree.querySelector('.die');
+
         console.log("Its computers turn");
 
         threeDiceDisplay();
 
         setTimeout(function () {
             heading.textContent = "Computer Rolling";
+            diceOneChange.classList.add('fa-spin');
+            diceTwoChange.classList.add('fa-spin');
+            diceThreeChange.classList.add('fa-spin');
         }, 2000);
 
         do {
