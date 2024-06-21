@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceThree = document.getElementById('die3');
         diceThree.style.display = 'none';
 
-        let diceTwo = document.getElementById('die2'); 
+        let diceTwo = document.getElementById('die2');
 
         let diceTwoChange = diceTwo.querySelector('.die');
         if (diceTwoChange) {
-            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');
+            diceTwoChange.classList.add('fa-beat');
         }
 
         circle.removeEventListener('click', clickToStart);
@@ -142,7 +142,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             // diceTwoChange.style.display = 'none'; 
-;             if (num1 > num2) {
+            ;
+            if (num1 > num2) {
                 heading.textContent = "You're the banker";
                 currentPlayer = 'user';
                 setTheStakes();
@@ -213,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 2000);
         } else {
             setTimeout(function () {
-                threeDiceDisplay(); 
+                threeDiceDisplay();
                 heading.textContent = "Click to roll";
                 currentPlayer = 'user';
                 circle.addEventListener('click', userTurn);
@@ -231,19 +232,19 @@ document.addEventListener('DOMContentLoaded', function () {
         //Unhide the parent div to see icon
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
-            diceOne.style.transform = 'rotate(0deg)';  
+            diceOne.style.transform = 'rotate(0deg)';
         } else {
             console.log('die1 element not found');
         }
 
-        if(diceTwo) {
+        if (diceTwo) {
             diceTwo.style.display = 'inline-flex';
         }
 
         if (diceThree) {
             diceThree.style.display = 'inline-flex';
             diceThree.style.transform = 'rotate(0deg)';
-            diceThree.classList.add('beat'); 
+            diceThree.classList.add('beat');
         } else {
             console.log('die element not found');
         }
@@ -254,27 +255,27 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceTwoChange = diceTwo.querySelector('.die');
         let diceThreeChange = diceThree.querySelector('.die');
 
-        if(diceOneChange) {
+        if (diceOneChange) {
             diceOneChange.style.display = 'inline-flex';
             diceOneChange.setAttribute('class', 'fa-solid fa-dice-four fa-beat die');
         } else {
-            console.log('die1 i not found'); 
+            console.log('die1 i not found');
         }
 
-        if(diceTwoChange) {
+        if (diceTwoChange) {
             diceTwoChange.style.display = 'inline-flex';
-            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');  
+            diceTwoChange.setAttribute('class', 'fa-solid fa-dice-five fa-beat die');
         } else {
-            console.log('die2 i not found'); 
+            console.log('die2 i not found');
         }
 
         if (diceThreeChange) {
-            diceThreeChange.style.display = 'inline-flex'; 
+            diceThreeChange.style.display = 'inline-flex';
             diceThreeChange.setAttribute('class', 'fa-solid fa-dice-six fa-beat die')
         } else {
-            console.log('die3 not found'); 
+            console.log('die3 not found');
         }
-        
+
     }
 
 
@@ -359,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            updateDiceFace(userRollOutcome); 
+                            updateDiceFace(userRollOutcome);
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -404,7 +405,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'computer';
                         banker = 'computer';
                         setTimeout(function () {
-                            updateDiceFace(computerRollOutcome); 
+                            updateDiceFace(computerRollOutcome);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -422,7 +423,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            updateDiceFace(computerRollOutcome); 
+                            updateDiceFace(computerRollOutcome);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -444,13 +445,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startUserTurn() {
-        
+
         circle.removeEventListener('click', startUserTurn);
         userTurn();
     }
 
 
     function userTurn() {
+
+        threeDiceDisplay(); 
 
 
         let diceOne = document.getElementById('die1');
@@ -481,15 +484,16 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (userRollOutcome === '');
 
         if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
+            updateDiceFace(userRollOutcome);
             return;
         } else {
             setTimeout(function () {
-                console.log(typeof userRollOutcome); 
+                console.log(typeof userRollOutcome);
                 console.log(typeof userDiceRolls);
                 heading.textContent = `You rolled a ${userDiceRolls}`;
                 currentPlayer = 'computer';
                 console.log(`UsersTurn is returning: ${userRollOutcome}`);
-                updateDiceFace(userRollOutcome); 
+                updateDiceFace(userRollOutcome);
                 runGame();
             }, 3000);
 
@@ -526,48 +530,71 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (computerRollOutcome === '');
 
 
-                setTimeout(function () {
+        setTimeout(function () {
 
-                    if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
-                        return;           
-                    } else {
-                        heading.textContent = `Computer rolled a ${computerDiceRolls}`;
-                        console.log(computerDiceRolls);
-                        currentPlayer = 'user';
-                        console.log(`computersTurn is returning: ${computerRollOutcome}`);
-                        updateDiceFace(computerRollOutcome); 
-                    setTimeout(function () {
-                        runGame();
-                    }, 4000);   
-                }
-                }, 3000);
-                
+            if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
+                updateDiceFace(computerRollOutcome);
+                return;
+            } else {
+                heading.textContent = `Computer rolled a ${computerDiceRolls}`;
+                console.log(computerDiceRolls);
+                currentPlayer = 'user';
+                console.log(`computersTurn is returning: ${computerRollOutcome}`);
+                updateDiceFace(computerRollOutcome);
+                setTimeout(function () {
+                    runGame();
+                }, 4000);
+            }
+        }, 3000);
+
         return computerRollOutcome;
     }
 
-    function updateDiceFace(roll) {
+    function updateDiceFace(playerRoll) {
+
+        console.log("playerRoll Received:", typeof playerRoll);
+        console.log(playerRoll);
         //Find the elements
 
         let diceOne = document.getElementById('die1');
+        diceOne.style.display = 'inline-flex'; 
         let diceTwo = document.getElementById('die2');
-        let diceThree = document.getElementById('die3')
-
+        diceTwo.style.display = "inline-flex"; 
+        let diceThree = document.getElementById('die3');
+        diceThree.style.display = 'inline-flex'; 
+        
         //Find the i in the elements
 
         let diceOneChange = diceOne.querySelector('.die');
         let diceTwoChange = diceTwo.querySelector('.die');
-        let diceThreeChange = diceThree.querySelector('.die');
+        if(diceTwoChange) {
+            diceTwoChange.style.display = 'inline-flex';
+;         }
+
+        let diceThreeChange = diceThree.querySelector('.die'); 
+        
 
         //Update dice faces in user roll using updateDieFace for user and for computer
 
-            if(typeof roll === 'string' && roll.length === 3) {
-                updateDieFace(diceOneChange, parseInt(roll[0])); 
-                updateDieFace(diceTwoChange, parseInt(roll[1]));
-                updateDieFace(diceThreeChange, parseInt(roll[2])); 
+        if (typeof playerRoll === 'string') {
+            if(diceOneChange) {
+                updateDieFace(diceOneChange, parseInt(playerRoll[0]));
             } else {
-                console.log("Roll not found"); 
+                console.log("Die1 not found"); 
+            } 
+            if(diceTwoChange) {
+                updateDieFace(diceTwoChange, parseInt(playerRoll[1]));
+            } else {
+                console.log("Die 2 not found"); 
             }
-    
+
+            updateDieFace(diceThreeChange, parseInt(playerRoll[2]));
+
+
+        } else {
+            console.log("Roll not found");
+        }
+
 
     }
 
@@ -609,7 +636,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         circle.removeEventListener('click', runGame)
 
-
         if (roundWinner !== null) {
             return;
         }
@@ -617,7 +643,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (currentPlayer === 'user') {
             if (userRollOutcome === undefined) {
                 setTimeout(function () {
-                    threeDiceDisplay(); 
+                    threeDiceDisplay();
                     heading.textContent = "Click to roll";
                     circle.addEventListener('click', startUserTurn);
                 }, 1000);
