@@ -135,14 +135,14 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             ;
             if (num1 > num2) {
-                threeDiceNoDisplay(); 
-                heading.textContent = "You're the banker"; 
+                threeDiceNoDisplay();
+                heading.textContent = "You're the banker";
                 currentPlayer = 'user';
                 diceTwoChange.classList.remove('fa-spin');
                 diceTwoChange.classList.remove('fa-beat');
                 setTheStakes();
             } else {
-                threeDiceNoDisplay(); 
+                threeDiceNoDisplay();
                 heading.textContent = "Computer is the banker";
                 diceTwoChange.classList.remove('fa-spin');
                 diceTwoChange.classList.remove('fa-beat');
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
 
     }
-    
+
 
     function updateDieFace(dice, number) {
         //template literal to update dice face for high roll result
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let increaseStakesButton = document.getElementById('increase-stakes');
 
         setTimeout(function () {
-            threeDiceNoDisplay(); 
+            threeDiceNoDisplay();
             heading.textContent = `Set the stakes`;
         }, 2000);
 
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!roundWinner) {
             setTimeout(function () {
-                threeDiceNoDisplay(); 
+                threeDiceNoDisplay();
                 heading.textContent = "Click to begin";
                 currentPlayer = 'user';
                 circle.addEventListener('click', runGame);
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let bankRollComputerValue = parseInt(bankRollComputer.value);
 
         setTimeout(function () {
-            threeDiceNoDisplay(); 
+            threeDiceNoDisplay();
             heading.textContent = "Computer setting stakes";
         }, 1000);
 
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (computerStakes > bankRollUserValue) {
                 computerStakes = bankRollUserValue;
             }
-            threeDiceNoDisplay(); 
+            threeDiceNoDisplay();
             heading.innerText = `The stakes are ${computerStakes}`;
             bankRollComputerValue -= computerStakes;
             bankRollUserValue -= computerStakes;
@@ -301,9 +301,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceTwo = document.getElementById('die2');
         let diceThree = document.getElementById('die3');
 
-        diceOne.style.display = 'none'; 
+        diceOne.style.display = 'none';
         diceTwo.style.display = 'none';
-        diceThree.style.display = 'none'; 
+        diceThree.style.display = 'none';
 
     }
 
@@ -419,7 +419,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateBankRolls(winner, piggyBankValue) {
 
-        threeDiceNoDisplay(); 
+        threeDiceNoDisplay();
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
@@ -462,7 +462,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.textContent = 'Instant Win!';
                         }, 3000);
                         setTimeout(function () {
@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.textContent = 'Instant Loss!';
                         }, 3000);
                         setTimeout(function () {
@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.textContent = 'Instant Win!';
                         }, 3000);
                         setTimeout(function () {
@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 5000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
-                        threeDiceNoDisplay(); 
+                        threeDiceNoDisplay();
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
@@ -528,7 +528,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.textContent = 'Instant Loss!';
                         }, 3000);
                         setTimeout(function () {
