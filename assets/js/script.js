@@ -55,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         circle.removeEventListener('click', reStartGame);
 
-        banker = undefined;
-        roundWinner = undefined;
+        banker = null;
+        roundWinner = null;
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         bankRollUserValue = 500;
@@ -69,7 +69,11 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollComputer.value = bankRollComputerValue;
         piggyBankInput.value = piggyBankValue;
 
+        let diceTwo = document.getElementById('die2');
+        diceTwo.style.display = 'inline-flex'; 
+
         clickToStart();
+
 
     }
 
@@ -229,21 +233,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-        if (!roundWinner) {
-            setTimeout(function () {
-                threeDiceNoDisplay();
-                heading.textContent = "Click to begin";
-                currentPlayer = 'user';
-                circle.addEventListener('click', runGame);
-            }, 2000);
-        } else {
+        // if (!roundWinner) {
+        //     setTimeout(function () {
+        //         threeDiceNoDisplay();
+        //         heading.textContent = "Click to begin";
+        //         currentPlayer = 'user';
+        //         circle.addEventListener('click', runGame);
+        //     }, 2000);
+        // } else {
             setTimeout(function () {
                 threeDiceBounceDisplay();
                 heading.textContent = "Click to roll";
                 currentPlayer = 'user';
                 circle.addEventListener('click', userTurn);
             }, 2000);
-        }
+        // }
 
     }
 
@@ -643,9 +647,11 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("playerRoll Received:", typeof roll);
 
         //Check if roll is an array and if so convert to string 
+        
         if (Array.isArray(roll)) {
             roll = roll.join('');
         }
+
         console.log(roll);
 
         //Find the elements
@@ -656,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //remove spaces from string so die vars parse correctly
 
-        // roll = roll.replace(/\s+/g, '');
+        roll = roll.replace(/\s+/g, '');
 
         if (typeof roll === 'string' && roll.length) {
             console.log('updateDiceFace - Parsing dice faces:');
@@ -820,7 +826,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (point === 1) {
                 outcome = 'instant-loss';
             } else if (point >= 2 && point <= 5) {
-                outcome = `${pairDie}${pairDie}${point}`;
+                outcome = `${pairDie} ${pairDie} ${point}`;
                 console.log(`${pairDie} ${pairDie} ${point}`);
             }
 
@@ -856,6 +862,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (bankRollUserValue <= 0) {
                 //Call end game function with computer as argument
                 setTimeout(function () {
+
                     endGame('computer');
                 }, 1000);
 
