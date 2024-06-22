@@ -533,7 +533,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 5000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
-                        threeDiceNoDisplay();
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
