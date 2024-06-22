@@ -69,8 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollComputer.value = bankRollComputerValue;
         piggyBankInput.value = piggyBankValue;
 
+
+        //Single dice for high roll
         let diceTwo = document.getElementById('die2');
         diceTwo.style.display = 'inline-flex'; 
+
+        //remove other two dice for high roll
+        let diceOne = document.getElementById('die1');
+        let diceThree = document.getElementById('die3');
+        
+        diceOne.style.display = 'none';
+        diceThree.style.display = 'none'; 
 
         clickToStart();
 
@@ -654,39 +663,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log(roll);
 
-        //Find the elements
+        //remove spaces from string so strings are 3 characters
 
-        let diceOne = document.getElementById('die1').querySelector('.die');
-        let diceTwo = document.getElementById('die2').querySelector('.die');
-        let diceThree = document.getElementById('die3').querySelector('.die');
+        roll = String(roll).replace(/\s+/g, '');
 
-        //remove spaces from string so die vars parse correctly
+        if (isNaN(roll)) {
+            console.log("updateDiceFace' - Roll is a special case or invalid string:", roll);
+            return; 
+        }
 
-        roll = roll.replace(/\s+/g, '');
+        if (roll.length === 3) {
 
-        if (typeof roll === 'string' && roll.length) {
             console.log('updateDiceFace - Parsing dice faces:');
 
-            let die1 = parseInt(roll[0]);
-            let die2 = parseInt(roll[1]);
-            let die3 = parseInt(roll[2]);
+            let diceOneValue = parseInt(roll[0]);
+            let diceTwoValue = parseInt(roll[1]);
+            let diceThreeValue = parseInt(roll[2]);
 
-            console.log('Dice 1:', die1);
-            console.log('Dice 2:', die2);
-            console.log('Dice 3:', die3);
+            console.log("updateDiceFace - Parsing dice faces");
 
-            if (!isNaN(die1) && die1 >= 1 && die1 <= 6 &&
-                !isNaN(die2) && die2 >= 1 && die2 <= 6 &&
-                !isNaN(die3) && die3 >= 1 && die3 <= 6) {
-                updateDieFace(diceOne, die1);
-                updateDieFace(diceTwo, die2);
-                updateDieFace(diceThree, die3);
+            console.log('Dice 1:', diceOneValue);
+            console.log('Dice 2:', diceTwoValue);
+            console.log('Dice 3:', diceThreeValue);
 
+            //Find the elements
+
+            let diceOne = document.getElementById('die1');
+            let diceTwo = document.getElementById('die2');
+            let diceThree = document.getElementById('die3');
+
+            //find the i element in the divs
+            let diceOneChange = diceOne ? diceOne.querySelector('.die') : null; 
+            let diceTwoChange = diceTwo ? diceTwo.querySelector('.die') : null;
+            let diceThreeChange = diceThree ? diceThree.querySelector('.die') : null; 
+
+            if (!isNaN(diceOneValue) && !isNaN(diceTwoValue) && !isNaN(diceThreeValue)) {
+                if (diceOneChange) updateDieFace(diceOneChange, diceOneValue);
+                if (diceTwoChange) updateDieFace(diceTwoChange, diceTwoValue);
+                if (diceThreeChange) updateDieFace(diceThreeChange, diceThreeValue);
+; 
             } else {
                 console.log("updateDiceFace - One or more parsed dice faces are invalid");
             }
         } else {
-            console.log("updateDiceFace -Invalid roll format:", roll);
+            console.log("Roll not found or Invalid roll format:", roll);
         }
 
 
