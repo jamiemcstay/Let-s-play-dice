@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Single dice for high roll
         let diceTwo = document.getElementById('die2');
-        diceTwo.style.display = 'inline-flex'; 
+        diceTwo.style.display = 'inline-flex';
 
         //remove other two dice for high roll
         let diceOne = document.getElementById('die1');
         let diceThree = document.getElementById('die3');
-        
+
         diceOne.style.display = 'none';
-        diceThree.style.display = 'none'; 
+        diceThree.style.display = 'none';
 
         clickToStart();
 
@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceTwo = document.getElementById('die2');
 
         let diceTwoChange = diceTwo.querySelector('.die');
+        
         if (diceTwoChange) {
             diceTwoChange.classList.add('fa-spin');
         } else {
@@ -173,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function highRollDiceDisplay() {
 
+
         let diceOne = document.getElementById('die1');
         diceOne.style.display = 'none';
         let diceThree = document.getElementById('die3');
@@ -183,10 +185,13 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceTwoChange = diceTwo.querySelector('.die');
         if (diceTwoChange) {
             diceTwoChange.classList.add('fa-beat');
+            if (diceTwoChange.classList.contains('fa-spin')) {
+                diceTwoChange.classList.remove('fa-spin'); 
+            }
         }
 
         return;
-
+        
     }
 
 
@@ -241,21 +246,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-
-        // if (!roundWinner) {
-        //     setTimeout(function () {
-        //         threeDiceNoDisplay();
-        //         heading.textContent = "Click to begin";
-        //         currentPlayer = 'user';
-        //         circle.addEventListener('click', runGame);
-        //     }, 2000);
-        // } else {
-            setTimeout(function () {
-                threeDiceBounceDisplay();
-                heading.textContent = "Click to roll";
-                currentPlayer = 'user';
-                circle.addEventListener('click', userTurn);
-            }, 2000);
+        setTimeout(function () {
+            threeDiceBounceDisplay();
+            heading.textContent = "Click to roll";
+            currentPlayer = 'user';
+            circle.addEventListener('click', userTurn);
+        }, 2000);
         // }
 
     }
@@ -655,7 +651,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("playerRoll Received:", typeof roll);
 
         //Check if roll is an array and if so convert to string 
-        
+
         if (Array.isArray(roll)) {
             roll = roll.join('');
         }
@@ -668,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isNaN(roll)) {
             console.log("updateDiceFace' - Roll is a special case or invalid string:", roll);
-            return; 
+            return;
         }
 
         if (roll.length === 3) {
@@ -692,15 +688,14 @@ document.addEventListener('DOMContentLoaded', function () {
             let diceThree = document.getElementById('die3');
 
             //find the i element in the divs
-            let diceOneChange = diceOne ? diceOne.querySelector('.die') : null; 
+            let diceOneChange = diceOne ? diceOne.querySelector('.die') : null;
             let diceTwoChange = diceTwo ? diceTwo.querySelector('.die') : null;
-            let diceThreeChange = diceThree ? diceThree.querySelector('.die') : null; 
+            let diceThreeChange = diceThree ? diceThree.querySelector('.die') : null;
 
             if (!isNaN(diceOneValue) && !isNaN(diceTwoValue) && !isNaN(diceThreeValue)) {
                 if (diceOneChange) updateDieFace(diceOneChange, diceOneValue);
                 if (diceTwoChange) updateDieFace(diceTwoChange, diceTwoValue);
-                if (diceThreeChange) updateDieFace(diceThreeChange, diceThreeValue);
-; 
+                if (diceThreeChange) updateDieFace(diceThreeChange, diceThreeValue);;
             } else {
                 console.log("updateDiceFace - One or more parsed dice faces are invalid");
             }
