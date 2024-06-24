@@ -95,6 +95,54 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
+    function DisplayScore(roll) {
+
+        //check if roll is an array and convert to string if so
+
+        if (Array.isArray(roll)) {
+            roll = roll.join(''); 
+        }
+
+
+        //Remove spaces from strings to at correct index
+
+        roll = String(roll).replace(/\s+/g, '');
+
+        console.log(`Display Score: ${roll}`); 
+
+        if (isNaN(roll)) {
+            console.log("Display Score: roll is not a string"); 
+        }
+
+
+        if (roll.length === 3) {
+            let rollValueOne = parseInt(roll[0]);
+            let rollValueTwo = parseInt(roll[1]);
+            let rollValueThree = parseInt(roll[2]); 
+
+            let userScoreDieOne = document.getElementById('user-score-die1');
+            let userScoreDieTwo = document.getElementById('user-score-die2');
+            let userScoreDieThree = document.getElementById('user-score-die3'); 
+
+            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('.fa-question') : null; 
+            let userScoreDieTwoChange = userScoreDieTwo? userScoreDieTwo.querySelector('.fa-question') : null; 
+            let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('.fa-question') : null;
+
+            if(!isNaN(userScoreDieOneChange) && !isNaN(userScoreDieTwoChange) && isNaN(userScoreDieThreeChange)) {
+                if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne); 
+                if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo); 
+                if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree); 
+            } else {
+                console.log("Roll not found or invalid roll format"); 
+            }
+        }
+
+    }
+
+    function updateScoreDisplay() {
+
+    }
+
     function highRoll() {
 
 
