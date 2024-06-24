@@ -117,47 +117,47 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-            if (roll.length === 3) {
-                let rollValueOne = parseInt(roll[0]);
-                let rollValueTwo = parseInt(roll[1]);
-                let rollValueThree = parseInt(roll[2]);
+        if (roll.length === 3) {
+            let rollValueOne = parseInt(roll[0]);
+            let rollValueTwo = parseInt(roll[1]);
+            let rollValueThree = parseInt(roll[2]);
 
-                if(player === 'user') {
-                    let userScoreDieOne = document.getElementById('user-score-die1');
-                    let userScoreDieTwo = document.getElementById('user-score-die2');
-                    let userScoreDieThree = document.getElementById('user-score-die3');
-        
-                    let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
-                    let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
-                    let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
-        
-                    if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
-                        if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne);
-                        if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo);
-                        if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
-                    } else {
-                        console.log("User not found or invalid roll format");
-                    }
+            if (player === 'user') {
+                let userScoreDieOne = document.getElementById('user-score-die1');
+                let userScoreDieTwo = document.getElementById('user-score-die2');
+                let userScoreDieThree = document.getElementById('user-score-die3');
+
+                let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
+                let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
+                let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
+
+                if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
+                    if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne);
+                    if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo);
+                    if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
                 } else {
+                    console.log("User not found or invalid roll format");
+                }
+            } else {
 
-                    let computerScoreDieOne = document.getElementById('computer-score-die1');
-                    let computerScoreDieTwo = document.getElementById('computer-score-die2');
-                    let computerScoreDieThree = document.getElementById('computer-score-die3'); 
+                let computerScoreDieOne = document.getElementById('computer-score-die1');
+                let computerScoreDieTwo = document.getElementById('computer-score-die2');
+                let computerScoreDieThree = document.getElementById('computer-score-die3');
 
-                    let computerScoreDieOneChange = computerScoreDieOne ? computerScoreDieOne.querySelector('i') : null; 
-                    let computerScoreDieTwoChange = computerScoreDieTwo ? computerScoreDieTwo.querySelector('i') : null;
-                    let computerScoreDieThreeChange= computerScoreDieThree ? computerScoreDieThree.querySelector('i') : null; 
-                    
-                    if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
-                        if (computerScoreDieOneChange) updateScoreDisplay(computerScoreDieOneChange, rollValueOne);
-                        if (computerScoreDieTwoChange) updateScoreDisplay(computerScoreDieTwoChange, rollValueTwo);
-                        if (computerScoreDieThreeChange) updateScoreDisplay(computerScoreDieThreeChange, rollValueThree);
+                let computerScoreDieOneChange = computerScoreDieOne ? computerScoreDieOne.querySelector('i') : null;
+                let computerScoreDieTwoChange = computerScoreDieTwo ? computerScoreDieTwo.querySelector('i') : null;
+                let computerScoreDieThreeChange = computerScoreDieThree ? computerScoreDieThree.querySelector('i') : null;
+
+                if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
+                    if (computerScoreDieOneChange) updateScoreDisplay(computerScoreDieOneChange, rollValueOne);
+                    if (computerScoreDieTwoChange) updateScoreDisplay(computerScoreDieTwoChange, rollValueTwo);
+                    if (computerScoreDieThreeChange) updateScoreDisplay(computerScoreDieThreeChange, rollValueThree);
                 }
 
             }
 
         } else {
-            console.log('Display score not updated correctly'); 
+            console.log('Display score not updated correctly');
         }
 
     }
@@ -790,6 +790,58 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function resetScoreDisplay() {
+
+            let userScoreDieOne = document.getElementById('user-score-die1');
+            let userScoreDieTwo = document.getElementById('user-score-die2');
+            let userScoreDieThree = document.getElementById('user-score-die3');
+
+            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
+            let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
+            let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
+
+            let computerScoreDieOne = document.getElementById('computer-score-die1');
+            let computerScoreDieTwo = document.getElementById('computer-score-die2');
+            let computerScoreDieThree = document.getElementById('computer-score-die3');
+
+            let computerScoreDieOneChange = computerScoreDieOne ? computerScoreDieOne.querySelector('i') : null;
+            let computerScoreDieTwoChange = computerScoreDieTwo ? computerScoreDieTwo.querySelector('i') : null;
+            let computerScoreDieThreeChange = computerScoreDieThree ? computerScoreDieThree.querySelector('i') : null;
+
+            //Remove exisiting classes and replace with question mark icon classes
+            if(userScoreDieOneChange) {
+                userScoreDieOneChange.className = '';
+                userScoreDieOneChange.classList.add('fa-solid', 'fa-question');
+            }
+
+            if (userScoreDieTwoChange) {
+                userScoreDieTwoChange.className = '';
+                userScoreDieTwoChange.classList.add('fa-solid', 'fa-question');
+            }
+
+            if (userScoreDieThreeChange) {
+                userScoreDieThreeChange.className = '';
+                userScoreDieThreeChange.classList.add('fa-solid', 'fa-question'); 
+
+            }
+
+            if (computerScoreDieOneChange) {
+                computerScoreDieOneChange.className = '';
+                computerScoreDieOneChange.classList.add('fa-solid', 'fa-question');
+            }
+
+            if (computerScoreDieTwoChange) {
+                computerScoreDieTwoChange.className = '';
+                computerScoreDieTwoChange.classList.add('fa-solid', 'fa-question');
+            }
+
+            if (computerScoreDieThreeChange) {
+                computerScoreDieThreeChange.className = '';
+                computerScoreDieThreeChange.classList.add('fa-solid', 'fa-question'); 
+            }
+
+    }
+
     function endGame() {
 
 
@@ -940,6 +992,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function newRound(roundWinner) {
+
+        resetScoreDisplay()
 
         console.log('You\re in newRound');
 
