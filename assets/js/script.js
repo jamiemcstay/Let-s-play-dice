@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function DisplayScore(roll) {
+    function displayScore(roll) {
 
         //check if roll is an array and convert to string if so
 
@@ -110,8 +110,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log(`Display Score: ${roll}`); 
 
+        //Stop function if roll is not a number string
         if (isNaN(roll)) {
             console.log("Display Score: roll is not a string"); 
+            return; 
         }
 
 
@@ -124,11 +126,11 @@ document.addEventListener('DOMContentLoaded', function () {
             let userScoreDieTwo = document.getElementById('user-score-die2');
             let userScoreDieThree = document.getElementById('user-score-die3'); 
 
-            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('.fa-question') : null; 
-            let userScoreDieTwoChange = userScoreDieTwo? userScoreDieTwo.querySelector('.fa-question') : null; 
-            let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('.fa-question') : null;
+            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null; 
+            let userScoreDieTwoChange = userScoreDieTwo? userScoreDieTwo.querySelector('i') : null; 
+            let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
 
-            if(!isNaN(userScoreDieOneChange) && !isNaN(userScoreDieTwoChange) && isNaN(userScoreDieThreeChange)) {
+            if(!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
                 if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne); 
                 if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo); 
                 if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree); 
@@ -149,9 +151,14 @@ document.addEventListener('DOMContentLoaded', function () {
         5: 'fa-dice-five',
         6: 'fa-dice-six', 
 
+        }
+
         if (dice) {
-            dice.classList.remove('fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six', 'fa-spin', 'fa-beat'); 
+            dice.classList.remove('fa-solid', 'fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six'); 
+            dice.classList.add('fa-solid');
             dice.classList.add(diceClasses[value]); 
+        } else {
+            console.log("Dice not updated correctly in updateScoreDisplay"); 
         }
 
     };
@@ -528,6 +535,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'user';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
+                            displayScore(playersRoll); 
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -548,6 +556,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'computer';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
+                            displayScore(playersRoll);
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -575,6 +584,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'computer';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
+                            displayScore(playersRoll);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -594,6 +604,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'user';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
+                            displayScore(playersRoll);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -652,6 +663,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentPlayer = 'computer';
                 console.log(`UsersTurn is returning: ${userRollOutcome}`);
                 updateDiceFace(userRollOutcome);
+                displayScore(userRollOutcome); 
                 runGame();
             }, 3000);
 
@@ -663,22 +675,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function computerTurn() {
 
-        // let diceOne = document.getElementById('die1');
-        // let diceTwo = document.getElementById('die2');
-        // let diceThree = document.getElementById('die3');
-
-        // let diceOneChange = diceOne.querySelector('.die');
-        // let diceTwoChange = diceTwo.querySelector('.die');
-        // let diceThreeChange = diceThree.querySelector('.die');
-
         console.log("Its computers turn");
 
         setTimeout(function () {
             threeDiceSpinningDisplay();
             heading.textContent = "Computer Rolling";
-            // diceOneChange.classList.add('fa-spin');
-            // diceTwoChange.classList.add('fa-spin');
-            // diceThreeChange.classList.add('fa-spin');
         }, 2000);
 
         do {
@@ -697,6 +698,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(computerDiceRolls);
                 currentPlayer = 'user';
                 console.log(`computersTurn is returning: ${computerRollOutcome}`);
+                displayScore(computerRollOutcome);
                 updateDiceFace(computerRollOutcome);
                 setTimeout(function () {
                     runGame();
