@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function displayScore(roll) {
+    function displayScore(roll, player) {
 
         //check if roll is an array and convert to string if so
 
@@ -117,26 +117,47 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
 
-        if (roll.length === 3) {
-            let rollValueOne = parseInt(roll[0]);
-            let rollValueTwo = parseInt(roll[1]);
-            let rollValueThree = parseInt(roll[2]);
+            if (roll.length === 3) {
+                let rollValueOne = parseInt(roll[0]);
+                let rollValueTwo = parseInt(roll[1]);
+                let rollValueThree = parseInt(roll[2]);
 
-            let userScoreDieOne = document.getElementById('user-score-die1');
-            let userScoreDieTwo = document.getElementById('user-score-die2');
-            let userScoreDieThree = document.getElementById('user-score-die3');
+                if(player === 'user') {
+                    let userScoreDieOne = document.getElementById('user-score-die1');
+                    let userScoreDieTwo = document.getElementById('user-score-die2');
+                    let userScoreDieThree = document.getElementById('user-score-die3');
+        
+                    let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
+                    let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
+                    let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
+        
+                    if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
+                        if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne);
+                        if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo);
+                        if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
+                    } else {
+                        console.log("User not found or invalid roll format");
+                    }
+                } else {
 
-            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
-            let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
-            let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
+                    let computerScoreDieOne = document.getElementById('computer-score-die1');
+                    let computerScoreDieTwo = document.getElementById('computer-score-die2');
+                    let computerScoreDieThree = document.getElementById('computer-score-die3'); 
 
-            if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
-                if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne);
-                if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo);
-                if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
-            } else {
-                console.log("Roll not found or invalid roll format");
+                    let computerScoreDieOneChange = computerScoreDieOne ? computerScoreDieOne.querySelector('i') : null; 
+                    let computerScoreDieTwoChange = computerScoreDieTwo ? computerScoreDieTwo.querySelector('i') : null;
+                    let computerScoreDieThreeChange= computerScoreDieThree ? computerScoreDieThree.querySelector('i') : null; 
+                    
+                    if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
+                        if (computerScoreDieOneChange) updateScoreDisplay(computerScoreDieOneChange, rollValueOne);
+                        if (computerScoreDieTwoChange) updateScoreDisplay(computerScoreDieTwoChange, rollValueTwo);
+                        if (computerScoreDieThreeChange) updateScoreDisplay(computerScoreDieThreeChange, rollValueThree);
+                }
+
             }
+
+        } else {
+            console.log('Display score not updated correctly'); 
         }
 
     }
@@ -535,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'user';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
-                            displayScore(playersRoll);
+                            displayScore(playersRoll, 'user');
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -556,7 +577,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'computer';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
-                            displayScore(playersRoll);
+                            displayScore(playersRoll, 'user');
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -584,7 +605,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'computer';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
-                            displayScore(playersRoll);
+                            displayScore(playersRoll, 'computer');
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -604,7 +625,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'user';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
-                            displayScore(playersRoll);
+                            displayScore(playersRoll, 'computer');
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
@@ -663,7 +684,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentPlayer = 'computer';
                 console.log(`UsersTurn is returning: ${userRollOutcome}`);
                 updateDiceFace(userRollOutcome);
-                displayScore(userRollOutcome);
+                displayScore(userRollOutcome, 'user');
                 runGame();
             }, 3000);
 
@@ -698,7 +719,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(computerDiceRolls);
                 currentPlayer = 'user';
                 console.log(`computersTurn is returning: ${computerRollOutcome}`);
-                displayScore(computerRollOutcome);
+                displayScore(computerRollOutcome, 'computer');
                 updateDiceFace(computerRollOutcome);
                 setTimeout(function () {
                     runGame();
