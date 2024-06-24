@@ -792,53 +792,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function resetScoreDisplay() {
 
-            let userScoreDieOne = document.getElementById('user-score-die1');
-            let userScoreDieTwo = document.getElementById('user-score-die2');
-            let userScoreDieThree = document.getElementById('user-score-die3');
+        let userScoreDieOne = document.getElementById('user-score-die1');
+        let userScoreDieTwo = document.getElementById('user-score-die2');
+        let userScoreDieThree = document.getElementById('user-score-die3');
 
-            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
-            let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
-            let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
+        let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
+        let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
+        let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
 
-            let computerScoreDieOne = document.getElementById('computer-score-die1');
-            let computerScoreDieTwo = document.getElementById('computer-score-die2');
-            let computerScoreDieThree = document.getElementById('computer-score-die3');
+        let computerScoreDieOne = document.getElementById('computer-score-die1');
+        let computerScoreDieTwo = document.getElementById('computer-score-die2');
+        let computerScoreDieThree = document.getElementById('computer-score-die3');
 
-            let computerScoreDieOneChange = computerScoreDieOne ? computerScoreDieOne.querySelector('i') : null;
-            let computerScoreDieTwoChange = computerScoreDieTwo ? computerScoreDieTwo.querySelector('i') : null;
-            let computerScoreDieThreeChange = computerScoreDieThree ? computerScoreDieThree.querySelector('i') : null;
+        let computerScoreDieOneChange = computerScoreDieOne ? computerScoreDieOne.querySelector('i') : null;
+        let computerScoreDieTwoChange = computerScoreDieTwo ? computerScoreDieTwo.querySelector('i') : null;
+        let computerScoreDieThreeChange = computerScoreDieThree ? computerScoreDieThree.querySelector('i') : null;
 
-            //Remove exisiting classes and replace with question mark icon classes
-            if(userScoreDieOneChange) {
-                userScoreDieOneChange.className = '';
-                userScoreDieOneChange.classList.add('fa-solid', 'fa-question');
-            }
+        //Remove exisiting classes and replace with question mark icon classes
+        if (userScoreDieOneChange) {
+            userScoreDieOneChange.className = '';
+            userScoreDieOneChange.classList.add('fa-solid', 'fa-question');
+        }
 
-            if (userScoreDieTwoChange) {
-                userScoreDieTwoChange.className = '';
-                userScoreDieTwoChange.classList.add('fa-solid', 'fa-question');
-            }
+        if (userScoreDieTwoChange) {
+            userScoreDieTwoChange.className = '';
+            userScoreDieTwoChange.classList.add('fa-solid', 'fa-question');
+        }
 
-            if (userScoreDieThreeChange) {
-                userScoreDieThreeChange.className = '';
-                userScoreDieThreeChange.classList.add('fa-solid', 'fa-question'); 
+        if (userScoreDieThreeChange) {
+            userScoreDieThreeChange.className = '';
+            userScoreDieThreeChange.classList.add('fa-solid', 'fa-question');
 
-            }
+        }
 
-            if (computerScoreDieOneChange) {
-                computerScoreDieOneChange.className = '';
-                computerScoreDieOneChange.classList.add('fa-solid', 'fa-question');
-            }
+        if (computerScoreDieOneChange) {
+            computerScoreDieOneChange.className = '';
+            computerScoreDieOneChange.classList.add('fa-solid', 'fa-question');
+        }
 
-            if (computerScoreDieTwoChange) {
-                computerScoreDieTwoChange.className = '';
-                computerScoreDieTwoChange.classList.add('fa-solid', 'fa-question');
-            }
+        if (computerScoreDieTwoChange) {
+            computerScoreDieTwoChange.className = '';
+            computerScoreDieTwoChange.classList.add('fa-solid', 'fa-question');
+        }
 
-            if (computerScoreDieThreeChange) {
-                computerScoreDieThreeChange.className = '';
-                computerScoreDieThreeChange.classList.add('fa-solid', 'fa-question'); 
-            }
+        if (computerScoreDieThreeChange) {
+            computerScoreDieThreeChange.className = '';
+            computerScoreDieThreeChange.classList.add('fa-solid', 'fa-question');
+        }
 
     }
 
@@ -993,7 +993,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function newRound(roundWinner) {
 
-        resetScoreDisplay()
 
         console.log('You\re in newRound');
 
@@ -1014,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (bankRollUserValue <= 0) {
                 //Call end game function with computer as argument
                 setTimeout(function () {
-
+                    resetScoreDisplay();
                     endGame('computer');
                 }, 1000);
 
@@ -1022,6 +1021,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (bankRollComputerValue <= 0) {
                 //Call endGame function with user as argument 
                 setTimeout(function () {
+                    resetScoreDisplay();
                     endGame('user');
                 }, 1000);
             }
@@ -1029,11 +1029,13 @@ document.addEventListener('DOMContentLoaded', function () {
             if (roundWinner === 'user') {
                 setTimeout(function () {
                     heading.textContent = "New Round";
+                    resetScoreDisplay();
                     setTheStakes();
                 }, 2000);
             } else if (roundWinner === 'computer') {
                 setTimeout(function () {
                     heading.textContent = "New Round";
+                    resetScoreDisplay();
                     setComputerStakes();
                 }, 2000);
 
