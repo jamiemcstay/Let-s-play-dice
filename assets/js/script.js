@@ -139,9 +139,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function updateScoreDisplay() {
+    function updateScoreDisplay(dice, value) {
 
-    }
+        let diceClasses = {
+        1: 'fa-dice-one',
+        2: 'fa-dice-two',
+        3: 'fa-dice-three',
+        4: 'fa-dice-four', 
+        5: 'fa-dice-five',
+        6: 'fa-dice-six', 
+
+        if (dice) {
+            dice.classList.remove('fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six', 'fa-spin', 'fa-beat'); 
+            dice.classList.add(diceClasses[value]); 
+        }
+
+    };
 
     function highRoll() {
 
