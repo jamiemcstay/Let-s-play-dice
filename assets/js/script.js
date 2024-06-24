@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //check if roll is an array and convert to string if so
 
         if (Array.isArray(roll)) {
-            roll = roll.join(''); 
+            roll = roll.join('');
         }
 
 
@@ -108,34 +108,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
         roll = String(roll).replace(/\s+/g, '');
 
-        console.log(`Display Score: ${roll}`); 
+        console.log(`Display Score: ${roll}`);
 
         //Stop function if roll is not a number string
         if (isNaN(roll)) {
-            console.log("Display Score: roll is not a string"); 
-            return; 
+            console.log("Display Score: roll is not a string");
+            return;
         }
 
 
         if (roll.length === 3) {
             let rollValueOne = parseInt(roll[0]);
             let rollValueTwo = parseInt(roll[1]);
-            let rollValueThree = parseInt(roll[2]); 
+            let rollValueThree = parseInt(roll[2]);
 
             let userScoreDieOne = document.getElementById('user-score-die1');
             let userScoreDieTwo = document.getElementById('user-score-die2');
-            let userScoreDieThree = document.getElementById('user-score-die3'); 
+            let userScoreDieThree = document.getElementById('user-score-die3');
 
-            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null; 
-            let userScoreDieTwoChange = userScoreDieTwo? userScoreDieTwo.querySelector('i') : null; 
+            let userScoreDieOneChange = userScoreDieOne ? userScoreDieOne.querySelector('i') : null;
+            let userScoreDieTwoChange = userScoreDieTwo ? userScoreDieTwo.querySelector('i') : null;
             let userScoreDieThreeChange = userScoreDieThree ? userScoreDieThree.querySelector('i') : null;
 
-            if(!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
-                if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne); 
-                if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo); 
-                if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree); 
+            if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
+                if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne);
+                if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo);
+                if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
             } else {
-                console.log("Roll not found or invalid roll format"); 
+                console.log("Roll not found or invalid roll format");
             }
         }
 
@@ -144,21 +144,21 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateScoreDisplay(dice, value) {
 
         let diceClasses = {
-        1: 'fa-dice-one',
-        2: 'fa-dice-two',
-        3: 'fa-dice-three',
-        4: 'fa-dice-four', 
-        5: 'fa-dice-five',
-        6: 'fa-dice-six', 
+            1: 'fa-dice-one',
+            2: 'fa-dice-two',
+            3: 'fa-dice-three',
+            4: 'fa-dice-four',
+            5: 'fa-dice-five',
+            6: 'fa-dice-six',
 
         }
 
         if (dice) {
-            dice.classList.remove('fa-solid', 'fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six'); 
+            dice.classList.remove('fa-solid', 'fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six');
             dice.classList.add('fa-solid');
-            dice.classList.add(diceClasses[value]); 
+            dice.classList.add(diceClasses[value]);
         } else {
-            console.log("Dice not updated correctly in updateScoreDisplay"); 
+            console.log("Dice not updated correctly in updateScoreDisplay");
         }
 
     };
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let diceTwo = document.getElementById('die2');
 
         let diceTwoChange = diceTwo.querySelector('.die');
-        
+
         if (diceTwoChange) {
             diceTwoChange.classList.add('fa-spin');
         } else {
@@ -254,12 +254,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceTwoChange) {
             diceTwoChange.classList.add('fa-beat');
             if (diceTwoChange.classList.contains('fa-spin')) {
-                diceTwoChange.classList.remove('fa-spin'); 
+                diceTwoChange.classList.remove('fa-spin');
             }
         }
 
         return;
-        
+
     }
 
 
@@ -535,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'user';
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
-                            displayScore(playersRoll); 
+                            displayScore(playersRoll);
                             heading.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
                         console.log(`${playersRoll}`);
@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentPlayer = 'computer';
                 console.log(`UsersTurn is returning: ${userRollOutcome}`);
                 updateDiceFace(userRollOutcome);
-                displayScore(userRollOutcome); 
+                displayScore(userRollOutcome);
                 runGame();
             }, 3000);
 
