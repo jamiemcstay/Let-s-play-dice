@@ -96,14 +96,16 @@ main {
 
 
 #main-section-circle {
-    background-color: orange;
+    background-color: white; 
     border-radius: 50%;
     padding-top: 25%;
     width: 512px;
     height: 512px;
-    position: absolute;
+    position: relative;
     z-index: 3;
-    top: 150px;
+    top: 0;
+    left: 0;
+    border: grey 5px solid; 
 }
 
 #main-section-dice-wrapper {
@@ -291,20 +293,47 @@ hr {
 
 /*Add spin keyframe and spinning class to add to cirle div when dice rolling*/
 
-@keyframes spin {
+/* @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
 .spinning {
     animation: spin 1s linear infinite; 
+} */
+
+@keyframes spinBorder {
+
+    0% {
+        transform: rotate(0deg);
+        border-color: #808080;
+    }
+
+    25% {
+        border-color: #555;
+    }
+
+    50% {
+        border-color: #333;
+
+    }
+
+    100% {
+        transform: roate(360deg);
+        border-color: #000; 
+    }
+
+}
+
+.spinning {
+    animation: spinBorder 2s infinite linear; 
 }
 
 
 @media screen and (min-width: 1440px) {
-    #main-section-circle {
+    /* #main-section-circle {
         top: 170px;
-    }
+    } */
 
     #game-area {
         width: 60%;
