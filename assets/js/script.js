@@ -215,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
         headingSmall.textContent = "Rolling";
 
         startSpinning(circle);
+        startPulsing(heading);
 
         //Users high roll 
 
@@ -407,6 +408,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return computerStakes;
 
+    }
+
+    function startPulsing(element) {
+        let pulsingHeading = document.getElementById('h1-large-screens'); 
+        let pulsingHeadingSmall = document.getElementById('hi-small-screens'); 
+
+        pulsingHeading.classList.add('pulse');
+        pulsingHeadingSmall.classList.add('pulse'); 
+    }
+
+    function stopPulsing(element) {
+        let pulsingHeading = document.getElementById('h1-large-screens'); 
+        let pulsingHeadingSmall = document.getElementById('hi-small-screens');
+
+        pulsingHeading.classList.remove('pulse');
+        pulsingHeadingSmall.classList.remove('pulse'); 
+        
     }
 
     function startSpinning(element) {
