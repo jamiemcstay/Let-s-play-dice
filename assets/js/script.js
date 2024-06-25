@@ -237,6 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             if (diceTwoChange) {
                 diceTwoChange.classList.add('fa-spin');
+                startPulsingBorder(circle);
                 heading.textContent = "Computer Rolling";
                 headingSmall.textContent = "Computer Rolling";
             }
@@ -244,6 +245,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             updateDieFace(diceTwoChange, num2);
+            stopPulsingBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
             heading.textContent = `Computer rolled a ${num2}`;
             headingSmall.textContent = `Computer rolled a ${num2}`;
 
