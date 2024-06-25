@@ -344,6 +344,15 @@ hr {
     animation: pulsing 2s infinite; 
 }
 
+@keyframes blinking {
+    0%, 100% {opacity: 1; } 
+    50% {opacity: 0; }
+}
+
+.blink {
+    animation: blinking 2s infinite; 
+}
+
 
 @media screen and (min-width: 1440px) {
     /* #main-section-circle {

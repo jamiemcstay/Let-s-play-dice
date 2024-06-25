@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function startPulsing(element) {
         let pulsingHeading = document.getElementById('h1-large-screens'); 
-        let pulsingHeadingSmall = document.getElementById('hi-small-screens'); 
+        let pulsingHeadingSmall = document.getElementById('h1-small-screens'); 
 
         pulsingHeading.classList.add('pulse');
         pulsingHeadingSmall.classList.add('pulse'); 
