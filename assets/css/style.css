@@ -304,23 +304,55 @@ hr {
 
 @keyframes instant-loss-shake {
 
-    0% { transform: translate(5px, 5px) rotate(0deg); }
-    10% { transform: translate(-5px, -10px) rotate(-3deg); }
-    20% { transform: translate(-15px, 0px) rotate(3deg); }
-    30% { transform: translate(15px, 10px) rotate(0deg); }
-    40% { transform: translate(5px, -5px) rotate(3deg); }
-    50% { transform: translate(-5px, 10px) rotate(-3deg); }
-    60% { transform: translate(-15px, 5px) rotate(0deg); }
-    70% { transform: translate(15px, 5px) rotate(-3deg); }
-    80% { transform: translate(-5px, -5px) rotate(3deg); }
-    90% { transform: translate(5px, 10px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-10deg); }
+    0% {
+        transform: translate(5px, 5px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-5px, -10px) rotate(-3deg);
+    }
+
+    20% {
+        transform: translate(-15px, 0px) rotate(3deg);
+    }
+
+    30% {
+        transform: translate(15px, 10px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(5px, -5px) rotate(3deg);
+    }
+
+    50% {
+        transform: translate(-5px, 10px) rotate(-3deg);
+    }
+
+    60% {
+        transform: translate(-15px, 5px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(15px, 5px) rotate(-3deg);
+    }
+
+    80% {
+        transform: translate(-5px, -5px) rotate(3deg);
+    }
+
+    90% {
+        transform: translate(5px, 10px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-10deg);
+    }
 
 }
 
 .shake {
     animation: instant-loss-shake 0.5s;
-    animation-iteration-count: 3; 
+    animation-iteration-count: 3;
 }
 
 @keyframes spinBorder {
@@ -358,16 +390,17 @@ hr {
 
 @keyframes pulsing-border {
 
-    0%, 100% {
+    0%,
+    100% {
         border-width: 5px;
     }
 
     10% {
-        border-width: 6px; 
+        border-width: 6px;
     }
 
     25% {
-        border-width: 7px; 
+        border-width: 7px;
     }
 
     50% {
@@ -376,7 +409,7 @@ hr {
     }
 
     75% {
-        border-width: 11px; 
+        border-width: 11px;
     }
 
 }
@@ -405,35 +438,34 @@ hr {
 /*Add keyframes and class to add to circle at instant wins*/
 
 @keyframes winning-star {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
-        box-shadow: 0 0 20px grey; 
+        box-shadow: 0 0 20px grey;
     }
 
     50% {
         transform: scale(1.2);
-        background-color: orange; 
-        box-shadow: 0 0 20px orange; 
+        background-color: orange;
+        box-shadow: 0 0 20px orange;
     }
 }
 
 .circle-border-instant-win {
 
-    background-color: yellow; 
-    animation: winning-star 0.5s infinite; 
-    clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35% 
-
-    );
+    background-color: yellow;
+    animation: winning-star 0.5s infinite;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
 }
 
 @keyframes blinking {
