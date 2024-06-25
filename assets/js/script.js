@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let circle = document.getElementById('main-section-circle');
     let heading = document.getElementById('h1-large-screens');
-    let headingSmall = document.getElementById('h1-small-screens'); 
+    let headingSmall = document.getElementById('h1-small-screens');
 
     let bankRollUser = document.getElementById('bank-roll-user');
     let bankRollComputer = document.getElementById('bank-roll-computer');
@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function () {
         mainSection.style.height = '72%';
 
         piggyBankValue = 0;
-
-        headingSmall.style.display = 'flex'; 
 
         heading.textContent = "Click for high roll";
         headingSmall.textContent = "Click for high roll";
@@ -233,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (diceTwoChange) {
                 diceTwoChange.classList.add('fa-spin');
                 heading.textContent = "Computer Rolling";
-                headingSmall.textContent = "Computer Rolling"; 
+                headingSmall.textContent = "Computer Rolling";
             }
         }, 3000);
 
@@ -241,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function () {
             updateDieFace(diceTwoChange, num2);
             heading.textContent = `Computer rolled a ${num2}`;
             headingSmall.textContent = `Computer rolled a ${num2}`;
-            
+
         }, 4000);
 
         setTimeout(function () {
