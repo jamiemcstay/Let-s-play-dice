@@ -7,6 +7,14 @@ https://www.w3schools.com/jsref/met_win_removeeventlistener.asp
 
 https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
 
+https://www.simplilearn.com/tutorials/css-tutorial/css-keyframes
+
+https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations
+
+
+
 Welcome,
 
 This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
