@@ -381,6 +381,40 @@ hr {
     animation: pulsing 2s infinite;
 }
 
+/*Add keyframes and class to add to circle at instant wins*/
+
+@keyframes winning-star {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px grey; 
+    }
+
+    50% {
+        transform: scale(1.2);
+        background-color: orange; 
+        box-shadow: 0 0 20px orange; 
+    }
+}
+
+.circle.border-instant-win {
+
+    background-color: yellow; 
+    animation: winning-star 1s infinite; 
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35% 
+
+    );
+}
+
 @keyframes blinking {
 
     0%,
