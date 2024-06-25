@@ -215,7 +215,8 @@ document.addEventListener('DOMContentLoaded', function () {
         headingSmall.textContent = "Rolling";
 
         startSpinning(circle);
-        startPulsing(heading);
+        startBlinking(heading);
+        startBlinking(headingSmall); 
 
         //Users high roll 
 
@@ -225,6 +226,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             stopSpinning(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall); 
             heading.textContent = `You rolled a ${num1}`;
             headingSmall.textContent = `You rolled a ${num1}`;
         }, 2000);
@@ -410,31 +413,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function startPulsing(element) {
-        let pulsingHeading = document.getElementById('h1-large-screens'); 
-        let pulsingHeadingSmall = document.getElementById('h1-small-screens'); 
+    function startBlinking(element) {
 
-        pulsingHeading.classList.add('pulse');
-        pulsingHeadingSmall.classList.add('pulse'); 
+        element.classList.add('blink');
+
+    }
+
+    function stopBlinking(element) {
+
+        // let blinkingHeading = document.getElementById('h1-large-screens'); 
+        // let blinkingHeadingSmall = document.getElementById('h1-small-screens'); 
+
+        element.classList.remove('blink');
+
+    }
+
+    function startPulsing(element) {
+        // let pulsingHeading = document.getElementById('h1-large-screens'); 
+        // let pulsingHeadingSmall = document.getElementById('h1-small-screens'); 
+
+        element.classList.add('pulse');
+
     }
 
     function stopPulsing(element) {
-        let pulsingHeading = document.getElementById('h1-large-screens'); 
-        let pulsingHeadingSmall = document.getElementById('hi-small-screens');
+        // let pulsingHeading = document.getElementById('h1-large-screens'); 
+        // let pulsingHeadingSmall = document.getElementById('hi-small-screens');
 
-        pulsingHeading.classList.remove('pulse');
-        pulsingHeadingSmall.classList.remove('pulse'); 
+        element.classList.remove('pulse');
+        // headingSmall.classList.remove('pulse'); 
         
     }
 
     function startSpinning(element) {
-        let spinningElement = document.getElementById('main-section-circle');
-        spinningElement.classList.add('spinning');
+        // let spinningElement = document.getElementById('main-section-circle');
+        element.classList.add('spinning');
     }
 
     function stopSpinning(element) {
-        let spinningElement = document.getElementById('main-section-circle');
-        spinningElement.classList.remove('spinning');
+        // let spinningElement = document.getElementById('main-section-circle');
+        element.classList.remove('spinning');
     }
 
     function threeDiceNoDisplay() {
