@@ -214,9 +214,9 @@ document.addEventListener('DOMContentLoaded', function () {
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
-        startSpinning(circle);
+        startPulsingBorder(circle);
         startBlinking(heading);
-        startBlinking(headingSmall); 
+        startBlinking(headingSmall);
 
         //Users high roll 
 
@@ -225,9 +225,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
 
         setTimeout(function () {
-            stopSpinning(circle);
+            stopPulsingBorder(circle);
             stopBlinking(heading);
-            stopBlinking(headingSmall); 
+            stopBlinking(headingSmall);
             heading.textContent = `You rolled a ${num1}`;
             headingSmall.textContent = `You rolled a ${num1}`;
         }, 2000);
@@ -413,6 +413,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    function startPulsingBorder(element) {
+
+        element.classList.add('pulsing-border');
+    }
+
+    function stopPulsingBorder(element) {
+        element.classList.remove('pulsing-border');
+    }
+
     function startBlinking(element) {
 
         element.classList.add('blink');
@@ -442,7 +451,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         element.classList.remove('pulse');
         // headingSmall.classList.remove('pulse'); 
-        
+
     }
 
     function startSpinning(element) {

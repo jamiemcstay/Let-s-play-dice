@@ -335,22 +335,66 @@ hr {
     animation: spinBorder 2s infinite linear;
 }
 
+@keyframes pulsing-border {
+
+    0%, 100% {
+        border-width: 5px;
+    }
+
+    10% {
+        border-width: 6px; 
+    }
+
+    25% {
+        border-width: 7px; 
+    }
+
+    50% {
+        border-width: 9px;
+
+    }
+
+    75% {
+        border-width: 11px; 
+    }
+
+}
+
+.pulsing-border {
+
+    animation: pulsing-border 2s infinite;
+}
+
 @keyframes pulsing {
-    0%, 100% {transform: scale(1); }
-    50% {transform: scale(1.2); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
 }
 
 .pulse {
-    animation: pulsing 2s infinite; 
+    animation: pulsing 2s infinite;
 }
 
 @keyframes blinking {
-    0%, 100% {opacity: 1; } 
-    50% {opacity: 0; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 .blink {
-    animation: blinking 2s infinite; 
+    animation: blinking 1s infinite;
 }
 
 
