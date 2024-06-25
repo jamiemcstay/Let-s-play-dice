@@ -304,23 +304,31 @@ hr {
 
 @keyframes spinBorder {
 
+
+
     0% {
-        transform: rotate(0deg);
-        border-color: #808080;
+        border-width: 4px; 
+        border-radius: 50%; 
+        border-style: solid; 
     }
 
     25% {
-        border-color: #555;
+        border-width: 8px; 
+        border-radius: 51%; 
+        border-style: dotted;
     }
 
     50% {
-        border-color: #333;
+        border-width: 12px;
+        border-radius: 52%;
+        border-style: dotted; 
 
     }
 
     100% {
-        transform: roate(360deg);
-        border-color: #000;
+        border-width: 4px; 
+        border-radius: 50%;
+        border-style: solid;  
     }
 
 }
