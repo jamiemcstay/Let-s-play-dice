@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
-        startSpinning(circle);  
+        startSpinning(circle);
 
         //Users high roll 
 
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
 
         setTimeout(function () {
-            stopSpinning(circle); 
+            stopSpinning(circle);
             heading.textContent = `You rolled a ${num1}`;
             headingSmall.textContent = `You rolled a ${num1}`;
         }, 2000);
@@ -410,13 +410,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startSpinning(element) {
-        let spinningElement = document.getElementById('main-section-circle'); 
-        spinningElement.classList.add('spinning'); 
+        let spinningElement = document.getElementById('main-section-circle');
+        spinningElement.classList.add('spinning');
     }
 
     function stopSpinning(element) {
-        let spinningElement = document.getElementById('main-section-circle'); 
-        spinningElement.classList.remove('spinning'); 
+        let spinningElement = document.getElementById('main-section-circle');
+        spinningElement.classList.remove('spinning');
     }
 
     function threeDiceNoDisplay() {

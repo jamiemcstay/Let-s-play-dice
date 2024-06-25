@@ -96,7 +96,7 @@ main {
 
 
 #main-section-circle {
-    background-color: white; 
+    background-color: white;
     border-radius: 50%;
     padding-top: 25%;
     width: 512px;
@@ -105,7 +105,7 @@ main {
     z-index: 3;
     top: 0;
     left: 0;
-    border: grey 5px solid; 
+    border: grey 5px solid;
 }
 
 #main-section-dice-wrapper {
@@ -320,13 +320,13 @@ hr {
 
     100% {
         transform: roate(360deg);
-        border-color: #000; 
+        border-color: #000;
     }
 
 }
 
 .spinning {
-    animation: spinBorder 2s infinite linear; 
+    animation: spinBorder 2s infinite linear;
 }
 
 
