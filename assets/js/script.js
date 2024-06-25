@@ -238,6 +238,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (diceTwoChange) {
                 diceTwoChange.classList.add('fa-spin');
                 startPulsingBorder(circle);
+                startBlinking(heading);
+                startBlinking(headingSmall);
                 heading.textContent = "Computer Rolling";
                 headingSmall.textContent = "Computer Rolling";
             }
@@ -632,6 +634,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'user');
+                            stopPulsingBorder(circle);
+                            stopBlinking(heading);
+                            stopBlinking(headingSmall);
                             heading.textContent = `You rolled a ${playersRoll}`;
                             headingSmall.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
@@ -656,6 +661,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'user');
+                            stopPulsingBorder(circle);
+                            stopBlinking(heading);
+                            stopBlinking(headingSmall);
                             heading.textContent = `You rolled a ${playersRoll}`;
                             headingSmall.textContent = `You rolled a ${playersRoll}`;
                         }, 2000);
@@ -687,6 +695,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'computer');
+                            stopPulsingBorder(circle);
+                            stopBlinking(heading);
+                            stopBlinking(headingSmall);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                             headingSmall.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
@@ -710,6 +721,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'computer');
+                            stopPulsingBorder(circle);
+                            stopBlinking(heading);
+                            stopBlinking(headingSmall);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                             headingSmall.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
@@ -752,6 +766,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             threeDiceSpinningDisplay();
+            startPulsingBorder(circle);
+            startBlinking(heading);
+            startBlinking(headingSmall);
             heading.textContent = "Rolling";
             headingSmall.textContent = "Rolling";
         }, 1000);
@@ -768,6 +785,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 threeDiceSpinningDisplay();
                 console.log(typeof userRollOutcome);
                 console.log(typeof userDiceRolls);
+                stopPulsingBorder(circle);
+                stopBlinking(heading);
+                stopBlinking(headingSmall);
                 heading.textContent = `You rolled a ${userDiceRolls}`;
                 headingSmall.textContent = `You rolled a ${userDiceRolls}`;
                 currentPlayer = 'computer';
@@ -789,6 +809,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             threeDiceSpinningDisplay();
+            startPulsingBorder(circle);
+            startBlinking(heading);
+            startBlinking(headingSmall);
             heading.textContent = "Computer Rolling";
             headingSmall.textContent = "Computer Rolling";
         }, 2000);
@@ -805,6 +828,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateDiceFace(computerRollOutcome);
                 return;
             } else {
+                stopPulsingBorder(circle);
+                stopBlinking(heading);
+                stopBlinking(headingSmall);
                 heading.textContent = `Computer rolled a ${computerDiceRolls}`;
                 headingSmall.textContent = `Computer rolled a ${computerDiceRolls}`;
                 console.log(computerDiceRolls);
