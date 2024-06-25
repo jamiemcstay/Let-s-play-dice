@@ -289,6 +289,18 @@ hr {
     width: 80px;
 }
 
+/*Add spin keyframe and spinning class to add to cirle div when dice rolling*/
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinning {
+    animation: spin 1s linear infinite; 
+}
+
+
 @media screen and (min-width: 1440px) {
     #main-section-circle {
         top: 170px;
