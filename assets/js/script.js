@@ -214,7 +214,9 @@ document.addEventListener('DOMContentLoaded', function () {
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
-        startPulsingBorder(circle);
+        instantWinCircleAnimation(circle);
+
+        // startPulsingBorder(circle);
         startBlinking(heading);
         startBlinking(headingSmall);
 
@@ -417,6 +419,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return computerStakes;
 
+    }
+
+    function instantWinCircleAnimation(element) {
+        element.classList.add('circle-border-instant-win');
     }
 
     function startPulsingBorder(element) {
@@ -643,6 +649,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
                             threeDiceNoDisplay();
+                            instantWinCircleAnimation(circle);
                             heading.textContent = 'Instant Win!';
                             headingSmall.textContent = 'Instant Win!';
                         }, 3000);
@@ -670,6 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
                             threeDiceNoDisplay();
+                            instantWinCircleAnimation(circle);
                             heading.textContent = 'Instant Loss!';
                             headingSmall.textContent = 'Instant Loss!';
                         }, 3000);
@@ -703,6 +711,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         setTimeout(function () {
                             threeDiceNoDisplay();
+                            instantWinCircleAnimation(circle);
                             heading.textContent = 'Instant Win!';
                             headingSmall.textContent = 'Instant Win!';
                         }, 3000);
@@ -729,6 +738,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 2000);
                         setTimeout(function () {
                             threeDiceNoDisplay();
+                            instantWinCircleAnimation(circle);
                             heading.textContent = 'Instant Loss!';
                             headingSmall.textContent = 'INSTANT LOSS';
                         }, 3000);
@@ -1246,6 +1256,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log("It's a tie");
                         itsATie();
                     } else if (userPoint > computerPoint) {
+                        instantWinCircleAnimation(circle);
                         heading.textContent = "You win this round!";
                         headingSmall.textContent = "You win this round!";
                         roundWinner = 'user';
@@ -1259,6 +1270,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             newRound('user');
                         }, 2000);
                     } else {
+                        instantWinCircleAnimation(circle);
                         heading.textContent = "Computer wins this round";
                         headingSmall.textContent = "Computer wins this round";
                         roundWinner = 'computer';
@@ -1278,6 +1290,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (userPoint === computerPoint) {
                         //If the points are equal, compare the pair values
                         if (userPairValue > computerPairValue) {
+                            instantWinCircleAnimation(circle);
                             heading.textContent = "You win this round!";
                             headingSmall.textContent = "You win this round!";
                             roundWinner = 'user';
@@ -1289,6 +1302,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             }, 1000);
                             newRound('user');
                         } else {
+                            instantWinCircleAnimation(circle);
                             heading.textContent = "Computer wins this round";
                             headingSmall.textContent = "Computer wins this round";
                             roundWinner = 'computer';
@@ -1306,6 +1320,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         //If points are not equal, the higher point wins
                         if (userPoint > computerPoint) {
+                            instantWinCircleAnimation(circle);
                             heading.textContent = "You win this round!";
                             headingSmall.textContent = "You win this round!";
                             roundWinner = 'user';
@@ -1319,6 +1334,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 newRound('user');
                             }, 2000);
                         } else {
+                            instantWinCircleAnimation(circle);
                             heading.textContent = "Computer wins this round";
                             headingSmall.textContent = "Computer wins this round";
                             roundWinner = 'computer';

@@ -396,10 +396,10 @@ hr {
     }
 }
 
-.circle.border-instant-win {
+.circle-border-instant-win {
 
     background-color: yellow; 
-    animation: winning-star 1s infinite; 
+    animation: winning-star 0.5s infinite; 
     clip-path: polygon(
         50% 0%,
         61% 35%,
