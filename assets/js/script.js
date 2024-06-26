@@ -135,8 +135,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
                     if (userScoreDieOneChange) updateScoreDisplay(userScoreDieOneChange, rollValueOne);
+                    userScoreDieOneChange.classList.add('pop');
                     if (userScoreDieTwoChange) updateScoreDisplay(userScoreDieTwoChange, rollValueTwo);
+                    userScoreDieTwoChange.classList.add('pop');
                     if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
+                    userScoreDieThreeChange.classList.add('pop');
+
                 } else {
                     console.log("User not found or invalid roll format");
                 }
@@ -152,8 +156,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 if (!isNaN(rollValueOne) && !isNaN(rollValueTwo) && !isNaN(rollValueThree)) {
                     if (computerScoreDieOneChange) updateScoreDisplay(computerScoreDieOneChange, rollValueOne);
+                    computerScoreDieOneChange.classList.add('pop');
                     if (computerScoreDieTwoChange) updateScoreDisplay(computerScoreDieTwoChange, rollValueTwo);
+                    computerScoreDieTwoChange.classList.add('pop');
                     if (computerScoreDieThreeChange) updateScoreDisplay(computerScoreDieThreeChange, rollValueThree);
+                    computerScoreDieThreeChange.classList.add('pop');
                 }
 
             }
@@ -173,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
             4: 'fa-dice-four',
             5: 'fa-dice-five',
             6: 'fa-dice-six',
+
 
         }
 
