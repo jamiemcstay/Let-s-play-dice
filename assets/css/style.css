@@ -114,7 +114,6 @@ main {
     width: auto;
     margin: 0 auto;
     font-size: 14px;
-    z-index: 15;
     color: white;
     line-height: 2;
 }
@@ -162,7 +161,6 @@ main {
 #rules-logo-overlay {
     width: auto;
     height: auto;
-    z-index: 15;
 }
 
 #rules-logo-overlay>i {
@@ -649,10 +647,6 @@ hr {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-    }
-
-    #main-section-circle {
-        top: 120px;
     }
 
 }

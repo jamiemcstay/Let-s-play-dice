@@ -1,6 +1,32 @@
 //Function for screen on loading
 document.addEventListener('DOMContentLoaded', function () {
 
+    let rulesLogo = document.getElementById('rules-logo');
+    let rulesLogoOverlay = document.getElementById('rules-logo-overlay');
+    let rulesOverlay = document.getElementById('rules-overlay');
+
+    rulesLogo.classList.add('pulse');
+
+
+    rulesLogo.addEventListener('click', function () {
+
+        rulesLogo.classList.remove('pulse');
+
+        rulesLogoOverlay.classList.add('pulse');
+        if (rulesOverlay.style.display === 'flex') {
+            rulesOverlay.style.display = 'none';
+        } else {
+            rulesOverlay.style.display = 'flex';
+        }
+    });
+
+    rulesLogoOverlay.addEventListener('click', function () {
+        if (rulesOverlay.style.display === 'flex') {
+            rulesOverlay.style.display = 'none';
+        }
+    });
+
+
 
     let userDiceRolls = [];
     let computerDiceRolls = [];
@@ -28,22 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let bankRollComputer = document.getElementById('bank-roll-computer');
     let piggyBankInput = document.getElementById('piggy-bank-input');
 
-    let rulesLogo = document.getElementById('rules-logo');
-    let rulesOverlay = document.getElementById('rules-overlay');
-
-    rulesLogo.addEventListener('click', function () {
-        if (rulesOverlay.style.display === 'flex') {
-            rulesOverlay.style.display = 'none';
-        } else {
-            rulesOverlay.style.display = 'flex';
-        }
-    });
-
-    rulesOverlay.addEventListener('click', function (e) {
-        if (e.target === rulesOverlay) {
-            rulesOverlay.style.display = 'none';
-        }
-    });
 
 
     circle.addEventListener('click', clickToStart);
