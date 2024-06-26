@@ -106,7 +106,7 @@ main {
     transform: translate(-50%, -50%);
 }
 
-#rules-overlay>h2 {
+#rules-overlay > h2 {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
@@ -114,16 +114,41 @@ main {
     font-size: 150%;
 }
 
-#rules-overlay>h3 {
+#rules-overlay > h3 {
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-#rules-overlay>p,
-#rules-overlay>ul {
+#rules-overlay > p,
+#rules-overlay > ul {
     font-weight: lighter;
     margin-bottom: 10px;
 }
+
+
+#rules-logo-container-overlay {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: auto;
+}
+
+
+
+#rules-logo-overlay {
+    width: auto;
+    height: auto;
+    z-index: 15; 
+}
+
+#rules-logo-overlay > i {
+    color:  white;
+    margin: 0 auto;
+    font-size: 60px;
+    display: inline-block;
+}
+
 
 #main-section {
     background-color: pink;
