@@ -28,6 +28,19 @@ document.addEventListener('DOMContentLoaded', function () {
     let bankRollComputer = document.getElementById('bank-roll-computer');
     let piggyBankInput = document.getElementById('piggy-bank-input');
 
+    let rulesLogo = document.getElementById('rules-logo');
+    let rulesOverlay = document.getElementById('rules-overlay');
+
+    rulesLogo.addEventListener('click', function() {
+        rulesOverlay.style.display = 'flex';
+    });
+
+    rulesOverlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            overlay.style.display = 'none'; 
+        }
+    });
+
 
     circle.addEventListener('click', clickToStart);
 

@@ -97,16 +97,22 @@ main {
     left: 0;
     background-color: black;
     z-index: 12;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+
 }
 
 #rules-overlay-content {
-    width: 60%;
+    width: auto;
     margin: 0 auto;
-    padding-top: 70px;
-    transform: translate(-50%, -50%);
+    font-size: 14px;
+    z-index: 15;
+    color: white;
+    background-color: pink
 }
 
-#rules-overlay > h2 {
+#rules-overlay-content > h2 {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
@@ -114,24 +120,27 @@ main {
     font-size: 150%;
 }
 
-#rules-overlay > h3 {
+#rules-overlay-content >h3 {
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-#rules-overlay > p,
-#rules-overlay > ul {
+#rules-overlay-content > p,
+#rules-overlay-content > ul {
     font-weight: lighter;
     margin-bottom: 10px;
 }
 
-
+#rules-overlay-content > ul {
+    list-style: none; 
+}
 #rules-logo-container-overlay {
-    background-color: white;
+    background-color: black;
     display: flex;
     align-items: center;
     width: auto;
     height: auto;
+    align-self: start;
 }
 
 
@@ -139,11 +148,11 @@ main {
 #rules-logo-overlay {
     width: auto;
     height: auto;
-    z-index: 15; 
+    z-index: 15;
 }
 
-#rules-logo-overlay > i {
-    color:  white;
+#rules-logo-overlay>i {
+    color: white;
     margin: 0 auto;
     font-size: 60px;
     display: inline-block;
