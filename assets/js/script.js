@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         piggyBankValue = 0;
 
-        heading.style.top = '33%'; 
-        headingSmall.style.top = '28%'; 
+        heading.style.top = '33%';
+        headingSmall.style.top = '28%';
         heading.textContent = "Click for high roll";
         headingSmall.textContent = "Click for high roll";
 
@@ -707,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let piggyBankValue = parseInt(piggyBankInput.value);
 
         console.log(`DW playerRoll is: ${playersRoll}`);
-        console.log("DW playerRoll is:", typeof playersRoll);
+        console.log("DW playerRoll is:", typeof `${playersRoll}`);
 
         console.log("You're in instantWinOrLoss");
 
@@ -728,8 +728,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `You rolled ${playersRoll}`;
-                            headingSmall.textContent = `You rolled ${playersRoll}`;
+                            console.log("playerRoll is:", typeof playersRoll);
+                            console.log(`playersRoll is:${playersRoll}`);
+                            heading.textContent = `You rolled ${playersRoll.join(', ')}`;
+                            headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
@@ -763,8 +765,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `You rolled ${playersRoll}`;
-                            headingSmall.textContent = `You rolled ${playersRoll}`;
+                            console.log("playerRoll is:", typeof playersRoll);
+                            console.log(`playersRoll is:${playersRoll}`);
+                            heading.textContent = `You rolled ${playersRoll.join(', ')}`;
+                            headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -802,8 +806,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `Computer rolled ${playersRoll}`;
-                            headingSmall.textContent = `Computer rolled ${playersRoll}`;
+                            console.log("playerRoll is:", typeof playersRoll);
+                            console.log(`playersRoll is:${playersRoll}`);
+                            heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
+                            headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -838,8 +844,10 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `Computer rolled ${playersRoll}`;
-                            headingSmall.textContent = `Computer rolled ${playersRoll}`;
+                            console.log(`playersRoll is:${playersRoll}`);
+                            console.log("playerRoll is:", typeof playersRoll);
+                            heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
+                            headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantWinAnimation(circle);
@@ -897,7 +905,7 @@ document.addEventListener('DOMContentLoaded', function () {
         do {
             userDiceRolls = userRollDice();
             userRollOutcome = checkRoll(userDiceRolls, 'user');
-            
+
         } while (userRollOutcome === '');
 
         if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
