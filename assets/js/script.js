@@ -342,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let userStakes = 100;
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
+        let piggyBankContainer = document.getElementById('piggy-bank-container');
 
         if (bankRollUserValue >= userStakes && bankRollComputerValue >= userStakes) {
             bankRollUserValue -= userStakes;
@@ -352,6 +353,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let totalStakes = userStakes * 2;
 
             piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
+
+            piggyBankContainer.classList.add('piggy-pop'); 
 
         } else {
             heading.textContent = "Insuffient funds";
@@ -383,6 +386,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
 
+        let piggyBankContainer = document.getElementById('piggy-bank-container');
+
         setTimeout(function () {
             threeDiceNoDisplay();
             heading.textContent = "Computer setting stakes";
@@ -395,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 computerStakes = bankRollUserValue;
             }
             threeDiceNoDisplay();
+            piggyBankContainer.classList.add('piggy-pop'); 
             heading.textContent = `The stakes are ${computerStakes}`;
             headingSmall.textContent = `The stakes are ${computerStakes}`;
             bankRollComputerValue -= computerStakes;
@@ -419,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    
+
 
     function startInstantWinAnimation(element) {
         element.classList.add('circle-border-instant-win');
@@ -652,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'user');
-                            stopPulsingBorder(circle);
+                            stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
                             heading.textContent = `You rolled a ${playersRoll}`;
@@ -681,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'user');
-                            stopPulsingBorder(circle);
+                            stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
                             heading.textContent = `You rolled a ${playersRoll}`;
@@ -717,7 +723,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'computer');
-                            stopPulsingBorder(circle);
+                            stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
@@ -745,7 +751,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             updateDiceFace(playersRoll);
                             displayScore(playersRoll, 'computer');
-                            stopPulsingBorder(circle);
+                            stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
                             heading.textContent = `Computer rolled a ${playersRoll}`;
