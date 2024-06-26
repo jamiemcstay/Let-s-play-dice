@@ -259,6 +259,7 @@ hr {
 #bank-roll-wrapper {
     display: flex;
     gap: 5px;
+    flex-wrap: wrap; 
 }
 
 #increase-stakes,
