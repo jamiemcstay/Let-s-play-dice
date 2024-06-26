@@ -214,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
-        startPulsingBorder(circle);
+        startSpinningBorder(circle);
         startBlinking(heading);
         startBlinking(headingSmall);
 
@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
 
         setTimeout(function () {
-            stopPulsingBorder(circle);
+            stopSpinningBorder(circle);
             stopBlinking(heading);
             stopBlinking(headingSmall);
             heading.textContent = `You rolled a ${num1}`;
@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             if (diceTwoChange) {
                 diceTwoChange.classList.add('fa-spin');
-                startPulsingBorder(circle);
+                startSpinningBorder(circle);
                 startBlinking(heading);
                 startBlinking(headingSmall);
                 heading.textContent = "Computer Rolling";
@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             updateDieFace(diceTwoChange, num2);
-            stopPulsingBorder(circle);
+            stopSpinningBorder(circle);
             stopBlinking(heading);
             stopBlinking(headingSmall);
             heading.textContent = `Computer rolled a ${num2}`;
@@ -419,6 +419,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    
+
     function startInstantWinAnimation(element) {
         element.classList.add('circle-border-instant-win');
     }
@@ -435,13 +437,13 @@ document.addEventListener('DOMContentLoaded', function () {
         element.classList.remove('shake');
     }
 
-    function startPulsingBorder(element) {
+    function startSpinningBorder(element) {
 
-        element.classList.add('pulsing-border');
+        element.classList.add('spin');
     }
 
-    function stopPulsingBorder(element) {
-        element.classList.remove('pulsing-border');
+    function stopSpinningBorder(element) {
+        element.classList.remove('spin');
     }
 
     function startBlinking(element) {
@@ -790,7 +792,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             threeDiceSpinningDisplay();
-            startPulsingBorder(circle);
+            startSpinningBorder(circle);
             startBlinking(heading);
             startBlinking(headingSmall);
             heading.textContent = "Rolling";
@@ -809,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 threeDiceSpinningDisplay();
                 console.log(typeof userRollOutcome);
                 console.log(typeof userDiceRolls);
-                stopPulsingBorder(circle);
+                stopSpinningBorder(circle);
                 stopBlinking(heading);
                 stopBlinking(headingSmall);
                 heading.textContent = `You rolled a ${userDiceRolls}`;
@@ -833,7 +835,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             threeDiceSpinningDisplay();
-            startPulsingBorder(circle);
+            startSpinningBorder(circle);
             startBlinking(heading);
             startBlinking(headingSmall);
             heading.textContent = "Computer Rolling";
@@ -852,7 +854,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateDiceFace(computerRollOutcome);
                 return;
             } else {
-                stopPulsingBorder(circle);
+                stopSpinningBorder(circle);
                 stopBlinking(heading);
                 stopBlinking(headingSmall);
                 heading.textContent = `Computer rolled a ${computerDiceRolls}`;

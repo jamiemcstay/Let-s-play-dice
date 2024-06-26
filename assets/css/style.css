@@ -294,14 +294,51 @@ hr {
 
 /*Add spin keyframe and spinning class to add to cirle div when dice rolling*/
 
-/* @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes spin {
+
+    0%  {
+
+        border-top-color: grey;
+        border-right-color: darkgrey;
+        border-bottom-color: black;
+        border-left-color: lightgrey;
+        
+    }
+
+    25% {
+        border-top-color: lightgrey; 
+        border-right-color: grey;
+        border-bottom-color: darkgrey;
+        border-left-color: black; 
+    }
+
+    50% {
+        border-top-color: black; 
+        border-right-color: lightgrey; 
+        border-bottom-color: grey;
+        border-left-color: darkgrey; 
+    }
+
+    75% {
+        border-top-color: darkgrey; 
+        border-right-color: black; 
+        border-bottom-color: lightgrey;
+        border-left-color: grey; 
+    }
+
+    100% {
+        border-top-color: grey;
+        border-right-color: darkgrey;
+        border-bottom-color: black;
+        border-left-color: lightgrey; 
+    }
+
 }
 
-.spinning {
+.spin {
+
     animation: spin 1s linear infinite; 
-} */
+}
 
 @keyframes instant-loss-shake {
 
