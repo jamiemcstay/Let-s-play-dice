@@ -513,6 +513,30 @@ hr {
 
 }
 
+/* @media screen and (min-width: 375px) {
+
+    #score-area-left, #score-area-right {
+        padding-left: 0px; 
+        padding-right: 0px; 
+        justify-content: flex-start; 
+
+    }
+
+    #increase-stakes {
+        align-self: normal; 
+    }
+
+} */
+
+@media screen and (max-width: 375px) {
+    
+    #bank-roll-wrapper {
+        gap: 0px;
+        flex-wrap: wrap; 
+        width: auto;
+    }
+}
+
 @media screen and (max-width: 425px) {
 
     #bank-roll-wrapper {
