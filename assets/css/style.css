@@ -103,11 +103,13 @@ main {
 }
 
 #rules-overlay-content-wrapper {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: start;
     width: 100%;
-    height: 100%; 
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #rules-overlay-content {
@@ -116,15 +118,15 @@ main {
     font-size: 14px;
     z-index: 15;
     color: white;
-    background-color: pink
+    line-height: 2;
 }
 
 #rules-overlay-content>h2 {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
-    font-weight: 750;
-    font-size: 150%;
+    font-weight: 200;
+    font-size: 200%;
 }
 
 #rules-overlay-content>h3 {
@@ -144,7 +146,8 @@ main {
 
 #rules-overlay-top {
     height: auto;
-    width: 100%; 
+    width: 100%;
+    margin-bottom: 35px;
 }
 
 #rules-logo-container-overlay {
