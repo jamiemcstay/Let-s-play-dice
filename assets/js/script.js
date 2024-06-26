@@ -338,14 +338,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateStakes() {
 
-        
+
 
         let userStakes = 100;
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         let piggyBankContainer = document.getElementById('piggy-bank-container');
 
-        piggyBankContainer.classList.remove('piggy-pop'); 
+        piggyBankContainer.classList.remove('pop');
 
         if (bankRollUserValue >= userStakes && bankRollComputerValue >= userStakes) {
             bankRollUserValue -= userStakes;
@@ -357,9 +357,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
 
-            setTimeout (function () {
-                piggyBankContainer.classList.add('piggy-pop');
-            }, 5);     
+            setTimeout(function () {
+                piggyBankContainer.classList.add('pop');
+            }, 5);
 
 
         } else {
@@ -406,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 computerStakes = bankRollUserValue;
             }
             threeDiceNoDisplay();
-            piggyBankContainer.classList.add('piggy-pop'); 
+            piggyBankContainer.classList.add('pop');
             heading.textContent = `The stakes are ${computerStakes}`;
             headingSmall.textContent = `The stakes are ${computerStakes}`;
             bankRollComputerValue -= computerStakes;

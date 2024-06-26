@@ -393,7 +393,7 @@ hr {
     animation-iteration-count: 3;
 }
 
-@keyframes piggy-pop {
+@keyframes pop {
 
     0% {
         transform: scale(1); 
@@ -409,8 +409,8 @@ hr {
 
 }
 
-.piggy-pop {
-    animation: piggy-pop 1s ease-in-out; 
+.pop {
+    animation: pop 1s ease-in-out; 
 }
 
 @keyframes spinBorder {
