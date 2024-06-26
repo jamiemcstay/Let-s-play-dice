@@ -338,11 +338,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateStakes() {
 
+        
 
         let userStakes = 100;
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         let piggyBankContainer = document.getElementById('piggy-bank-container');
+
+        piggyBankContainer.classList.remove('piggy-pop'); 
 
         if (bankRollUserValue >= userStakes && bankRollComputerValue >= userStakes) {
             bankRollUserValue -= userStakes;
@@ -354,7 +357,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
             piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
 
-            piggyBankContainer.classList.add('piggy-pop'); 
+            setTimeout (function () {
+                piggyBankContainer.classList.add('piggy-pop');
+            }, 5);     
+
 
         } else {
             heading.textContent = "Insuffient funds";
