@@ -97,10 +97,17 @@ main {
     left: 0;
     background-color: black;
     z-index: 12;
-    justify-content: center;
-    align-items: center;
     overflow-y: auto;
+    flex-direction: column;
 
+}
+
+#rules-overlay-content-wrapper {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    height: 100%; 
 }
 
 #rules-overlay-content {
@@ -112,7 +119,7 @@ main {
     background-color: pink
 }
 
-#rules-overlay-content > h2 {
+#rules-overlay-content>h2 {
     text-align: center;
     width: 100%;
     margin-bottom: 20px;
@@ -120,20 +127,26 @@ main {
     font-size: 150%;
 }
 
-#rules-overlay-content >h3 {
+#rules-overlay-content>h3 {
     font-weight: 600;
     margin-bottom: 10px;
 }
 
-#rules-overlay-content > p,
-#rules-overlay-content > ul {
+#rules-overlay-content>p,
+#rules-overlay-content>ul {
     font-weight: lighter;
     margin-bottom: 10px;
 }
 
-#rules-overlay-content > ul {
-    list-style: none; 
+#rules-overlay-content>ul {
+    list-style: none;
 }
+
+#rules-overlay-top {
+    height: auto;
+    width: 100%; 
+}
+
 #rules-logo-container-overlay {
     background-color: black;
     display: flex;
