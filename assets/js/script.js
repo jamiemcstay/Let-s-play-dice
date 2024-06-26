@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (num1 === num2);
 
         heading.style.top = '28%';
-        headingSmall.style.top = '28%'; 
+        headingSmall.style.top = '28%';
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
@@ -269,14 +269,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 2000);
 
         setTimeout(function () {
-            diceTwo.style.display = 'none'; 
+            diceTwo.style.display = 'none';
             heading.style.top = '45%';
-            headingSmall.style.top = '45%'; 
+            headingSmall.style.top = '45%';
             heading.textContent = `You rolled a ${num1}`;
             headingSmall.textContent = `You rolled a ${num1}`;
-        }, 3000); 
-            
-        
+        }, 3000);
+
+
 
         //Computers high roll 
 
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 startBlinking(heading);
                 startBlinking(headingSmall);
                 heading.style.top = '28%';
-                headingSmall.style.top = '28%'; 
+                headingSmall.style.top = '28%';
                 heading.textContent = "Computer Rolling";
                 headingSmall.textContent = "Computer Rolling";
             }
@@ -304,13 +304,13 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             heading.style.top = '45%';
             headingSmall.style.top = '45%';
-            diceTwo.style.display = 'none'; 
+            diceTwo.style.display = 'none';
             heading.textContent = `Computer rolled a ${num2}`;
             headingSmall.textContent = `Computer rolled a ${num2}`;
-        }, 6000); 
+        }, 6000);
 
         setTimeout(function () {
-        
+
             if (num1 > num2) {
                 threeDiceNoDisplay();
                 heading.textContent = "You're the banker";
@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             threeDiceNoDisplay();
             heading.style.top = '45%';
-            headingSmall.style.top = '45%'; 
+            headingSmall.style.top = '45%';
             heading.textContent = `Set the stakes`;
             headingSmall.textContent = `Set the stakes`;
         }, 2000);
@@ -455,7 +455,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             threeDiceNoDisplay();
             heading.style.top = '45%';
-            headingSmall.style.top = '45%'; 
+            headingSmall.style.top = '45%';
             heading.textContent = "Computer setting stakes";
             headingSmall.textContent = "Computer setting stakes";
         }, 1000);
@@ -468,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
             threeDiceNoDisplay();
             piggyBankContainer.classList.add('pop');
             heading.style.top = '45%';
-            headingSmall.style.top = '45%'; 
+            headingSmall.style.top = '45%';
             heading.textContent = `The stakes are ${computerStakes}`;
             headingSmall.textContent = `The stakes are ${computerStakes}`;
             bankRollComputerValue -= computerStakes;
@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopBlinking(headingSmall);
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = `You rolled a ${playersRoll}`;
@@ -759,7 +759,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopBlinking(headingSmall);
                         }, 2000)
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = `You rolled a ${playersRoll}`;
@@ -798,12 +798,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopBlinking(headingSmall);
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                             headingSmall.textContent = `Computer rolled a ${playersRoll}`;
-                        }, 3000); 
+                        }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
                             heading.style.top = '45%';
@@ -834,12 +834,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopBlinking(headingSmall);
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay(); 
+                            threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = `Computer rolled a ${playersRoll}`;
                             headingSmall.textContent = `Computer rolled a ${playersRoll}`;
-                        }, 3000); 
+                        }, 3000);
                         setTimeout(function () {
                             startInstantWinAnimation(circle);
                             heading.style.top = '45%';
@@ -888,7 +888,7 @@ document.addEventListener('DOMContentLoaded', function () {
             startBlinking(heading);
             startBlinking(headingSmall);
             heading.style.top = '28%';
-            headingSmall.style.top = '28%'; 
+            headingSmall.style.top = '28%';
             heading.textContent = "Rolling";
             headingSmall.textContent = "Rolling";
         }, 1000);
@@ -902,12 +902,12 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         } else {
             setTimeout(function () {
-                threeDiceNoDisplay(); 
+                threeDiceNoDisplay();
                 stopSpinningBorder(circle);
                 stopBlinking(heading);
                 stopBlinking(headingSmall);
                 heading.style.top = '45%';
-                headingSmall.style.top = '45%'; 
+                headingSmall.style.top = '45%';
                 heading.textContent = `You rolled a ${userDiceRolls}`;
                 headingSmall.textContent = `You rolled a ${userDiceRolls}`;
                 currentPlayer = 'computer';
@@ -932,7 +932,7 @@ document.addEventListener('DOMContentLoaded', function () {
             startBlinking(heading);
             startBlinking(headingSmall);
             heading.style.top = '28%';
-            headingSmall.style.top = '28%';  
+            headingSmall.style.top = '28%';
             heading.textContent = "Computer Rolling";
             headingSmall.textContent = "Computer Rolling";
         }, 2000);
@@ -949,12 +949,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateDiceFace(computerRollOutcome);
                 return;
             } else {
-                threeDiceNoDisplay(); 
+                threeDiceNoDisplay();
                 stopSpinningBorder(circle);
                 stopBlinking(heading);
                 stopBlinking(headingSmall);
                 heading.style.top = '45%';
-                headingSmall.style.top = '45%'; 
+                headingSmall.style.top = '45%';
                 heading.textContent = `Computer rolled a ${computerDiceRolls}`;
                 headingSmall.textContent = `Computer rolled a ${computerDiceRolls}`;
                 console.log(computerDiceRolls);
@@ -1090,28 +1090,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (bankRollUserValue === 0) {
             setTimeout(function () {
-                heading.style.top = '28%';
-                headingSmall.style.top = '28%'; 
-                heading.textContent = "You Loose";
-                headingSmall.textContent = "You Loose";
+                heading.style.top = '45%';
+                headingSmall.style.top = '45%';
+                heading.textContent = "YOU LOSE";
+                headingSmall.textContent = "YOU LOSE";
             }, 2000);
             setTimeout(function () {
-                heading.style.top = '28%';
-                headingSmall.style.top = '28%'; 
+                heading.style.top = '45%';
+                headingSmall.style.top = '45%';
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
                 circle.addEventListener('click', reStartGame);
             }, 3000);
         } else if (bankRollComputerValue === 0) {
             setTimeout(function () {
-                heading.style.top = '28%';
-                headingSmall.style.top = '28%'; 
-                heading.textContent = "You Win!";
-                headingSmall.textContent = "You Win!";
+                heading.style.top = '45%';
+                headingSmall.style.top = '45%';
+                heading.textContent = "YOU WIN";
+                headingSmall.textContent = "YOU WIN";
             }, 2000);
             setTimeout(function () {
-                heading.style.top = '28%';
-                headingSmall.style.top = '28%'; 
+                heading.style.top = '45%';
+                headingSmall.style.top = '45%';
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
                 circle.addEventListener('click', reStartGame);
@@ -1141,7 +1141,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () {
                     threeDiceBounceDisplay();
                     heading.style.top = '28%';
-                    headingSmall.style.top = '28%'; 
+                    headingSmall.style.top = '28%';
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
                     circle.addEventListener('click', startUserTurn);
@@ -1284,7 +1284,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (roundWinner === 'user') {
                 setTimeout(function () {
                     heading.style.top = '45%';
-                    headingSmall.style.top = '45%'; 
+                    headingSmall.style.top = '45%';
                     heading.textContent = "New Round";
                     headingSmall.textContent = "New Round";
                     resetScoreDisplay();
@@ -1293,7 +1293,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else if (roundWinner === 'computer') {
                 setTimeout(function () {
                     heading.style.top = '45%';
-                    headingSmall.style.top = '45%'; 
+                    headingSmall.style.top = '45%';
                     heading.textContent = "New Round";
                     headingSmall.textContent = "New Round";
                     resetScoreDisplay();
@@ -1323,16 +1323,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentPlayer = 'user';
                 setTimeout(function () {
                     heading.style.top = '45%';
-                    headingSmall.style.top = '45%'; 
+                    headingSmall.style.top = '45%';
                     heading.textContent = "You roll first";
                     headingSmall.textContent = "You roll first";
                 }, 3000);
                 setTimeout(function () {
                     heading.style.top = '28%';
-                    headingSmall.style.top = '28%'; 
+                    headingSmall.style.top = '28%';
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
-                    threeDiceBounceDisplay(); 
+                    threeDiceBounceDisplay();
                     circle.addEventListener('click', startUserTurn);
                 }, 4000);
 
@@ -1392,7 +1392,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else if (userPoint > computerPoint) {
                         startInstantWinAnimation(circle);
                         heading.style.top = '45%';
-                        headingSmall.style.top = '45%'; 
+                        headingSmall.style.top = '45%';
                         heading.textContent = "You win this round!";
                         headingSmall.textContent = "You win this round!";
                         roundWinner = 'user';
@@ -1400,7 +1400,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             stopInstantWinAnimation();
                             heading.style.top = '45%';
-                            headingSmall.style.top = '45%'; 
+                            headingSmall.style.top = '45%';
                             heading.textContent = `You win ${piggyBankValue}`;
                             headingSmall.textContent = `You win ${piggyBankValue}`;
                             updateBankRolls('user', piggyBankValue);
@@ -1411,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         startInstantLossAnimation(circle);
                         heading.style.top = '45%';
-                        headingSmall.style.top = '45%'; 
+                        headingSmall.style.top = '45%';
                         heading.textContent = "Computer wins this round";
                         headingSmall.textContent = "Computer wins this round";
                         roundWinner = 'computer';
@@ -1420,7 +1420,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             stopInstantLossAnimation(circle);
                             heading.style.top = '45%';
-                            headingSmall.style.top = '45%'; 
+                            headingSmall.style.top = '45%';
                             heading.textContent = `Computer wins ${piggyBankValue}`;
                             headingSmall.textContent = `Computer wins ${piggyBankValue}`;
                             updateBankRolls('computer', piggyBankValue);
@@ -1436,7 +1436,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userPairValue > computerPairValue) {
                             startInstantWinAnimation(circle);
                             heading.style.top = '45%';
-                            headingSmall.style.top = '45%'; 
+                            headingSmall.style.top = '45%';
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
@@ -1444,7 +1444,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             setTimeout(function () {
                                 stopInstantWinAnimation(circle);
                                 heading.style.top = '45%';
-                                headingSmall.style.top = '45%'; 
+                                headingSmall.style.top = '45%';
                                 heading.textContent = `You win ${piggyBankValue}`;
                                 headingSmall.textContent = `You win ${piggyBankValue}`;
                                 updateBankRolls('user', piggyBankValue);
@@ -1454,7 +1454,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             startInstantLossAnimation(circle);
                             heading.style.top = '45%';
-                            headingSmall.style.top = '45%'; 
+                            headingSmall.style.top = '45%';
                             heading.textContent = "Computer wins this round";
                             headingSmall.textContent = "Computer wins this round";
                             roundWinner = 'computer';
@@ -1463,7 +1463,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             setTimeout(function () {
                                 stopInstantLossAnimation(circle);
                                 heading.style.top = '45%';
-                                headingSmall.style.top = '45%'; 
+                                headingSmall.style.top = '45%';
                                 heading.textContent = `Computer wins ${piggyBankValue}`;
                                 headingSmall.textContent = `Computer wins ${piggyBankValue}`;
                                 updateBankRolls('computer', piggyBankValue);
@@ -1477,7 +1477,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userPoint > computerPoint) {
                             startInstantWinAnimation(circle);
                             heading.style.top = '45%';
-                            headingSmall.style.top = '45%'; 
+                            headingSmall.style.top = '45%';
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
@@ -1485,7 +1485,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             setTimeout(function () {
                                 stopInstantWinAnimation(circle);
                                 heading.style.top = '45%';
-                                headingSmall.style.top = '45%'; 
+                                headingSmall.style.top = '45%';
                                 heading.textContent = `You win ${piggyBankValue}`;
                                 headingSmall.textContent = `You win ${piggyBankValue}`;
                                 updateBankRolls('user', piggyBankValue);
@@ -1496,7 +1496,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         } else {
                             startInstantLossAnimation(circle);
                             heading.style.top = '45%';
-                            headingSmall.style.top = '45%'; 
+                            headingSmall.style.top = '45%';
                             heading.textContent = "Computer wins this round";
                             headingSmall.textContent = "Computer wins this round";
                             roundWinner = 'computer';
@@ -1505,7 +1505,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             setTimeout(function () {
                                 stopInstantLossAnimation(circle);
                                 heading.style.top = '45%';
-                                headingSmall.style.top = '45%'; 
+                                headingSmall.style.top = '45%';
                                 heading.textContent = `Computer wins ${piggyBankValue}`;
                                 headingSmall.textContent = `Computer wins ${piggyBankValue}`;
                                 updateBankRolls('computer', piggyBankValue);
