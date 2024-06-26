@@ -260,7 +260,7 @@ hr {
     display: flex;
     gap: 5px;
     /* flex-wrap: wrap; */
-    width: auto;  
+    width: auto;
 }
 
 #increase-stakes {
@@ -503,8 +503,8 @@ hr {
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: space-between; 
-        flex-direction: column; 
+        justify-content: space-between;
+        flex-direction: column;
     }
 
     #main-section-circle {
@@ -529,10 +529,10 @@ hr {
 } */
 
 @media screen and (max-width: 375px) {
-    
+
     #bank-roll-wrapper {
         gap: 0px;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         width: auto;
     }
 }
@@ -541,7 +541,7 @@ hr {
 
     #bank-roll-wrapper {
         gap: 0px;
-        flex-wrap: wrap; 
+        flex-wrap: wrap;
         width: auto;
     }
 
@@ -576,7 +576,7 @@ hr {
         position: absolute;
         top: 68%;
         left: 50%;
-        border: none; 
+        border: none;
     }
 
 
@@ -600,11 +600,11 @@ hr {
     #score-area-left,
     #score-area-right {
         width: 100%;
-        flex-direction: row; 
+        flex-direction: row;
         justify-content: center;
         flex-direction: row;
-        padding-left: 20px; 
-        padding-right: 20px; 
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
     #score-area-right {
