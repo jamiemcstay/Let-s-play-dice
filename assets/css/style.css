@@ -259,11 +259,11 @@ hr {
 #bank-roll-wrapper {
     display: flex;
     gap: 5px;
-    flex-wrap: wrap; 
+    /* flex-wrap: wrap; */
+    width: auto;  
 }
 
-#increase-stakes,
-#decrease-stakes {
+#increase-stakes {
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -271,7 +271,7 @@ hr {
     displaY: flex;
     justify-content: center;
     align-items: center;
-    padding: 18px;
+    padding: 15px;
 
 }
 
@@ -515,6 +515,12 @@ hr {
 
 @media screen and (max-width: 425px) {
 
+    #bank-roll-wrapper {
+        gap: 0px;
+        flex-wrap: wrap; 
+        width: auto;
+    }
+
     #main-section {
         height: 90vh;
     }
@@ -570,12 +576,11 @@ hr {
     #score-area-left,
     #score-area-right {
         width: 100%;
-        flex-direction: row;
+        flex-direction: row; 
         justify-content: center;
-    }
-
-    #score-area-left {
-        padding-left: 0;
+        flex-direction: row;
+        padding-left: 20px; 
+        padding-right: 20px; 
     }
 
     #score-area-right {
