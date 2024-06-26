@@ -26,8 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-
-
+    //Global variables to help with gameflow management
     let userDiceRolls = [];
     let computerDiceRolls = [];
     let userRollOutcome;
@@ -67,10 +66,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
         piggyBankValue = 0;
 
+        heading.style.top = '33%'; 
+        headingSmall.style.top = '28%'; 
         heading.textContent = "Click for high roll";
         headingSmall.textContent = "Click for high roll";
 
-        //Remove left and right dice to display sole dice for high roll
+        //Remove left and right dice to display one die for high roll
 
         highRollDiceDisplay();
 
@@ -246,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
             num2 = rollDice();
         } while (num1 === num2);
 
-        heading.style.top = '28%';
+        heading.style.top = '33%';
         headingSmall.style.top = '28%';
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
@@ -272,8 +273,8 @@ document.addEventListener('DOMContentLoaded', function () {
             diceTwo.style.display = 'none';
             heading.style.top = '45%';
             headingSmall.style.top = '45%';
-            heading.textContent = `You rolled a ${num1}`;
-            headingSmall.textContent = `You rolled a ${num1}`;
+            heading.textContent = `You rolled ${num1}`;
+            headingSmall.textContent = `You rolled ${num1}`;
         }, 3000);
 
 
@@ -287,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 startSpinningBorder(circle);
                 startBlinking(heading);
                 startBlinking(headingSmall);
-                heading.style.top = '28%';
+                heading.style.top = '33%';
                 headingSmall.style.top = '28%';
                 heading.textContent = "Computer Rolling";
                 headingSmall.textContent = "Computer Rolling";
@@ -305,8 +306,8 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.style.top = '45%';
             headingSmall.style.top = '45%';
             diceTwo.style.display = 'none';
-            heading.textContent = `Computer rolled a ${num2}`;
-            headingSmall.textContent = `Computer rolled a ${num2}`;
+            heading.textContent = `Computer rolled ${num2}`;
+            headingSmall.textContent = `Computer rolled ${num2}`;
         }, 6000);
 
         setTimeout(function () {
@@ -425,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         setTimeout(function () {
             threeDiceBounceDisplay();
-            heading.style.top = '28%';
+            heading.style.top = '33%';
             headingSmall.style.top = '28%';
             heading.textContent = "Click to roll";
             headingSmall.textContent = "Click to roll";
@@ -727,8 +728,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `You rolled a ${playersRoll}`;
-                            headingSmall.textContent = `You rolled a ${playersRoll}`;
+                            heading.textContent = `You rolled ${playersRoll}`;
+                            headingSmall.textContent = `You rolled ${playersRoll}`;
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
@@ -762,8 +763,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `You rolled a ${playersRoll}`;
-                            headingSmall.textContent = `You rolled a ${playersRoll}`;
+                            heading.textContent = `You rolled ${playersRoll}`;
+                            headingSmall.textContent = `You rolled ${playersRoll}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -801,8 +802,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `Computer rolled a ${playersRoll}`;
-                            headingSmall.textContent = `Computer rolled a ${playersRoll}`;
+                            heading.textContent = `Computer rolled ${playersRoll}`;
+                            headingSmall.textContent = `Computer rolled ${playersRoll}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -837,8 +838,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `Computer rolled a ${playersRoll}`;
-                            headingSmall.textContent = `Computer rolled a ${playersRoll}`;
+                            heading.textContent = `Computer rolled ${playersRoll}`;
+                            headingSmall.textContent = `Computer rolled ${playersRoll}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantWinAnimation(circle);
@@ -887,7 +888,7 @@ document.addEventListener('DOMContentLoaded', function () {
             startSpinningBorder(circle);
             startBlinking(heading);
             startBlinking(headingSmall);
-            heading.style.top = '28%';
+            heading.style.top = '33%';
             headingSmall.style.top = '28%';
             heading.textContent = "Rolling";
             headingSmall.textContent = "Rolling";
@@ -896,6 +897,7 @@ document.addEventListener('DOMContentLoaded', function () {
         do {
             userDiceRolls = userRollDice();
             userRollOutcome = checkRoll(userDiceRolls, 'user');
+            
         } while (userRollOutcome === '');
 
         if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
@@ -908,8 +910,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 stopBlinking(headingSmall);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                heading.textContent = `You rolled a ${userDiceRolls}`;
-                headingSmall.textContent = `You rolled a ${userDiceRolls}`;
+                let noCommaString = userDiceRolls.join(' ');
+                heading.textContent = `You rolled ${noCommaString}`;
+                headingSmall.textContent = `You rolled ${noCommaString}`;
                 currentPlayer = 'computer';
                 updateDiceFace(userRollOutcome);
                 displayScore(userRollOutcome, 'user');
@@ -931,7 +934,7 @@ document.addEventListener('DOMContentLoaded', function () {
             startSpinningBorder(circle);
             startBlinking(heading);
             startBlinking(headingSmall);
-            heading.style.top = '28%';
+            heading.style.top = '33%';
             headingSmall.style.top = '28%';
             heading.textContent = "Computer Rolling";
             headingSmall.textContent = "Computer Rolling";
@@ -955,8 +958,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 stopBlinking(headingSmall);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                heading.textContent = `Computer rolled a ${computerDiceRolls}`;
-                headingSmall.textContent = `Computer rolled a ${computerDiceRolls}`;
+                let noCommaString = computerDiceRolls.join(' ');
+                heading.textContent = `Computer rolled ${noCommaString}`;
+                headingSmall.textContent = `Computer rolled ${noCommaString}`;
                 console.log(computerDiceRolls);
                 currentPlayer = 'user';
                 displayScore(computerRollOutcome, 'computer');
@@ -1086,7 +1090,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputerValue = parseInt(bankRollComputer.value)
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
 
         if (bankRollUserValue === 0) {
             setTimeout(function () {
@@ -1140,7 +1144,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (userRollOutcome === undefined) {
                 setTimeout(function () {
                     threeDiceBounceDisplay();
-                    heading.style.top = '28%';
+                    heading.style.top = '33%';
                     headingSmall.style.top = '28%';
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
