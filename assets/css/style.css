@@ -181,7 +181,7 @@ hr {
 #score-area {
     display: flex;
     justify-content: space-between;
-    height: 18%;
+    height: auto;
     background-color: blue;
     width: 100%;
     display: flex;
@@ -564,6 +564,7 @@ hr {
     #score-area {
         flex-direction: column;
         display: none;
+
     }
 
     #score-area-left,
