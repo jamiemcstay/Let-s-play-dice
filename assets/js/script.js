@@ -265,41 +265,54 @@ document.addEventListener('DOMContentLoaded', function () {
             stopSpinningBorder(circle);
             stopBlinking(heading);
             stopBlinking(headingSmall);
-            heading.style.top = '28%';
-            headingSmall.style.top = '28%'; 
+
+        }, 2000);
+
+        setTimeout(function () {
+            diceTwo.style.display = 'none'; 
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%'; 
             heading.textContent = `You rolled a ${num1}`;
             headingSmall.textContent = `You rolled a ${num1}`;
-        }, 2000);
+        }, 3000); 
+            
+        
 
         //Computers high roll 
 
         setTimeout(function () {
             if (diceTwoChange) {
+                diceTwo.style.display = 'inline-flex';
                 diceTwoChange.classList.add('fa-spin');
                 startSpinningBorder(circle);
                 startBlinking(heading);
                 startBlinking(headingSmall);
+                heading.style.top = '28%';
+                headingSmall.style.top = '28%'; 
                 heading.textContent = "Computer Rolling";
                 headingSmall.textContent = "Computer Rolling";
             }
-        }, 3000);
+        }, 4000);
 
         setTimeout(function () {
             updateDieFace(diceTwoChange, num2);
             stopSpinningBorder(circle);
             stopBlinking(heading);
             stopBlinking(headingSmall);
-            heading.textContent = `Computer rolled a ${num2}`;
-            headingSmall.textContent = `Computer rolled a ${num2}`;
-
-        }, 4000);
+        }, 5000);
 
         setTimeout(function () {
-            ;
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%';
+            diceTwo.style.display = 'none'; 
+            heading.textContent = `Computer rolled a ${num2}`;
+            headingSmall.textContent = `Computer rolled a ${num2}`;
+        }, 6000); 
+
+        setTimeout(function () {
+        
             if (num1 > num2) {
                 threeDiceNoDisplay();
-                heading.style.top = '45%';
-                headingSmall.style.top = '45%';
                 heading.textContent = "You're the banker";
                 headingSmall.textContent = "You're the banker";
                 currentPlayer = 'user';
@@ -308,8 +321,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTheStakes();
             } else {
                 threeDiceNoDisplay();
-                heading.style.top = '45%';
-                headingSmall.style.top = '45%';
                 heading.textContent = "Computer is the banker";
                 headingSmall.textContent = "Computer is the banker";
                 diceTwoChange.classList.remove('fa-spin');
@@ -317,7 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentPlayer = 'computer';
                 setComputerStakes();
             }
-        }, 5000);
+        }, 7000);
 
 
         let highRollResult = [num1, num2];
@@ -711,27 +722,31 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
+                        }, 2000);
+                        setTimeout(function () {
+                            threeDiceNoDisplay(); 
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = `You rolled a ${playersRoll}`;
                             headingSmall.textContent = `You rolled a ${playersRoll}`;
-                        }, 2000);
+                        }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
-                            threeDiceNoDisplay();
                             startInstantWinAnimation(circle);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
                             heading.textContent = 'INSTANT WIN';
                             headingSmall.textContent = 'INSTANT WIN';
-                        }, 3000);
+                        }, 4000);
                         setTimeout(function () {
                             stopInstantWinAnimation(circle);
                             heading.textContent = `You win ${piggyBankValue}`;
                             headingSmall.textContent = `You win ${piggyBankValue}`;
                             updateBankRolls('user', piggyBankValue);
-                        }, 4000);
+                        }, 5000);
                         setTimeout(function () {
                             newRound('user');
-                        }, 5000);
+                        }, 6000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
                         roundWinner = 'computer';
@@ -742,25 +757,28 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
+                        }, 2000)
+                        setTimeout(function () {
+                            threeDiceNoDisplay(); 
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
                             heading.textContent = `You rolled a ${playersRoll}`;
                             headingSmall.textContent = `You rolled a ${playersRoll}`;
-                        }, 2000);
-                        console.log(`${playersRoll}`);
+                        }, 3000);
                         setTimeout(function () {
-                            threeDiceNoDisplay();
                             startInstantLossAnimation(circle);
                             heading.textContent = 'INSTANT LOSS';
                             headingSmall.textContent = 'INSTANT LOSS';
-                        }, 3000);
+                        }, 4000);
                         setTimeout(function () {
                             stopInstantLossAnimation(circle);
                             heading.textContent = `Computer wins ${piggyBankValue}`;
                             headingSmall.textContent = `computer wins ${piggyBankValue}`;
                             updateBankRolls('computer', piggyBankValue);
-                        }, 4000);
+                        }, 5000);
                         setTimeout(function () {
                             newRound('computer');
-                        }, 5000);
+                        }, 6000);
                         return true;
                     }
                 }
@@ -778,24 +796,32 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
-                            heading.textContent = `Computer rolled a ${playersRoll}`;
-                            headingSmall.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay();
+                            threeDiceNoDisplay(); 
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.textContent = `Computer rolled a ${playersRoll}`;
+                            headingSmall.textContent = `Computer rolled a ${playersRoll}`;
+                        }, 3000); 
+                        setTimeout(function () {
                             startInstantLossAnimation(circle);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
                             heading.textContent = 'COMPUTER INSTANT WIN';
                             headingSmall.textContent = 'COMPUTER INSTANT WIN';
-                        }, 3000);
+                        }, 4000);
                         setTimeout(function () {
                             stopInstantLossAnimation(circle);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
                             heading.textContent = `Computer wins ${piggyBankValue}`;
                             headingSmall.textContent = `Computer wins ${piggyBankValue}`;
                             updateBankRolls('computer', piggyBankValue);
-                        }, 4000);
+                        }, 5000);
                         setTimeout(function () {
                             newRound('computer');
-                        }, 5000);
+                        }, 6000);
                         return true;
                     } else if (playerRollOutcome === 'instant-loss') {
                         roundWinner = 'user';
@@ -806,24 +832,32 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopSpinningBorder(circle);
                             stopBlinking(heading);
                             stopBlinking(headingSmall);
-                            heading.textContent = `Computer rolled a ${playersRoll}`;
-                            headingSmall.textContent = `Computer rolled a ${playersRoll}`;
                         }, 2000);
                         setTimeout(function () {
-                            threeDiceNoDisplay();
+                            threeDiceNoDisplay(); 
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.textContent = `Computer rolled a ${playersRoll}`;
+                            headingSmall.textContent = `Computer rolled a ${playersRoll}`;
+                        }, 3000); 
+                        setTimeout(function () {
                             startInstantWinAnimation(circle);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
                             heading.textContent = 'COMPUTER INSTANT LOSS';
                             headingSmall.textContent = 'COMPUTER INSTANT LOSS';
-                        }, 3000);
+                        }, 4000);
                         setTimeout(function () {
                             stopInstantWinAnimation(circle);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
                             heading.textContent = `You win ${piggyBankValue}`;
                             headingSmall.textContent = `You wins ${piggyBankValue}`;
                             updateBankRolls('user', piggyBankValue);
-                        }, 4000);
+                        }, 5000);
                         setTimeout(function () {
                             newRound('user');
-                        }, 5000);
+                        }, 6000);
                         return true;
                     }
                 }
@@ -868,9 +902,7 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         } else {
             setTimeout(function () {
-                threeDiceSpinningDisplay();
-                console.log(typeof userRollOutcome);
-                console.log(typeof userDiceRolls);
+                threeDiceNoDisplay(); 
                 stopSpinningBorder(circle);
                 stopBlinking(heading);
                 stopBlinking(headingSmall);
@@ -879,7 +911,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.textContent = `You rolled a ${userDiceRolls}`;
                 headingSmall.textContent = `You rolled a ${userDiceRolls}`;
                 currentPlayer = 'computer';
-                console.log(`UsersTurn is returning: ${userRollOutcome}`);
                 updateDiceFace(userRollOutcome);
                 displayScore(userRollOutcome, 'user');
                 runGame();
@@ -918,6 +949,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 updateDiceFace(computerRollOutcome);
                 return;
             } else {
+                threeDiceNoDisplay(); 
                 stopSpinningBorder(circle);
                 stopBlinking(heading);
                 stopBlinking(headingSmall);
@@ -927,7 +959,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 headingSmall.textContent = `Computer rolled a ${computerDiceRolls}`;
                 console.log(computerDiceRolls);
                 currentPlayer = 'user';
-                console.log(`computersTurn is returning: ${computerRollOutcome}`);
                 displayScore(computerRollOutcome, 'computer');
                 updateDiceFace(computerRollOutcome);
                 setTimeout(function () {
@@ -1109,6 +1140,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (userRollOutcome === undefined) {
                 setTimeout(function () {
                     threeDiceBounceDisplay();
+                    heading.style.top = '28%';
+                    headingSmall.style.top = '28%'; 
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
                     circle.addEventListener('click', startUserTurn);
