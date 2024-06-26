@@ -82,8 +82,47 @@ main {
 }
 
 
+
+
 #piggy-bank-input {
     width: 70px;
+}
+
+#rules-overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    z-index: 12;
+}
+
+#rules-overlay-content {
+    width: 60%;
+    margin: 0 auto;
+    padding-top: 70px;
+    transform: translate(-50%, -50%);
+}
+
+#rules-overlay>h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+    font-weight: 750;
+    font-size: 150%;
+}
+
+#rules-overlay>h3 {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#rules-overlay>p,
+#rules-overlay>ul {
+    font-weight: lighter;
+    margin-bottom: 10px;
 }
 
 #main-section {
@@ -296,48 +335,48 @@ hr {
 
 @keyframes spin {
 
-    0%  {
+    0% {
 
         border-top-color: grey;
         border-right-color: darkgrey;
         border-bottom-color: black;
         border-left-color: lightgrey;
-        
+
     }
 
     25% {
-        border-top-color: lightgrey; 
+        border-top-color: lightgrey;
         border-right-color: grey;
         border-bottom-color: darkgrey;
-        border-left-color: black; 
+        border-left-color: black;
     }
 
     50% {
-        border-top-color: black; 
-        border-right-color: lightgrey; 
+        border-top-color: black;
+        border-right-color: lightgrey;
         border-bottom-color: grey;
-        border-left-color: darkgrey; 
+        border-left-color: darkgrey;
     }
 
     75% {
-        border-top-color: darkgrey; 
-        border-right-color: black; 
+        border-top-color: darkgrey;
+        border-right-color: black;
         border-bottom-color: lightgrey;
-        border-left-color: grey; 
+        border-left-color: grey;
     }
 
     100% {
         border-top-color: grey;
         border-right-color: darkgrey;
         border-bottom-color: black;
-        border-left-color: lightgrey; 
+        border-left-color: lightgrey;
     }
 
 }
 
 .spin {
 
-    animation: spin 1s linear infinite; 
+    animation: spin 1s linear infinite;
 }
 
 @keyframes instant-loss-shake {
@@ -396,7 +435,7 @@ hr {
 @keyframes pop {
 
     0% {
-        transform: scale(1); 
+        transform: scale(1);
     }
 
     50% {
@@ -404,13 +443,13 @@ hr {
     }
 
     100% {
-        transform: scale(1); 
+        transform: scale(1);
     }
 
 }
 
 .pop {
-    animation: pop 1s ease-in-out; 
+    animation: pop 1s ease-in-out;
 }
 
 @keyframes spinBorder {
