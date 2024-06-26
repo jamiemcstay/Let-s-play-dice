@@ -31,13 +31,17 @@ document.addEventListener('DOMContentLoaded', function () {
     let rulesLogo = document.getElementById('rules-logo');
     let rulesOverlay = document.getElementById('rules-overlay');
 
-    rulesLogo.addEventListener('click', function() {
-        rulesOverlay.style.display = 'flex';
+    rulesLogo.addEventListener('click', function () {
+        if (rulesOverlay.style.display === 'flex') {
+            rulesOverlay.style.display = 'none';
+        } else {
+            rulesOverlay.style.display = 'flex';
+        }
     });
 
-    rulesOverlay.addEventListener('click', function(e) {
-        if (e.target === overlay) {
-            overlay.style.display = 'none'; 
+    rulesOverlay.addEventListener('click', function (e) {
+        if (e.target === rulesOverlay) {
+            rulesOverlay.style.display = 'none';
         }
     });
 
