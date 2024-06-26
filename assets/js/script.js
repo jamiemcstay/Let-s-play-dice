@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //increase size of main section to take up surplas space on screen on load
     let mainSection = document.getElementById('main-section');
-    mainSection.style.height = '90%';
+    mainSection.style.height = '93%';
 
     let circle = document.getElementById('main-section-circle');
     let heading = document.getElementById('h1-large-screens');
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
-        mainSection.style.height = '72%';
+        mainSection.style.height = '75%';
 
         piggyBankValue = 0;
 
