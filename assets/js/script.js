@@ -501,6 +501,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stopInstantWinAnimation(element) {
+
         element.classList.remove('circle-border-instant-win');
     }
 
@@ -728,8 +729,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playerRoll is:", typeof playersRoll);
-                            console.log(`playersRoll is:${playersRoll}`);
+                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", playersRoll);
                             heading.textContent = `You rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
                         }, 3000)
@@ -765,8 +766,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playerRoll is:", typeof playersRoll);
-                            console.log(`playersRoll is:${playersRoll}`);
+                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", playersRoll);
                             heading.textContent = `You rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
                         }, 3000);
@@ -806,8 +807,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playerRoll is:", typeof playersRoll);
-                            console.log(`playersRoll is:${playersRoll}`);
+                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", playersRoll);
                             heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                         }, 3000);
@@ -844,8 +845,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log(`playersRoll is:${playersRoll}`);
-                            console.log("playerRoll is:", typeof playersRoll);
+                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", playersRoll);
                             heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                         }, 3000);
@@ -1410,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            stopInstantWinAnimation();
+                            stopInstantWinAnimation(circle);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = `You win ${piggyBankValue}`;
