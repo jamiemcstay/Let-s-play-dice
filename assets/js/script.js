@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } while (num1 === num2);
 
         heading.style.top = '33%';
-        headingSmall.style.top = '28%';
+        headingSmall.style.top = '25%';
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 startBlinking(heading);
                 startBlinking(headingSmall);
                 heading.style.top = '33%';
-                headingSmall.style.top = '28%';
+                headingSmall.style.top = '25%';
                 heading.textContent = "Computer Rolling";
                 headingSmall.textContent = "Computer Rolling";
             }
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             threeDiceBounceDisplay();
             heading.style.top = '33%';
-            headingSmall.style.top = '28%';
+            headingSmall.style.top = '25%';
             heading.textContent = "Click to roll";
             headingSmall.textContent = "Click to roll";
             currentPlayer = 'user';
@@ -915,7 +915,7 @@ document.addEventListener('DOMContentLoaded', function () {
         startBlinking(heading);
         startBlinking(headingSmall);
         heading.style.top = '33%';
-        headingSmall.style.top = '28%';
+        headingSmall.style.top = '25%';
         heading.textContent = "Rolling";
         headingSmall.textContent = "Rolling";
 
@@ -965,7 +965,7 @@ document.addEventListener('DOMContentLoaded', function () {
         startBlinking(heading);
         startBlinking(headingSmall);
         heading.style.top = '33%';
-        headingSmall.style.top = '28%';
+        headingSmall.style.top = '25%';
         heading.textContent = "Computer Rolling";
         headingSmall.textContent = "Computer Rolling";
 
@@ -1190,7 +1190,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () {
                     threeDiceBounceDisplay();
                     heading.style.top = '33%';
-                    headingSmall.style.top = '28%';
+                    headingSmall.style.top = '25%';
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
                     circle.addEventListener('click', startUserTurn);
@@ -1378,7 +1378,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 3000);
                 setTimeout(function () {
                     heading.style.top = '28%';
-                    headingSmall.style.top = '28%';
+                    headingSmall.style.top = '25%';
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
                     threeDiceBounceDisplay();
