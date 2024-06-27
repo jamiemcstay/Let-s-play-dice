@@ -729,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
                             heading.textContent = `You rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
@@ -766,7 +766,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
                             heading.textContent = `You rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
@@ -807,7 +807,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
                             heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
@@ -845,7 +845,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll); 
+                            console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
                             heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
                             headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
@@ -927,9 +927,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     currentPlayer = 'computer';
                     displayScore(userRollOutcome, 'user');
                     runGame();
-                }, 1000); 
+                }, 1000);
             }, 1000);
-        }, 2000); 
+        }, 2000);
 
 
         return userRollOutcome;
