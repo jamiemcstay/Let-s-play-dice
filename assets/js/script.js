@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     rulesLogo.classList.add('pulse');
 
+    if (window.innerHeight <= 425) {
+        let diceWrapper = document.getElementById('main-section-dice-wrapper');
+        diceWrapper.style.transform = 'translate(-50%, -50%)'; 
+    }
+
 
     rulesLogo.addEventListener('click', function () {
 
@@ -60,14 +65,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function clickToStart() {
 
+        
+
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
         mainSection.style.height = '75%';
 
+        if (window.innerHeight <= 425) {
+            let diceWrapper = document.getElementById('main-section-dice-wrapper');
+            diceWrapper.style.transform = 'translate(-80%, -50%)'; 
+        }
+
         piggyBankValue = 0;
 
         heading.style.top = '33%';
-        headingSmall.style.top = '28%';
+        headingSmall.style.top = '33%';
         heading.textContent = "Click for high roll";
         headingSmall.textContent = "Click for high roll";
 
