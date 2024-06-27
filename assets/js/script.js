@@ -88,12 +88,16 @@ document.addEventListener('DOMContentLoaded', function () {
         highRollDiceDisplay();
 
         circle.removeEventListener('click', clickToStart);
-
+        circle.removeEventListener('click', highRoll);
         circle.addEventListener('click', highRoll);
 
     }
 
     function reStartGame() {
+
+        //Single dice for high roll
+        let diceTwo = document.getElementById('die2');
+        diceTwo.style.display = 'inline-flex';
 
         circle.removeEventListener('click', reStartGame);
         mainSection.removeEventListener('click', reStartGame);
@@ -112,10 +116,6 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollComputer.value = bankRollComputerValue;
         piggyBankInput.value = piggyBankValue;
 
-
-        //Single dice for high roll
-        let diceTwo = document.getElementById('die2');
-        diceTwo.style.display = 'inline-flex';
 
         //remove other two dice for high roll
         let diceOne = document.getElementById('die1');
@@ -1151,9 +1151,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 headingSmall.textContent = "YOU WIN";
             }, 2000);
             setTimeout(function () {
+                stopInstantLossAnimation(circle); 
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                stopInstantLossAnimation(circle); 
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
 
