@@ -392,11 +392,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         increaseStakesButton.addEventListener('click', updateStakes);
 
+        startPulsing(increaseStakesButton);
+
+
     }
 
     function updateStakes() {
 
+        let increaseStakesButton = document.getElementById('increase-stakes'); 
 
+        stopPulsing(increaseStakesButton); 
 
         let userStakes = 100;
         let bankRollUserValue = parseInt(bankRollUser.value);
@@ -537,18 +542,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    // function startPulsing(element) {
+    function startPulsing(element) {
 
-    //     element.classList.add('pulse');
+        element.classList.add('pulse');
 
-    // }
+    }
 
-    // function stopPulsing(element) {
+    function stopPulsing(element) {
 
-    //     element.classList.remove('pulse');
+        element.classList.remove('pulse');
 
 
-    // }
+    }
 
     // function startSpinning(element) {
 
