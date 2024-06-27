@@ -274,8 +274,8 @@ document.addEventListener('DOMContentLoaded', function () {
             diceTwo.style.display = 'none';
             heading.style.top = '45%';
             headingSmall.style.top = '45%';
-            heading.textContent = `You rolled <span class="big-text">${num1}</span>`;
-            headingSmall.textContent = `You rolled <span class="big-text">${num1}</span>`;
+            heading.innerHTML = `You rolled <span class="big-text">${num1}</span>`;
+            headingSmall.innerHTML = `You rolled <span class="big-text">${num1}</span>`;
         }, 3000);
 
 
@@ -307,8 +307,8 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.style.top = '45%';
             headingSmall.style.top = '45%';
             diceTwo.style.display = 'none';
-            heading.textContent = `Computer rolled ${num2}`;
-            headingSmall.textContent = `Computer rolled ${num2}`;
+            heading.innerHTML = `Computer rolled <span class="big-text">${num2}</span>`;
+            headingSmall.innerHTML = `Computer rolled <span class="big-text">${num2}</span>`;
         }, 6000);
 
         setTimeout(function () {
@@ -476,8 +476,8 @@ document.addEventListener('DOMContentLoaded', function () {
             piggyBankContainer.classList.add('pop');
             heading.style.top = '45%';
             headingSmall.style.top = '45%';
-            heading.textContent = `The stakes are <span class="big-text">\$${computerStakes}</span>`;
-            headingSmall.textContent = `The stakes are <span class="big-text">\$${computerStakes}</span>`;
+            heading.innerHTML = `The stakes are <span class="big-text">$${computerStakes}</span>`;
+            headingSmall.innerHTML = `The stakes are <span class="big-text">$${computerStakes}</span>`;
             bankRollComputerValue -= computerStakes;
             bankRollUserValue -= computerStakes;
             bankRollComputer.value = bankRollComputerValue;
@@ -739,8 +739,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
-                            headingSmall.textContent = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            heading.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            headingSmall.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
@@ -752,8 +752,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             stopInstantWinAnimation(circle);
-                            heading.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
-                            headingSmall.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
+                            heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
                         }, 5000);
                         setTimeout(function () {
@@ -776,8 +776,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
-                            headingSmall.textContent = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            heading.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            headingSmall.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -786,8 +786,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             stopInstantLossAnimation(circle);
-                            heading.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;;
-                            headingSmall.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;;
+                            heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
                             updateBankRolls('computer', piggyBankValue);
                         }, 5000);
                         setTimeout(function () {
@@ -817,8 +817,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
-                            headingSmall.textContent = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            heading.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -831,8 +831,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopInstantLossAnimation(circle);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;
-                            headingSmall.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;
+                            heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
                             updateBankRolls('computer', piggyBankValue);
                         }, 5000);
                         setTimeout(function () {
@@ -855,8 +855,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
-                            headingSmall.textContent = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            heading.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
+                            headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantWinAnimation(circle);
@@ -869,8 +869,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopInstantWinAnimation(circle);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
-                            headingSmall.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
+                            heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
                         }, 5000);
                         setTimeout(function () {
@@ -928,8 +928,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 let noCommaString = userDiceRolls.join(' ');
-                heading.textContent = `You rolled <span class="big-text">${noCommaString}</span>`;
-                headingSmall.textContent = `You rolled <span class="big-text">${noCommaString}</span>`;
+                heading.innerHTML = `You rolled <span class="big-text">${noCommaString}</span>`;
+                headingSmall.innerHTML = `You rolled <span class="big-text">${noCommaString}</span>`;
 
                 setTimeout(function () {
                     currentPlayer = 'computer';
@@ -979,8 +979,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 let noCommaString = computerDiceRolls.join(' ');
-                heading.textContent = `Computer rolled <span class="big-text">${noCommaString}</span>`;
-                headingSmall.textContent = `Computer rolled <span class="big-text">${noCommaString}</span>`;
+                heading.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
+                headingSmall.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
 
                 setTimeout(function () {
                     currentPlayer = 'user';
@@ -1436,8 +1436,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopInstantWinAnimation(circle);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
-                            headingSmall.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
+                            heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
                         }, 1000);
                         setTimeout(function () {
@@ -1456,8 +1456,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopInstantLossAnimation(circle);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;
-                            headingSmall.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;
+                            heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
                             updateBankRolls('computer', piggyBankValue);
                         }, 1000);
                         setTimeout(function () {
@@ -1480,8 +1480,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopInstantWinAnimation(circle);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
-                                headingSmall.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
+                                heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                                headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
                             }, 1000);
                             newRound('user');
@@ -1499,8 +1499,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopInstantLossAnimation(circle);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;;
-                                headingSmall.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;;
+                                heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
+                                headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
                                 updateBankRolls('computer', piggyBankValue);
                             }, 1000);
                             setTimeout(function () {
@@ -1521,8 +1521,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopInstantWinAnimation(circle);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
-                                headingSmall.textContent = `You win <span class="big-text">\$${piggyBankValue}</span>`;
+                                heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                                headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
                             }, 1000);
                             setTimeout(function () {
@@ -1541,8 +1541,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopInstantLossAnimation(circle);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;;
-                                headingSmall.textContent = `Computer wins <span class="big-text>\$${piggyBankValue}</span>`;;
+                                heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
+                                headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
                                 updateBankRolls('computer', piggyBankValue);
                             }, 1000);
                             setTimeout(function () {

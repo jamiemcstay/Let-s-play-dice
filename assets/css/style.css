@@ -170,6 +170,12 @@ main {
     display: inline-block;
 }
 
+.big-text {
+    font-size: 120%; 
+    color: black;
+    text-transform: uppercase;
+}
+
 
 #main-section {
     background-color: pink;
