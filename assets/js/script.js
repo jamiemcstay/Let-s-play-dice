@@ -731,8 +731,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `You rolled ${playersRoll.join(', ')}`;
-                            headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
+                            heading.textContent = `You rolled ${playersRoll.join(' ')}`;
+                            headingSmall.textContent = `You rolled ${playersRoll.join(' ')}`;
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
@@ -768,8 +768,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `You rolled ${playersRoll.join(', ')}`;
-                            headingSmall.textContent = `You rolled ${playersRoll.join(', ')}`;
+                            heading.textContent = `You rolled ${playersRoll.join(' ')}`;
+                            headingSmall.textContent = `You rolled ${playersRoll.join(' ')}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -809,8 +809,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
-                            headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
+                            heading.textContent = `Computer rolled ${playersRoll.join(' ')}`;
+                            headingSmall.textContent = `Computer rolled ${playersRoll.join(' ')}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantLossAnimation(circle);
@@ -847,8 +847,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.style.top = '45%';
                             console.log("playersRoll is:", typeof playersRoll);
                             console.log("playersRoll is:", playersRoll);
-                            heading.textContent = `Computer rolled ${playersRoll.join(', ')}`;
-                            headingSmall.textContent = `Computer rolled ${playersRoll.join(', ')}`;
+                            heading.textContent = `Computer rolled ${playersRoll.join(' ')}`;
+                            headingSmall.textContent = `Computer rolled ${playersRoll.join(' ')}`;
                         }, 3000);
                         setTimeout(function () {
                             startInstantWinAnimation(circle);
