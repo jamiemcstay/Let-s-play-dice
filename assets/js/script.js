@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function reStartGame() {
 
         circle.removeEventListener('click', reStartGame);
+        mainSection.removeEventListener('click', reStartGame); 
 
         banker = null;
         roundWinner = null;
@@ -1133,6 +1134,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 headingSmall.style.top = '45%';
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
+                if(window.innerWidth <= 425) {
+                    mainSection.removeEventListener('click', reStartGame);
+                    mainSection.addEventListener('click', reStartGame); 
+                }
+                circle.removeEventListener('click', reStartGame);
                 circle.addEventListener('click', reStartGame);
             }, 3000);
         }
@@ -1328,7 +1334,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         userRollOutcome = undefined;
         computerRollOutcome = undefined;
-        roundWinner = undefined;
+        roundWinner = null;
         userDiceRolls = undefined;
         computerDiceRolls = undefined;
 
