@@ -1,6 +1,8 @@
 //Function for screen on loading
 document.addEventListener('DOMContentLoaded', function () {
 
+
+
     let rulesLogo = document.getElementById('rules-logo');
     let rulesLogoOverlay = document.getElementById('rules-logo-overlay');
     let rulesOverlay = document.getElementById('rules-overlay');
@@ -52,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let bankRollUser = document.getElementById('bank-roll-user');
     let bankRollComputer = document.getElementById('bank-roll-computer');
     let piggyBankInput = document.getElementById('piggy-bank-input');
-
-
 
     circle.addEventListener('click', clickToStart);
 
@@ -494,7 +494,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
+    // function textInstantWin(element) {
+    //     element.classList.add('text-instant-win');
+    // }
 
     function startInstantWinAnimation(element) {
         element.classList.add('circle-border-instant-win');
@@ -534,23 +536,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function startPulsing(element) {
+    // function startPulsing(element) {
 
-        element.classList.add('pulse');
+    //     element.classList.add('pulse');
 
-    }
+    // }
 
-    function stopPulsing(element) {
+    // function stopPulsing(element) {
 
-        element.classList.remove('pulse');
+    //     element.classList.remove('pulse');
 
 
-    }
+    // }
 
-    function startSpinning(element) {
+    // function startSpinning(element) {
 
-        element.classList.add('spinning');
-    }
+    //     element.classList.add('spinning');
+    // }
 
     function stopSpinning(element) {
 
@@ -707,8 +709,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let piggyBankValue = parseInt(piggyBankInput.value);
 
-        console.log(`DW playerRoll is: ${playersRoll}`);
-        console.log("DW playerRoll is:", typeof `${playersRoll}`);
+        console.log(`playersRoll is: ${playersRoll}`);
+        console.log("playersRoll is:", typeof `${playersRoll}`);
 
         console.log("You're in instantWinOrLoss");
 
@@ -940,16 +942,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         console.log("Its computers turn");
 
-            threeDiceSpinningDisplay();
-            startSpinningBorder(circle);
-            startBlinking(heading);
-            startBlinking(headingSmall);
-            heading.style.top = '33%';
-            headingSmall.style.top = '28%';
-            heading.textContent = "Computer Rolling";
-            headingSmall.textContent = "Computer Rolling";
+        threeDiceSpinningDisplay();
+        startSpinningBorder(circle);
+        startBlinking(heading);
+        startBlinking(headingSmall);
+        heading.style.top = '33%';
+        headingSmall.style.top = '28%';
+        heading.textContent = "Computer Rolling";
+        headingSmall.textContent = "Computer Rolling";
 
-        setTimeout (function () {
+        setTimeout(function () {
             stopSpinningBorder(circle);
             stopBlinking(heading);
             stopBlinking(headingSmall);
@@ -975,13 +977,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 headingSmall.textContent = `Computer rolled ${noCommaString}`;
 
                 setTimeout(function () {
-                    currentPlayer = 'user'; 
+                    currentPlayer = 'user';
                     displayScore(computerRollOutcome, 'computer');
-                    runGame(); 
+                    runGame();
                 }, 1000);
-            }, 1000); 
-        }, 2000); 
-    
+            }, 1000);
+        }, 2000);
+
 
 
         return computerRollOutcome;

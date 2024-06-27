@@ -190,8 +190,13 @@ main {
     z-index: 3;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: grey 5px solid;
 }
+
+
 
 #main-section-dice-wrapper {
     position: absolute;
@@ -256,6 +261,15 @@ hr {
     color: black;
     z-index: 5;
 }
+
+/* h1-hidden {
+    display: block;
+    position: absolute; 
+    top: 33%;
+    left: 45%; 
+    z-index: 5; 
+    text-transform: capitalize;
+} */
 
 #h1-small-screens {
     display: none;
