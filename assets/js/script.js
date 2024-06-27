@@ -786,8 +786,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 4000);
                         setTimeout(function () {
                             stopInstantLossAnimation(circle);
-                            heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
-                            headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
+                            heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
                             updateBankRolls('computer', piggyBankValue);
                         }, 5000);
                         setTimeout(function () {
@@ -831,8 +831,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopInstantLossAnimation(circle);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
-                            headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
+                            heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('computer', piggyBankValue);
                         }, 5000);
                         setTimeout(function () {
@@ -1134,14 +1134,14 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                startInstantWinAnimation(); 
+                startInstantWinAnimation(circle); 
                 heading.textContent = "YOU WIN";
                 headingSmall.textContent = "YOU WIN";
             }, 2000);
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                stopInstantLossAnimation(); 
+                stopInstantLossAnimation(circle); 
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
                 if (window.innerWidth <= 425) {
