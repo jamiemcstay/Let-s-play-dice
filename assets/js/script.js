@@ -936,62 +936,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-
-    // function userTurn() {
-
-
-    //     roundWinner = null;
-
-    //     console.log("Its users turn");
-
-    //     circle.removeEventListener('click', userTurn);
-
-    //     setTimeout(function () {
-    //         threeDiceSpinningDisplay();
-    //         startSpinningBorder(circle);
-    //         startBlinking(heading);
-    //         startBlinking(headingSmall);
-    //         heading.style.top = '33%';
-    //         headingSmall.style.top = '28%';
-    //         heading.textContent = "Rolling";
-    //         headingSmall.textContent = "Rolling";
-    //     }, 1000);
-
-    //     do {
-    //         userDiceRolls = userRollDice();
-    //         userRollOutcome = checkRoll(userDiceRolls, 'user');
-    //     } while (userRollOutcome === '');
-
-    //     if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
-    //         return;
-    //     } else {
-    //         setTimeout(function () {
-    //             threeDiceNoDisplay();
-    //             stopSpinningBorder(circle);
-    //             stopBlinking(heading);
-    //             stopBlinking(headingSmall);
-    //             heading.style.top = '45%';
-    //             headingSmall.style.top = '45%';
-    //             let noCommaString = userDiceRolls.join(' ');
-    //             heading.textContent = `You rolled ${noCommaString}`;
-    //             headingSmall.textContent = `You rolled ${noCommaString}`;
-    //             currentPlayer = 'computer';
-    //             updateDiceFace(userRollOutcome);
-    //             displayScore(userRollOutcome, 'user');
-    //             runGame();
-    //         }, 3000);
-
-    //     }
-
-    //     return userRollOutcome;
-
-    // }
-
     function computerTurn() {
 
         console.log("Its computers turn");
 
-        setTimeout(function () {
             threeDiceSpinningDisplay();
             startSpinningBorder(circle);
             startBlinking(heading);
@@ -1000,38 +948,41 @@ document.addEventListener('DOMContentLoaded', function () {
             headingSmall.style.top = '28%';
             heading.textContent = "Computer Rolling";
             headingSmall.textContent = "Computer Rolling";
-        }, 2000);
 
-        do {
-            computerDiceRolls = computerRollDice();
-            computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
-        } while (computerRollOutcome === '');
+        setTimeout (function () {
+            stopSpinningBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
 
-
-        setTimeout(function () {
+            do {
+                computerDiceRolls = computerRollDice();
+                computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
+            } while (computerRollOutcome === '');
 
             if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
                 updateDiceFace(computerRollOutcome);
                 return;
-            } else {
+            }
+
+            updateDiceFace(computerRollOutcome);
+
+            setTimeout(function () {
                 threeDiceNoDisplay();
-                stopSpinningBorder(circle);
-                stopBlinking(heading);
-                stopBlinking(headingSmall);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 let noCommaString = computerDiceRolls.join(' ');
                 heading.textContent = `Computer rolled ${noCommaString}`;
                 headingSmall.textContent = `Computer rolled ${noCommaString}`;
-                console.log(computerDiceRolls);
-                currentPlayer = 'user';
-                displayScore(computerRollOutcome, 'computer');
-                updateDiceFace(computerRollOutcome);
+
                 setTimeout(function () {
-                    runGame();
-                }, 4000);
-            }
-        }, 3000);
+                    currentPlayer = 'user'; 
+                    displayScore(computerRollOutcome, 'computer');
+                    runGame(); 
+                }, 1000);
+            }, 1000); 
+        }, 2000); 
+    
+
 
         return computerRollOutcome;
     }
