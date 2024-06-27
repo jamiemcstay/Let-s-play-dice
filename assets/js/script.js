@@ -882,9 +882,7 @@ document.addEventListener('DOMContentLoaded', function () {
         userTurn();
     }
 
-
     function userTurn() {
-
 
         roundWinner = null;
 
@@ -892,47 +890,102 @@ document.addEventListener('DOMContentLoaded', function () {
 
         circle.removeEventListener('click', userTurn);
 
+        threeDiceSpinningDisplay();
+        startSpinningBorder(circle);
+        startBlinking(heading);
+        startBlinking(headingSmall);
+        heading.style.top = '33%';
+        headingSmall.style.top = '28%';
+        heading.textContent = "Rolling";
+        headingSmall.textContent = "Rolling";
+
         setTimeout(function () {
-            threeDiceSpinningDisplay();
-            startSpinningBorder(circle);
-            startBlinking(heading);
-            startBlinking(headingSmall);
-            heading.style.top = '33%';
-            headingSmall.style.top = '28%';
-            heading.textContent = "Rolling";
-            headingSmall.textContent = "Rolling";
-        }, 1000);
+            stopSpinningBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
 
-        do {
-            userDiceRolls = userRollDice();
-            userRollOutcome = checkRoll(userDiceRolls, 'user');
+            do {
+                userDiceRolls = userRollDice();
+                userRollOutcome = checkRoll(userDiceRolls, 'user');
+            } while (userRollOutcome === '');
 
-        } while (userRollOutcome === '');
+            if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
+                return;
+            }
 
-        if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
-            return;
-        } else {
+            updateDiceFace(userRollOutcome);
+
             setTimeout(function () {
                 threeDiceNoDisplay();
-                stopSpinningBorder(circle);
-                stopBlinking(heading);
-                stopBlinking(headingSmall);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 let noCommaString = userDiceRolls.join(' ');
                 heading.textContent = `You rolled ${noCommaString}`;
                 headingSmall.textContent = `You rolled ${noCommaString}`;
-                currentPlayer = 'computer';
-                updateDiceFace(userRollOutcome);
-                displayScore(userRollOutcome, 'user');
-                runGame();
-            }, 3000);
 
-        }
+                setTimeout(function () {
+                    currentPlayer = 'computer';
+                    displayScore(userRollOutcome, 'user');
+                    runGame();
+                }, 1000); 
+            }, 1000);
+        }, 2000); 
+
 
         return userRollOutcome;
 
     }
+
+
+    // function userTurn() {
+
+
+    //     roundWinner = null;
+
+    //     console.log("Its users turn");
+
+    //     circle.removeEventListener('click', userTurn);
+
+    //     setTimeout(function () {
+    //         threeDiceSpinningDisplay();
+    //         startSpinningBorder(circle);
+    //         startBlinking(heading);
+    //         startBlinking(headingSmall);
+    //         heading.style.top = '33%';
+    //         headingSmall.style.top = '28%';
+    //         heading.textContent = "Rolling";
+    //         headingSmall.textContent = "Rolling";
+    //     }, 1000);
+
+    //     do {
+    //         userDiceRolls = userRollDice();
+    //         userRollOutcome = checkRoll(userDiceRolls, 'user');
+    //     } while (userRollOutcome === '');
+
+    //     if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
+    //         return;
+    //     } else {
+    //         setTimeout(function () {
+    //             threeDiceNoDisplay();
+    //             stopSpinningBorder(circle);
+    //             stopBlinking(heading);
+    //             stopBlinking(headingSmall);
+    //             heading.style.top = '45%';
+    //             headingSmall.style.top = '45%';
+    //             let noCommaString = userDiceRolls.join(' ');
+    //             heading.textContent = `You rolled ${noCommaString}`;
+    //             headingSmall.textContent = `You rolled ${noCommaString}`;
+    //             currentPlayer = 'computer';
+    //             updateDiceFace(userRollOutcome);
+    //             displayScore(userRollOutcome, 'user');
+    //             runGame();
+    //         }, 3000);
+
+    //     }
+
+    //     return userRollOutcome;
+
+    // }
 
     function computerTurn() {
 
