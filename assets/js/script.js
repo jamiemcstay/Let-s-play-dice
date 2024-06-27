@@ -1144,13 +1144,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 stopInstantLossAnimation(circle); 
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
-                if (window.innerWidth <= 425) {
-                    mainSection.removeEventListener('click', reStartGame);
-                    mainSection.addEventListener('click', reStartGame);
-                }
+
                 circle.removeEventListener('click', reStartGame);
                 circle.addEventListener('click', reStartGame);
             }, 3000);
+        }
+
+        if (window.innerWidth <= 425) {
+            mainSection.removeEventListener('click', reStartGame);
+            mainSection.addEventListener('click', reStartGame);
         }
 
     }
