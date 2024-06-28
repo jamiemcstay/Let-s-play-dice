@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollUserValue = 500;
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         bankRollComputerValue = 500;
+        let piggyBankValue = parseInt(piggyBankInput.value); 
         piggyBankValue = 0;
 
         //update DOM elements with new values
@@ -1259,10 +1260,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
-        let piggyBankValue = parseInt(piggyBankInput.value);
+        // let piggyBankValue = parseInt(piggyBankInput.value);
+
+        // piggyBankvalue = 0; 
 
         // heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
-
 
 
         if (bankRollUserValue <= 0 || bankRollComputerValue <= 0) {
