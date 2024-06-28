@@ -705,11 +705,13 @@ hr {
 }
 
 .round-win-text {
-    position: absolute; 
-    top: 50%;
+    position: absolute;
+    top: 45%; 
     left: 50%; 
     transform: translate(-50%, -50%);
     animation: winning-text 0.5s infinite; 
+    transform-origin: center;
+    font-size: 350%; 
 }
 
 @keyframes blinking {

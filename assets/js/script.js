@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
 
 
-
     let rulesLogo = document.getElementById('rules-logo');
     let rulesLogoOverlay = document.getElementById('rules-logo-overlay');
     let rulesOverlay = document.getElementById('rules-overlay');
@@ -47,10 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let mainSection = document.getElementById('main-section');
     mainSection.style.height = '93%';
 
+    //Global variables for display and updating user with game information 
     let circle = document.getElementById('main-section-circle');
     let heading = document.getElementById('h1-large-screens');
     let headingSmall = document.getElementById('h1-small-screens');
 
+    //Global variables for updating bank rolls and piggy bank
     let bankRollUser = document.getElementById('bank-roll-user');
     let bankRollComputer = document.getElementById('bank-roll-computer');
     let piggyBankInput = document.getElementById('piggy-bank-input');
@@ -64,14 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
         mainSection.style.height = '75%';
-
-        // if (window.innerWidth <= 425) {
-        //     circle.style.top = "68%";
-        // } else if (window.innerWidth >= 768) {
-        //     circle.style.top = "0%";
-        // } else {
-        //     circle.style.top = "0%";
-        // }
 
         piggyBankValue = 0;
 
@@ -510,10 +503,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    // function textInstantWin(element) {
-    //     element.classList.add('text-instant-win');
-    // }
-
     function startGameWinAnimation(element) {
         element.classList.add('circle-border-instant-win');
     }
@@ -524,11 +513,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startWinAnimation(element) {
+        // element.style.top = '25%'; 
+        // element.style.left = '33%'; 
         element.classList.add('round-win-text')
+        console.log(`h1 top positon is ${element.style.top} and left position is ${element.style.left}`)
     }
 
     function stopWinAnimation(element) {
-        element.classList.remove('round-win-text'); 
+        element.classList.remove('round-win-text');
+        // element.syle.top = '45%'; 
+        // element.style.left = '50%'; 
+
     }
 
     function startGameLoseAnimation(element) {
@@ -770,16 +765,23 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
+                            heading.style.top = '30%';
+                            headingSmall.style.top = '30%';
+                            heading.style.left = '30%'; 
+                            headingSmall.style.left = '30%';  
+                            startWinAnimation(heading); 
                             startWinAnimation(heading);
                             startWinAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
                             heading.textContent = 'INSTANT WIN';
                             headingSmall.textContent = 'INSTANT WIN';
                         }, 4000);
                         setTimeout(function () {
                             stopWinAnimation(heading);
                             stopWinAnimation(headingSmall);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.style.left = '50%'; 
+                            headingSmall.style.left = '50%'; 
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -891,10 +893,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
+                            heading.style.top = '30%';
+                            headingSmall.style.top = '30%';
+                            heading.style.left = '30%'; 
+                            headingSmall.style.left = '30%'; 
                             startWinAnimation(heading);
-                            startWinAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
+                            startWinAnimation(heading);
+                            startWinAnimation(headingSmall);  
                             heading.textContent = 'COMPUTER INSTANT LOSS';
                             headingSmall.textContent = 'COMPUTER INSTANT LOSS';
                         }, 4000);
@@ -903,6 +908,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
+                            heading.style.left = '50%'; 
+                            headingSmall.style.left = '50%';                        
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -1464,10 +1471,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log("It's a tie");
                         itsATie();
                     } else if (userPoint > computerPoint) {
+                        heading.style.top = '30%';
+                        headingSmall.style.top = '33%';
+                        heading.style.left = '40%'; 
+                        headingSmall.style.left = '40%'; 
                         startWinAnimation(heading);
                         startWinAnimation(headingSmall);
-                        heading.style.top = '45%';
-                        headingSmall.style.top = '45%';
                         heading.textContent = "You win this round!";
                         headingSmall.textContent = "You win this round!";
                         roundWinner = 'user';
@@ -1477,6 +1486,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
+                            heading.style.left = '50%'; 
+                            headingSmall.style.left = '50%'; 
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -1512,10 +1523,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (userPoint === computerPoint) {
                         //If the points are equal, compare the pair values
                         if (userPairValue > computerPairValue) {
+                            heading.style.top = '30%';
+                            headingSmall.style.top = '30%';
+                            heading.style.left = '30%'; 
+                            headingSmall.style.left = '30%'; 
                             startWinAnimation(heading);
                             startWinAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
@@ -1525,6 +1538,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
+                                heading.style.left = '50%'; 
+                                headingSmall.style.left = '50%'; 
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
@@ -1557,10 +1572,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         //If points are not equal, the higher point wins
                         if (userPoint > computerPoint) {
+                            heading.style.top = '30%';
+                            headingSmall.style.top = '30%';
+                            heading.style.left = '30%'; 
+                            headingSmall.style.left = '30%';  
                             startWinAnimation(heading);
                             startWinAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
@@ -1570,6 +1587,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
+                                heading.style.left = '50%'; 
+                                headingSmall.style.left = '50%'; 
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
