@@ -1583,8 +1583,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             banker = 'computer';
                             console.log("Computer wins");
                             setTimeout(function () {
-                                stopWinAnimation(heading);
-                                stopWinAnimation(headingSmall);
+                                stopLossAnimation(heading);
+                                stopLossAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
                                 heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
