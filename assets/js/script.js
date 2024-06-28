@@ -780,7 +780,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             stopWinAnimation(headingSmall);
                             heading.style.top = '30%';
                             headingSmall.style.top = '45%';
-                            heading.style.left = '25%'; 
+                            heading.style.left = '25%';
                             // headingSmall.style.left = '0%'; 
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
@@ -908,8 +908,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             // stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.style.left = '50%'; 
-                            headingSmall.style.left = '50%';                        
+                            heading.style.left = '50%';
+                            headingSmall.style.left = '50%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -1486,8 +1486,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             // stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.style.left = '50%'; 
-                            headingSmall.style.left = '50%';  
+                            heading.style.left = '50%';
+                            headingSmall.style.left = '50%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -1538,8 +1538,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.style.left = '50%'; 
-                                headingSmall.style.left = '50%'; 
+                                heading.style.left = '50%';
+                                headingSmall.style.left = '50%';
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
@@ -1587,8 +1587,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.style.left = '50%'; 
-                                headingSmall.style.left = '50%'; 
+                                heading.style.left = '50%';
+                                headingSmall.style.left = '50%';
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);

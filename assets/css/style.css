@@ -694,6 +694,7 @@ hr {
 }
 
 @keyframes winning-text {
+
     0%,
     100% {
         transform: scale(1);
@@ -706,12 +707,12 @@ hr {
 
 .round-win-text {
     position: absolute;
-    top: 45%; 
-    left: 50%; 
+    top: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    animation: winning-text 0.5s infinite; 
+    animation: winning-text 0.5s infinite;
     transform-origin: center;
-    font-size: 350%; 
+    font-size: 350%;
 }
 
 @keyframes blinking {
@@ -808,7 +809,7 @@ hr {
         transform: translate(-50%, -50%);
         margin: 0;
         font-size: 300%;
-        width: auto; 
+        width: auto;
         color: black;
         z-index: 5;
         font-weight: 500;
