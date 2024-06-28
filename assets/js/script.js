@@ -527,11 +527,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startGameLoseAnimation(element) {
-        element.classList.add('lose-shake');
+        element.classList.add('game-lose-shake');
     }
 
     function stopGameLoseAnimation(element) {
-        element.classList.remove('lose-shake');
+        element.classList.remove('game-lose-shake');
+    }
+
+    function startLossAnimation(element) {
+        element.classList.add('round-lose-shake');
+    }
+
+    function stopLossAnimation(element) {
+        element.classList.remove('round-lose-shake'); 
     }
 
     function startSpinningBorder(element) {
