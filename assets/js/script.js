@@ -526,12 +526,12 @@ document.addEventListener('DOMContentLoaded', function () {
         element.classList.remove('circle-border-instant-win');
     }
 
-    function startLossAnimation(element) {
-        element.classList.add('shake');
+    function startGameLoseAnimation(element) {
+        element.classList.add('lose-shake');
     }
 
-    function stopLossAnimation(element) {
-        element.classList.remove('shake');
+    function stopGameLoseAnimation(element) {
+        element.classList.remove('lose-shake');
     }
 
     function startSpinningBorder(element) {
@@ -1141,12 +1141,14 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
+                startGameLoseAnimation(circle); 
                 heading.textContent = "YOU LOSE";
                 headingSmall.textContent = "YOU LOSE";
             }, 2000);
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
+                stopGameLoseAnimation(circle); 
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
                 circle.addEventListener('click', reStartGame);
