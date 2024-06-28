@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (window.innerHeight <= 425) {
         let diceWrapper = document.getElementById('main-section-dice-wrapper');
-        diceWrapper.style.transform = 'translate(-50%, -50%)'; 
+        diceWrapper.style.transform = 'translate(-50%, -50%)';
     }
 
 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function clickToStart() {
 
-        
+
 
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (window.innerHeight <= 425) {
             let diceWrapper = document.getElementById('main-section-dice-wrapper');
-            diceWrapper.style.transform = 'translate(-80%, -50%)'; 
+            diceWrapper.style.transform = 'translate(-80%, -50%)';
         }
 
         piggyBankValue = 0;
@@ -449,6 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.textContent = "Click to roll";
             headingSmall.textContent = "Click to roll";
             currentPlayer = 'user';
+            circle.removeEventListener('click', userTurn);
             circle.addEventListener('click', userTurn);
         }, 2000);
         // }
@@ -516,20 +517,20 @@ document.addEventListener('DOMContentLoaded', function () {
     //     element.classList.add('text-instant-win');
     // }
 
-    function startInstantWinAnimation(element) {
+    function startWinAnimation(element) {
         element.classList.add('circle-border-instant-win');
     }
 
-    function stopInstantWinAnimation(element) {
+    function stopWinAnimation(element) {
 
         element.classList.remove('circle-border-instant-win');
     }
 
-    function startInstantLossAnimation(element) {
+    function startLossAnimation(element) {
         element.classList.add('shake');
     }
 
-    function stopInstantLossAnimation(element) {
+    function stopLossAnimation(element) {
         element.classList.remove('shake');
     }
 
@@ -756,14 +757,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
-                            startInstantWinAnimation(circle);
+                            startWinAnimation(heading);
+                            startWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = 'INSTANT WIN';
                             headingSmall.textContent = 'INSTANT WIN';
                         }, 4000);
                         setTimeout(function () {
-                            stopInstantWinAnimation(circle);
+                            stopWinAnimation(heading);
+                            stopWinAnimation(headingSmall);
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -792,12 +795,14 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
-                            startInstantLossAnimation(circle);
+                            startLossAnimation(heading);
+                            startLossAnimation(headingSmall);
                             heading.textContent = 'INSTANT LOSS';
                             headingSmall.textContent = 'INSTANT LOSS';
                         }, 4000);
                         setTimeout(function () {
-                            stopInstantLossAnimation(circle);
+                            stopLossAnimation(heading);
+                            stopLossAnimation(headingSmall);
                             heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
                             headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
                             updateBankRolls('computer', piggyBankValue);
@@ -833,14 +838,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
-                            startInstantLossAnimation(circle);
+                            startLossAnimation(heading);
+                            startLossAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = 'COMPUTER INSTANT WIN';
                             headingSmall.textContent = 'COMPUTER INSTANT WIN';
                         }, 4000);
                         setTimeout(function () {
-                            stopInstantLossAnimation(circle);
+                            stopLossAnimation(heading);
+                            stopLossAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
@@ -871,14 +878,16 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
-                            startInstantWinAnimation(circle);
+                            startWinAnimation(heading);
+                            startWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = 'COMPUTER INSTANT LOSS';
                             headingSmall.textContent = 'COMPUTER INSTANT LOSS';
                         }, 4000);
                         setTimeout(function () {
-                            stopInstantWinAnimation(circle);
+                            stopWinAnimation(heading);
+                            stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
@@ -1126,7 +1135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let bankRollComputerValue = parseInt(bankRollComputer.value);
 
         heading.textContent = "GAME OVER";
-        headingSmall.textContent = "GAME OVER"; 
+        headingSmall.textContent = "GAME OVER";
 
         if (bankRollUserValue === 0) {
             setTimeout(function () {
@@ -1146,12 +1155,12 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                startInstantWinAnimation(circle); 
+                startWinAnimation(circle);
                 heading.textContent = "YOU WIN";
                 headingSmall.textContent = "YOU WIN";
             }, 2000);
             setTimeout(function () {
-                stopInstantLossAnimation(circle); 
+                stopWinAnimation(circle);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 heading.textContent = "Play Again?";
@@ -1193,6 +1202,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     headingSmall.style.top = '25%';
                     heading.textContent = "Click to roll";
                     headingSmall.textContent = "Click to roll";
+                    circle.removeEventListener('click', startUserTurn);
                     circle.addEventListener('click', startUserTurn);
                 }, 1000);
             }
@@ -1439,7 +1449,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log("It's a tie");
                         itsATie();
                     } else if (userPoint > computerPoint) {
-                        startInstantWinAnimation(circle);
+                        startWinAnimation(heading);
+                        startWinAnimation(headingSmall);
                         heading.style.top = '45%';
                         headingSmall.style.top = '45%';
                         heading.textContent = "You win this round!";
@@ -1447,7 +1458,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            stopInstantWinAnimation(circle);
+                            stopWinAnimation(heading);
+                            stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
@@ -1458,7 +1470,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             newRound('user');
                         }, 2000);
                     } else {
-                        startInstantLossAnimation(circle);
+                        startLossAnimation(heading);
+                        startLossAnimation(headingSmall);
                         heading.style.top = '45%';
                         headingSmall.style.top = '45%';
                         heading.textContent = "Computer wins this round";
@@ -1467,11 +1480,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         banker = 'computer';
                         console.log("Computer wins");
                         setTimeout(function () {
-                            stopInstantLossAnimation(circle);
+                            stopLossAnimation(heading);
+                            stopLossAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
-                            headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;
+                            heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('computer', piggyBankValue);
                         }, 1000);
                         setTimeout(function () {
@@ -1483,7 +1497,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (userPoint === computerPoint) {
                         //If the points are equal, compare the pair values
                         if (userPairValue > computerPairValue) {
-                            startInstantWinAnimation(circle);
+                            startWinAnimation(heading);
+                            startWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = "You win this round";
@@ -1491,7 +1506,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             roundWinner = 'user';
                             banker = 'user';
                             setTimeout(function () {
-                                stopInstantWinAnimation(circle);
+                                stopWinAnimation(heading);
+                                stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
@@ -1501,7 +1517,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             newRound('user');
                         } else {
 
-                            startInstantLossAnimation(circle);
+                            startLossAnimation(heading);
+                            startLossAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = "Computer wins this round";
@@ -1510,11 +1527,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             banker = 'computer';
                             console.log("Computer wins");
                             setTimeout(function () {
-                                stopInstantLossAnimation(circle);
+                                stopLossAnimation(heading);
+                                stopLossAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
-                                headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
+                                heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                                headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
                                 updateBankRolls('computer', piggyBankValue);
                             }, 1000);
                             setTimeout(function () {
@@ -1524,7 +1542,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         //If points are not equal, the higher point wins
                         if (userPoint > computerPoint) {
-                            startInstantWinAnimation(circle);
+                            startWinAnimation(heading);
+                            startWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = "You win this round";
@@ -1532,7 +1551,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             roundWinner = 'user';
                             banker = 'user';
                             setTimeout(function () {
-                                stopInstantWinAnimation(circle);
+                                stopWinAnimation(heading);
+                                stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
@@ -1543,7 +1563,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 newRound('user');
                             }, 2000);
                         } else {
-                            startInstantLossAnimation(circle);
+                            startLossAnimation(heading);
+                            startLossAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.textContent = "Computer wins this round";
@@ -1552,11 +1573,12 @@ document.addEventListener('DOMContentLoaded', function () {
                             banker = 'computer';
                             console.log("Computer wins");
                             setTimeout(function () {
-                                stopInstantLossAnimation(circle);
+                                stopWinAnimation(heading);
+                                stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                heading.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
-                                headingSmall.innerHTML = `Computer wins <span class="big-text>$${piggyBankValue}</span>`;;
+                                heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                                headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
                                 updateBankRolls('computer', piggyBankValue);
                             }, 1000);
                             setTimeout(function () {
