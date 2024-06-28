@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     rulesLogo.classList.add('pulse');
 
-
+    //Click dice in top left to read game rules
     rulesLogo.addEventListener('click', function () {
 
         rulesLogo.classList.remove('pulse');
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    //Click to remove rules
     rulesLogoOverlay.addEventListener('click', function () {
         if (rulesOverlay.style.display === 'flex') {
             rulesOverlay.style.display = 'none';
@@ -59,34 +60,43 @@ document.addEventListener('DOMContentLoaded', function () {
     circle.addEventListener('click', clickToStart);
 
 
+    /*clickToStart initializes the game interface for the high roll game.
+     *This function sets up the display areas, resets the piggy bank value,
+     *updates headings texts, and configures event listener for the high roll to start the game
+     */
     function clickToStart() {
-
-
+        //Reveal score area and configure game area size
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
         mainSection.style.height = '75%';
 
+        //Set piggy bank to 0 
         let piggyBankValue = parseInt(piggyBankInput.value); 
         piggyBankValue = 0;
 
+        //Initialize styles for headings
         heading.style.top = '33%';
         headingSmall.style.top = '33%';
         heading.textContent = "Click for high roll";
         headingSmall.textContent = "Click for high roll";
 
         //Remove left and right dice to display one die for high roll
-
         highRollDiceDisplay();
 
+        //Add event Listener to start the high roll and begin game 
         circle.removeEventListener('click', clickToStart);
         circle.removeEventListener('click', highRoll);
         circle.addEventListener('click', highRoll);
 
     }
 
+    /*reStartGame resets the game to its initial state
+    *This function re-displays the the second die for the high roll and removes event listeners,
+    *resets game values, updates the DOM elements with new values, hides other dice,
+    *and then calls clickToStart to reininialize the game interface
+    */
     function reStartGame() {
 
-        //Single dice for high roll
         let diceTwo = document.getElementById('die2');
         diceTwo.style.display = 'inline-flex';
 
@@ -112,23 +122,414 @@ document.addEventListener('DOMContentLoaded', function () {
         //remove other two dice for high roll
         let diceOne = document.getElementById('die1');
         let diceThree = document.getElementById('die3');
-
         diceOne.style.display = 'none';
         diceThree.style.display = 'none';
 
         clickToStart();
 
-
     }
 
+    //rollDice to generate a random number between 1 and 6
     function rollDice() {
         return Math.floor(Math.random() * 6) + 1;
     }
 
+
+    //rollThreeDice to return an array of three random numbers
     function rollThreeDice() {
         return [rollDice(), rollDice(), rollDice()];
     }
 
+     //Rolls three dice for user
+    function userRollDice() {
+        return rollThreeDice();
+    }
+
+    //Rolls three dice for computer
+    function computerRollDice() {
+        return rollThreeDice();
+    }
+
+    /*Executes the highRoll to start the game
+     *This funciton handles the rolling of the dice for the players
+     *and updates the display tp show the rolling process and the results, 
+     *then determines who is the banker
+     */
+    function highRoll() {
+
+        circle.removeEventListener('click', highRoll);
+
+        let diceTwo = document.getElementById('die2');
+        let diceTwoChange = diceTwo.querySelector('.die');
+
+        if (diceTwoChange) {
+            diceTwoChange.classList.add('fa-spin');
+        } 
+
+        let num1;
+        let num2;
+
+        do {
+            num1 = rollDice();
+            num2 = rollDice();
+        } while (num1 === num2);
+
+        heading.style.top = '33%';
+        headingSmall.style.top = '25%';
+        heading.textContent = "Rolling";
+        headingSmall.textContent = "Rolling";
+
+        startSpinningBorder(circle);
+        startBlinking(heading);
+        startBlinking(headingSmall);
+
+        //Users high roll 
+        setTimeout(function () {
+            updateDieFace(diceTwoChange, num1);
+        }, 1000);
+
+        setTimeout(function () {
+            stopSpinningBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
+        }, 2000);
+
+        setTimeout(function () {
+            diceTwo.style.display = 'none';
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%';
+            heading.innerHTML = `You rolled <span class="big-text">${num1}</span>`;
+            headingSmall.innerHTML = `You rolled <span class="big-text">${num1}</span>`;
+        }, 3000);
+
+        //Computers high roll 
+        setTimeout(function () {
+            if (diceTwoChange) {
+                diceTwo.style.display = 'inline-flex';
+                diceTwoChange.classList.add('fa-spin');
+                startSpinningBorder(circle);
+                startBlinking(heading);
+                startBlinking(headingSmall);
+                heading.style.top = '33%';
+                headingSmall.style.top = '25%';
+                heading.textContent = "Computer Rolling";
+                headingSmall.textContent = "Computer Rolling";
+            }
+        }, 4000);
+
+        setTimeout(function () {
+            updateDieFace(diceTwoChange, num2);
+            stopSpinningBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
+        }, 5000);
+
+        setTimeout(function () {
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%';
+            diceTwo.style.display = 'none';
+            heading.innerHTML = `Computer rolled <span class="big-text">${num2}</span>`;
+            headingSmall.innerHTML = `Computer rolled <span class="big-text">${num2}</span>`;
+        }, 6000);
+
+        setTimeout(function () {
+            if (num1 > num2) {
+                threeDiceNoDisplay();
+                heading.textContent = "You're the banker";
+                headingSmall.textContent = "You're the banker";
+                currentPlayer = 'user';
+                diceTwoChange.classList.remove('fa-spin');
+                diceTwoChange.classList.remove('fa-beat');
+                setTheStakes();
+            } else {
+                threeDiceNoDisplay();
+                heading.textContent = "Computer is the banker";
+                headingSmall.textContent = "Computer is the banker";
+                diceTwoChange.classList.remove('fa-spin');
+                diceTwoChange.classList.remove('fa-beat');
+                currentPlayer = 'computer';
+                setComputerStakes();
+            }
+        }, 7000);
+
+        let highRollResult = [num1, num2];
+
+        return highRollResult;
+    }
+
+    /* Configures the display for the highRoll,
+     * Hides the first and third dice, and adds a beating class
+     * to the second die whil removin any spinning class if it exists
+     */
+    function highRollDiceDisplay() {
+
+        let diceOne = document.getElementById('die1');
+        diceOne.style.display = 'none';
+        let diceThree = document.getElementById('die3');
+        diceThree.style.display = 'none';
+
+        let diceTwo = document.getElementById('die2');
+
+        let diceTwoChange = diceTwo.querySelector('.die');
+        if (diceTwoChange) {
+            diceTwoChange.classList.add('fa-beat');
+            if (diceTwoChange.classList.contains('fa-spin')) {
+                diceTwoChange.classList.remove('fa-spin');
+            }
+        }
+        return;
+    }
+
+    /* UpdateDieFace updates the die face to matach the specified number. 
+     * This function changes the class name of the die element to reflect the correct
+     * face based on the number provided
+     */
+    function updateDieFace(dice, number) {
+        //template literal to update dice face for high roll result
+        //[number - 1] to select correct dice face
+
+        if (number >= 1 && number <= 6) {
+            dice.className = `fa-solid fa-dice-${['one', 'two', 'three', 'four', 'five', 'six'][number - 1]} die`;
+        } else {
+            console.log('Invalid dice number:', number);
+        }
+    }
+
+    /*Set's the stakes for the user.
+     * This function updates the banker to 'user and displays in the heading,
+     * and sets up the event lister on the increase stakes button to increase the stakes.
+     */
+    function setTheStakes() {
+
+        banker = 'user';
+
+        let increaseStakesButton = document.getElementById('increase-stakes');
+
+        setTimeout(function () {
+            threeDiceNoDisplay();
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%';
+            heading.textContent = `Set the stakes`;
+            headingSmall.textContent = `Set the stakes`;
+        }, 2000);
+
+        increaseStakesButton.addEventListener('click', updateStakes);
+
+        startPulsing(increaseStakesButton);
+    }
+
+    /*updateStakes updates the stakes when the user increases them,
+     * handles the deducting og the stakes from the usrs and computers
+     * bankrolls, updates the piggy bank value, and sets up the users
+     * turn to roll.
+     */
+    function updateStakes() {
+
+        let increaseStakesButton = document.getElementById('increase-stakes');
+
+        stopPulsing(increaseStakesButton);
+
+        let userStakes = 100;
+        let bankRollUserValue = parseInt(bankRollUser.value);
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
+        let piggyBankContainer = document.getElementById('piggy-bank-container');
+
+        piggyBankContainer.classList.remove('pop');
+
+        if (bankRollUserValue >= userStakes && bankRollComputerValue >= userStakes) {
+            bankRollUserValue -= userStakes;
+            bankRollComputerValue -= userStakes;
+            bankRollUser.value = bankRollUserValue;
+            bankRollComputer.value = bankRollComputerValue;
+
+            let totalStakes = userStakes * 2;
+
+            piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
+
+            setTimeout(function () {
+                piggyBankContainer.classList.add('pop');
+            }, 5);
+        } else {
+            heading.textContent = "Insuffient funds";
+        }
+
+            threeDiceBounceDisplay();
+            heading.style.top = '33%';
+            headingSmall.style.top = '25%';
+            heading.textContent = "Click to roll";
+            headingSmall.textContent = "Click to roll";
+            currentPlayer = 'user';
+            circle.removeEventListener('click', userTurn);
+            circle.addEventListener('click', userTurn);
+    }
+
+    /* Sets the stakes for the computer.
+     * Randomly detemermines the computers stakes,
+     * updates the bankrolls and piggy bank, displays
+     * appropriate heading, and sets up for computer
+     * to roll. 
+     */
+    function setComputerStakes() {
+
+        roundWinner = null;
+
+        banker = 'computer';
+
+        console.log("You're in computer stakes");
+
+        let multiplier = Math.floor(Math.random() * 5) + 1;
+        let computerStakes = multiplier * 100;
+
+        let bankRollUserValue = parseInt(bankRollUser.value);
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
+
+        let piggyBankContainer = document.getElementById('piggy-bank-container');
+
+        setTimeout(function () {
+            threeDiceNoDisplay();
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%';
+            heading.textContent = "Computer setting stakes";
+            headingSmall.textContent = "Computer setting stakes";
+        }, 1000);
+
+        setTimeout(function () {
+            if (computerStakes > bankRollUserValue) {
+                computerStakes = bankRollUserValue;
+            }
+
+            threeDiceNoDisplay();
+            piggyBankContainer.classList.add('pop');
+            heading.style.top = '45%';
+            headingSmall.style.top = '45%';
+            heading.innerHTML = `The stakes are <span class="big-text">$${computerStakes}</span>`;
+            headingSmall.innerHTML = `The stakes are <span class="big-text">$${computerStakes}</span>`;
+            bankRollComputerValue -= computerStakes;
+            bankRollUserValue -= computerStakes;
+            bankRollComputer.value = bankRollComputerValue;
+            bankRollUser.value = bankRollUserValue;
+
+            piggyBankInput.value = computerStakes * 2;
+        }, 2000);
+
+        setTimeout(function () {
+            currentPlayer = 'computer';
+            runGame();
+        }, 3000);
+
+        return computerStakes;
+    }
+
+    /* Initiates the user's turn by removing the click event listener
+     * and calling the user turn function. 
+     */
+    function startUserTurn() {
+        circle.removeEventListener('click', startUserTurn);
+        userTurn();
+    }
+
+    /*Executes the users turn in the game
+     * Handles dice rolling, determining their
+     * turns outcome, UI updates, and switches to
+     * the computers turn. 
+     */
+    function userTurn() {
+
+        roundWinner = null;
+
+        console.log("Its users turn");
+
+        circle.removeEventListener('click', userTurn);
+
+        threeDiceSpinningDisplay();
+        startSpinningBorder(circle);
+        startBlinking(heading);
+        startBlinking(headingSmall);
+        heading.style.top = '33%';
+        headingSmall.style.top = '25%';
+        heading.textContent = "Rolling";
+        headingSmall.textContent = "Rolling";
+
+        setTimeout(function () {
+            stopSpinningBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
+
+            do {
+                userDiceRolls = userRollDice();
+                userRollOutcome = checkRoll(userDiceRolls, 'user');
+            } while (userRollOutcome === '');
+
+            if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
+                return;
+            }
+
+            updateDiceFace(userRollOutcome);
+
+            setTimeout(function () {
+                threeDiceNoDisplay();
+                heading.style.top = '45%';
+                headingSmall.style.top = '45%';
+                let noCommaString = userDiceRolls.join(' ');
+                heading.innerHTML = `You rolled <span class="big-text">${noCommaString}</span>`;
+                headingSmall.innerHTML = `You rolled <span class="big-text">${noCommaString}</span>`;
+
+                setTimeout(function () {
+                    currentPlayer = 'computer';
+                    displayScore(userRollOutcome, 'user');
+                    runGame();
+                }, 1000);
+            }, 1000);
+        }, 2000);
+        return userRollOutcome;
+    }
+
+    function computerTurn() {
+
+        console.log("Its computers turn");
+
+        threeDiceSpinningDisplay();
+        startSpinningBorder(circle);
+        startBlinking(heading);
+        startBlinking(headingSmall);
+        heading.style.top = '33%';
+        headingSmall.style.top = '25%';
+        heading.textContent = "Computer Rolling";
+        headingSmall.textContent = "Computer Rolling";
+
+        setTimeout(function () {
+            stopSpinningBorder(circle);
+            stopBlinking(heading);
+            stopBlinking(headingSmall);
+
+            do {
+                computerDiceRolls = computerRollDice();
+                computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
+            } while (computerRollOutcome === '');
+
+            if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
+                updateDiceFace(computerRollOutcome);
+                return;
+            }
+
+            updateDiceFace(computerRollOutcome);
+
+            setTimeout(function () {
+                threeDiceNoDisplay();
+                heading.style.top = '45%';
+                headingSmall.style.top = '45%';
+                let noCommaString = computerDiceRolls.join(' ');
+                heading.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
+                headingSmall.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
+                setTimeout(function () {
+                    currentPlayer = 'user';
+                    displayScore(computerRollOutcome, 'computer');
+                    runGame();
+                }, 1000);
+            }, 1000);
+        }, 2000);
+        return computerRollOutcome;
+    }
 
     function displayScore(roll, player) {
 
@@ -195,13 +596,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (computerScoreDieThreeChange) updateScoreDisplay(computerScoreDieThreeChange, rollValueThree);
                     computerScoreDieThreeChange.classList.add('pop');
                 }
-
             }
-
         } else {
             console.log('Display score not updated correctly');
         }
-
     }
 
     function updateScoreDisplay(dice, value) {
@@ -227,277 +625,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function highRoll() {
-
-
-        console.log('Youre in the high roll');
-
-        circle.removeEventListener('click', highRoll);
-
-        let diceTwo = document.getElementById('die2');
-
-        let diceTwoChange = diceTwo.querySelector('.die');
-
-        if (diceTwoChange) {
-            diceTwoChange.classList.add('fa-spin');
-        } else {
-            console.log("die2 not found");
-        }
-
-        let num1;
-        let num2;
-
-        do {
-            num1 = rollDice();
-            num2 = rollDice();
-        } while (num1 === num2);
-
-        heading.style.top = '33%';
-        headingSmall.style.top = '25%';
-        heading.textContent = "Rolling";
-        headingSmall.textContent = "Rolling";
-
-        startSpinningBorder(circle);
-        startBlinking(heading);
-        startBlinking(headingSmall);
-
-        //Users high roll 
-
-        setTimeout(function () {
-            updateDieFace(diceTwoChange, num1);
-        }, 1000);
-
-        setTimeout(function () {
-            stopSpinningBorder(circle);
-            stopBlinking(heading);
-            stopBlinking(headingSmall);
-
-        }, 2000);
-
-        setTimeout(function () {
-            diceTwo.style.display = 'none';
-            heading.style.top = '45%';
-            headingSmall.style.top = '45%';
-            heading.innerHTML = `You rolled <span class="big-text">${num1}</span>`;
-            headingSmall.innerHTML = `You rolled <span class="big-text">${num1}</span>`;
-        }, 3000);
-
-
-
-        //Computers high roll 
-
-        setTimeout(function () {
-            if (diceTwoChange) {
-                diceTwo.style.display = 'inline-flex';
-                diceTwoChange.classList.add('fa-spin');
-                startSpinningBorder(circle);
-                startBlinking(heading);
-                startBlinking(headingSmall);
-                heading.style.top = '33%';
-                headingSmall.style.top = '25%';
-                heading.textContent = "Computer Rolling";
-                headingSmall.textContent = "Computer Rolling";
-            }
-        }, 4000);
-
-        setTimeout(function () {
-            updateDieFace(diceTwoChange, num2);
-            stopSpinningBorder(circle);
-            stopBlinking(heading);
-            stopBlinking(headingSmall);
-        }, 5000);
-
-        setTimeout(function () {
-            heading.style.top = '45%';
-            headingSmall.style.top = '45%';
-            diceTwo.style.display = 'none';
-            heading.innerHTML = `Computer rolled <span class="big-text">${num2}</span>`;
-            headingSmall.innerHTML = `Computer rolled <span class="big-text">${num2}</span>`;
-        }, 6000);
-
-        setTimeout(function () {
-
-            if (num1 > num2) {
-                threeDiceNoDisplay();
-                heading.textContent = "You're the banker";
-                headingSmall.textContent = "You're the banker";
-                currentPlayer = 'user';
-                diceTwoChange.classList.remove('fa-spin');
-                diceTwoChange.classList.remove('fa-beat');
-                setTheStakes();
-            } else {
-                threeDiceNoDisplay();
-                heading.textContent = "Computer is the banker";
-                headingSmall.textContent = "Computer is the banker";
-                diceTwoChange.classList.remove('fa-spin');
-                diceTwoChange.classList.remove('fa-beat');
-                currentPlayer = 'computer';
-                setComputerStakes();
-            }
-        }, 7000);
-
-
-        let highRollResult = [num1, num2];
-
-        return highRollResult;
-
-    }
-
-    function highRollDiceDisplay() {
-
-
-        let diceOne = document.getElementById('die1');
-        diceOne.style.display = 'none';
-        let diceThree = document.getElementById('die3');
-        diceThree.style.display = 'none';
-
-        let diceTwo = document.getElementById('die2');
-
-        let diceTwoChange = diceTwo.querySelector('.die');
-        if (diceTwoChange) {
-            diceTwoChange.classList.add('fa-beat');
-            if (diceTwoChange.classList.contains('fa-spin')) {
-                diceTwoChange.classList.remove('fa-spin');
-            }
-        }
-
-        return;
-
-    }
-
-
-    function updateDieFace(dice, number) {
-        //template literal to update dice face for high roll result
-        //[number - 1] to select correct dice face
-
-        if (number >= 1 && number <= 6) {
-            dice.className = `fa-solid fa-dice-${['one', 'two', 'three', 'four', 'five', 'six'][number - 1]} die`;
-        } else {
-            console.log('Invalid dice number:', number);
-        }
-
-    }
-
-    function setTheStakes() {
-
-        console.log("You're in user stakes");
-
-        banker = 'user';
-
-        let increaseStakesButton = document.getElementById('increase-stakes');
-
-        setTimeout(function () {
-            threeDiceNoDisplay();
-            heading.style.top = '45%';
-            headingSmall.style.top = '45%';
-            heading.textContent = `Set the stakes`;
-            headingSmall.textContent = `Set the stakes`;
-        }, 2000);
-
-        increaseStakesButton.addEventListener('click', updateStakes);
-
-        startPulsing(increaseStakesButton);
-
-
-    }
-
-    function updateStakes() {
-
-        let increaseStakesButton = document.getElementById('increase-stakes');
-
-        stopPulsing(increaseStakesButton);
-
-        let userStakes = 100;
-        let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-        let piggyBankContainer = document.getElementById('piggy-bank-container');
-
-        piggyBankContainer.classList.remove('pop');
-
-        if (bankRollUserValue >= userStakes && bankRollComputerValue >= userStakes) {
-            bankRollUserValue -= userStakes;
-            bankRollComputerValue -= userStakes;
-            bankRollUser.value = bankRollUserValue;
-            bankRollComputer.value = bankRollComputerValue;
-
-            let totalStakes = userStakes * 2;
-
-            piggyBankInput.value = parseInt(piggyBankInput.value) + totalStakes;
-
-            setTimeout(function () {
-                piggyBankContainer.classList.add('pop');
-            }, 5);
-        } else {
-            heading.textContent = "Insuffient funds";
-        }
-
-            threeDiceBounceDisplay();
-            heading.style.top = '33%';
-            headingSmall.style.top = '25%';
-            heading.textContent = "Click to roll";
-            headingSmall.textContent = "Click to roll";
-            currentPlayer = 'user';
-            circle.removeEventListener('click', userTurn);
-            circle.addEventListener('click', userTurn);
-
-    }
-
-    function setComputerStakes() {
-
-        roundWinner = null;
-
-        banker = 'computer';
-
-        console.log("You're in computer stakes");
-
-        let multiplier = Math.floor(Math.random() * 5) + 1;
-        let computerStakes = multiplier * 100;
-
-        let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-
-        let piggyBankContainer = document.getElementById('piggy-bank-container');
-
-        setTimeout(function () {
-            threeDiceNoDisplay();
-            heading.style.top = '45%';
-            headingSmall.style.top = '45%';
-            heading.textContent = "Computer setting stakes";
-            headingSmall.textContent = "Computer setting stakes";
-        }, 1000);
-
-        setTimeout(function () {
-
-            if (computerStakes > bankRollUserValue) {
-                computerStakes = bankRollUserValue;
-            }
-            threeDiceNoDisplay();
-            piggyBankContainer.classList.add('pop');
-            heading.style.top = '45%';
-            headingSmall.style.top = '45%';
-            heading.innerHTML = `The stakes are <span class="big-text">$${computerStakes}</span>`;
-            headingSmall.innerHTML = `The stakes are <span class="big-text">$${computerStakes}</span>`;
-            bankRollComputerValue -= computerStakes;
-            bankRollUserValue -= computerStakes;
-            bankRollComputer.value = bankRollComputerValue;
-            bankRollUser.value = bankRollUserValue;
-
-            piggyBankInput.value = computerStakes * 2;
-        }, 2000);
-
-
-        setTimeout(function () {
-            currentPlayer = 'computer';
-            runGame();
-        }, 3000);
-
-        console.log(`SetComputerStakes bankRollUserValue is ${bankRollUserValue}`);
-        console.log(`SetComputerStakes bankRollComputerValue is ${bankRollComputerValue}`);
-        console.log(`SetComputerStakes piggBankValueis ${piggyBankInput.value}`);
-
-        return computerStakes;
-
-    }
 
     function startGameLoseAnimation(element) {
         element.classList.add('game-lose-shake');
@@ -862,109 +989,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function startUserTurn() {
-
-        circle.removeEventListener('click', startUserTurn);
-        userTurn();
-    }
-
-    function userTurn() {
-
-        roundWinner = null;
-
-        console.log("Its users turn");
-
-        circle.removeEventListener('click', userTurn);
-
-        threeDiceSpinningDisplay();
-        startSpinningBorder(circle);
-        startBlinking(heading);
-        startBlinking(headingSmall);
-        heading.style.top = '33%';
-        headingSmall.style.top = '25%';
-        heading.textContent = "Rolling";
-        headingSmall.textContent = "Rolling";
-
-        setTimeout(function () {
-            stopSpinningBorder(circle);
-            stopBlinking(heading);
-            stopBlinking(headingSmall);
-
-            do {
-                userDiceRolls = userRollDice();
-                userRollOutcome = checkRoll(userDiceRolls, 'user');
-            } while (userRollOutcome === '');
-
-            if (checkInstantWinOrLoss(userRollOutcome, userDiceRolls, 'user')) {
-                return;
-            }
-
-            updateDiceFace(userRollOutcome);
-
-            setTimeout(function () {
-                threeDiceNoDisplay();
-                heading.style.top = '45%';
-                headingSmall.style.top = '45%';
-                let noCommaString = userDiceRolls.join(' ');
-                heading.innerHTML = `You rolled <span class="big-text">${noCommaString}</span>`;
-                headingSmall.innerHTML = `You rolled <span class="big-text">${noCommaString}</span>`;
-
-                setTimeout(function () {
-                    currentPlayer = 'computer';
-                    displayScore(userRollOutcome, 'user');
-                    runGame();
-                }, 1000);
-            }, 1000);
-        }, 2000);
-        return userRollOutcome;
-    }
-
-    function computerTurn() {
-
-        console.log("Its computers turn");
-
-        threeDiceSpinningDisplay();
-        startSpinningBorder(circle);
-        startBlinking(heading);
-        startBlinking(headingSmall);
-        heading.style.top = '33%';
-        headingSmall.style.top = '25%';
-        heading.textContent = "Computer Rolling";
-        headingSmall.textContent = "Computer Rolling";
-
-        setTimeout(function () {
-            stopSpinningBorder(circle);
-            stopBlinking(heading);
-            stopBlinking(headingSmall);
-
-            do {
-                computerDiceRolls = computerRollDice();
-                computerRollOutcome = checkRoll(computerDiceRolls, 'computer');
-            } while (computerRollOutcome === '');
-
-            if (checkInstantWinOrLoss(computerRollOutcome, computerDiceRolls, 'computer')) {
-                updateDiceFace(computerRollOutcome);
-                return;
-            }
-
-            updateDiceFace(computerRollOutcome);
-
-            setTimeout(function () {
-                threeDiceNoDisplay();
-                heading.style.top = '45%';
-                headingSmall.style.top = '45%';
-                let noCommaString = computerDiceRolls.join(' ');
-                heading.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
-                headingSmall.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
-                setTimeout(function () {
-                    currentPlayer = 'user';
-                    displayScore(computerRollOutcome, 'computer');
-                    runGame();
-                }, 1000);
-            }, 1000);
-        }, 2000);
-        return computerRollOutcome;
-    }
 
     function updateDiceFace(roll) {
 
@@ -1121,6 +1145,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+
+    /*Runs the game flow logic based on the players turn,
+     * Updates the UI with their rolls, and passes to either
+     * determineWinner function or instantWinOrLoss depending 
+     * on their roll outcomes.
+     */
     function runGame() {
 
         console.log("Your in runGame");
@@ -1149,7 +1179,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     circle.addEventListener('click', startUserTurn);
                 }, 1000);
             }
-
         }
 
         if (currentPlayer === 'computer') {
@@ -1160,33 +1189,12 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-
         if (userRollOutcome !== undefined && computerRollOutcome !== undefined) {
             setTimeout(function () {
                 determineWinner(userRollOutcome, computerRollOutcome);
             }, 3000);
-
         }
-
-
     }
-
-    function userRollDice() {
-
-        console.log('Your in userRollDice');
-
-        return rollThreeDice();
-
-
-    }
-
-    function computerRollDice() {
-        console.log('Your in computerRollDice');
-        return rollThreeDice();
-
-    }
-
-
 
 
     function checkRoll(roll, player) {
