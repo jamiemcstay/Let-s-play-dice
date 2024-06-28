@@ -9,10 +9,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     rulesLogo.classList.add('pulse');
 
-    if (window.innerHeight <= 425) {
-        let diceWrapper = document.getElementById('main-section-dice-wrapper');
-        diceWrapper.style.transform = 'translate(-50%, -50%)';
-    }
+    // if (window.innerHeight <= 425) {
+    //     let diceWrapper = document.getElementById('main-section-dice-wrapper');
+    //     diceWrapper.style.transform = 'translate(-50%, -50%)';
+    // } else {
+
+    // }
 
 
     rulesLogo.addEventListener('click', function () {
@@ -71,9 +73,12 @@ document.addEventListener('DOMContentLoaded', function () {
         piggyBank.style.display = 'flex';
         mainSection.style.height = '75%';
 
-        if (window.innerHeight <= 425) {
-            let diceWrapper = document.getElementById('main-section-dice-wrapper');
-            diceWrapper.style.transform = 'translate(-80%, -50%)';
+        if (window.innerWidth <= 425) {
+            circle.style.top = "68%"; 
+        } else if (window.innerWidth >= 768) {
+            circle.style.top = "0%";
+        } else {
+            circle.style.top = "0%"; 
         }
 
         piggyBankValue = 0;
