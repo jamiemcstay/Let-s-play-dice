@@ -765,23 +765,23 @@ document.addEventListener('DOMContentLoaded', function () {
                         }, 3000)
                         console.log(`${playersRoll}`);
                         setTimeout(function () {
-                            heading.style.top = '30%';
-                            headingSmall.style.top = '30%';
-                            heading.style.left = '30%'; 
-                            headingSmall.style.left = '30%';  
-                            startWinAnimation(heading); 
-                            startWinAnimation(heading);
-                            startWinAnimation(headingSmall);
+                            // heading.style.top = '30%';
+                            // headingSmall.style.top = '50%';
+                            // heading.style.left = '25%'; 
+                            // headingSmall.style.left = '50%'; 
+                            // startWinAnimation(heading); 
+                            // startWinAnimation(heading);
+                            // startWinAnimation(headingSmall);
                             heading.textContent = 'INSTANT WIN';
                             headingSmall.textContent = 'INSTANT WIN';
                         }, 4000);
                         setTimeout(function () {
                             stopWinAnimation(heading);
                             stopWinAnimation(headingSmall);
-                            heading.style.top = '45%';
+                            heading.style.top = '30%';
                             headingSmall.style.top = '45%';
-                            heading.style.left = '50%'; 
-                            headingSmall.style.left = '50%'; 
+                            heading.style.left = '25%'; 
+                            // headingSmall.style.left = '0%'; 
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -893,19 +893,19 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
                         setTimeout(function () {
-                            heading.style.top = '30%';
-                            headingSmall.style.top = '30%';
-                            heading.style.left = '30%'; 
-                            headingSmall.style.left = '30%'; 
-                            startWinAnimation(heading);
-                            startWinAnimation(heading);
-                            startWinAnimation(headingSmall);  
+                            // heading.style.top = '30%';
+                            // headingSmall.style.top = '50%';
+                            // heading.style.left = '25%'; 
+                            // headingSmall.style.left = '50%'; 
+                            // startWinAnimation(heading);
+                            // startWinAnimation(heading);
+                            // startWinAnimation(headingSmall);  
                             heading.textContent = 'COMPUTER INSTANT LOSS';
                             headingSmall.textContent = 'COMPUTER INSTANT LOSS';
                         }, 4000);
                         setTimeout(function () {
-                            stopWinAnimation(heading);
-                            stopWinAnimation(headingSmall);
+                            // stopWinAnimation(heading);
+                            // stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.style.left = '50%'; 
@@ -1178,8 +1178,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 startGameWinAnimation(circle);
-                heading.textContent = "YOU WIN";
-                headingSmall.textContent = "YOU WIN";
+                heading.textContent = "YOU WON";
+                headingSmall.textContent = "YOU WON";
             }, 2000);
             setTimeout(function () {
                 stopGameWinAnimation(circle);
@@ -1471,23 +1471,23 @@ document.addEventListener('DOMContentLoaded', function () {
                         console.log("It's a tie");
                         itsATie();
                     } else if (userPoint > computerPoint) {
-                        heading.style.top = '30%';
-                        headingSmall.style.top = '33%';
-                        heading.style.left = '40%'; 
-                        headingSmall.style.left = '40%'; 
-                        startWinAnimation(heading);
-                        startWinAnimation(headingSmall);
+                        // heading.style.top = '30%';
+                        // headingSmall.style.top = '50%';
+                        // heading.style.left = '25%'; 
+                        // headingSmall.style.left = '50%'; 
+                        // startWinAnimation(heading);
+                        // startWinAnimation(headingSmall);
                         heading.textContent = "You win this round!";
                         headingSmall.textContent = "You win this round!";
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            stopWinAnimation(heading);
-                            stopWinAnimation(headingSmall);
+                            // stopWinAnimation(heading);
+                            // stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.style.left = '50%'; 
-                            headingSmall.style.left = '50%'; 
+                            headingSmall.style.left = '50%';  
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -1523,12 +1523,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (userPoint === computerPoint) {
                         //If the points are equal, compare the pair values
                         if (userPairValue > computerPairValue) {
-                            heading.style.top = '30%';
-                            headingSmall.style.top = '30%';
-                            heading.style.left = '30%'; 
-                            headingSmall.style.left = '30%'; 
-                            startWinAnimation(heading);
-                            startWinAnimation(headingSmall);
+                            // heading.style.top = '30%';
+                            // headingSmall.style.top = '50%';
+                            // heading.style.left = '25%'; 
+                            // headingSmall.style.left = '50%'; 
+                            // startWinAnimation(heading);
+                            // startWinAnimation(headingSmall);
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
@@ -1572,12 +1572,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         //If points are not equal, the higher point wins
                         if (userPoint > computerPoint) {
-                            heading.style.top = '30%';
-                            headingSmall.style.top = '30%';
-                            heading.style.left = '30%'; 
-                            headingSmall.style.left = '30%';  
-                            startWinAnimation(heading);
-                            startWinAnimation(headingSmall);
+                            // heading.style.top = '30%';
+                            // headingSmall.style.top = '50%';
+                            // heading.style.left = '25%'; 
+                            // headingSmall.style.left = '50%';    
+                            // startWinAnimation(heading);
+                            // startWinAnimation(headingSmall);
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
