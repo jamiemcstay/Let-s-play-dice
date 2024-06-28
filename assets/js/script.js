@@ -602,8 +602,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return computerRollOutcome;
     }
 
-    /* Displays the score of a roll for the players. 
-     * Updates the UI of the players score display, 
+    /* Handles the data to be passed to updateScoreDisplay.  
      * removes spaces from strings to correctly convert 
      * to integers, and converts arrays to strings.
      */
@@ -615,7 +614,7 @@ document.addEventListener('DOMContentLoaded', function () {
             roll = roll.join('');
         }
 
-        //Remove spaces from strings to at correct index
+        //Remove spaces from strings to parse into string at correct index
 
         roll = String(roll).replace(/\s+/g, '');
 
@@ -671,8 +670,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } 
     }
 
+    /* Updates the players score display with the
+     * corresponding class for font-awesome icons.
+     */
     function updateScoreDisplay(dice, value) {
-
         let diceClasses = {
             1: 'fa-dice-one',
             2: 'fa-dice-two',
@@ -680,103 +681,19 @@ document.addEventListener('DOMContentLoaded', function () {
             4: 'fa-dice-four',
             5: 'fa-dice-five',
             6: 'fa-dice-six',
-
         }
 
         if (dice) {
             dice.classList.remove('fa-solid', 'fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six');
             dice.classList.add('fa-solid');
             dice.classList.add(diceClasses[value]);
-        } else {
-            console.log("Dice not updated correctly in updateScoreDisplay");
-        }
-
-    };
-
-
-    function startGameWinAnimation(element) {
-        element.classList.add('circle-border-instant-win');
+        } 
     }
 
-    function stopGameWinAnimation(element) {
-
-        element.classList.remove('game-win');
-    }
-
-    function startWinAnimation(element) {
-        // element.style.top = '25%'; 
-        // element.style.left = '33%'; 
-        element.classList.add('round-win-text')
-        console.log(`h1 top positon is ${element.style.top} and left position is ${element.style.left}`)
-    }
-
-    function stopWinAnimation(element) {
-        element.classList.remove('round-win-text');
-        // element.syle.top = '45%'; 
-        // element.style.left = '50%'; 
-
-    }
-
-    function startGameLoseAnimation(element) {
-        element.classList.add('game-lose-shake');
-    }
-
-    function stopGameLoseAnimation(element) {
-        element.classList.remove('game-lose-shake');
-    }
-
-    function startLossAnimation(element) {
-        element.classList.add('round-lose-shake');
-    }
-
-    function stopLossAnimation(element) {
-        element.classList.remove('round-lose-shake');
-    }
-
-    function startSpinningBorder(element) {
-
-        element.classList.add('spin');
-    }
-
-    function stopSpinningBorder(element) {
-        element.classList.remove('spin');
-    }
-
-    function startBlinking(element) {
-
-        element.classList.add('blink');
-
-    }
-
-    function stopBlinking(element) {
-
-        element.classList.remove('blink');
-
-    }
-
-    function startPulsing(element) {
-
-        element.classList.add('pulse');
-
-    }
-
-    function stopPulsing(element) {
-
-        element.classList.remove('pulse');
-
-
-    }
-
-    // function startSpinning(element) {
-
-    //     element.classList.add('spinning');
-    // }
-
-    function stopSpinning(element) {
-
-        element.classList.remove('spinning');
-    }
-
+    /* Removes the display of the three main
+     * dice to allow for headings to update
+     * user with roll and game flow information. 
+     */
     function threeDiceNoDisplay() {
 
         let diceOne = document.getElementById('die1');
@@ -789,13 +706,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
+    /* Adds bouncing effect to main three 
+     * when its users turn to roll.   
+     */
     function threeDiceBounceDisplay() {
 
         let diceOne = document.getElementById('die1');
         let diceTwo = document.getElementById('die2');
         let diceThree = document.getElementById('die3');
 
-        //Unhide the parent div to see icon
+        //Unhide the parent divs to see icon
 
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
@@ -811,9 +731,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceThree) {
             diceThree.style.display = 'inline-flex';
             diceThree.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die element not found');
-        }
+        } 
 
         //Change to beating dice
 
@@ -824,28 +742,23 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOneChange) {
             diceOneChange.style.display = 'inline-flex';
             diceOneChange.classList.add('fa-beat');
-        } else {
-            console.log('die1 i not found');
-        }
+        } 
 
         if (diceTwoChange) {
             diceTwoChange.style.display = 'inline-flex';
             diceTwoChange.classList.add('fa-beat');
-        } else {
-            console.log('die2 i not found');
-        }
+        } 
 
         if (diceThreeChange) {
             diceThreeChange.style.display = 'inline-flex';
             diceThreeChange.classList.add('fa-beat');
-        } else {
-            console.log('die3 not found');
-        }
-
+        } 
     }
 
+    /* Adds spinning effect to dice when 
+     * players are rolling their dice. 
+     */
     function threeDiceSpinningDisplay() {
-
 
         let diceOne = document.getElementById('die1');
         let diceTwo = document.getElementById('die2');
@@ -855,9 +768,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
             diceOne.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die1 element not found');
-        }
+        } 
 
         if (diceTwo) {
             diceTwo.style.display = 'inline-flex';
@@ -866,10 +777,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceThree) {
             diceThree.style.display = 'inline-flex';
             diceThree.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die element not found');
-        }
-
+        } 
         //Change to spinning dice
 
         let diceOneChange = diceOne.querySelector('.die');
@@ -879,48 +787,62 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOneChange) {
             diceOneChange.style.display = 'inline-flex';
             diceOneChange.classList.add('fa-spin');
-        } else {
-            console.log('die1 i not found');
-        }
+        } 
 
         if (diceTwoChange) {
             diceTwoChange.style.display = 'inline-flex';
             diceTwoChange.classList.add('fa-spin');
-        } else {
-            console.log('die2 i not found');
-        }
+        } 
 
         if (diceThreeChange) {
             diceThreeChange.style.display = 'inline-flex';
             diceThreeChange.classList.add('fa-spin');
-        } else {
-            console.log('die3 not found');
-        }
+        } 
     }
 
+    /* Handles the data from the players rolls, converts arrays
+     * to strings, removes spaces in strings, and passes strings
+     * to updateDieFace. 
+    */
+    function updateDiceFace(roll) {
 
-    function updateBankRolls(winner, piggyBankValue) {
+        //Check if roll is an array and if so convert to string 
 
-        threeDiceNoDisplay();
-
-        let bankRollUserValue = parseInt(bankRollUser.value);
-        let bankRollComputerValue = parseInt(bankRollComputer.value);
-
-
-        if (winner === 'user') {
-            bankRollUserValue += parseInt(piggyBankValue);
-            bankRollUser.value = bankRollUserValue;
-        } else {
-            bankRollComputerValue += parseInt(piggyBankValue);
-            bankRollComputer.value = bankRollComputerValue;
+        if (Array.isArray(roll)) {
+            roll = roll.join('');
         }
 
-        piggyBankInput.value = 0;
+        //remove spaces from string so strings are 3 characters
 
-        console.log(`UpdateBankRolls bankRollUserValue is: ${bankRollUserValue}`);
-        console.log(`Update BankRolls bankRollComputerValue is ${bankRollComputerValue}`);
-        console.log(`Update BankRolls piggyBankValue is: ${piggyBankInput.value}`);
+        roll = String(roll).replace(/\s+/g, '');
 
+        if (isNaN(roll)) {
+            console.log("updateDiceFace' - Roll is a special case or invalid string:", roll);
+            return;
+        }
+
+        if (roll.length === 3) {
+            let diceOneValue = parseInt(roll[0]);
+            let diceTwoValue = parseInt(roll[1]);
+            let diceThreeValue = parseInt(roll[2]);
+
+            //Find the elements
+
+            let diceOne = document.getElementById('die1');
+            let diceTwo = document.getElementById('die2');
+            let diceThree = document.getElementById('die3');
+
+            //find the i element in the divs
+            let diceOneChange = diceOne ? diceOne.querySelector('.die') : null;
+            let diceTwoChange = diceTwo ? diceTwo.querySelector('.die') : null;
+            let diceThreeChange = diceThree ? diceThree.querySelector('.die') : null;
+
+            if (!isNaN(diceOneValue) && !isNaN(diceTwoValue) && !isNaN(diceThreeValue)) {
+                if (diceOneChange) updateDieFace(diceOneChange, diceOneValue);
+                if (diceTwoChange) updateDieFace(diceTwoChange, diceTwoValue);
+                if (diceThreeChange) updateDieFace(diceThreeChange, diceThreeValue);;
+            }
+        } 
     }
 
     function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
@@ -967,8 +889,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.textContent = 'INSTANT WIN';
                         }, 4000);
                         setTimeout(function () {
-                            stopWinAnimation(heading);
-                            stopWinAnimation(headingSmall);
+                            // stopWinAnimation(heading);
+                            // stopWinAnimation(headingSmall);
                             heading.style.top = '30%';
                             headingSmall.style.top = '45%';
                             heading.style.left = '25%';
@@ -1116,64 +1038,220 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function determineWinner(userRollOutcome, computerRollOutcome) {
 
-    function updateDiceFace(roll) {
+        console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`);
+        console.log(`determineWinner userRollOutcome is ${userRollOutcome}`);
 
-        console.log("playerRoll Received:", typeof roll);
+        let piggyBankValue = parseInt(piggyBankInput.value);
 
-        //Check if roll is an array and if so convert to string 
+        console.log("You're in determineWinner");
 
-        if (Array.isArray(roll)) {
-            roll = roll.join('');
-        }
+        setTimeout(function () {
 
-        console.log(roll);
+            console.log(`User roll outcome before split: ${userRollOutcome}`);
+            console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
 
-        //remove spaces from string so strings are 3 characters
 
-        roll = String(roll).replace(/\s+/g, '');
+            let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
+            let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
 
-        if (isNaN(roll)) {
-            console.log("updateDiceFace' - Roll is a special case or invalid string:", roll);
-            return;
-        }
+            console.log(`Users pair value is ${userPairValue}`);
+            console.log(`Computers pair value is ${computerPairValue}`);
 
-        if (roll.length === 3) {
+            if (userPairValue !== null && computerPairValue !== null) {
+                // Isolate single point for user and computer roll 
+                let userPoint = parseInt(userRollOutcome.split(' ')[2]);
+                let computerPoint = parseInt(computerRollOutcome.split(' ')[2]);
 
-            console.log('updateDiceFace - Parsing dice faces:');
+                console.log(`Users point is ${userPoint}`);
+                console.log(`computers point is ${computerPoint}`);
 
-            let diceOneValue = parseInt(roll[0]);
-            let diceTwoValue = parseInt(roll[1]);
-            let diceThreeValue = parseInt(roll[2]);
+                if (userPairValue === computerPairValue) {
+                    // If the pair values are equal, compare the points
+                    if (userPoint === computerPoint) {
+                        heading.textContent = "It's a tie!";
+                        headingSmall.textContent = "It's a tie!";
+                        console.log("It's a tie");
+                        itsATie();
+                    } else if (userPoint > computerPoint) {
+                        // heading.style.top = '30%';
+                        // headingSmall.style.top = '50%';
+                        // heading.style.left = '25%'; 
+                        // headingSmall.style.left = '50%'; 
+                        // startWinAnimation(heading);
+                        // startWinAnimation(headingSmall);
+                        heading.textContent = "You win this round!";
+                        headingSmall.textContent = "You win this round!";
+                        roundWinner = 'user';
+                        banker = 'user';
+                        setTimeout(function () {
+                            // stopWinAnimation(heading);
+                            // stopWinAnimation(headingSmall);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.style.left = '50%';
+                            headingSmall.style.left = '50%';
+                            heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                            updateBankRolls('user', piggyBankValue);
+                        }, 1000);
+                        setTimeout(function () {
+                            newRound('user');
+                        }, 2000);
+                    } else {
+                        startLossAnimation(heading);
+                        startLossAnimation(headingSmall);
+                        heading.style.top = '45%';
+                        headingSmall.style.top = '45%';
+                        heading.textContent = "Computer wins this round";
+                        headingSmall.textContent = "Computer wins this round";
+                        roundWinner = 'computer';
+                        banker = 'computer';
+                        console.log("Computer wins");
+                        setTimeout(function () {
+                            stopLossAnimation(heading);
+                            stopLossAnimation(headingSmall);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
+                            headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
+                            updateBankRolls('computer', piggyBankValue);
+                        }, 1000);
+                        setTimeout(function () {
+                            newRound('computer');
+                        }, 2000);
+                    }
+                } else {
+                    // If the pair values are not equal
+                    if (userPoint === computerPoint) {
+                        //If the points are equal, compare the pair values
+                        if (userPairValue > computerPairValue) {
+                            // heading.style.top = '30%';
+                            // headingSmall.style.top = '50%';
+                            // heading.style.left = '25%'; 
+                            // headingSmall.style.left = '50%'; 
+                            // startWinAnimation(heading);
+                            // startWinAnimation(headingSmall);
+                            heading.textContent = "You win this round";
+                            headingSmall.textContent = "You win this round";
+                            roundWinner = 'user';
+                            banker = 'user';
+                            setTimeout(function () {
+                                stopWinAnimation(heading);
+                                stopWinAnimation(headingSmall);
+                                heading.style.top = '45%';
+                                headingSmall.style.top = '45%';
+                                heading.style.left = '50%';
+                                headingSmall.style.left = '50%';
+                                heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                                headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                                updateBankRolls('user', piggyBankValue);
+                            }, 1000);
+                            newRound('user');
+                        } else {
 
-            console.log("updateDiceFace - Parsing dice faces");
+                            startLossAnimation(heading);
+                            startLossAnimation(headingSmall);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.textContent = "Computer wins this round";
+                            headingSmall.textContent = "Computer wins this round";
+                            roundWinner = 'computer';
+                            banker = 'computer';
+                            console.log("Computer wins");
+                            setTimeout(function () {
+                                stopLossAnimation(heading);
+                                stopLossAnimation(headingSmall);
+                                heading.style.top = '45%';
+                                headingSmall.style.top = '45%';
+                                heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                                headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                                updateBankRolls('computer', piggyBankValue);
+                            }, 1000);
+                            setTimeout(function () {
+                                newRound('computer');
+                            }, 2000);
+                        }
+                    } else {
+                        //If points are not equal, the higher point wins
+                        if (userPoint > computerPoint) {
+                            // heading.style.top = '30%';
+                            // headingSmall.style.top = '50%';
+                            // heading.style.left = '25%'; 
+                            // headingSmall.style.left = '50%';    
+                            // startWinAnimation(heading);
+                            // startWinAnimation(headingSmall);
+                            heading.textContent = "You win this round";
+                            headingSmall.textContent = "You win this round";
+                            roundWinner = 'user';
+                            banker = 'user';
+                            setTimeout(function () {
+                                stopWinAnimation(heading);
+                                stopWinAnimation(headingSmall);
+                                heading.style.top = '45%';
+                                headingSmall.style.top = '45%';
+                                heading.style.left = '50%';
+                                headingSmall.style.left = '50%';
+                                heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                                headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
+                                updateBankRolls('user', piggyBankValue);
+                            }, 1000);
+                            setTimeout(function () {
+                                newRound('user');
+                            }, 2000);
+                        } else {
+                            startLossAnimation(heading);
+                            startLossAnimation(headingSmall);
+                            heading.style.top = '45%';
+                            headingSmall.style.top = '45%';
+                            heading.textContent = "Computer wins this round";
+                            headingSmall.textContent = "Computer wins this round";
+                            roundWinner = 'computer';
+                            banker = 'computer';
+                            console.log("Computer wins");
+                            setTimeout(function () {
+                                stopLossAnimation(heading);
+                                stopLossAnimation(headingSmall);
+                                heading.style.top = '45%';
+                                headingSmall.style.top = '45%';
+                                heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                                headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
+                                updateBankRolls('computer', piggyBankValue);
+                            }, 1000);
+                            setTimeout(function () {
+                                newRound('computer');
+                            }, 2000);
+                        }
 
-            console.log('Dice 1:', diceOneValue);
-            console.log('Dice 2:', diceTwoValue);
-            console.log('Dice 3:', diceThreeValue);
-
-            //Find the elements
-
-            let diceOne = document.getElementById('die1');
-            let diceTwo = document.getElementById('die2');
-            let diceThree = document.getElementById('die3');
-
-            //find the i element in the divs
-            let diceOneChange = diceOne ? diceOne.querySelector('.die') : null;
-            let diceTwoChange = diceTwo ? diceTwo.querySelector('.die') : null;
-            let diceThreeChange = diceThree ? diceThree.querySelector('.die') : null;
-
-            if (!isNaN(diceOneValue) && !isNaN(diceTwoValue) && !isNaN(diceThreeValue)) {
-                if (diceOneChange) updateDieFace(diceOneChange, diceOneValue);
-                if (diceTwoChange) updateDieFace(diceTwoChange, diceTwoValue);
-                if (diceThreeChange) updateDieFace(diceThreeChange, diceThreeValue);;
-            } else {
-                console.log("updateDiceFace - One or more parsed dice faces are invalid");
+                    }
+                }
             }
+
+        }, 2000);
+
+    }
+
+    function updateBankRolls(winner, piggyBankValue) {
+
+        threeDiceNoDisplay();
+
+        let bankRollUserValue = parseInt(bankRollUser.value);
+        let bankRollComputerValue = parseInt(bankRollComputer.value);
+
+        if (winner === 'user') {
+            bankRollUserValue += parseInt(piggyBankValue);
+            bankRollUser.value = bankRollUserValue;
         } else {
-            console.log("Roll not found or Invalid roll format:", roll);
+            bankRollComputerValue += parseInt(piggyBankValue);
+            bankRollComputer.value = bankRollComputerValue;
         }
 
+        piggyBankInput.value = 0;
+
+        console.log(`UpdateBankRolls bankRollUserValue is: ${bankRollUserValue}`);
+        console.log(`Update BankRolls bankRollComputerValue is ${bankRollComputerValue}`);
+        console.log(`Update BankRolls piggyBankValue is: ${piggyBankInput.value}`);
 
     }
 
@@ -1230,7 +1308,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function endGame() {
-
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
@@ -1467,198 +1544,98 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //create function for checking winner of rounds
 
-    function determineWinner(userRollOutcome, computerRollOutcome) {
 
-        console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`);
-        console.log(`determineWinner userRollOutcome is ${userRollOutcome}`);
+        // function startGameWinAnimation(element) {
+    //     element.classList.add('circle-border-instant-win');
+    // }
 
-        let piggyBankValue = parseInt(piggyBankInput.value);
+    // function stopGameWinAnimation(element) {
+    //     element.classList.remove('game-win');
+    // }
 
-        console.log("You're in determineWinner");
+    // function startWinAnimation(element) {
+    //     // element.style.top = '25%'; 
+    //     // element.style.left = '33%'; 
+    //     element.classList.add('round-win-text')
+    //     console.log(`h1 top positon is ${element.style.top} and left position is ${element.style.left}`)
+    // }
 
-        setTimeout(function () {
+    // function stopWinAnimation(element) {
+    //     element.classList.remove('round-win-text');
+    //     // element.syle.top = '45%'; 
+    //     // element.style.left = '50%'; 
 
-            console.log(`User roll outcome before split: ${userRollOutcome}`);
-            console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
+    // }
 
 
-            let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
-            let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
+    
+    /* Starts a shaking effect to be applied to the circle
+     * div when user loses the game.
+     */
+    function startGameLoseAnimation(element) {
+        element.classList.add('game-lose-shake');
+    }
 
-            console.log(`Users pair value is ${userPairValue}`);
-            console.log(`Computers pair value is ${computerPairValue}`);
+    /* Stops shaking effect to be applied to the circle
+     * div when user loses the game.
+     */  
+    function stopGameLoseAnimation(element) {
+        element.classList.remove('game-lose-shake');
+    }
 
-            if (userPairValue !== null && computerPairValue !== null) {
-                // Isolate single point for user and computer roll 
-                let userPoint = parseInt(userRollOutcome.split(' ')[2]);
-                let computerPoint = parseInt(computerRollOutcome.split(' ')[2]);
+    /* Executes shaking effect on text when user
+     * loses a round. 
+    */
+    function startLossAnimation(element) {
+        element.classList.add('round-lose-shake');
+    }
 
-                console.log(`Users point is ${userPoint}`);
-                console.log(`computers point is ${computerPoint}`);
+    /* Stops shaking effect when user loses a 
+     * a round. 
+     */
+    function stopLossAnimation(element) {
+        element.classList.remove('round-lose-shake');
+    }
 
-                if (userPairValue === computerPairValue) {
-                    // If the pair values are equal, compare the points
-                    if (userPoint === computerPoint) {
-                        heading.textContent = "It's a tie!";
-                        headingSmall.textContent = "It's a tie!";
-                        console.log("It's a tie");
-                        itsATie();
-                    } else if (userPoint > computerPoint) {
-                        // heading.style.top = '30%';
-                        // headingSmall.style.top = '50%';
-                        // heading.style.left = '25%'; 
-                        // headingSmall.style.left = '50%'; 
-                        // startWinAnimation(heading);
-                        // startWinAnimation(headingSmall);
-                        heading.textContent = "You win this round!";
-                        headingSmall.textContent = "You win this round!";
-                        roundWinner = 'user';
-                        banker = 'user';
-                        setTimeout(function () {
-                            // stopWinAnimation(heading);
-                            // stopWinAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
-                            heading.style.left = '50%';
-                            headingSmall.style.left = '50%';
-                            heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
-                            headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
-                            updateBankRolls('user', piggyBankValue);
-                        }, 1000);
-                        setTimeout(function () {
-                            newRound('user');
-                        }, 2000);
-                    } else {
-                        startLossAnimation(heading);
-                        startLossAnimation(headingSmall);
-                        heading.style.top = '45%';
-                        headingSmall.style.top = '45%';
-                        heading.textContent = "Computer wins this round";
-                        headingSmall.textContent = "Computer wins this round";
-                        roundWinner = 'computer';
-                        banker = 'computer';
-                        console.log("Computer wins");
-                        setTimeout(function () {
-                            stopLossAnimation(heading);
-                            stopLossAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
-                            heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
-                            headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;
-                            updateBankRolls('computer', piggyBankValue);
-                        }, 1000);
-                        setTimeout(function () {
-                            newRound('computer');
-                        }, 2000);
-                    }
-                } else {
-                    // If the pair values are not equal
-                    if (userPoint === computerPoint) {
-                        //If the points are equal, compare the pair values
-                        if (userPairValue > computerPairValue) {
-                            // heading.style.top = '30%';
-                            // headingSmall.style.top = '50%';
-                            // heading.style.left = '25%'; 
-                            // headingSmall.style.left = '50%'; 
-                            // startWinAnimation(heading);
-                            // startWinAnimation(headingSmall);
-                            heading.textContent = "You win this round";
-                            headingSmall.textContent = "You win this round";
-                            roundWinner = 'user';
-                            banker = 'user';
-                            setTimeout(function () {
-                                stopWinAnimation(heading);
-                                stopWinAnimation(headingSmall);
-                                heading.style.top = '45%';
-                                headingSmall.style.top = '45%';
-                                heading.style.left = '50%';
-                                headingSmall.style.left = '50%';
-                                heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
-                                headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
-                                updateBankRolls('user', piggyBankValue);
-                            }, 1000);
-                            newRound('user');
-                        } else {
+    /* Starts spinning the border of the cirle on large screens
+     * when players dice are rolling. 
+    */
 
-                            startLossAnimation(heading);
-                            startLossAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
-                            heading.textContent = "Computer wins this round";
-                            headingSmall.textContent = "Computer wins this round";
-                            roundWinner = 'computer';
-                            banker = 'computer';
-                            console.log("Computer wins");
-                            setTimeout(function () {
-                                stopLossAnimation(heading);
-                                stopLossAnimation(headingSmall);
-                                heading.style.top = '45%';
-                                headingSmall.style.top = '45%';
-                                heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
-                                headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
-                                updateBankRolls('computer', piggyBankValue);
-                            }, 1000);
-                            setTimeout(function () {
-                                newRound('computer');
-                            }, 2000);
-                        }
-                    } else {
-                        //If points are not equal, the higher point wins
-                        if (userPoint > computerPoint) {
-                            // heading.style.top = '30%';
-                            // headingSmall.style.top = '50%';
-                            // heading.style.left = '25%'; 
-                            // headingSmall.style.left = '50%';    
-                            // startWinAnimation(heading);
-                            // startWinAnimation(headingSmall);
-                            heading.textContent = "You win this round";
-                            headingSmall.textContent = "You win this round";
-                            roundWinner = 'user';
-                            banker = 'user';
-                            setTimeout(function () {
-                                stopWinAnimation(heading);
-                                stopWinAnimation(headingSmall);
-                                heading.style.top = '45%';
-                                headingSmall.style.top = '45%';
-                                heading.style.left = '50%';
-                                headingSmall.style.left = '50%';
-                                heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
-                                headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
-                                updateBankRolls('user', piggyBankValue);
-                            }, 1000);
-                            setTimeout(function () {
-                                newRound('user');
-                            }, 2000);
-                        } else {
-                            startLossAnimation(heading);
-                            startLossAnimation(headingSmall);
-                            heading.style.top = '45%';
-                            headingSmall.style.top = '45%';
-                            heading.textContent = "Computer wins this round";
-                            headingSmall.textContent = "Computer wins this round";
-                            roundWinner = 'computer';
-                            banker = 'computer';
-                            console.log("Computer wins");
-                            setTimeout(function () {
-                                stopLossAnimation(heading);
-                                stopLossAnimation(headingSmall);
-                                heading.style.top = '45%';
-                                headingSmall.style.top = '45%';
-                                heading.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
-                                headingSmall.innerHTML = `Computer wins <span class="big-text">$${piggyBankValue}</span>`;;
-                                updateBankRolls('computer', piggyBankValue);
-                            }, 1000);
-                            setTimeout(function () {
-                                newRound('computer');
-                            }, 2000);
-                        }
+    function startSpinningBorder(element) {
+        element.classList.add('spin');
+    }
+    
+    /* Stops spinning the border of the cirle on large screens
+     * when players dice are rolling. 
+    */
+    function stopSpinningBorder(element) {
+        element.classList.remove('spin');
+    }
 
-                    }
-                }
-            }
+    /* Starts texts blinking when 
+     * players are rolling dice.  
+    */
+    function startBlinking(element) {
+        element.classList.add('blink');
+    }
+    
+    /* Stops texts blinking when 
+     * players are rolling dice.  
+    */
+    function stopBlinking(element) {
+        element.classList.remove('blink');
+    }
 
-        }, 2000);
+    /* Adds pulsing effect to increase stakes
+     * button. 
+     */
+    function startPulsing(element) {
+        element.classList.add('pulse');
+    }
 
+    //Removes pulsing effect on increase stakes button. 
+    function stopPulsing(element) {
+        element.classList.remove('pulse');
     }
 
 });
