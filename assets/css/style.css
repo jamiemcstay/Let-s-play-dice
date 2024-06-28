@@ -677,7 +677,7 @@ hr {
     }
 }
 
-.circle-border-instant-win {
+.game-win {
 
     background-color: yellow;
     animation: winning-star 0.5s infinite;
@@ -691,6 +691,25 @@ hr {
             32% 57%,
             2% 35%,
             39% 35%);
+}
+
+@keyframes winning-text {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.round-win-text {
+    position: absolute; 
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    animation: winning-text 0.5s infinite; 
 }
 
 @keyframes blinking {
@@ -759,9 +778,6 @@ hr {
 
 @media screen and (max-width: 425px) {
 
-    /* #main-section-circle {
-
-    } */
 
     #main-section-dice-wrapper {
         transform: translate(-80%, -50%);
@@ -802,9 +818,7 @@ hr {
         width: auto;
         height: auto;
         transform: rotate(90deg);
-        position: absolute;
-        top: 85%;
-        left: 50%;
+        top: 33%;
         border: none;
     }
 

@@ -9,13 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     rulesLogo.classList.add('pulse');
 
-    // if (window.innerHeight <= 425) {
-    //     let diceWrapper = document.getElementById('main-section-dice-wrapper');
-    //     diceWrapper.style.transform = 'translate(-50%, -50%)';
-    // } else {
-
-    // }
-
 
     rulesLogo.addEventListener('click', function () {
 
@@ -68,18 +61,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function clickToStart() {
 
 
-
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
         mainSection.style.height = '75%';
 
-        if (window.innerWidth <= 425) {
-            circle.style.top = "68%"; 
-        } else if (window.innerWidth >= 768) {
-            circle.style.top = "0%";
-        } else {
-            circle.style.top = "0%"; 
-        }
+        // if (window.innerWidth <= 425) {
+        //     circle.style.top = "68%";
+        // } else if (window.innerWidth >= 768) {
+        //     circle.style.top = "0%";
+        // } else {
+        //     circle.style.top = "0%";
+        // }
 
         piggyBankValue = 0;
 
@@ -522,13 +514,21 @@ document.addEventListener('DOMContentLoaded', function () {
     //     element.classList.add('text-instant-win');
     // }
 
-    function startWinAnimation(element) {
+    function startGameWinAnimation(element) {
         element.classList.add('circle-border-instant-win');
     }
 
-    function stopWinAnimation(element) {
+    function stopGameWinAnimation(element) {
 
-        element.classList.remove('circle-border-instant-win');
+        element.classList.remove('game-win');
+    }
+
+    function startWinAnimation(element) {
+        element.classList.add('round-win-text')
+    }
+
+    function stopWinAnimation(element) {
+        element.classList.remove('round-win-text'); 
     }
 
     function startGameLoseAnimation(element) {
@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stopLossAnimation(element) {
-        element.classList.remove('round-lose-shake'); 
+        element.classList.remove('round-lose-shake');
     }
 
     function startSpinningBorder(element) {
@@ -1154,14 +1154,14 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                startGameLoseAnimation(circle); 
+                startGameLoseAnimation(circle);
                 heading.textContent = "YOU LOSE";
                 headingSmall.textContent = "YOU LOSE";
             }, 2000);
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                stopGameLoseAnimation(circle); 
+                stopGameLoseAnimation(circle);
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
                 circle.addEventListener('click', reStartGame);
@@ -1170,12 +1170,12 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                startWinAnimation(circle);
+                startGameWinAnimation(circle);
                 heading.textContent = "YOU WIN";
                 headingSmall.textContent = "YOU WIN";
             }, 2000);
             setTimeout(function () {
-                stopWinAnimation(circle);
+                stopGameWinAnimation(circle);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 heading.textContent = "Play Again?";
