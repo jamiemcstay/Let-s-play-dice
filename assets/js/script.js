@@ -425,14 +425,12 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 piggyBankContainer.classList.add('pop');
             }, 5);
-
-
         } else {
             heading.textContent = "Insuffient funds";
         }
 
 
-        setTimeout(function () {
+
             threeDiceBounceDisplay();
             heading.style.top = '33%';
             headingSmall.style.top = '25%';
@@ -441,8 +439,6 @@ document.addEventListener('DOMContentLoaded', function () {
             currentPlayer = 'user';
             circle.removeEventListener('click', userTurn);
             circle.addEventListener('click', userTurn);
-        }, 2000);
-        // }
 
     }
 
@@ -503,29 +499,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function startGameWinAnimation(element) {
-        element.classList.add('circle-border-instant-win');
-    }
-
-    function stopGameWinAnimation(element) {
-
-        element.classList.remove('game-win');
-    }
-
-    function startWinAnimation(element) {
-        // element.style.top = '25%'; 
-        // element.style.left = '33%'; 
-        element.classList.add('round-win-text')
-        console.log(`h1 top positon is ${element.style.top} and left position is ${element.style.left}`)
-    }
-
-    function stopWinAnimation(element) {
-        element.classList.remove('round-win-text');
-        // element.syle.top = '45%'; 
-        // element.style.left = '50%'; 
-
-    }
-
     function startGameLoseAnimation(element) {
         element.classList.add('game-lose-shake');
     }
@@ -552,38 +525,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startBlinking(element) {
-
         element.classList.add('blink');
-
     }
 
     function stopBlinking(element) {
-
         element.classList.remove('blink');
-
     }
 
     function startPulsing(element) {
-
         element.classList.add('pulse');
-
     }
 
     function stopPulsing(element) {
-
         element.classList.remove('pulse');
-
-
-    }
-
-    // function startSpinning(element) {
-
-    //     element.classList.add('spinning');
-    // }
-
-    function stopSpinning(element) {
-
-        element.classList.remove('spinning');
     }
 
     function threeDiceNoDisplay() {
@@ -595,7 +549,6 @@ document.addEventListener('DOMContentLoaded', function () {
         diceOne.style.display = 'none';
         diceTwo.style.display = 'none';
         diceThree.style.display = 'none';
-
     }
 
     function threeDiceBounceDisplay() {
@@ -773,8 +726,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.textContent = 'INSTANT WIN';
                         }, 4000);
                         setTimeout(function () {
-                            stopWinAnimation(heading);
-                            stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
@@ -890,21 +841,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            // heading.style.left = '25%'; 
-                            // headingSmall.style.left = '50%'; 
-                            // startWinAnimation(heading);
-                            // startWinAnimation(heading);
-                            // startWinAnimation(headingSmall);  
                             heading.textContent = 'COMPUTER INSTANT LOSS';
                             headingSmall.textContent = 'COMPUTER INSTANT LOSS';
                         }, 4000);
                         setTimeout(function () {
-                            // stopWinAnimation(heading);
-                            // stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            // heading.style.left = '50%';
-                            // headingSmall.style.left = '50%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -974,10 +916,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 1000);
             }, 1000);
         }, 2000);
-
-
         return userRollOutcome;
-
     }
 
     function computerTurn() {
@@ -1017,7 +956,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 let noCommaString = computerDiceRolls.join(' ');
                 heading.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
                 headingSmall.innerHTML = `Computer rolled <span class="big-text">${noCommaString}</span>`;
-
                 setTimeout(function () {
                     currentPlayer = 'user';
                     displayScore(computerRollOutcome, 'computer');
@@ -1025,9 +963,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }, 1000);
             }, 1000);
         }, 2000);
-
-
-
         return computerRollOutcome;
     }
 
@@ -1087,8 +1022,6 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log("Roll not found or Invalid roll format:", roll);
         }
-
-
     }
 
     function resetScoreDisplay() {
@@ -1140,11 +1073,9 @@ document.addEventListener('DOMContentLoaded', function () {
             computerScoreDieThreeChange.className = '';
             computerScoreDieThreeChange.classList.add('fa-solid', 'fa-question');
         }
-
     }
 
     function endGame() {
-
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
@@ -1172,27 +1103,22 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
-                startGameWinAnimation(circle);
                 heading.textContent = "YOU WON";
                 headingSmall.textContent = "YOU WON";
             }, 2000);
             setTimeout(function () {
-                stopGameWinAnimation(circle);
                 heading.style.top = '45%';
                 headingSmall.style.top = '45%';
                 heading.textContent = "Play Again?";
                 headingSmall.textContent = "Play Again?";
-
                 circle.removeEventListener('click', reStartGame);
                 circle.addEventListener('click', reStartGame);
             }, 3000);
         }
-
         if (window.innerWidth <= 425) {
             mainSection.removeEventListener('click', reStartGame);
             mainSection.addEventListener('click', reStartGame);
         }
-
     }
 
     function runGame() {
@@ -1477,8 +1403,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         roundWinner = 'user';
                         banker = 'user';
                         setTimeout(function () {
-                            // stopWinAnimation(heading);
-                            // stopWinAnimation(headingSmall);
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
                             // heading.style.left = '50%';
@@ -1529,12 +1453,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             roundWinner = 'user';
                             banker = 'user';
                             setTimeout(function () {
-                                stopWinAnimation(heading);
-                                stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                // heading.style.left = '50%';
-                                // headingSmall.style.left = '50%';
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
@@ -1578,12 +1498,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             roundWinner = 'user';
                             banker = 'user';
                             setTimeout(function () {
-                                // stopWinAnimation(heading);
-                                // stopWinAnimation(headingSmall);
                                 heading.style.top = '45%';
                                 headingSmall.style.top = '45%';
-                                // heading.style.left = '50%';
-                                // headingSmall.style.left = '50%';
                                 heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                                 updateBankRolls('user', piggyBankValue);
