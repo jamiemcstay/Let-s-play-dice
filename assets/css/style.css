@@ -23,6 +23,7 @@ main {
 #game-area {
     width: 80%;
     height: 70%;
+    border: gray solid 0.5px;
 }
 
 /*styles for top of page*/
@@ -31,7 +32,7 @@ main {
     display: flex;
     justify-content: space-between;
     height: 10%;
-    background-color: blue;
+    background-color: white; 
     position: relative;
 }
 
@@ -56,21 +57,20 @@ main {
 }
 
 #piggy-bank-container {
-    background-color: yellow;
     position: relative;
     z-index: 2;
-    background-color: yellow;
     height: 150%;
     width: auto;
     display: flex;
     align-items: center;
     padding-left: 10px;
     padding-right: 10px;
+    border: solid black 3px;
+    border-top: 0;
+    border-right: 0
 }
 
 #piggy-bank {
-    background-color: green;
-    background-color: green;
     width: auto;
     height: auto;
     margin: 0 auto;
@@ -84,6 +84,11 @@ main {
 
 #piggy-bank-input {
     width: 70px;
+    width: 70px;
+    border: 0;
+    font-weight: 500;
+    padding-left: 4px;
+    font-size: 160%;
 }
 
 #rules-overlay {
@@ -184,11 +189,11 @@ main {
 
 
 #main-section {
-    background-color: pink;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 75%;
+    
 }
 
 
@@ -300,8 +305,10 @@ hr {
 }
 
 #score-area-left {
-    background-color: greenyellow;
-
+    background-color: white;
+    border: solid gray 1px;
+    border-left: 0;
+    border-right: 0
 }
 
 
@@ -320,11 +327,12 @@ hr {
     padding-left: 0;
     display: flex;
     padding-right: 10px;
+    background-color: #9c9c9c;
 }
 
 #user-score,
 #computer-score {
-    background-color: rgba(216, 115, 20, 0.623);
+    /* background-color: rgba(216, 115, 20, 0.623); */
     width: 192.77px;
 }
 
@@ -402,6 +410,10 @@ hr {
     background-color: yellow;
     height: 39.98px;
     width: 80px;
+}
+
+#bank-roll-user::before {
+    content: '$'; 
 }
 
 /*Add spin keyframe and spinning class to add to cirle div when dice rolling*/
