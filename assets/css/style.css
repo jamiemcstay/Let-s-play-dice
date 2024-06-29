@@ -213,6 +213,11 @@ main {
     border: grey 5px solid;
 }
 
+.input-container {
+    display: flex;
+    font-size: 200%;
+    font-weight: bold;
+}
 
 
 #main-section-dice-wrapper {
@@ -376,10 +381,10 @@ hr {
     align-items: center;
 }
 
+
 #bank-roll-wrapper {
     display: flex;
     gap: 5px;
-    /* flex-wrap: wrap; */
     width: auto;
 }
 
