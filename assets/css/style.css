@@ -341,7 +341,7 @@ hr {
     padding-left: 0;
     display: flex;
     padding-right: 10px;
-    background-color: #9c9c9c;
+    background-color: #f1f1f1;
 }
 
 #user-score,
@@ -355,7 +355,11 @@ hr {
     align-self: self-end;
 }
 
-#bank-roll-comptuer
+#bank-roll-computer {
+    background-color: #f1f1f1;
+}
+
+
 .roll-wrapper {
     background-color: aqua;
     height: 39.998px;
@@ -887,10 +891,12 @@ hr {
     #score-area-right {
         padding: 0;
         padding-bottom: 10px;
+        background-color: #f1f1f1; 
     }
 
     #bank-roll-computer {
         align-self: normal;
+
     }
 
 
