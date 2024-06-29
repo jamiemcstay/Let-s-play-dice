@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let bankRollComputer = document.getElementById('bank-roll-computer');
     let piggyBankInput = document.getElementById('piggy-bank-input');
 
+
     circle.addEventListener('click', clickToStart);
 
 
@@ -65,13 +66,14 @@ document.addEventListener('DOMContentLoaded', function () {
      *updates headings texts, and configures event listener for the high roll to start the game
      */
     function clickToStart() {
+
         //Reveal score area and configure game area size
         scoreArea.style.display = 'flex';
         piggyBank.style.display = 'flex';
         mainSection.style.height = '75%';
 
         //Set piggy bank to 0 
-        let piggyBankValue = parseInt(piggyBankInput.value); 
+        let piggyBankValue = parseInt(piggyBankInput.value);
         piggyBankValue = 0;
 
         //Initialize styles for headings
@@ -88,13 +90,37 @@ document.addEventListener('DOMContentLoaded', function () {
         circle.removeEventListener('click', highRoll);
         circle.addEventListener('click', highRoll);
 
+        // let bankRollUserValue = bankRollUser.value;
+
+        // function addDollarSign(input) {
+        //     if(typeof bankRollUserValue === 'string') {
+        //         return '$' + input;
+        //     } else {
+        //         console.log('invalid input value'); 
+        //         return input; 
+        //     }   
     }
 
+    //     bankRollUserValue = addDollarSign(bankRollUserValue);
+
+    //     bankRollUser.value = bankRollUserValue; 
+
+    //     console.log(bankRollUserValue); 
+
+    //     function removeDollarSign(input) {
+    //         if (typeof input === 'string' && input.startsWith('$')) {
+    //             return parseFloat(input.slice(1));//remove $ and convert to float
+    //         }
+    //     }
+
+    //     removeDollarSign(bankRollUserValue); 
+    // }
+
     /*reStartGame resets the game to its initial state
-    *This function re-displays the the second die for the high roll and removes event listeners,
-    *resets game values, updates the DOM elements with new values, hides other dice,
-    *and then calls clickToStart to reininialize the game interface
-    */
+     *This function re-displays the the second die for the high roll and removes event listeners,
+     *resets game values, updates the DOM elements with new values, hides other dice,
+     *and then calls clickToStart to reininialize the game interface
+     */
     function reStartGame() {
 
         let diceTwo = document.getElementById('die2');
@@ -110,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollUserValue = 500;
         let bankRollComputerValue = parseInt(bankRollComputer.value);
         bankRollComputerValue = 500;
-        let piggyBankValue = parseInt(piggyBankInput.value); 
+        let piggyBankValue = parseInt(piggyBankInput.value);
         piggyBankValue = 0;
 
         //update DOM elements with new values
@@ -140,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return [rollDice(), rollDice(), rollDice()];
     }
 
-     //Rolls three dice for user
+    //Rolls three dice for user
     function userRollDice() {
         return rollThreeDice();
     }
@@ -164,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (diceTwoChange) {
             diceTwoChange.classList.add('fa-spin');
-        } 
+        }
 
         let num1;
         let num2;
@@ -301,6 +327,8 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function setTheStakes() {
 
+
+
         banker = 'user';
 
         let increaseStakesButton = document.getElementById('increase-stakes');
@@ -353,14 +381,14 @@ document.addEventListener('DOMContentLoaded', function () {
             heading.textContent = "Insuffient funds";
         }
 
-            threeDiceBounceDisplay();
-            heading.style.top = '33%';
-            headingSmall.style.top = '25%';
-            heading.textContent = "Click to roll";
-            headingSmall.textContent = "Click to roll";
-            currentPlayer = 'user';
-            circle.removeEventListener('click', userTurn);
-            circle.addEventListener('click', userTurn);
+        threeDiceBounceDisplay();
+        heading.style.top = '33%';
+        headingSmall.style.top = '25%';
+        heading.textContent = "Click to roll";
+        headingSmall.textContent = "Click to roll";
+        currentPlayer = 'user';
+        circle.removeEventListener('click', userTurn);
+        circle.addEventListener('click', userTurn);
     }
 
     /* Sets the stakes for the computer.
