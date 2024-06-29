@@ -24,6 +24,9 @@ main {
     width: 80%;
     height: 70%;
     border: gray solid 0.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /*styles for top of page*/
@@ -31,7 +34,7 @@ main {
 #top {
     display: flex;
     justify-content: space-between;
-    height: 10%;
+    height: 12%;
     background-color: white; 
     position: relative;
 }
@@ -192,7 +195,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 75%;
+    height: 60%;
     
 }
 
@@ -205,7 +208,7 @@ main {
     height: 512px;
     position: relative;
     z-index: 3;
-    top: 0;
+    top: 30px;
     left: 0;
     display: flex;
     justify-content: center;
@@ -213,12 +216,15 @@ main {
     border: grey 5px solid;
 }
 
-.input-container {
+#input-container-user, #input-container-computer {
     display: flex;
     font-size: 200%;
     font-weight: bold;
 }
 
+#input-container-computer {
+    align-self: self-end; 
+}
 
 #main-section-dice-wrapper {
     position: absolute;
@@ -307,6 +313,7 @@ hr {
     background-color: blue;
     width: 100%;
     display: flex;
+    height: auto; 
 }
 
 #score-area-left {
@@ -412,9 +419,14 @@ hr {
 #bank-roll-user,
 #bank-roll-computer {
     width: 20%;
-    background-color: yellow;
     height: 39.98px;
     width: 80px;
+    height: 39.98px;
+    width: 80px;
+    font-size: 100%;
+    padding-left: 5px;
+    border: none;
+    padding-top: 5px;
 }
 
 #bank-roll-user::before {
@@ -806,7 +818,7 @@ hr {
     #bank-roll-wrapper {
         gap: 0px;
         flex-wrap: wrap;
-        width: auto;
+        width: 100px;
     }
 
     #main-section {

@@ -38,14 +38,14 @@ document.addEventListener('DOMContentLoaded', function () {
     let banker;
 
     //hide piggy-bank and score area on screen onload
-    let scoreArea = document.getElementById('score-area');
-    scoreArea.style.display = 'none';
-    let piggyBank = document.getElementById('piggy-bank-container');
-    piggyBank.style.display = 'none';
+    // let scoreArea = document.getElementById('score-area');
+    // scoreArea.style.display = 'none';
+    // let piggyBank = document.getElementById('piggy-bank-container');
+    // piggyBank.style.display = 'none';
 
     //increase size of main section to take up surplas space on screen on load
     let mainSection = document.getElementById('main-section');
-    mainSection.style.height = '93%';
+    // mainSection.style.height = '93%';
 
     //Global variables for display and updating user with game information 
     let circle = document.getElementById('main-section-circle');
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function clickToStart() {
 
         //Reveal score area and configure game area size
-        scoreArea.style.display = 'flex';
-        piggyBank.style.display = 'flex';
-        mainSection.style.height = '75%';
+        // scoreArea.style.display = 'flex';
+        // piggyBank.style.display = 'flex';
+        // mainSection.style.height = '75%';
 
         //Set piggy bank to 0 
         let piggyBankValue = parseInt(piggyBankInput.value);
