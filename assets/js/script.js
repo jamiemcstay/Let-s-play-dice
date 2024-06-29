@@ -37,8 +37,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let roundWinner = null;
     let banker;
 
-    //hide piggy-bank and score area on screen onload
-    // let scoreArea = document.getElementById('score-area');
+    let piggyBankContainer = document.getElementById('piggy-bank-container');
+
+    if (window.innerWidth <= 425) {
+            piggyBankContainer.style.display = "none";
+            console.log(window.innerWidth);  
+    } else {
+        piggyBankContainer.style.display = 'flex';
+    }
+
+    // console.log('Found score area'); 
+
+    // hide piggy-bank and score area on screen onload
     // scoreArea.style.display = 'none';
     // let piggyBank = document.getElementById('piggy-bank-container');
     // piggyBank.style.display = 'none';
@@ -60,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     circle.addEventListener('click', clickToStart);
 
-
     /*clickToStart initializes the game interface for the high roll game.
      *This function sets up the display areas, resets the piggy bank value,
      *updates headings texts, and configures event listener for the high roll to start the game
@@ -71,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // scoreArea.style.display = 'flex';
         // piggyBank.style.display = 'flex';
         // mainSection.style.height = '75%';
+
+        piggyBankContainer.style.display = 'flex'; 
 
         //Set piggy bank to 0 
         let piggyBankValue = parseInt(piggyBankInput.value);
@@ -89,32 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
         circle.removeEventListener('click', clickToStart);
         circle.removeEventListener('click', highRoll);
         circle.addEventListener('click', highRoll);
-
-        // let bankRollUserValue = bankRollUser.value;
-
-        // function addDollarSign(input) {
-        //     if(typeof bankRollUserValue === 'string') {
-        //         return '$' + input;
-        //     } else {
-        //         console.log('invalid input value'); 
-        //         return input; 
-        //     }   
     }
 
-    //     bankRollUserValue = addDollarSign(bankRollUserValue);
-
-    //     bankRollUser.value = bankRollUserValue; 
-
-    //     console.log(bankRollUserValue); 
-
-    //     function removeDollarSign(input) {
-    //         if (typeof input === 'string' && input.startsWith('$')) {
-    //             return parseFloat(input.slice(1));//remove $ and convert to float
-    //         }
-    //     }
-
-    //     removeDollarSign(bankRollUserValue); 
-    // }
 
     /*reStartGame resets the game to its initial state
      *This function re-displays the the second die for the high roll and removes event listeners,
