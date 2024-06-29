@@ -232,7 +232,6 @@ main {
     top: 75%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: yellow;
     width: auto;
     height: auto;
     display: flex;
@@ -242,7 +241,6 @@ main {
 }
 
 .dice {
-    background-color: green;
     width: auto;
     height: auto;
     display: inline-flex;
@@ -361,7 +359,6 @@ hr {
 
 
 .roll-wrapper {
-    background-color: aqua;
     height: 39.998px;
     width: 192.78px;
     display: flex;
@@ -874,7 +871,7 @@ hr {
 
     #score-area {
         flex-direction: column;
-        display: flex; 
+        display: flex;
 
     }
 
@@ -891,7 +888,7 @@ hr {
     #score-area-right {
         padding: 0;
         padding-bottom: 10px;
-        background-color: #f1f1f1; 
+        background-color: #f1f1f1;
     }
 
     #bank-roll-computer {

@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let piggyBankContainer = document.getElementById('piggy-bank-container');
 
     if (window.innerWidth <= 425) {
-            piggyBankContainer.style.display = "none";
-            console.log(window.innerWidth);  
+        piggyBankContainer.style.display = "none";
+        console.log(window.innerWidth);
     } else {
         piggyBankContainer.style.display = 'flex';
     }
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // piggyBank.style.display = 'flex';
         // mainSection.style.height = '75%';
 
-        piggyBankContainer.style.display = 'flex'; 
+        piggyBankContainer.style.display = 'flex';
 
         //Set piggy bank to 0 
         let piggyBankValue = parseInt(piggyBankInput.value);
