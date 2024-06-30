@@ -629,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function () {
         element.classList.add('game-lose-shake');
     }
 
-        /* Stops shaking effect to be applied to the circle
+    /* Stops shaking effect to be applied to the circle
      * div when user loses the game.
      */
     function stopGameLoseAnimation(element) {
@@ -651,14 +651,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* Starts spinning the border of the cirle on large screens
-    * when players dice are rolling. 
-    */
+     * when players dice are rolling. 
+     */
     function startSpinningBorder(element) {
 
         element.classList.add('spin');
     }
 
-        /* Stops spinning the border of the cirle on large screens
+    /* Stops spinning the border of the cirle on large screens
      * when players dice are rolling. 
      */
     function stopSpinningBorder(element) {
@@ -678,14 +678,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Stops texts blinking when 
      * players are rolling dice.  
-     */      
+     */
     function startPulsing(element) {
         element.classList.add('pulse');
     }
 
     /* Adds pulsing effect to increase stakes
      * button. 
-     */   
+     */
     function stopPulsing(element) {
         element.classList.remove('pulse');
     }
@@ -707,7 +707,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* Adds bouncing effect to main three 
      * when its users turn to roll.   
-     */    
+     */
     function threeDiceBounceDisplay() {
 
         let diceOne = document.getElementById('die1');
@@ -846,7 +846,7 @@ document.addEventListener('DOMContentLoaded', function () {
      * and instant-win or loss. Sets the round 
      * winner for allocating the winnings in 
      * updateBankRolls, and calls newRound. 
-     */   
+     */
     function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
 
         let piggyBankValue = parseInt(piggyBankInput.value);
@@ -1138,7 +1138,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Ends the game based on the bank roll values of the players.
      * Updates the UI to display the game over message, and allow 
      * user to click to play again. 
-     */    
+     */
     function endGame() {
 
         let bankRollUserValue = parseInt(bankRollUser.value);
@@ -1201,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         increaseStakesButton.removeEventListener('click', updateStakes);
 
-        circle.removeEventListener('click', runGame)
+        circle.removeEventListener('click', runGame);
 
         if (roundWinner !== null) {
             return;
@@ -1239,7 +1239,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /* Evaluates the outcome of the roll for the playeres.
      * Returns the outcome of their roll as either an instant-win, instant
      * -loss, or a pair+point. 
-     */    
+     */
     function checkRoll(roll, player) {
 
         console.log("You're in checkRoll");
