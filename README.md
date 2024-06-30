@@ -1,5 +1,10 @@
 # Let's Play Dice
 
+![Am I Responsive](assets/docs/images/screenshots/am-i-responsive.png)
+
+## **[Live Site](https://jamiemcstay.github.io/Let-s-play-dice/)**
+## **[Repository](https://github.com/jamiemcstay/Let-s-play-dice)**
+
 ## A dice rolling game
 
 >Let's play dice is a digital version of the dice rolling game known commonly as Cee-lo. Cee-lo can be played with 2 or more players who bet on rounds to roll the better dice combinations.
@@ -96,8 +101,6 @@ I used figma to design this project, the wireframes for desktop and mobile can b
 <a name="features"></a>
 
 ### index.html
-
-#### Game Area
 
 ![Game Area](assets/docs/images/screenshots/index.png)
 
@@ -198,10 +201,12 @@ This is the area where the user can view the stakes for the current round.
 
 ### Lighthouse
 
-- The lighthouse test for mobile passed.
+The lighthouse test for mobile passed.
+
 ![Lighthouse Mobile](assets/docs/images/screenshots/lighthouse-mobile.png)
 
-- The lighthouse text for desktop passed.
+The lighthouse text for desktop passed.
+
 ![Lighthouse Desktop](assets/docs/images/screenshots/lighthouse-desktop.png)
 
 ### Responsiveness
@@ -298,13 +303,10 @@ I also went through the game multiple times and tested its functionality.
 
 <a name="bugs"></a>
 
-Issues with how the data was being handled: FIXED
-- Converted data into strings to be handled with consistent methods across the program.
-Issue with glitch in handling roll results: FIXED
-- Used replace method to remove spaces in strings and correctly convert string value to an integer to be used to compare roll results between players.
-Issues with timing: FIXED
-- Use of many setTimeouts lead to issues with the program skipping parts of the program.
-- Modified timeouts miliseconds to allow games pace to flow correctly. 
+
+- Issue with the handling of data soved by converting data into strings to be handled with consistent methods across the program: FIXED
+- Issue with glitch in handling roll results solved by using replace method to remove spaces in strings and correctly convert string value to an integer to be used to compare roll results between players: FIXED
+Issues with timing solved by Use of many by modifying timeouts miliseconds to allow games pace to flow correctly: FIXED 
 
 ## Deployment
 
@@ -350,7 +352,7 @@ MDN Docs
 
 #### Acknowledgements
 
-> My mentor Alan Bushell who provided me with construcive feedback throughout the development of this project. 
+My mentor Alan Bushell who provided me with construcive feedback throughout the development of this project. 
 
 
 
