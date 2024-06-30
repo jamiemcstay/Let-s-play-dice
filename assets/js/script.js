@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
     //Hide on screen onload
     if (window.innerWidth <= 425) {
         piggyBankContainer.style.display = "none";
-        console.log(window.innerWidth);
     } else {
         piggyBankContainer.style.display = 'flex';
     }
@@ -280,9 +279,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (number >= 1 && number <= 6) {
             dice.className = `fa-solid fa-dice-${['one', 'two', 'three', 'four', 'five', 'six'][number - 1]} die`;
-        } else {
-            console.log('Invalid dice number:', number);
-        }
+        } else {}
     }
 
     /*Set's the stakes for the user.
@@ -365,8 +362,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         banker = 'computer';
 
-        console.log("You're in computer stakes");
-
         let multiplier = Math.floor(Math.random() * 5) + 1;
         let computerStakes = multiplier * 100;
 
@@ -427,8 +422,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         roundWinner = null;
 
-        console.log("Its users turn");
-
         circle.removeEventListener('click', userTurn);
 
         threeDiceSpinningDisplay();
@@ -480,8 +473,6 @@ document.addEventListener('DOMContentLoaded', function () {
      * users turn. 
      */
     function computerTurn() {
-
-        console.log("Its computers turn");
 
         threeDiceSpinningDisplay();
         startSpinningBorder(circle);
@@ -542,11 +533,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         roll = String(roll).replace(/\s+/g, '');
 
-        console.log(`Display Score: ${roll}`);
-
         //Stop function if roll is not a number string
         if (isNaN(roll)) {
-            console.log("Display Score: roll is not a string");
             return;
         }
 
@@ -571,9 +559,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     userScoreDieTwoChange.classList.add('pop');
                     if (userScoreDieThreeChange) updateScoreDisplay(userScoreDieThreeChange, rollValueThree);
                     userScoreDieThreeChange.classList.add('pop');
-
-                } else {
-                    console.log("User not found or invalid roll format");
                 }
             } else {
 
@@ -594,8 +579,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     computerScoreDieThreeChange.classList.add('pop');
                 }
             }
-        } else {
-            console.log('Display score not updated correctly');
         }
     }
 
@@ -617,8 +600,6 @@ document.addEventListener('DOMContentLoaded', function () {
             dice.classList.remove('fa-solid', 'fa-question', 'fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six');
             dice.classList.add('fa-solid');
             dice.classList.add(diceClasses[value]);
-        } else {
-            console.log("Dice not updated correctly in updateScoreDisplay");
         }
     }
 
@@ -718,8 +699,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
             diceOne.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die1 element not found');
         }
 
         if (diceTwo) {
@@ -729,8 +708,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceThree) {
             diceThree.style.display = 'inline-flex';
             diceThree.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die element not found');
         }
 
         //Change to beating dice
@@ -741,22 +718,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOneChange) {
             diceOneChange.style.display = 'inline-flex';
             diceOneChange.classList.add('fa-beat');
-        } else {
-            console.log('die1 i not found');
         }
 
         if (diceTwoChange) {
             diceTwoChange.style.display = 'inline-flex';
             diceTwoChange.classList.add('fa-beat');
-        } else {
-            console.log('die2 i not found');
         }
 
         if (diceThreeChange) {
             diceThreeChange.style.display = 'inline-flex';
             diceThreeChange.classList.add('fa-beat');
-        } else {
-            console.log('die3 not found');
         }
     }
 
@@ -773,8 +744,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
             diceOne.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die1 element not found');
         }
 
         if (diceTwo) {
@@ -784,8 +753,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceThree) {
             diceThree.style.display = 'inline-flex';
             diceThree.style.transform = 'rotate(0deg)';
-        } else {
-            console.log('die element not found');
         }
 
         //Change to spinning dice
@@ -797,22 +764,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (diceOneChange) {
             diceOneChange.style.display = 'inline-flex';
             diceOneChange.classList.add('fa-spin');
-        } else {
-            console.log('die1 i not found');
         }
 
         if (diceTwoChange) {
             diceTwoChange.style.display = 'inline-flex';
             diceTwoChange.classList.add('fa-spin');
-        } else {
-            console.log('die2 i not found');
         }
 
         if (diceThreeChange) {
             diceThreeChange.style.display = 'inline-flex';
             diceThreeChange.classList.add('fa-spin');
-        } else {
-            console.log('die3 not found');
         }
     }
 
@@ -837,9 +798,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         piggyBankInput.value = 0;
 
-        console.log(`UpdateBankRolls bankRollUserValue is: ${bankRollUserValue}`);
-        console.log(`Update BankRolls bankRollComputerValue is ${bankRollComputerValue}`);
-        console.log(`Update BankRolls piggyBankValue is: ${piggyBankInput.value}`);
     }
 
     /* Updates the UI when players roll outcome is
@@ -850,11 +808,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
 
         let piggyBankValue = parseInt(piggyBankInput.value);
-
-        console.log(`playersRoll is: ${playersRoll}`);
-        console.log("playersRoll is:", typeof `${playersRoll}`);
-
-        console.log("You're in instantWinOrLoss");
 
         if (player === 'user') {
             if (playerRollOutcome) {
@@ -873,12 +826,9 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll);
-                            console.log("playersRoll is:", playersRoll);
                             heading.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                             headingSmall.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
-                        console.log(`${playersRoll}`);
                         setTimeout(function () {
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
@@ -910,8 +860,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll);
-                            console.log("playersRoll is:", playersRoll);
                             heading.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                             headingSmall.innerHTML = `You rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
@@ -953,8 +901,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll);
-                            console.log("playersRoll is:", playersRoll);
                             heading.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                             headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
@@ -993,8 +939,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             threeDiceNoDisplay();
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            console.log("playersRoll is:", typeof playersRoll);
-                            console.log("playersRoll is:", playersRoll);
                             heading.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                             headingSmall.innerHTML = `Computer rolled <span class="big-text">${playersRoll.join(' ')}</span>`;
                         }, 3000);
@@ -1028,41 +972,25 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function updateDiceFace(roll) {
 
-        console.log("playerRoll Received:", typeof roll);
-
         //Check if roll is an array and if so convert to string 
-
         if (Array.isArray(roll)) {
             roll = roll.join('');
         }
 
-        console.log(roll);
-
         //remove spaces from string so strings are 3 characters
-
         roll = String(roll).replace(/\s+/g, '');
 
         if (isNaN(roll)) {
-            console.log("updateDiceFace' - Roll is a special case or invalid string:", roll);
             return;
         }
 
         if (roll.length === 3) {
 
-            console.log('updateDiceFace - Parsing dice faces:');
-
             let diceOneValue = parseInt(roll[0]);
             let diceTwoValue = parseInt(roll[1]);
             let diceThreeValue = parseInt(roll[2]);
 
-            console.log("updateDiceFace - Parsing dice faces");
-
-            console.log('Dice 1:', diceOneValue);
-            console.log('Dice 2:', diceTwoValue);
-            console.log('Dice 3:', diceThreeValue);
-
             //Find the elements
-
             let diceOne = document.getElementById('die1');
             let diceTwo = document.getElementById('die2');
             let diceThree = document.getElementById('die3');
@@ -1076,11 +1004,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (diceOneChange) updateDieFace(diceOneChange, diceOneValue);
                 if (diceTwoChange) updateDieFace(diceTwoChange, diceTwoValue);
                 if (diceThreeChange) updateDieFace(diceThreeChange, diceThreeValue);
-            } else {
-                console.log("updateDiceFace - One or more parsed dice faces are invalid");
             }
-        } else {
-            console.log("Roll not found or Invalid roll format:", roll);
         }
     }
 
@@ -1193,10 +1117,6 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function runGame() {
 
-        console.log("Your in runGame");
-
-        console.log(currentPlayer);
-
         let increaseStakesButton = document.getElementById('increase-stakes');
 
         increaseStakesButton.removeEventListener('click', updateStakes);
@@ -1242,8 +1162,6 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function checkRoll(roll, player) {
 
-        console.log("You're in checkRoll");
-
         let rolls = {};
         let outcome = '';
 
@@ -1271,7 +1189,6 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let die in rolls) {
             if (rolls[die] === 2) {
                 pairDie = parseInt(die);
-                console.log(`Rolls:`, rolls);
                 break;
             }
         }
@@ -1285,15 +1202,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 outcome = 'instant-loss';
             } else if (point >= 2 && point <= 5) {
                 outcome = `${pairDie} ${pairDie} ${point}`;
-                console.log(`${pairDie} ${pairDie} ${point}`);
             }
-
         }
-
-        console.log(`${player} outcome is: ${outcome}`);
-
-        console.log(`Pair die:`, pairDie);
-
         return outcome;
     }
 
@@ -1304,10 +1214,6 @@ document.addEventListener('DOMContentLoaded', function () {
      * calls endGame function if so. 
      */
     function newRound(roundWinner) {
-
-        console.log('You\re in newRound');
-
-        // console.log(`roundWinner is: ${roundWinner}`);
 
         userRollOutcome = undefined;
         computerRollOutcome = undefined;
@@ -1412,38 +1318,23 @@ document.addEventListener('DOMContentLoaded', function () {
      */
     function determineWinner(userRollOutcome, computerRollOutcome) {
 
-        console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`);
-        console.log(`determineWinner userRollOutcome is ${userRollOutcome}`);
-
         let piggyBankValue = parseInt(piggyBankInput.value);
-
-        console.log("You're in determineWinner");
 
         setTimeout(function () {
 
-            console.log(`User roll outcome before split: ${userRollOutcome}`);
-            console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
-
             let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
             let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
-
-            console.log(`Users pair value is ${userPairValue}`);
-            console.log(`Computers pair value is ${computerPairValue}`);
 
             if (userPairValue !== null && computerPairValue !== null) {
                 // Isolate single point for user and computer roll 
                 let userPoint = parseInt(userRollOutcome.split(' ')[2]);
                 let computerPoint = parseInt(computerRollOutcome.split(' ')[2]);
 
-                console.log(`Users point is ${userPoint}`);
-                console.log(`computers point is ${computerPoint}`);
-
                 if (userPairValue === computerPairValue) {
                     // If the pair values are equal, compare the points
                     if (userPoint === computerPoint) {
                         heading.textContent = "It's a tie!";
                         headingSmall.textContent = "It's a tie!";
-                        console.log("It's a tie");
                         itsATie();
                     } else if (userPoint > computerPoint) {
                         heading.style.top = '45%';
@@ -1471,7 +1362,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         headingSmall.textContent = "Computer wins this round";
                         roundWinner = 'computer';
                         banker = 'computer';
-                        console.log("Computer wins");
                         setTimeout(function () {
                             stopLossAnimation(heading);
                             stopLossAnimation(headingSmall);
@@ -1513,7 +1403,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.textContent = "Computer wins this round";
                             roundWinner = 'computer';
                             banker = 'computer';
-                            console.log("Computer wins");
                             setTimeout(function () {
                                 stopLossAnimation(heading);
                                 stopLossAnimation(headingSmall);
@@ -1555,7 +1444,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             headingSmall.textContent = "Computer wins this round";
                             roundWinner = 'computer';
                             banker = 'computer';
-                            console.log("Computer wins");
                             setTimeout(function () {
                                 stopLossAnimation(heading);
                                 stopLossAnimation(headingSmall);
