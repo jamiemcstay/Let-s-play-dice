@@ -77,6 +77,14 @@ As Cee-lo is a simple game, I wanted to keep the color minimal, and when designi
 
 For the font I chose jetBrains mono, as its clear with distinct characters and is sufficient in updating the user as to gameflow and information.
 
+#### Icons
+
+I used font awesome dice for the dice in my design as looked really nice as part aesthetic. 
+
+#### Structure 
+
+I built this program desktop first, and used google developer tools to modify my approach to styling on smaller screens. 
+
 ## User Stories
 
 > As a user I want a fun game to play.
@@ -87,5 +95,74 @@ For the font I chose jetBrains mono, as its clear with distinct characters and i
 
 ## Wireframes
 
+## Features
+
 ### Desktop and mobile wireframes
+
+<a name="features"></a>
+
+### index.html
+
+#### Game Area
+
+![Game Area](assets/docs/images/screenshots/index.png)
+
+#### Rules overlay 
+
+![Rules Overlay](assets/docs/images/screenshots/rules-overlay.png)
+
+Cee-lo is a popular game, however there are multiple ways to play, and some people have never played before, so I wanted add a feature whereby the user would be prompted to read the rules first. I did this by adding dice icons in the top left corner, that pulse when the screen first loads. When the user clicks this dice icon, they are presented with rules and information on gameplay. When they click out of this, the pulsing is removed fron the icon.
+
+![Rules Logo](assets/docs/images/screenshots/rules-logo.png)
+
+I created the pulsing effect by using keyframes in css. Then using two functions in javascript, I add and remove the pulsing effect accordingly.
+
+#### Interactive Zone
+
+![Interactive Zone](assets/docs/images/screenshots/interactive-zone.png)
+
+This is the space where all information regarding gameflow takes place: 
+
+- Prompts the user to click to roll one or three dice. 
+- Prompts the user to set the stakes when they are the banker. 
+- Updates the user when they are rolling.
+- Updates the user when computer is rolling.
+- Updates the user what their roll result was.
+- Updates the user what the computers roll was.
+- Updates the user who won the round. 
+- Updates the user on the amount of stakes won or lost.
+- Updates the user when the game is over, if they won or lost, and prompts the user to play again if they wish to do so.
+
+#### Score Area
+
+![Score Area](assets/docs/images/screenshots/score-area.png)
+
+This is the space where both the users and the computers score, and bank roll are displayed.
+
+After either player has rolled a set point it allows them to view their Pair + point in preperation for the next player to roll, and to understand if they are to win or lose the round.
+
+When the user is the banker in any given round, they can click on the update stakes button to increase the stakes of a round  and view the current balance of their bank roll throughout the game.
+
+#### Piggy Bank
+
+![Piggy  Bank](assets/docs/images/screenshots/piggy-bank.png)
+
+This is the area where the user can view the stakes for the current round.
+
+## Features left to implement
+
+<a name="features-left"></a>
+
+- In the future I would like to imlement a feature to be able to play against friends instead of the computer. 
+-  A feature that tells the user what their tells the user what they need to roll to win the round. 
+- A feature to view what the last rounds rolls have been.
+
+
+
+
+
+
+
+
+
 
