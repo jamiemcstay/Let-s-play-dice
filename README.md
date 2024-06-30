@@ -13,42 +13,79 @@ https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations
 
+# Let's Play Dice
 
+## A dice rolling game
 
-Welcome,
+>Let's play dice is a digital version of the dice rolling game known commonly as Cee-lo. Cee-lo can be played with 2 or more players who bet on rounds to roll the better dice combinations.
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+### Setup
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+>Each player rolls a single dice, the player who rolls the highest number is the banker, who gets to set the stakes for the first round. Each player has a bankroll of $500. 
+ 
 
-## Codeanywhere Reminders
+### Dice combinations
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+> Instant Win: 4-5-6, three-of-a-kind, Pair+6
 
-`python3 -m http.server`
+> Instant Loss: 1-2-3, Pair + 1
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+> Set point: Pair + 2, Pair + 3, Pair + 4 Pair + 5
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+### Gameplay 
 
-`http_server`
+> The Banker is the first to roll three dice, with the aim to roll a winning combination of set point. 
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+> If the banker rolls a instant win combination, they win all the bets made.
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+> If the banker rolls an instant loss combination, they lose all the bets made.
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+> If the banker rolls a set point, the other player gets a turn to roll three dice. If the player get an instant win combination or higher point they win all the bets.
 
-To log into the Heroku toolbelt CLI:
+> The winner of the round is the banker in the next round and gets to set the stakes. 
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+> Gameplay continues until either players bankroll is at $0. 
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## Contents 
 
----
+1. [ UX ](#ux)
+2. [ Features ](#features)
+3. [ Features left to implement ](#features-left)
+4. [ Technology used ](#technolgy-used)
+5. [ Testing ](#testing) 
+6. [ Bugs ](#bugs)
+7. [ Deployment ](#deployment)
+8. [ Credits ](#credits)
+9. [ Content ](#content)
+10. [Acknowledgements](#acknowledgements)
 
-Happy coding!
+## UX 
+
+<a name="ux"></a>
+
+### Project research
+
+> For project two I wanted to pick something a little bit different. After some consideration I settled on Cee-lo, as it is a game I used to play with friends a lot and it is a lot of fun, and I thought it would be a good challenge.
+
+### UX Design
+
+#### Color
+
+As Cee-lo is a simple game, I wanted to keep the color minimal, and when designing in figma I really liked the simplicity of the black, white and grey colors, so I decided to keep these. 
+
+#### Font 
+
+For the font I chose jetBrains mono, as its clear with distinct characters and is sufficient in updating the user as to gameflow and information.
+
+## User Stories
+
+> As a user I want a fun game to play.
+> As a user I want a gambling game.
+> As a user I want to be able to understand whats happening and the game progresses.
+> As a user I want to be able to see my assets, in the form of my score and my bank roll. 
+> As a user I want to be able to continue to the play the game until I close down the page. 
+
+## Wireframes
+
+### Desktop and mobile wireframes
+
