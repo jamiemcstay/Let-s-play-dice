@@ -1,7 +1,6 @@
 //Function for screen on loading
 document.addEventListener('DOMContentLoaded', function () {
 
-
     let rulesLogo = document.getElementById('rules-logo');
     let rulesLogoOverlay = document.getElementById('rules-logo-overlay');
     let rulesOverlay = document.getElementById('rules-overlay');
@@ -36,26 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
     let currentPlayer = 'user';
     let roundWinner = null;
     let banker;
-
+    let mainSection = document.getElementById('main-section');
     let piggyBankContainer = document.getElementById('piggy-bank-container');
 
+    //Hide on screen onload
     if (window.innerWidth <= 425) {
         piggyBankContainer.style.display = "none";
         console.log(window.innerWidth);
     } else {
         piggyBankContainer.style.display = 'flex';
     }
-
-    // console.log('Found score area'); 
-
-    // hide piggy-bank and score area on screen onload
-    // scoreArea.style.display = 'none';
-    // let piggyBank = document.getElementById('piggy-bank-container');
-    // piggyBank.style.display = 'none';
-
-    //increase size of main section to take up surplas space on screen on load
-    let mainSection = document.getElementById('main-section');
-    // mainSection.style.height = '93%';
 
     //Global variables for display and updating user with game information 
     let circle = document.getElementById('main-section-circle');
@@ -67,19 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
     let bankRollComputer = document.getElementById('bank-roll-computer');
     let piggyBankInput = document.getElementById('piggy-bank-input');
 
-
     circle.addEventListener('click', clickToStart);
 
-    /*clickToStart initializes the game interface for the high roll game.
-     *This function sets up the display areas, resets the piggy bank value,
-     *updates headings texts, and configures event listener for the high roll to start the game
-     */
     function clickToStart() {
-
-        //Reveal score area and configure game area size
-        // scoreArea.style.display = 'flex';
-        // piggyBank.style.display = 'flex';
-        // mainSection.style.height = '75%';
 
         piggyBankContainer.style.display = 'flex';
 
@@ -131,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
         bankRollComputer.value = bankRollComputerValue;
         piggyBankInput.value = piggyBankValue;
 
-
         //remove other two dice for high roll
         let diceOne = document.getElementById('die1');
         let diceThree = document.getElementById('die3');
@@ -146,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function rollDice() {
         return Math.floor(Math.random() * 6) + 1;
     }
-
 
     //rollThreeDice to return an array of three random numbers
     function rollThreeDice() {
@@ -313,8 +290,6 @@ document.addEventListener('DOMContentLoaded', function () {
      * and sets up the event lister on the increase stakes button to increase the stakes.
      */
     function setTheStakes() {
-
-
 
         banker = 'user';
 
@@ -499,6 +474,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return userRollOutcome;
     }
 
+    /* Executes the computers turn in the game.
+     * Handles dice rolling, determines outcome,
+     * handles UI updating, and switches back to
+     * users turn. 
+     */
     function computerTurn() {
 
         console.log("Its computers turn");
@@ -546,6 +526,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return computerRollOutcome;
     }
 
+    /* Handles the data to be passed to updateScoreDisplay.  
+     * removes spaces from strings to correctly convert 
+     * to integers, and converts arrays to strings.
+     */
     function displayScore(roll, player) {
 
         //check if roll is an array and convert to string if so
@@ -553,7 +537,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (Array.isArray(roll)) {
             roll = roll.join('');
         }
-
 
         //Remove spaces from strings to at correct index
 
@@ -566,7 +549,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("Display Score: roll is not a string");
             return;
         }
-
 
         if (roll.length === 3) {
             let rollValueOne = parseInt(roll[0]);
@@ -617,6 +599,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /* Updates the players score display with the
+     * corresponding class for font-awesome icons.
+     */
     function updateScoreDisplay(dice, value) {
 
         let diceClasses = {
@@ -626,8 +611,6 @@ document.addEventListener('DOMContentLoaded', function () {
             4: 'fa-dice-four',
             5: 'fa-dice-five',
             6: 'fa-dice-six',
-
-
         };
 
         if (dice) {
@@ -637,31 +620,47 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log("Dice not updated correctly in updateScoreDisplay");
         }
-
     }
 
-
+    /* Starts a shaking effect to be applied to the circle
+     * div when user loses the game.
+     */
     function startGameLoseAnimation(element) {
         element.classList.add('game-lose-shake');
     }
 
+        /* Stops shaking effect to be applied to the circle
+     * div when user loses the game.
+     */
     function stopGameLoseAnimation(element) {
         element.classList.remove('game-lose-shake');
     }
 
+    /* Executes shaking effect on text when user
+     * loses a round. 
+     */
     function startLossAnimation(element) {
         element.classList.add('round-lose-shake');
     }
 
+    /* Stops shaking effect when user loses a 
+     * a round. 
+     */
     function stopLossAnimation(element) {
         element.classList.remove('round-lose-shake');
     }
 
+    /* Starts spinning the border of the cirle on large screens
+    * when players dice are rolling. 
+    */
     function startSpinningBorder(element) {
 
         element.classList.add('spin');
     }
 
+        /* Stops spinning the border of the cirle on large screens
+     * when players dice are rolling. 
+     */
     function stopSpinningBorder(element) {
         element.classList.remove('spin');
     }
@@ -670,18 +669,31 @@ document.addEventListener('DOMContentLoaded', function () {
         element.classList.add('blink');
     }
 
+    /* Starts texts blinking when 
+     * players are rolling dice.  
+     */
     function stopBlinking(element) {
         element.classList.remove('blink');
     }
 
+    /* Stops texts blinking when 
+     * players are rolling dice.  
+     */      
     function startPulsing(element) {
         element.classList.add('pulse');
     }
 
+    /* Adds pulsing effect to increase stakes
+     * button. 
+     */   
     function stopPulsing(element) {
         element.classList.remove('pulse');
     }
 
+    /* Removes the display of the three main
+     * dice to allow for headings to update
+     * user with roll and game flow information. 
+     */
     function threeDiceNoDisplay() {
 
         let diceOne = document.getElementById('die1');
@@ -693,14 +705,16 @@ document.addEventListener('DOMContentLoaded', function () {
         diceThree.style.display = 'none';
     }
 
+    /* Adds bouncing effect to main three 
+     * when its users turn to roll.   
+     */    
     function threeDiceBounceDisplay() {
 
         let diceOne = document.getElementById('die1');
         let diceTwo = document.getElementById('die2');
         let diceThree = document.getElementById('die3');
 
-        //Unhide the parent div to see icon
-
+        //Unhide the parent div to see icons
         if (diceOne) {
             diceOne.style.display = 'inline-flex';
             diceOne.style.transform = 'rotate(0deg)';
@@ -720,7 +734,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         //Change to beating dice
-
         let diceOneChange = diceOne.querySelector('.die');
         let diceTwoChange = diceTwo.querySelector('.die');
         let diceThreeChange = diceThree.querySelector('.die');
@@ -745,11 +758,12 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             console.log('die3 not found');
         }
-
     }
 
+    /* Adds spinning effect to dice when 
+     * players are rolling their dice. 
+     */
     function threeDiceSpinningDisplay() {
-
 
         let diceOne = document.getElementById('die1');
         let diceTwo = document.getElementById('die2');
@@ -802,14 +816,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
+    /* Updates the bank roll values based on the winner of the round, taking 
+     * user or computer as arguments for winner, and the piggyBankValue set
+     * by players updating the stakes. 
+     */
     function updateBankRolls(winner, piggyBankValue) {
 
         threeDiceNoDisplay();
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
-
 
         if (winner === 'user') {
             bankRollUserValue += parseInt(piggyBankValue);
@@ -824,9 +840,13 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`UpdateBankRolls bankRollUserValue is: ${bankRollUserValue}`);
         console.log(`Update BankRolls bankRollComputerValue is ${bankRollComputerValue}`);
         console.log(`Update BankRolls piggyBankValue is: ${piggyBankInput.value}`);
-
     }
 
+    /* Updates the UI when players roll outcome is
+     * and instant-win or loss. Sets the round 
+     * winner for allocating the winnings in 
+     * updateBankRolls, and calls newRound. 
+     */   
     function checkInstantWinOrLoss(playerRollOutcome, playersRoll, player) {
 
         let piggyBankValue = parseInt(piggyBankInput.value);
@@ -862,8 +882,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            // heading.style.left = '45%'; 
-                            // headingSmall.style.left = '45%'; 
                             heading.textContent = 'INSTANT WIN';
                             headingSmall.textContent = 'INSTANT WIN';
                         }, 4000);
@@ -1004,7 +1022,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
+    /* Handles the data from the players rolls, converts arrays
+     * to strings, removes spaces in strings, and passes strings
+     * to updateDieFace. 
+     */
     function updateDiceFace(roll) {
 
         console.log("playerRoll Received:", typeof roll);
@@ -1063,6 +1084,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    //Resets the score display for both players for the next round
     function resetScoreDisplay() {
 
         let userScoreDieOne = document.getElementById('user-score-die1');
@@ -1095,7 +1117,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (userScoreDieThreeChange) {
             userScoreDieThreeChange.className = '';
             userScoreDieThreeChange.classList.add('fa-solid', 'fa-question');
-
         }
 
         if (computerScoreDieOneChange) {
@@ -1114,6 +1135,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    /* Ends the game based on the bank roll values of the players.
+     * Updates the UI to display the game over message, and allow 
+     * user to click to play again. 
+     */    
     function endGame() {
 
         let bankRollUserValue = parseInt(bankRollUser.value);
@@ -1211,7 +1236,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
+    /* Evaluates the outcome of the roll for the playeres.
+     * Returns the outcome of their roll as either an instant-win, instant
+     * -loss, or a pair+point. 
+     */    
     function checkRoll(roll, player) {
 
         console.log("You're in checkRoll");
@@ -1267,12 +1295,15 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(`Pair die:`, pairDie);
 
         return outcome;
-
-
     }
 
-    function newRound(roundWinner) {
 
+    /* Starts a new round based on the winner of the previous round,
+     * Resets the roll outcomes and prepares for next round, updating
+     * UI accordingly. Checks if either players bank roll is at 0, and
+     * calls endGame function if so. 
+     */
+    function newRound(roundWinner) {
 
         console.log('You\re in newRound');
 
@@ -1283,12 +1314,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let bankRollUserValue = parseInt(bankRollUser.value);
         let bankRollComputerValue = parseInt(bankRollComputer.value);
-        // let piggyBankValue = parseInt(piggyBankInput.value);
-
-        // piggyBankvalue = 0; 
-
-        // heading.textContent = `${roundWinner} wins ${piggyBankValue}`;
-
 
         if (bankRollUserValue <= 0 || bankRollComputerValue <= 0) {
             if (bankRollUserValue <= 0) {
@@ -1297,7 +1322,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     resetScoreDisplay();
                     endGame('computer');
                 }, 1000);
-
 
             } else if (bankRollComputerValue <= 0) {
                 //Call endGame function with user as argument 
@@ -1325,12 +1349,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     resetScoreDisplay();
                     setComputerStakes();
                 }, 2000);
-
             }
         }
-
     }
 
+    /* Resets the game when neither player has won. 
+     * Resets the roll outcomes, roundWinner, and diceRolls.
+     * Updates the UI to inform users of re-starting of round,
+     * with the current banker to roll first.  
+     */
     function itsATie() {
 
         userRollOutcome = undefined;
@@ -1377,8 +1404,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    //create function for checking winner of rounds
-
+    /* Compares the players roll when neither players
+     * roll is an instant-win or loss. Splits the strings
+     * into pairs and points and compares the values. Declares
+     * roundWinner, calls updateBankRolls to allocate winnings,
+     * and calls newRound, or itsATie. 
+     */
     function determineWinner(userRollOutcome, computerRollOutcome) {
 
         console.log(`determineWinner computerRollOutcome is ${computerRollOutcome}`);
@@ -1392,7 +1423,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             console.log(`User roll outcome before split: ${userRollOutcome}`);
             console.log(`Computer roll outcome before split: ${computerRollOutcome}`);
-
 
             let userPairValue = (typeof userRollOutcome === 'string' && userRollOutcome) ? parseInt(userRollOutcome.split(' ')[0]) : null;
             let computerPairValue = (typeof computerRollOutcome === 'string' && computerRollOutcome) ? parseInt(computerRollOutcome.split(' ')[0]) : null;
@@ -1425,8 +1455,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(function () {
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            // heading.style.left = '50%';
-                            // headingSmall.style.left = '50%';
                             heading.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             headingSmall.innerHTML = `You win <span class="big-text">$${piggyBankValue}</span>`;
                             updateBankRolls('user', piggyBankValue);
@@ -1464,10 +1492,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         if (userPairValue > computerPairValue) {
                             heading.style.top = '45%';
                             headingSmall.style.top = '45%';
-                            // heading.style.left = '25%'; 
-                            // headingSmall.style.left = '50%'; 
-                            // startWinAnimation(heading);
-                            // startWinAnimation(headingSmall);
                             heading.textContent = "You win this round";
                             headingSmall.textContent = "You win this round";
                             roundWinner = 'user';
@@ -1481,7 +1505,6 @@ document.addEventListener('DOMContentLoaded', function () {
                             }, 1000);
                             newRound('user');
                         } else {
-
                             startLossAnimation(heading);
                             startLossAnimation(headingSmall);
                             heading.style.top = '45%';
@@ -1546,13 +1569,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 newRound('computer');
                             }, 2000);
                         }
-
                     }
                 }
             }
-
         }, 2000);
-
     }
-
 });
