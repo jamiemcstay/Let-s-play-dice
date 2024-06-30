@@ -196,11 +196,128 @@ This is the area where the user can view the stakes for the current round.
 
 ![CSS Report](assets/docs/images/screenshots/css-report.png)
 
+- JSHint reporting no errors, and only warnings for using template literal syntax only available in ES6
+
+![Js Hint 1/3](assets/docs/images/screenshots/js-hint1.png)
+![Js Hint 2/3](assets/docs/images/screenshots/js-hint2.png)
+![Js Hint 3/3](assets/docs/images/screenshots/js-hint3.png)
+
 ### Lighthouse
 
+- The lighthouse test for mobile passed.
+![Lighthouse Mobile](assets/docs/images/screenshots/lighthouse-mobile.png)
+
+- The lighthouse text for desktop passed.
+![Lighthouse Desktop](assets/docs/images/screenshots/lighthouse-desktop.png)
+
+### Responsiveness
+
+- I used google chrome developer tools to check the responsiveness of the game on all differenet screen sizes, and used css to modify it to fit all screen sizes.
+
+### Features testing
+
+In order to text the features of the game I had my two housemates and two family members play the game and answer thee questions with  either a pass or a fail: 
+
+>Question 1
+Does the game interactivity work how it should?
+- Interactive zone allows the user to click when they are prompted.
+- Does the UI correcly updates with results and gameflow information.
+
+>Question 2
+Does the game correctly analyse the results of the rolls and award the winner as specified in the rules of the game?
+
+>Question 3
+Does the game correcly update the piggy bank and correcly update the user and computers bankrolls according to the winner of the round?
+
+>Question 4
+Does the game allow the user to click to restart the game once they have played through until game over?
+
+>The results of these tests are below: 
+
+| Tester 1 | Result|
+|:------:|------:|
+| Q1     | PASS  |
+| Q2     | PASS  |
+| Q3     | PASS  |
+| Q4     | PASS  |  
+
+| Tester 2 | Result|
+|:------:|------:|
+| Q1     | PASS  |
+| Q2     | PASS  |
+| Q3     | PASS  |
+| Q4     | PASS  |  
+
+| Tester 3 | Result|
+|:------:|------:|
+| Q1     | PASS  |
+| Q2     | PASS  |
+| Q3     | PASS  |
+| Q4     | PASS  |  
+
+| Tester 4 | Result|
+|:------:|------:|
+| Q1     | PASS  |
+| Q2     | PASS  |
+| Q3     | PASS  |
+| Q4     | PASS  |  
+
+### My testing
+
+I also went through the game multiple times and tested its functionality. 
+
+#### Interactive Zone
+
+| Tester | Result|
+|:------:|------:|
+| Clickable at correct time     | PASS  |
+| Updates gamelow information correctly     | PASS  |
+| Updates on roll results correctly    | PASS  |
+| Updates stakes information     | PASS  |
+| Updates on round winner correctly     | PASS  |
+| Updates on game winner correctly     | PASS  |  
+
+#### Score Area
+
+| Tester | Result|
+|:------:|------:|
+| Correctly updates score information     | PASS  |
+| Correctly removes score information after each round     | PASS  |
 
 
+#### Piggy Bank
 
+| Tester | Result|
+|:------:|------:|
+| Removes stakes from each player when stakes set    | PASS  |
+| Removes stakes and updates in winers bank roll at round end | PASS |
+
+
+#### Rules overlay 
+
+| Tester | Result|
+|:------:|------:|
+| Opens when clicking on dice in left corner     | PASS  |
+| Closes when clicking on dice     | PASS  |
+
+## Bugs
+
+<a name="bugs"></a>
+
+Issues with how the data was being handled: FIXED
+- Converted data into strings to be handled with consistent methods across the program.
+Issue with glitch in handling roll results: FIXED
+- Used replace method to remove spaces in strings and correctly convert string value to an integer to be used to compare roll results between players.
+Issues with timing: FIXED
+- Use of many setTimeouts lead to issues with the program skipping parts of the program.
+- Modified timeouts miliseconds to allow games pace to flow correctly. 
+
+## Deployment
+
+I used github to deploy this project and followed these steps from the main repository. 
+
+1. Clicked on the settings tab.
+2. Select 
 
 
 
