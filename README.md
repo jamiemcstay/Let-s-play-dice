@@ -48,16 +48,16 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animat
 
 ## Contents 
 
-1. [ UX ](#ux)
-2. [ Features ](#features)
-3. [ Features left to implement ](#features-left)
-4. [ Technology used ](#technolgy-used)
-5. [ Testing ](#testing) 
-6. [ Bugs ](#bugs)
-7. [ Deployment ](#deployment)
-8. [ Credits ](#credits)
-9. [ Content ](#content)
-10. [Acknowledgements](#acknowledgements)
+1. [UX](#ux)
+2. [Features](#features)
+3. [Features left to impement](#left)
+4. [Technology used](#technology)
+5. [Testing](#testing) 
+6. [Bugs](#bugs)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
+9. [Content](#content)
+10.[Acknowledgements](#acknowledgements)
 
 ## UX 
 
@@ -151,11 +151,57 @@ This is the area where the user can view the stakes for the current round.
 
 ## Features left to implement
 
-<a name="features-left"></a>
+<a name="left"></a>
 
-- In the future I would like to imlement a feature to be able to play against friends instead of the computer. 
--  A feature that tells the user what their tells the user what they need to roll to win the round. 
-- A feature to view what the last rounds rolls have been.
+> In the future I would like to imlement a feature to be able to play against friends instead of the computer. 
+
+>  A feature that tells the user what their tells the user what they need to roll to win the round. 
+
+> A feature to view what the last rounds rolls have been.
+
+## Technology used
+
+<a name="technology"></a>
+
+### Languages
+
+- HTML
+- CSS
+- Javasript
+
+### Tools 
+
+- Figma
+- Gitpod
+- Github
+- Font Awesome
+- W3C HTML Validation
+- W3C CSS Validation
+- JSHint Validation
+- Google Lighthouse
+- Am I responsive
+- Favicon.io
+
+## Testing 
+
+<a name="testing"></a>
+
+### Code Validation 
+
+-W3C reported no errors the HTML.
+
+![HTML Report](assets/docs/images/screenshots/w3c-html-report)
+
+-W3C reported no errors for the css file.
+
+![CSS Report](assets/docs/images/screenshots/css-report.png)
+
+### Lighthouse
+
+
+
+
+
 
 
 
