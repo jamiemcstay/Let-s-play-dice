@@ -640,6 +640,10 @@ main {
 
 @media screen and (max-width: 425px) {
 
+    #piggy-bank-container {
+        height: 100%; 
+    }
+
     #main-section-dice-wrapper {
         transform: translate(-80%, -50%);
     }
