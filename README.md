@@ -1,18 +1,3 @@
-https://www.w3schools.com/howto/howto_js_media_queries.asp#:~:text=Using%20Media%20Queries%20With%20JavaScript&text=matchMedia()%20method%20returns%20a,%2Dwidth%2C%20orientation%2C%20etc.
-
-https://www.w3schools.com/jsref/met_win_removeeventlistener.asp
-
-
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
-
-https://www.simplilearn.com/tutorials/css-tutorial/css-keyframes
-
-https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php
-
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations
-
 # Let's Play Dice
 
 ## A dice rolling game
@@ -95,9 +80,18 @@ I built this program desktop first, and used google developer tools to modify my
 
 ## Wireframes
 
-## Features
-
 ### Desktop and mobile wireframes
+
+I used figma to design this project, the wireframes for desktop and mobile can be seen below.
+
+#### Desktop
+![Desktop Wireframe](assets/docs/images/screenshots/wirefames-desktop.png)
+
+#### Mobile
+
+![Mobile Wireframe](assets/docs/images/screenshots/wireframes-mobile.png)
+
+## Features
 
 <a name="features"></a>
 
@@ -317,7 +311,48 @@ Issues with timing: FIXED
 I used github to deploy this project and followed these steps from the main repository. 
 
 1. Clicked on the settings tab.
-2. Select 
+2. Select the pages menu.
+3. Choose main for the source dropdown menu.
+4. Leave dropdown menu /root as default option. 
+5. Click Save. 
+
+> I then waited for 5 minutes before refreshing the page and my site had gone live. 
+
+## Credits
+
+I used the following sources as tools to help me with the development of this project.
+
+<a name="credits"></a>
+
+### W3 Schools 
+
+> Used for looking up information on JS, CSS and HTML. 
+
+### Code Institute Content
+
+> Used for looking up information on JS, CSS and HTML. 
+
+### Youtube.com
+
+> Used to research different concepts in javscript such as:
+
+https://www.youtube.com/watch?v=T76E09hnEuo
+
+https://www.youtube.com/watch?v=YHx54TFgJ8k&list=PLt4757glfbhGVMrh0fe33vZppbb700Spc
+
+### Font Awesome
+
+> Used for icons and favicons. 
+
+MDN Docs
+
+> Used for information on javascipt, css and html. 
+
+#### Acknowledgements
+
+> My mentor Alan Bushell who provided me with construcive feedback throughout the development of this project. 
+
+
 
 
 
