@@ -1,5 +1,4 @@
 /*override default browser styles*/
-
 * {
     padding: 0;
     margin: 0;
@@ -30,7 +29,6 @@ main {
 }
 
 /*styles for top of page*/
-
 #top {
     display: flex;
     justify-content: space-between;
@@ -39,6 +37,7 @@ main {
     position: relative;
 }
 
+/*Styles for logo in top left corner*/
 #rules-logo-container {
     background-color: white;
     display: flex;
@@ -59,6 +58,7 @@ main {
     display: inline-block;
 }
 
+/*Style for piggy bank  area*/
 #piggy-bank-container {
     position: relative;
     z-index: 2;
@@ -84,7 +84,6 @@ main {
     font-size: 50px;
 }
 
-
 #piggy-bank-input {
     width: 70px;
     width: 70px;
@@ -94,6 +93,7 @@ main {
     font-size: 160%;
 }
 
+/*Styles for overlay explaining rules*/
 #rules-overlay {
     display: none;
     position: fixed;
@@ -164,8 +164,6 @@ main {
     align-self: start;
 }
 
-
-
 #rules-logo-overlay {
     width: auto;
     height: auto;
@@ -190,15 +188,13 @@ main {
     color: black;
 }
 
-
+/*Main section styles*/
 #main-section {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 60%;
-
 }
-
 
 #main-section-circle {
     background-color: white;
@@ -214,30 +210,6 @@ main {
     justify-content: center;
     align-items: center;
     border: grey 5px solid;
-}
-
-#input-container-user,
-#input-container-computer {
-    display: flex;
-    font-size: 200%;
-    font-weight: bold;
-}
-
-#input-container-computer {
-    align-self: self-end;
-}
-
-#main-section-dice-wrapper {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    z-index: 5;
-    gap: 20px;
 }
 
 .dice {
@@ -266,15 +238,6 @@ main {
     font-size: 6.5em;
 }
 
-hr {
-    position: absolute;
-    top: 52%;
-    z-index: 1;
-    width: 100%;
-    border: 0;
-    height: 1px;
-    background-color: 4f4f4f;
-}
 
 #h1-large-screens {
     text-align: center;
@@ -290,22 +253,29 @@ hr {
     font-weight: 500;
 }
 
-/* h1-hidden {
-    display: block;
-    position: absolute; 
-    top: 33%;
-    left: 45%; 
-    z-index: 5; 
-    text-transform: capitalize;
-} */
 
 #h1-small-screens {
     display: none;
-
-
 }
 
+#input-container-computer {
+    align-self: self-end;
+}
 
+#main-section-dice-wrapper {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    z-index: 5;
+    gap: 20px;
+}
+
+/*Styles for score area*/
 #score-area {
     display: flex;
     justify-content: space-between;
@@ -322,7 +292,6 @@ hr {
     border-left: 0;
     border-right: 0
 }
-
 
 #score-area-left,
 #score-area-right {
@@ -344,7 +313,6 @@ hr {
 
 #user-score,
 #computer-score {
-    /* background-color: rgba(216, 115, 20, 0.623); */
     width: 192.77px;
 }
 
@@ -357,6 +325,12 @@ hr {
     background-color: #f1f1f1;
 }
 
+#input-container-user,
+#input-container-computer {
+    display: flex;
+    font-size: 200%;
+    font-weight: bold;
+}
 
 .roll-wrapper {
     height: 39.998px;
@@ -373,13 +347,8 @@ hr {
     background-color: white;
     flex-shrink: 1;
     border-radius: 5px;
-    /* display: flex;
-    justify-content: center; */
-    /* align-items: center; */
     border: solid black 0.5px;
 }
-
-
 
 .score-die>i {
     width: 100%;
@@ -390,7 +359,6 @@ hr {
     justify-content: center;
     align-items: center;
 }
-
 
 #bank-roll-wrapper {
     display: flex;
@@ -407,16 +375,12 @@ hr {
     justify-content: center;
     align-items: center;
     padding: 15px;
-
 }
 
-
-#increase-stakes>p,
-#decrease-stakes>p {
+#increase-stakes>span {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-
 }
 
 #bank-roll-user,
@@ -437,7 +401,6 @@ hr {
 }
 
 /*Add spin keyframe and spinning class to add to cirle div when dice rolling*/
-
 @keyframes spin {
 
     0% {
@@ -446,7 +409,6 @@ hr {
         border-right-color: darkgrey;
         border-bottom-color: black;
         border-left-color: lightgrey;
-
     }
 
     25% {
@@ -480,10 +442,10 @@ hr {
 }
 
 .spin {
-
     animation: spin 1s linear infinite;
 }
 
+/*Add keyframes to shake text when user loses round*/
 @keyframes round-lose-shake {
 
     0% {
@@ -538,7 +500,7 @@ hr {
     transform-origin: center;
 }
 
-
+/*Add keyframes to shake circle when user loses game*/
 @keyframes game-lose-shake {
 
     0% {
@@ -592,6 +554,7 @@ hr {
     animation-iteration-count: 3;
 }
 
+/*Keyframes for piggy bank to pop when updated*/
 @keyframes pop {
 
     0% {
@@ -612,70 +575,7 @@ hr {
     animation: pop 1s ease-in-out;
 }
 
-@keyframes spinBorder {
-
-    0% {
-        border-width: 4px;
-        border-radius: 50%;
-        border-style: solid;
-    }
-
-    25% {
-        border-width: 8px;
-        border-radius: 51%;
-        border-style: dotted;
-    }
-
-    50% {
-        border-width: 12px;
-        border-radius: 52%;
-        border-style: dotted;
-
-    }
-
-    100% {
-        border-width: 4px;
-        border-radius: 50%;
-        border-style: solid;
-    }
-
-}
-
-.spinning {
-    animation: spinBorder 2s infinite linear;
-}
-
-@keyframes pulsing-border {
-
-    0%,
-    100% {
-        border-width: 5px;
-    }
-
-    10% {
-        border-width: 6px;
-    }
-
-    25% {
-        border-width: 7px;
-    }
-
-    50% {
-        border-width: 9px;
-
-    }
-
-    75% {
-        border-width: 11px;
-    }
-
-}
-
-.pulsing-border {
-
-    animation: pulsing-border 2s infinite;
-}
-
+/*Keyframes for pulsing elements*/
 @keyframes pulsing {
 
     0%,
@@ -692,61 +592,7 @@ hr {
     animation: pulsing 2s infinite;
 }
 
-/*Add keyframes and class to add to circle at instant wins*/
-
-@keyframes winning-star {
-
-    0%,
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 20px grey;
-    }
-
-    50% {
-        transform: scale(1.2);
-        background-color: orange;
-        box-shadow: 0 0 20px orange;
-    }
-}
-
-.game-win {
-
-    background-color: yellow;
-    animation: winning-star 0.5s infinite;
-    clip-path: polygon(50% 0%,
-            61% 35%,
-            98% 35%,
-            68% 57%,
-            79% 91%,
-            50% 70%,
-            21% 91%,
-            32% 57%,
-            2% 35%,
-            39% 35%);
-}
-
-@keyframes winning-text {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-}
-
-.round-win-text {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: winning-text 0.5s infinite;
-    transform-origin: center;
-    font-size: 350%;
-}
-
+/*keyframes to make text blink*/
 @keyframes blinking {
 
     0%,
@@ -763,20 +609,17 @@ hr {
     animation: blinking 1s infinite;
 }
 
+/*Media screens*/
 
 @media screen and (min-width: 1440px) {
-    /* #main-section-circle {
-        top: 170px;
-    } */
 
     #game-area {
         width: 60%;
     }
 }
 
-
-
 @media screen and (max-width: 768px) {
+
     #game-area {
         width: 100%;
         height: 100%;
@@ -784,23 +627,7 @@ hr {
         justify-content: space-between;
         flex-direction: column;
     }
-
 }
-
-/* @media screen and (min-width: 375px) {
-
-    #score-area-left, #score-area-right {
-        padding-left: 0px; 
-        padding-right: 0px; 
-        justify-content: flex-start; 
-
-    }
-
-    #increase-stakes {
-        align-self: normal; 
-    }
-
-} */
 
 @media screen and (max-width: 375px) {
 
@@ -812,7 +639,6 @@ hr {
 }
 
 @media screen and (max-width: 425px) {
-
 
     #main-section-dice-wrapper {
         transform: translate(-80%, -50%);
@@ -857,22 +683,18 @@ hr {
         border: none;
     }
 
-
     #die1 {
         transform: rotate(-20deg);
         z-index: 1;
     }
 
-
     #die3 {
         transform: rotate(20deg);
     }
 
-
     #score-area {
         flex-direction: column;
         display: flex;
-
     }
 
     #score-area-left,
@@ -893,8 +715,6 @@ hr {
 
     #bank-roll-computer {
         align-self: normal;
-
     }
-
 
 }

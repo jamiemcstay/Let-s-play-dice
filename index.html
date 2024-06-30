@@ -15,6 +15,7 @@
 
 <body>
     <main>
+        <!--Div to be visible when clicking on logo in top left-->
         <div id="rules-overlay">
             <div id="rules-overlay-top">
                 <div id="rules-logo-container-overlay">
@@ -52,6 +53,7 @@
                 </div>
             </div>
         </div>
+        <!--Game area-->
         <section id="game-area">
             <div id="top">
                 <div id="rules-logo-container">
@@ -62,14 +64,14 @@
                 <div id="piggy-bank-container">
                     <div id="piggy-bank">
                         <span>
-                            <i class="fa-solid fa-dollar-sign" alt="Stakes for current round"></i>
+                            <i class="fa-solid fa-dollar-sign"></i>
                         </span>
                         <input id="piggy-bank-input" type="number" value="0" readonly>
                     </div>
                 </div>
             </div>
+            <!--Main section-->
             <div id="main-section">
-                <!-- <h1 id="h1-hidden">Instant Win</h1> -->
                 <h1 id="h1-small-screens">Let's play dice</h1>
                 <div id="main-section-circle">
                     <h1 id="h1-large-screens">Let's play dice</h1>
@@ -85,10 +87,12 @@
                         </div>
                     </div>
                 </div>
-                <hr>
             </div>
+            <!--Score Area-->
             <footer id="score-area">
+                <!--Score area for the user-->
                 <div id="score-area-left">
+                    <!--Display for users score-->
                     <div id="user-score">
                         <p>YOUR ROLL:</p>
                         <div class="roll-wrapper">
@@ -103,17 +107,20 @@
                             </div>
                         </div>
                     </div>
+                    <!--users bankroll-->
                     <div id="bank-roll-wrapper">
-                    <span id="input-container-user">
-                        <label for="bank-roll-user" id="bank-roll-label">$</label>
-                        <input id="bank-roll-user" type="number" value="500" readonly placeholder="$"">
-                    </span>
+                        <span id="input-container-user">
+                            <label for="bank-roll-user" id="bank-roll-label">$</label>
+                            <input id="bank-roll-user" type="number" value="500" readonly>
+                        </span>
                         <button id="increase-stakes">
-                            <p>+</p>
+                            <span>+</span>
                         </button>
                     </div>
                 </div>
+                <!--Score area for the computer-->
                 <div id="score-area-right">
+                    <!--Display for computers score-->
                     <div id="computer-score">
                         <p>COMPUTER ROLL:</p>
                         <div class="roll-wrapper">
@@ -128,13 +135,15 @@
                             </div>
                         </div>
                     </div>
-                <span id="input-container-computer">
-                    <label for="bank-roll-computer">$</label>
-                    <input id="bank-roll-computer" type="number" value="500" readonly>
-                </span>
+                    <!--Computers bankroll-->
+                    <span id="input-container-computer">
+                        <label for="bank-roll-computer">$</label>
+                        <input id="bank-roll-computer" type="number" value="500" readonly>
+                    </span>
                 </div>
             </footer>
         </section>
+        <!--JS file link-->
         <script src="assets/js/script.js"></script>
     </main>
 </body>
