@@ -24,7 +24,7 @@
 
 ### Gameplay 
 
-> The Banker is the first to roll three dice, with the aim to roll a winning combination of set point. 
+> The Banker is the first to roll three dice, with the aim to roll a winning combination or a pair and set point. 
 
 > If the banker rolls a instant win combination, they win all the bets made.
 
@@ -61,15 +61,15 @@
 
 #### Color
 
-As Cee-lo is a simple game, I wanted to keep the color minimal, and when designing in figma I really liked the simplicity of the black, white and grey colors, so I decided to keep these. 
+As Cee-lo is a simple game, so I wanted to keep the design minimal, and when designing in figma I really liked the simplicity of the black, white and grey colors, so I decided to keep these. 
 
 #### Font 
 
-For the font I chose jetBrains mono, as its clear with distinct characters and is sufficient in updating the user as to gameflow and information.
+For the font I chose jetBrains mono, as its clear with distinct characters and is sufficient in updating the user as to gameflow information.
 
 #### Icons
 
-I used font awesome dice for the dice in my design as looked really nice as part aesthetic. 
+I used font awesome dice for the dice in my design as looked really nice. 
 
 #### Structure 
 
@@ -79,9 +79,9 @@ I built this program desktop first, and used google developer tools to modify my
 
 > As a user I want a fun game to play.
 > As a user I want a gambling game.
-> As a user I want to be able to understand whats happening and the game progresses.
+> As a user I want to be able to understand whats happening as the game progresses.
 > As a user I want to be able to see my assets, in the form of my score and my bank roll. 
-> As a user I want to be able to continue to the play the game until I close down the page. 
+> As a user I want to be able to continue to play the game until I close down the page. 
 
 ## Wireframes
 
@@ -185,15 +185,15 @@ This is the area where the user can view the stakes for the current round.
 
 ### Code Validation 
 
--W3C reported no errors the HTML.
+W3C reported no errors the HTML.
 
-![HTML Report](assets/docs/images/screenshots/w3c-html-report)
+![HTML Report](assets/docs/images/screenshots/w3c-html-report.png)
 
--W3C reported no errors for the css file.
+W3C reported no errors for the css file.
 
 ![CSS Report](assets/docs/images/screenshots/css-report.png)
 
-- JSHint reporting no errors, and only warnings for using template literal syntax only available in ES6
+JSHint reporting no errors, and only warnings for using template literal syntax only available in ES6
 
 ![Js Hint 1/3](assets/docs/images/screenshots/js-hint1.png)
 ![Js Hint 2/3](assets/docs/images/screenshots/js-hint2.png)
@@ -211,22 +211,22 @@ The lighthouse text for desktop passed.
 
 ### Responsiveness
 
-- I used google chrome developer tools to check the responsiveness of the game on all differenet screen sizes, and used css to modify it to fit all screen sizes.
+I used google chrome developer tools to check the responsiveness of the game on all differenet screen sizes, and used css to modify it to fit all screen sizes.
 
 ### Features testing
 
-In order to text the features of the game I had my two housemates and two family members play the game and answer thee questions with  either a pass or a fail: 
+In order to test the features of the game I had my two housemates and two family members play the game and answer thee questions with  either a pass or a fail: 
 
 >Question 1
 Does the game interactivity work how it should?
 - Interactive zone allows the user to click when they are prompted.
-- Does the UI correcly updates with results and gameflow information.
+- Does the UI correctly update with results and gameflow information.
 
 >Question 2
 Does the game correctly analyse the results of the rolls and award the winner as specified in the rules of the game?
 
 >Question 3
-Does the game correcly update the piggy bank and correcly update the user and computers bankrolls according to the winner of the round?
+Does the game correctly update the piggy bank and correctly update the user and computers bankrolls according to the winner of the round?
 
 >Question 4
 Does the game allow the user to click to restart the game once they have played through until game over?
@@ -304,9 +304,9 @@ I also went through the game multiple times and tested its functionality.
 <a name="bugs"></a>
 
 
-- Issue with the handling of data soved by converting data into strings to be handled with consistent methods across the program: FIXED
-- Issue with glitch in handling roll results solved by using replace method to remove spaces in strings and correctly convert string value to an integer to be used to compare roll results between players: FIXED
-Issues with timing solved by Use of many by modifying timeouts miliseconds to allow games pace to flow correctly: FIXED 
+- Issue with the handling of data solved by converting data into strings to be handled with consistent methods across the program: FIXED
+- Issue with glitch in handling roll results solved by using replace method to remove spaces in strings and correctly convert string values to an integers to be used to compare roll results between players: FIXED
+Issues with timing solved by modifying timeouts to allow games pace to flow correctly: FIXED 
 
 ## Deployment
 
@@ -314,7 +314,7 @@ I used github to deploy this project and followed these steps from the main repo
 
 1. Clicked on the settings tab.
 2. Select the pages menu.
-3. Choose main for the source dropdown menu.
+3. Choose main from the source dropdown menu.
 4. Leave dropdown menu /root as default option. 
 5. Click Save. 
 
